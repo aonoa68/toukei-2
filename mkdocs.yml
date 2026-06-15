@@ -1,0 +1,76 @@
+site_name: 統計学Ⅱ
+site_description: 北星学園大学「統計学Ⅱ」2026年度 後期 授業資料
+site_author: 小野原 彩香
+# GitHub Pages 公開時のURL（aonoa68.github.io/toukei-2/ を想定）
+site_url: https://aonoa68.github.io/toukei-2/
+
+theme:
+  name: material
+  language: ja
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: ダークモードに切り替え
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: ライトモードに切り替え
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang:
+        - ja
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js
+
+nav:
+  - ホーム: index.md
+  - 第01回 Ⅰの復習とⅡの位置づけ: 01_guidance.md
+  - 第02回 条件付き確率: 02_conditional.md
+  - 第03回 ベイズの定理: 03_bayes.md
+  - 第04回 二項・ポアソン分布: 04_discrete.md
+  - 第05回 正規分布の数理: 05_normal.md
+  - 第06回 中心極限定理の再考: 06_clt.md
+  - 第07回 区間推定の理論: 07_interval.md
+  - 第08回 検定の多重性問題: 08_multiple.md
+  - 第09回 効果量とp値批判: 09_effectsize.md
+  - 第10回 因果推論入門: 10_causal.md
+  - 第11回 交絡と疑似相関: 11_confounding.md
+  - 第12回 情報カスケード: 12_cascade.md
+  - 第13回 コンドルセの陪審定理: 13_condorcet.md
+  - 第14回 総括：孤高の意思決定者として: 14_synthesis.md
