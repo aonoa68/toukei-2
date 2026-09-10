@@ -477,10 +477,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -858,10 +886,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -887,6 +943,16 @@
 <p>「独立な試行」を数式にする</p>
 </blockquote>
 <hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/04_discrete.ipynb">📓 Colabノートを開く（04_discrete.ipynb）</a></li>
+<li>📝 今日の課題は<strong>このページの末尾</strong>にあります。解答の提出は Moodle の「第4回 課題」へ</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>確率変数・期待値・分散を理解する</li>
@@ -1006,8 +1072,37 @@
 </tbody>
 </table>
 <hr />
-<h2 id="moodle">今日の課題（Moodle）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p>二項/ポアソンの計算と使い分け（自動採点）＋「独立試行という前提が崩れると、二項分布の予測は何を間違えるか」の記述。詳細はMoodleの第4回課題を見ること。</p>
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p>第4回のColabノート <code>04_discrete.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 公正なコイン（p=0.5）を10回投げて、表が <strong>7回以上</strong> 出る確率に <strong>最も近い</strong> のは？
+- (ア) 約 2%　(イ) 約 17%　(ウ) 約 50%</p>
+<p><strong>A2.</strong> 二項分布 <span class="arithmatex">\(\mathrm{Binom}(n,p)\)</span> の期待値（平均）と分散の組として正しいのは？
+- (ア) 平均 <span class="arithmatex">\(np\)</span>、分散 <span class="arithmatex">\(np(1-p)\)</span>
+- (イ) 平均 <span class="arithmatex">\(p\)</span>、分散 <span class="arithmatex">\(np\)</span>
+- (ウ) 平均 <span class="arithmatex">\(np\)</span>、分散 <span class="arithmatex">\(\lambda\)</span></p>
+<p><strong>A3.</strong> 次のうち、<strong>ポアソン分布</strong> でモデル化するのが最も自然なのはどれか？
+- (ア) サイコロを20回振って6が出る回数
+- (イ) ある書店に1時間あたりに来店する客の人数
+- (ウ) 10人の学生のうち、特定の1人が選ばれるかどうか</p>
+<p><strong>A4.</strong> Colabで「10人が8割の確率で前の人の答えを真似る（独立でない）」場合、独立なときと比べて起きたことは？
+- (ア) 平均も分散もほとんど変わらない
+- (イ) 平均はほぼ同じだが、分散が大きく増え、全員一致のような極端な結果が増えた
+- (ウ) 平均が大きく下がった</p>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 二項分布とポアソン分布について、<strong>①それぞれどんな場面で使うか ②両者に共通する前提は何か</strong> を、具体例を1つずつ挙げながら4〜6文で説明しなさい。</p>
+<p><strong>B2.（30点）</strong> Colabの最後で、「各人が前の人を真似る（独立でない）」と、10人中の正解者数の <strong>分散が大きく膨らみ、全員一致のような極端な結果が増える</strong> ことを見た。これを踏まえて次の2点を書きなさい。</p>
+<ol>
+<li>なぜ「真似る（独立が崩れる）」と、平均は同じなのに極端な結果が増えるのか、自分の言葉で説明する</li>
+<li>もし現実に「みんなが独立に判断していると思い込んで」二項分布で予測したら、実際の集団（真似合う集団）に対してどんな読み違いをするか</li>
+</ol>
+<blockquote>
+<p>ヒント：B2は第12〜13回（情報カスケード・コンドルセの陪審定理）の予告になっている。「みんなが同じ方向に流れる」とき何が起きるか、を意識して書くとよい。</p>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+</blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第5回「連続確率分布：正規分布の数理」。なぜ世界は正規分布だらけなのか ―― 答えはまた <strong>独立</strong> にある（多数の独立な要因の和）。そして「すべてが正規」ではないことも見る。</p>

@@ -467,10 +467,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -892,10 +920,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -921,6 +977,16 @@
 <p>「データで信念を更新する」。直感を裏切る <strong>基準率の誤謬</strong></p>
 </blockquote>
 <hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/03_bayes.ipynb">📓 Colabノートを開く（03_bayes.ipynb）</a></li>
+<li>📝 今日の課題は<strong>このページの末尾</strong>にあります。解答の提出は Moodle の「第3回 課題」へ</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>ベイズの定理を理解する：<span class="arithmatex">\(P(H\mid D)=\dfrac{P(D\mid H)\,P(H)}{P(D)}\)</span></li>
@@ -1077,8 +1143,40 @@
 </tbody>
 </table>
 <hr />
-<h2 id="moodle">今日の課題（Moodle）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p>陽性的中率の計算（自動採点）＋「なぜ直感は基準率を無視するのか／ベイズ更新を自分の言葉で」の記述。詳細はMoodleの第3回課題を見ること。</p>
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p>第3回のColabノート <code>03_bayes.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 感度99%・特異度99%の検査で、有病率が <strong>1%（100人に1人）</strong> の病気のとき、陽性と出た人が本当に病気である確率（陽性的中率）に <strong>最も近い</strong> のは？
+- (ア) 約 1%　(イ) 約 50%　(ウ) 約 99%</p>
+<p><strong>A2.</strong> A1で陽性的中率が検査の精度（99%）より大きく下がる <strong>主な理由</strong> は？
+- (ア) 検査の機械の誤差が大きいから
+- (イ) 病気の人がもともと少ない（基準率が低い）ため、健康な人からの偽陽性が多数を占めるから
+- (ウ) 陽性的中率は常に50%になると決まっているから</p>
+<p><strong>A3.</strong> ベイズの定理 <span class="arithmatex">\(P(H\mid D)=\dfrac{P(D\mid H)P(H)}{P(D)}\)</span> で、<strong>事前確率</strong> にあたるのはどれか？
+- (ア) <span class="arithmatex">\(P(H)\)</span>（データを見る前の信念）
+- (イ) <span class="arithmatex">\(P(D\mid H)\)</span>（尤度）
+- (ウ) <span class="arithmatex">\(P(H\mid D)\)</span>（事後確率）</p>
+<p><strong>A4.</strong> 検査の例で、直感が「陽性なら99%病気だ」と誤るのは、2つの確率を混同しているからである。正しく混同されているペアは？
+- (ア) <span class="arithmatex">\(P(\text{陽性}\mid\text{病気})\)</span> と <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span> を取り違えている
+- (イ) 事前確率と尤度が等しいと思い込んでいる
+- (ウ) 感度と特異度を取り違えている</p>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 感度99%・特異度99%という高性能の検査でも、稀な病気では陽性的中率が約50%にしかならない。<strong>なぜそうなるのか</strong> を、4〜6文で説明しなさい。次の2点に必ず触れること。</p>
+<ol>
+<li>「基準率（有病率）」という言葉を使い、なぜ偽陽性が無視できないほど出るのか</li>
+<li>直感が外す原因を、第2回で学んだ「条件付き確率の向き」と結びつけて</li>
+</ol>
+<p><strong>B2.（30点）</strong> ベイズの定理は「<strong>データで信念を更新する</strong>」道具だった。あなた自身の経験で、<strong>最初の思い込み（事前）が、新しい情報（データ）によって更新された</strong>例を1つ挙げ、次の2点を書きなさい。</p>
+<ol>
+<li>最初どう思っていたか（事前）、どんな情報を得て（データ）、どう考えが変わったか（事後）</li>
+<li>もし「基準率（もともとの起こりやすさ）」を考えていれば、最初の思い込みは違っていたか</li>
+</ol>
+<blockquote>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+</blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第4回「離散確率分布：二項分布・ポアソン分布」。「コインを10回投げて7回表。イカサマ？」 ―― 独立な試行を <span class="arithmatex">\(n\)</span> 回くりかえすと、結果はどんな分布になるか。第2回で定義した「独立」が、分布の前提として効いてくる。</p>

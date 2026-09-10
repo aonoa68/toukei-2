@@ -666,10 +666,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -858,10 +886,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -887,6 +943,16 @@
 <p>見せかけの相関を、統制（調整）で見破る</p>
 </blockquote>
 <hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/11_confounding.ipynb">📓 Colabノートを開く（11_confounding.ipynb）</a></li>
+<li>📝 今日の課題は<strong>このページの末尾</strong>にあります。解答の提出は Moodle の「第11回 課題」へ</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>疑似相関</strong>（共通原因が作る見せかけの相関）を理解する</li>
@@ -1002,8 +1068,43 @@
 </tbody>
 </table>
 <hr />
-<h2 id="moodle">今日の課題（Moodle）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p>相関事例の交絡候補の指摘と統制の効果（自動採点）＋「この相関は因果か／交絡候補を挙げ、統制したらどうなるか」の批判的記述。詳細はMoodleの第11回課題を見ること。</p>
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p>第11回のColabノート <code>11_confounding.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 「アイスの売上」と「水難事故」が強く相関する主な理由は？
+- (ア) アイスを食べると水難事故が増えるという因果がある
+- (イ) 「気温」という共通原因が、両方を同時に増やしているから（疑似相関）
+- (ウ) まったくの偶然で、再現性はない</p>
+<p><strong>A2.</strong> Colabで、気温の影響を回帰で差し引いた「偏相関」を計算すると、アイスと水難事故の相関はどうなったか？
+- (ア) ほぼ0になった（見せかけの相関だった）
+- (イ) さらに強くなった
+- (ウ) 変わらず0.78のままだった</p>
+<p><strong>A3.</strong> 「シンプソンのパラドックス」とは？
+- (ア) サンプルを増やすほどp値が小さくなる現象
+- (イ) 全体（合算）で見たときと、層（グループ）に分けて見たときで、結論が逆転する現象
+- (ウ) 検定を繰り返すと偽陽性が増える現象</p>
+<p><strong>A4.</strong> 交絡を疑うとき「手元の変数を全部統制すればよい」と言えない理由は？
+- (ア) 統制すると必ずサンプルが減るから
+- (イ) 共通の結果である「コライダー」を統制すると、逆に存在しない相関を作ってしまうから
+- (ウ) 統制は手間がかかるから</p>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 次の「強い相関」から1つ選び、<strong>考えられる共通原因（交絡）を1つ挙げ</strong>、その交絡を統制（そろえる／差し引く）したら相関はどうなると予想されるかを4〜6文で説明しなさい。</p>
+<ul>
+<li>(a) 「足が速い子どもほど、計算が速い」</li>
+<li>(b) 「コーヒーをたくさん飲む人ほど、心臓病が多い」</li>
+<li>(c) 「消防車の出動台数が多い火事ほど、損害額が大きい」</li>
+</ul>
+<p><strong>B2.（30点）</strong> Colabで見たシンプソンのパラドックス（学部別では両方Bが上なのに、全体ではAが上）について、次の2点を書きなさい。</p>
+<ol>
+<li>なぜ全体で合算すると、層別と逆の結論になってしまったのか（受験者の偏りに触れて）</li>
+<li>アプリAとB、本当に合格率が高いのはどちらと考えるべきか。その理由は？</li>
+</ol>
+<blockquote>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+</blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第12回「情報カスケードと集団意思決定」。ここから今期のクライマックス。個々は合理的なのに、他人の行動を見て自分の情報を捨て、集団そろって間違える ―― 独立が壊れる現場へ。</p>

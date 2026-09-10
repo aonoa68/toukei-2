@@ -601,10 +601,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -836,10 +864,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -865,6 +921,16 @@
 <p>「有意」であることと「重要」であることは、まったく別</p>
 </blockquote>
 <hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/09_effectsize.ipynb">📓 Colabノートを開く（09_effectsize.ipynb）</a></li>
+<li>📝 今日の課題は<strong>このページの末尾</strong>にあります。解答の提出は Moodle の「第9回 課題」へ</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>p値が <strong>標本サイズ <span class="arithmatex">\(n\)</span> に依存</strong> することを理解する（<span class="arithmatex">\(n\)</span> を増やせば無意味な差でも有意になる）</li>
@@ -973,8 +1039,39 @@
 </tbody>
 </table>
 <hr />
-<h2 id="moodle">今日の課題（Moodle）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p>出力からp値と効果量を読み分け（自動採点）＋「この“統計的有意差”は実質的に重要か」の批判的記述。詳細はMoodleの第9回課題を見ること。</p>
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p>第9回のColabノート <code>09_effectsize.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 本当の平均差がごく小さい（0.5点）まま、標本サイズ <span class="arithmatex">\(n\)</span> だけを大きくしていくと、p値はどうなるか？
+- (ア) ずっと変わらない
+- (イ) どんどん小さくなり、やがて有意（p&lt;0.05）になる
+- (ウ) どんどん大きくなる</p>
+<p><strong>A2.</strong> 効果量（Cohen's d など）が、p値と比べて優れている点は？
+- (ア) 標本サイズに振り回されず、差の大きさそのものを表す
+- (イ) 標本サイズが大きいほど必ず大きくなる
+- (ウ) 0.05より小さければ「有意」と判定できる</p>
+<p><strong>A3.</strong> 「統計的に有意（p&lt;0.05）」だが「効果量が非常に小さい（d=0.05）」という結果の解釈として、最も適切なのは？
+- (ア) 有意なのだから、実生活でも重要な差である
+- (イ) 差は確かにありそうだが、大きさは無視できるほど小さく、実質的な重要性は低い
+- (ウ) 効果量が小さいので、この差は完全に存在しない</p>
+<p><strong>A4.</strong> 小さい標本（n=6）で「効果量は大きい（d=0.7）が p=0.25 で非有意」という結果が出た。最も適切な態度は？
+- (ア) 非有意なので「差はなかった」と結論する
+- (イ) 大きい効果量が見えているので、標本不足で見逃した可能性を考え、サンプルを増やして再検討する
+- (ウ) p値が0.25なので、効果量も信用できない</p>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 「10万人を対象に調査したところ、新薬で症状スコアが平均0.5ポイント下がり、統計的に有意だった（p&lt;0.001）」という発表がある。この結果を <strong>どう読むべきか</strong>、p値と効果量の違いに触れて4〜6文で説明しなさい。「p値が小さい＝効果が大きい」という誤解を正すこと。</p>
+<p><strong>B2.（30点）</strong> 「統計的に有意」と「実質的に重要」は別の軸である。
+あなたの身近な例（勉強法・健康・商品の宣伝など何でもよい）で、<strong>「有意だが重要でない」または「重要そうだが（標本が小さく）有意と言えない」</strong> にあてはまりそうな状況を1つ考え、次の2点を書きなさい。</p>
+<ol>
+<li>その状況で、p値だけを見るとどんな間違った判断をしてしまうか</li>
+<li>効果量（差の大きさ）も見ると、判断はどう変わるか</li>
+</ol>
+<blockquote>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+</blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第10回「因果推論入門：RCTと観察研究」。ここからは因果の話。「サプリを飲んだ人は健康だった。サプリのおかげ？ それとも、もともと健康志向の人が飲んだだけ？」</p>

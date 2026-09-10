@@ -585,10 +585,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -858,10 +886,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -887,6 +943,16 @@
 <p>たくさん試せば、偶然の「有意」はいくらでも出る</p>
 </blockquote>
 <hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/08_multiple.ipynb">📓 Colabノートを開く（08_multiple.ipynb）</a></li>
+<li>📝 今日の課題は<strong>このページの末尾</strong>にあります。解答の提出は Moodle の「第8回 課題」へ</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>検定を繰り返すと <strong>偽陽性（第一種の誤り）が累積</strong> することを理解する</li>
@@ -995,8 +1061,33 @@
 </tbody>
 </table>
 <hr />
-<h2 id="moodle">今日の課題（Moodle）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p>多重検定シナリオの判断（自動採点）＋「この研究のp値はなぜ信用できないか」の批判的記述。詳細はMoodleの第8回課題を見ること。</p>
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p>第8回のColabノート <code>08_multiple.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 本当は効果がゼロのとき、有意水準5%で <strong>独立に20回</strong> 検定すると、「少なくとも1回は有意（偽陽性）になる」確率に <strong>最も近い</strong> のは？
+- (ア) 約 5%　(イ) 約 36%　(ウ) 約 64%</p>
+<p><strong>A2.</strong> 「p-hacking」の説明として <strong>最も適切</strong> なのは？
+- (ア) データを取る前に仮説と分析方法を公開して固定すること
+- (イ) 有意な結果が出るまで検定を繰り返したり、有意だったものだけを選んで報告したりすること
+- (ウ) サンプルサイズを大きくして検定の精度を上げること</p>
+<p><strong>A3.</strong> 20回の検定をまとめて行うとき、ボンフェローニ補正で使う有意水準は？
+- (ア) 0.05 のまま
+- (イ) 0.05 × 20 = 1.0
+- (ウ) 0.05 ÷ 20 = 0.0025</p>
+<p><strong>A4.</strong> 結果を見てから「最初からこの仮説を検証するつもりだった」と後付けすることを何と呼ぶか。また、その根本的な対策は？
+- (ア) HARKing。対策は事前登録（データ取得前に仮説・方法を固定）
+- (イ) ボンフェローニ補正。対策は多重比較
+- (ウ) 第二種の誤り。対策はサンプル増加</p>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 「20色のゼリービーンズを調べたら、緑だけがニキビと有意に関連していた（p&lt;0.05）」という主張は、なぜ信用できないのか。<strong>多重性の問題</strong>を使って4〜6文で説明しなさい。「1回あたり5%」「20回」という数字に触れること。</p>
+<p><strong>B2.（30点）</strong> ある研究者が「新しい教育法で成績が上がった（p=0.04）」と発表した。この主張を鵜呑みにする前に、あなたが確認すべきことを2つ挙げ、それぞれ <strong>なぜ確認が必要か</strong> を説明しなさい。</p>
+<blockquote>
+<p>ヒント：今日学んだ「何回検定したか」「仮説は先に決めてあったか（事前登録）」「有意なサブグループだけ報告していないか」などの観点を使う。</p>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+</blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第9回「効果量とp値批判」。今度は逆に「n＝100万なら、無意味な差でも p&lt;0.001 になる」 ―― 有意であることと、重要であることは、まったく別の話だ。</p>

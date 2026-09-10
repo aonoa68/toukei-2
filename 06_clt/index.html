@@ -520,10 +520,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -836,10 +864,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -865,6 +921,16 @@
 <p>CLTの魔法には「独立」という隠れた前提がある</p>
 </blockquote>
 <hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/06_clt.ipynb">📓 Colabノートを開く（06_clt.ipynb）</a></li>
+<li>📝 今日の課題は<strong>このページの末尾</strong>にあります。解答の提出は Moodle の「第6回 課題」へ</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>中心極限定理（CLT）を再確認する：母集団が歪んでいても、<strong>独立な</strong>標本平均は正規分布に近づく</li>
@@ -964,8 +1030,39 @@
 </tbody>
 </table>
 <hr />
-<h2 id="moodle">今日の課題（Moodle）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p>CLTの前提の説明（自動採点）＋「標本が独立でないと、推測は具体的に何を間違えるか」の記述。詳細はMoodleの第6回課題を見ること。</p>
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p>第6回のColabノート <code>06_clt.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 中心極限定理（CLT）が述べているのは、次のどれか？
+- (ア) 母集団そのものが、標本を増やすと正規分布になる
+- (イ) 母集団がどんな形でも、（独立な）標本平均の分布は正規分布に近づく
+- (ウ) 標本のヒストグラムは、nを増やすと必ず正規分布になる</p>
+<p><strong>A2.</strong> 標準誤差 <span class="arithmatex">\(\mathrm{SE}=\sigma/\sqrt{n}\)</span> について正しいのは？
+- (ア) 標本が独立でなくても常に成り立つ
+- (イ) 標本が独立であることを前提にした式である
+- (ウ) <span class="arithmatex">\(n\)</span> を増やすと SE は大きくなる</p>
+<p><strong>A3.</strong> Colabで、各標本内の回答が相関する（ρ=0.3、空気を読む）とき、標本平均の「本当のばらつき」は、独立を仮定した素朴な <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> と比べてどうだったか？
+- (ア) ほぼ同じだった
+- (イ) 約3倍に大きくなった（素朴なSEは精密さを過大評価していた）
+- (ウ) 約3分の1に小さくなった</p>
+<p><strong>A4.</strong> 相関した標本（ρ=0.3）で、標本サイズ <span class="arithmatex">\(n\)</span> を3000まで増やすと、標本平均のばらつきはどうなったか？
+- (ア) 独立のときと同じく、ほぼ0まで小さくなった
+- (イ) <span class="arithmatex">\(\sqrt{\rho}\approx0.55\)</span> あたりで下げ止まり、ほとんど小さくならなかった
+- (ウ) 逆に大きくなり続けた</p>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 中心極限定理について、<strong>①どんな主張か（何が正規分布に近づくのか）②その式 <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> が成り立つための前提は何か</strong> を、4〜6文で説明しなさい。「標本そのもの」と「標本平均の分布」を混同しないこと。</p>
+<p><strong>B2.（30点）</strong> Colabで、標本が独立でない（空気を読んで相関する）と、本当のばらつきが素朴な標準誤差より大きくなり、しかも <strong>nを増やしても下げ止まる</strong> ことを見た。これを踏まえて次の2点を書きなさい。</p>
+<ol>
+<li>標本が独立でないのに <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> を信じて分析すると、結論にどんな間違い（過信）が生じるか</li>
+<li>「大勢の人が同じ意見だから、その結論は信頼できる」という主張は、どんなときに成り立たないか。今日の結果を使って説明しなさい</li>
+</ol>
+<blockquote>
+<p>ヒント：B2の2は第13回「コンドルセの陪審定理」の予告。「大勢」が互いに空気を読んでいたら、人数のわりに情報は乏しい。</p>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+</blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第7回「区間推定の理論」。今日の標準誤差から、信頼区間がどう作られるか。そして <strong>独立でない標本では、信頼区間が狭くなりすぎて『95%』が嘘になる</strong> ことを確かめる。</p>

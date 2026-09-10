@@ -547,10 +547,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -836,10 +864,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -865,6 +921,16 @@
 <p>信頼区間はどう作られ、独立が崩れるとどう嘘になるか</p>
 </blockquote>
 <hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/07_interval.ipynb">📓 Colabノートを開く（07_interval.ipynb）</a></li>
+<li>📝 今日の課題は<strong>このページの末尾</strong>にあります。解答の提出は Moodle の「第7回 課題」へ</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>信頼区間の作り方を理解する：<span class="arithmatex">\(\bar{x}\pm t_{0.975,n-1}\,s/\sqrt{n}\)</span></li>
@@ -945,8 +1011,39 @@
 </tbody>
 </table>
 <hr />
-<h2 id="moodle">今日の課題（Moodle）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p>信頼区間の計算・解釈（自動採点）＋「独立でない標本で区間推定するとなぜ危険か」の記述。詳細はMoodleの第7回課題を見ること。</p>
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p>第7回のColabノート <code>07_interval.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 母分散が未知のとき、母平均の95%信頼区間を作るのに使う分布は？
+- (ア) 正規分布（z）
+- (イ) t分布
+- (ウ) 二項分布</p>
+<p><strong>A2.</strong> 「95%信頼区間」の正しい意味はどれか？
+- (ア) 真の値が、この区間の中に95%の確率で入っている
+- (イ) 同じ手続きで区間を作り直すことを繰り返すと、約95%の区間が真の値を含む
+- (ウ) 標本の95%がこの区間に入っている</p>
+<p><strong>A3.</strong> 信頼区間の <strong>幅</strong> を狭くする（推定を精密にする）要因として正しいのは？
+- (ア) 標本サイズ <span class="arithmatex">\(n\)</span> を増やす（ただし標本が独立な場合）
+- (イ) 信頼度を95%から99%に上げる
+- (ウ) 標準誤差を大きくする</p>
+<p><strong>A4.</strong> Colabで、相関した標本（ρ=0.3、空気を読む）に対して「95%信頼区間」のカバレッジを測ると、どうなったか？
+- (ア) 約95%を保った
+- (イ) 約42%まで下がった（区間が狭すぎて、半分以下しか真値を含まない）
+- (ウ) 約99%に上がった</p>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 「95%信頼区間」の意味を、<strong>よくある誤解</strong>（真値が95%の確率で入る）と対比しながら、正しく4〜6文で説明しなさい。「カバレッジ（手続きの当たり率）」という考え方を必ず使うこと。</p>
+<p><strong>B2.（30点）</strong> Colabで、標本が独立でない（空気を読んで相関する）と、「95%信頼区間」が実際には4割程度しか真値を含まないことを見た。これを踏まえて次の2点を書きなさい。</p>
+<ol>
+<li>なぜ相関した標本だと区間が「狭すぎる」ものになり、カバレッジが下がるのか（第6回の標準誤差と結びつけて）</li>
+<li>「とても狭い信頼区間が出た＝精密に推定できた」と早とちりするのが危険なのはなぜか</li>
+</ol>
+<blockquote>
+<p>ヒント：B2は第6回（相関するとSEが本当のばらつきを過小評価）の直接の帰結。狭い区間・小さいp値を見たら、まず「独立か？」を疑う習慣につながる。</p>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+</blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第8回「検定の多重性問題」。「20種類のゼリービーンズとニキビの関係を検定したら、緑だけ有意になった」 ―― たくさん試すと偶然の有意が出る。p-hacking の罠へ。</p>

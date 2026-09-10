@@ -434,10 +434,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -880,10 +908,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -909,6 +965,16 @@
 <p>「情報を得る」とは「確率を更新する」こと。そして今期の主役 <strong>「独立性」</strong> を定義する</p>
 </blockquote>
 <hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/02_conditional.ipynb">📓 Colabノートを開く（02_conditional.ipynb）</a></li>
+<li>📝 今日の課題は<strong>このページの末尾</strong>にあります。解答の提出は Moodle の「第2回 課題」へ</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>条件付き確率 <span class="arithmatex">\(P(A\mid B)\)</span> を理解する ―― 情報を得ると確率は更新される</li>
@@ -1053,8 +1119,43 @@
 </tbody>
 </table>
 <hr />
-<h2 id="moodle">今日の課題（Moodle）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p>条件付き確率の計算（自動採点）＋「独立とは何か。独立でない身近な例を1つ挙げ、なぜ独立でないか」の記述。詳細はMoodleの第2回課題を見ること。</p>
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p>第2回のColabノート <code>02_conditional.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 子どもが2人いる家庭で「<strong>少なくとも1人は女の子</strong>」と分かっているとき、「2人とも女の子」である確率に <strong>最も近い</strong> のは？
+- (ア) 約 1/4
+- (イ) 約 1/3
+- (ウ) 約 1/2</p>
+<p><strong>A2.</strong> 条件付き確率 <span class="arithmatex">\(P(A\mid B)\)</span> の説明として <strong>最も適切</strong> なのは？
+- (ア) <span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> が同時に起きる確率
+- (イ) <span class="arithmatex">\(B\)</span> が起きたと分かったうえで、<span class="arithmatex">\(A\)</span> が起きる確率
+- (ウ) <span class="arithmatex">\(A\)</span> が起きたあとで <span class="arithmatex">\(B\)</span> が起きる確率</p>
+<p><strong>A3.</strong> 事象 <span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> が <strong>独立</strong> であることの定義として正しいのは？
+- (ア) <span class="arithmatex">\(P(A\cap B)=0\)</span>（<span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> は同時に起きない）
+- (イ) <span class="arithmatex">\(P(A\mid B)=P(A)\)</span>（<span class="arithmatex">\(B\)</span> を知っても <span class="arithmatex">\(A\)</span> の確率が変わらない）
+- (ウ) <span class="arithmatex">\(P(A)=P(B)\)</span>（2つの確率が等しい）</p>
+<p><strong>A4.</strong> トランプ52枚（ハート13枚）から、<strong>1枚目を戻さずに</strong>続けて2枚引く。「2枚目がハート」という事象は、「1枚目がハート」という事象と…
+- (ア) 独立である（1枚目を知っても2枚目の確率は変わらない）
+- (イ) 従属である（1枚目がハートだと、2枚目がハートの確率は下がる）
+- (ウ) 排反である（1枚目がハートなら2枚目はハートになれない）</p>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 2人の子ども問題で「2人とも女の子」の確率が <strong>1/2 ではなく 1/3</strong> になる理由を、4〜6文で説明しなさい。次の2点に必ず触れること。</p>
+<ol>
+<li>情報を得る前は、組み合わせが何通り・それぞれ何の確率だったか</li>
+<li>「少なくとも1人は女」という情報で、何が起きて確率が更新されたか</li>
+</ol>
+<p><strong>B2.（30点）</strong> あなたの身の回りから、<strong>「独立でない（従属な）2つの出来事」</strong> を1つ挙げ、次の2点を書きなさい。</p>
+<ol>
+<li>その2つの出来事を <span class="arithmatex">\(A\)</span>・<span class="arithmatex">\(B\)</span> として説明し、なぜ独立でない（一方を知るともう一方の確率が変わる）のかを述べる</li>
+<li>もしこの2つを「独立だ」と勘違いして確率を計算すると、どんな間違いが起こりそうか</li>
+</ol>
+<blockquote>
+<p>ヒント：「雨が降る」と「傘を持つ人が増える」、「ある学生が欠席する」と「その友人も欠席する」など。<strong>「排反（同時に起きない）」と混同しない</strong>こと ―― 独立は「影響しない」、排反は「重ならない」。</p>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+</blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第3回「ベイズの定理の深掘り」。「精度99%の検査で陽性。本当に病気である確率は？」 ―― 直感は99%、正解は数%。条件付き確率を <strong>逆向き</strong> <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span> に使い、データで信念を更新する技術を学ぶ。</p>

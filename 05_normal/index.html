@@ -504,10 +504,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -858,10 +886,38 @@
   <a href="#moodle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        今日の課題（Moodle）
+        今日の課題（Moodle提出）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（自動採点・各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -887,6 +943,16 @@
 <p>なぜ世界は正規分布だらけなのか。そして「すべてが正規」ではない</p>
 </blockquote>
 <hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/05_normal.ipynb">📓 Colabノートを開く（05_normal.ipynb）</a></li>
+<li>📝 今日の課題は<strong>このページの末尾</strong>にあります。解答の提出は Moodle の「第5回 課題」へ</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>正規分布 <span class="arithmatex">\(N(\mu,\sigma^2)\)</span> の形が <span class="arithmatex">\(\mu\)</span> と <span class="arithmatex">\(\sigma\)</span> で決まることを理解する</li>
@@ -998,8 +1064,38 @@
 </tbody>
 </table>
 <hr />
-<h2 id="moodle">今日の課題（Moodle）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p>標準化・確率（面積）の計算（自動採点）＋「正規分布が現れる条件は何か。現れない例を1つ挙げ、なぜ正規にならないか」の記述。詳細はMoodleの第5回課題を見ること。</p>
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p>第5回のColabノート <code>05_normal.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 正規分布 <span class="arithmatex">\(N(\mu,\sigma^2)\)</span> の形について正しいのは？
+- (ア) <span class="arithmatex">\(\mu\)</span> が山の幅を、<span class="arithmatex">\(\sigma\)</span> が山の位置を決める
+- (イ) <span class="arithmatex">\(\mu\)</span> が山の位置（中心）を、<span class="arithmatex">\(\sigma\)</span> が山の幅（広がり）を決める
+- (ウ) 形は <span class="arithmatex">\(\mu\)</span> だけで決まり、<span class="arithmatex">\(\sigma\)</span> は関係ない</p>
+<p><strong>A2.</strong> 標準正規分布で「平均 ±2σ」の範囲に入る確率に <strong>最も近い</strong> のは？
+- (ア) 約 68%　(イ) 約 95%　(ウ) 約 99.7%</p>
+<p><strong>A3.</strong> 連続確率分布における「確率」の考え方として正しいのは？
+- (ア) ちょうど1点 <span class="arithmatex">\(x=3.0\)</span> になる確率は、その点の密度の高さに等しい
+- (イ) ちょうど1点になる確率は0で、確率は「範囲に入る面積」で表す
+- (ウ) 連続分布でも、棒の高さがそのまま確率である</p>
+<p><strong>A4.</strong> Colabで「一様乱数（真っ平らな分布）を独立にたくさん足す」と、その合計の分布はどうなったか？
+- (ア) 何個足しても真っ平らなまま
+- (イ) 足す個数を増やすほど、正規分布に近づいた
+- (ウ) 足すほど裾の重い（べき）分布に近づいた</p>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 「なぜ正規分布は世の中にこれほど多く現れるのか」を、Colabの実験（一様乱数を足す）に触れながら4〜6文で説明しなさい。<strong>「独立」という言葉を必ず使う</strong>こと。</p>
+<p><strong>B2.（30点）</strong> 「世の中のデータはすべて正規分布だ」と考えるのは誤りである。
+<strong>正規分布に従わない（裾の重い）データの例を1つ</strong> 挙げ、次の2点を書きなさい。</p>
+<ol>
+<li>なぜそのデータは正規分布にならないと考えられるか（どんなメカニズムで生まれるか）</li>
+<li>もしそのデータに正規分布を当てはめて「平均±2σ」などと分析すると、どんな読み違いが起こりそうか</li>
+</ol>
+<blockquote>
+<p>ヒント：年収・都市の人口・SNSのフォロワー数・本の売上・地震の規模など。これらは第1回の「平均年収の罠」とつながっている。</p>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+</blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第6回「標本分布と中心極限定理の再考」。今日見た『独立な和は正規になる』が、標本平均に効く。そして <strong>その魔法には“独立”という隠れた前提がある</strong> ことを暴く ―― 今期の核心（独立性と推測）へ向かう。</p>
