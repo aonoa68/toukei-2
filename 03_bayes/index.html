@@ -990,6 +990,10 @@
 </div>
 <!-- LINKS:END -->
 
+<div class="admonition tip">
+<p class="admonition-title">考え方をガイドで確かめる</p>
+<p>この回の考え方は、統計の考え方ガイドの<a href="https://aonoa68.github.io/teaching/guide/bayes/">「確率とベイズ」</a>でも解説しています。霊長類のデータを動かしながら確かめられます。</p>
+</div>
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>ベイズの定理を理解する：<span class="arithmatex">\(P(H\mid D)=\dfrac{P(D\mid H)\,P(H)}{P(D)}\)</span></li>
@@ -1151,20 +1155,28 @@
 <p>第3回のColabノート <code>03_bayes.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
 <hr />
 <h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
-<p><strong>A1.</strong> 感度99%・特異度99%の検査で、有病率が <strong>1%（100人に1人）</strong> の病気のとき、陽性と出た人が本当に病気である確率（陽性的中率）に <strong>最も近い</strong> のは？
-- (ア) 約 1%　(イ) 約 50%　(ウ) 約 99%</p>
-<p><strong>A2.</strong> A1で陽性的中率が検査の精度（99%）より大きく下がる <strong>主な理由</strong> は？
-- (ア) 検査の機械の誤差が大きいから
-- (イ) 病気の人がもともと少ない（基準率が低い）ため、健康な人からの偽陽性が多数を占めるから
-- (ウ) 陽性的中率は常に50%になると決まっているから</p>
-<p><strong>A3.</strong> ベイズの定理 <span class="arithmatex">\(P(H\mid D)=\dfrac{P(D\mid H)P(H)}{P(D)}\)</span> で、<strong>事前確率</strong> にあたるのはどれか？
-- (ア) <span class="arithmatex">\(P(H)\)</span>（データを見る前の信念）
-- (イ) <span class="arithmatex">\(P(D\mid H)\)</span>（尤度）
-- (ウ) <span class="arithmatex">\(P(H\mid D)\)</span>（事後確率）</p>
-<p><strong>A4.</strong> 検査の例で、直感が「陽性なら99%病気だ」と誤るのは、2つの確率を混同しているからである。正しく混同されているペアは？
-- (ア) <span class="arithmatex">\(P(\text{陽性}\mid\text{病気})\)</span> と <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span> を取り違えている
-- (イ) 事前確率と尤度が等しいと思い込んでいる
-- (ウ) 感度と特異度を取り違えている</p>
+<p><strong>A1.</strong> 感度99%・特異度99%の検査で、有病率が <strong>1%（100人に1人）</strong> の病気のとき、陽性と出た人が本当に病気である確率（陽性的中率）に <strong>最も近い</strong> のは？</p>
+<ul>
+<li>(ア) 約 1%　(イ) 約 50%　(ウ) 約 99%</li>
+</ul>
+<p><strong>A2.</strong> A1で陽性的中率が検査の精度（99%）より大きく下がる <strong>主な理由</strong> は？</p>
+<ul>
+<li>(ア) 検査の機械の誤差が大きいから</li>
+<li>(イ) 病気の人がもともと少ない（基準率が低い）ため、健康な人からの偽陽性が多数を占めるから</li>
+<li>(ウ) 陽性的中率は常に50%になると決まっているから</li>
+</ul>
+<p><strong>A3.</strong> ベイズの定理 <span class="arithmatex">\(P(H\mid D)=\dfrac{P(D\mid H)P(H)}{P(D)}\)</span> で、<strong>事前確率</strong> にあたるのはどれか？</p>
+<ul>
+<li>(ア) <span class="arithmatex">\(P(H)\)</span>（データを見る前の信念）</li>
+<li>(イ) <span class="arithmatex">\(P(D\mid H)\)</span>（尤度）</li>
+<li>(ウ) <span class="arithmatex">\(P(H\mid D)\)</span>（事後確率）</li>
+</ul>
+<p><strong>A4.</strong> 検査の例で、直感が「陽性なら99%病気だ」と誤るのは、2つの確率を混同しているからである。正しく混同されているペアは？</p>
+<ul>
+<li>(ア) <span class="arithmatex">\(P(\text{陽性}\mid\text{病気})\)</span> と <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span> を取り違えている</li>
+<li>(イ) 事前確率と尤度が等しいと思い込んでいる</li>
+<li>(ウ) 感度と特異度を取り違えている</li>
+</ul>
 <hr />
 <h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
 <p><strong>B1.（30点）</strong> 感度99%・特異度99%という高性能の検査でも、稀な病気では陽性的中率が約50%にしかならない。<strong>なぜそうなるのか</strong> を、4〜6文で説明しなさい。次の2点に必ず触れること。</p>
