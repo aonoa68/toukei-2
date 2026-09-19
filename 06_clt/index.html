@@ -944,6 +944,7 @@
 <li>標準誤差 <span class="arithmatex">\(\mathrm{SE}=\sigma/\sqrt{n}\)</span> の意味と、その <strong>独立という前提</strong> を理解する</li>
 <li>標本が独立でない（相関する）と、本当のばらつきが SE より大きくなり、推測が崩れることを知る</li>
 <li>「<span class="arithmatex">\(n\)</span> を増やせば解決」が相関のもとでは通用しないことを見抜く</li>
+<li><strong>発展</strong>：<span class="arithmatex">\(\mathrm{Var}[\bar{X}]=\sigma^2/n\)</span> と、相関があるときの <span class="arithmatex">\(\dfrac{\sigma^2}{n}\left[1+(n-1)\rho\right]\)</span> を、自分で導ける</li>
 </ul>
 <p>到達目標との対応：<strong>G1（確率の理解）</strong> と <strong>G4（独立性と集団判断）</strong> をつなぐ、今期の要の回。</p>
 <hr />
@@ -952,6 +953,18 @@
 <p><strong>標本平均の分布は、きれいな正規分布になる。</strong> これが中心極限定理だ。そのばらつき（<strong>標準誤差 SE</strong>）は理論どおり</p>
 <div class="arithmatex">\[\mathrm{SE} = \frac{\sigma}{\sqrt{n}}\]</div>
 <p>になる。<span class="arithmatex">\(n\)</span> を増やせば SE は小さくなる＝推定が精密になる。<strong>ここまではⅠの復習。</strong></p>
+<details class="note" open="open">
+<summary>導出①：<span class="arithmatex">\(\mathrm{SE}=\sigma/\sqrt{n}\)</span> を、前提の側から見直す</summary>
+<p>統計学Ⅰ第6回で導いた式だが、ここでは <strong>どの行で独立を使ったか</strong> に注目して見直す。</p>
+<p>分散は定数倍について <span class="arithmatex">\(\mathrm{Var}[aX]=a^2\mathrm{Var}[X]\)</span> なので、</p>
+<div class="arithmatex">\[\mathrm{Var}[\bar{X}] \;=\; \mathrm{Var}\!\left[\frac{1}{n}\sum_{i=1}^{n} X_i\right] \;=\; \frac{1}{n^2}\,\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right]\]</div>
+<p>ここまでは、標本が独立でなくても成り立つ。<strong>次の1行が問題</strong>である。</p>
+<div class="arithmatex">\[\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;\overset{\text{独立}}{=}\; \sum_{i=1}^{n}\mathrm{Var}[X_i] \;=\; n\sigma^2\]</div>
+<p>和の分散が分散の和になるのは、<span class="arithmatex">\(X_i\)</span> が互いに独立（正確には無相関）のときだけだ。これを認めれば</p>
+<div class="arithmatex">\[\mathrm{Var}[\bar{X}] \;=\; \frac{1}{n^2}\cdot n\sigma^2 \;=\; \frac{\sigma^2}{n}, \qquad \mathrm{SE}=\frac{\sigma}{\sqrt{n}}\]</div>
+<p><span class="arithmatex">\(\sigma/\sqrt{n}\)</span> という式そのものに「独立」と書いてあるわけではない。独立は、<strong>導出の途中の1行に隠れている</strong>。だからこの式だけを覚えると、前提ごと見落とす。</p>
+<p><strong>使った数学</strong>：分散の定数倍と加法性（微I）。総和の記号操作（線I）。</p>
+</details>
 <hr />
 <h2 id="2-clt">2. 契約書の細かい字 ―― CLTは「独立」を前提にしている<a class="headerlink" href="#2-clt" title="Permanent link">&para;</a></h2>
 <p>いまさらっと <strong>「独立に <span class="arithmatex">\(n=30\)</span> を選んで」</strong> と書いた。実は、CLTも <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> という式も、<strong>標本が独立</strong>であることを前提にしている。</p>
@@ -979,6 +992,19 @@
 </tbody>
 </table>
 <p><strong>独立なら理論どおり。だが相関すると、本当のばらつきは素朴な <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> の約3倍。</strong> つまり「空気を読んだ」標本では、推定は実際よりずっと不確実なのに、<span class="arithmatex">\(\sigma/\sqrt{n}\)</span> を信じると <strong>過剰に自信を持つ</strong>。検定なら偽の有意差、区間推定なら狭すぎる信頼区間（→第7回）につながる。</p>
+<details class="note" open="open">
+<summary>導出②：相関があるとき、標本平均の分散はどうなるか</summary>
+<p>導出①の「独立」の1行を外してみる。一般に、和の分散は共分散の項を持つ。</p>
+<div class="arithmatex">\[\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \sum_{i=1}^{n}\mathrm{Var}[X_i] \;+\; \sum_{i \ne j}\mathrm{Cov}[X_i,X_j]\]</div>
+<p>どの2つを取っても相関が同じ <span class="arithmatex">\(\rho\)</span> だとすると <span class="arithmatex">\(\mathrm{Cov}[X_i,X_j]=\rho\sigma^2\)</span> で、<span class="arithmatex">\(i \ne j\)</span> となる組 <span class="arithmatex">\((i,j)\)</span> は <span class="arithmatex">\(n(n-1)\)</span> 個ある。したがって</p>
+<div class="arithmatex">\[\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; n\sigma^2 \;+\; n(n-1)\rho\sigma^2 \;=\; n\sigma^2\left[1+(n-1)\rho\right]\]</div>
+<p><span class="arithmatex">\(n^2\)</span> で割って、</p>
+<div class="arithmatex">\[\mathrm{Var}[\bar{X}] \;=\; \frac{\sigma^2}{n}\left[1+(n-1)\rho\right]\]</div>
+<p><span class="arithmatex">\(\rho=0\)</span> を入れると角かっこが 1 になり、導出①の <span class="arithmatex">\(\sigma^2/n\)</span> に戻る。<strong>独立は、この式の特別な場合にすぎない。</strong></p>
+<p>角かっこの中身が、素朴な分散を何倍に膨らませるかを表している。<span class="arithmatex">\(n=30\)</span>、<span class="arithmatex">\(\rho=0.3\)</span> なら <span class="arithmatex">\(1+29\times0.3=9.7\)</span> 倍、標準偏差では <span class="arithmatex">\(\sqrt{9.7}=3.11\)</span> 倍。上の表の「約3倍」は、この式が出した値である。</p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(n=30,\ \rho=0.3,\ \sigma=1\)</span> の理論値 <span class="arithmatex">\(\mathrm{SD}[\bar{X}]=0.569\)</span> に対し、2万回のシミュレーションでの実測は 0.573。</p>
+<p><strong>使った数学</strong>：共分散を含む和の分散（微I）。組の数え上げ（<span class="arithmatex">\(n(n-1)\)</span> 通り）。</p>
+</details>
 <hr />
 <h2 id="3-n">3. 最大のワナ ―― 「nを増やせば解決」は通用しない<a class="headerlink" href="#3-n" title="Permanent link">&para;</a></h2>
 <p>「相関が問題なら、サンプルを増やせば？」 独立なら確かに <span class="arithmatex">\(n\)</span> を増やすほど SE は0に近づく。だが <strong>相関した標本では、<span class="arithmatex">\(n\)</span> をいくら増やしても不確実性は0にならない</strong>。</p>
@@ -1004,6 +1030,20 @@
 </tbody>
 </table>
 <p>相関した標本のばらつきは <span class="arithmatex">\(\sqrt{\rho}\approx0.55\)</span> で <strong>下げ止まる</strong>。3000人集めても、ほとんど精密にならない。</p>
+<details class="note" open="open">
+<summary>導出③：なぜ <span class="arithmatex">\(n\)</span> を増やしても下げ止まるのか</summary>
+<p>導出②の式を、2つの項に分けて書き直す。</p>
+<div class="arithmatex">\[\mathrm{Var}[\bar{X}] \;=\; \frac{\sigma^2}{n}\left[1+(n-1)\rho\right] \;=\; \underbrace{\frac{\sigma^2}{n}}_{\text{0 に落ちる}} \;+\; \underbrace{\frac{n-1}{n}\rho\sigma^2}_{\text{落ちない}}\]</div>
+<p>第1項は <span class="arithmatex">\(n\to\infty\)</span> で 0 に向かう。だが第2項の <span class="arithmatex">\(\frac{n-1}{n}\)</span> は 1 に近づくだけなので、</p>
+<div class="arithmatex">\[\mathrm{Var}[\bar{X}] \;\longrightarrow\; \rho\sigma^2 \qquad (n\to\infty)\]</div>
+<p><strong>0 にならない。</strong> <span class="arithmatex">\(\rho&gt;0\)</span> である限り、標本平均のばらつきは <span class="arithmatex">\(\sigma\sqrt{\rho}\)</span> で下げ止まる。<span class="arithmatex">\(\rho=0.3\)</span> なら <span class="arithmatex">\(\sqrt{0.3}=0.548\)</span>。本文の <span class="arithmatex">\(\sqrt{\rho}\approx0.55\)</span> は、この極限値である。</p>
+<p>同じことを「実質何人分か」で言い換えられる。独立な標本で同じばらつきになる人数を <strong>実効標本サイズ</strong> といい、<span class="arithmatex">\(\dfrac{\sigma^2}{n_{\text{eff}}} = \dfrac{\sigma^2}{n}\left[1+(n-1)\rho\right]\)</span> を解いて</p>
+<div class="arithmatex">\[n_{\text{eff}} \;=\; \frac{n}{1+(n-1)\rho} \;\xrightarrow[\ n\to\infty\ ]{}\; \frac{1}{\rho}\]</div>
+<p><span class="arithmatex">\(\rho=0.3\)</span> なら、何人集めても実効標本サイズは <span class="arithmatex">\(1/0.3=3.3\)</span> 人を超えられない。</p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(\rho=0.3\)</span> のとき、<span class="arithmatex">\(n=30\)</span> で <span class="arithmatex">\(n_{\text{eff}}=3.09\)</span>、<span class="arithmatex">\(n=3000\)</span> でも <span class="arithmatex">\(n_{\text{eff}}=3.33\)</span>。3000人が3人分にしかならない。</p>
+<p>小さな <span class="arithmatex">\(\rho\)</span> でも油断はできない。効くのは <span class="arithmatex">\(\rho\)</span> 単独ではなく <span class="arithmatex">\((n-1)\rho\)</span> だから、<span class="arithmatex">\(\rho=0.01\)</span> という弱い相関でも <span class="arithmatex">\(n=3000\)</span> なら <span class="arithmatex">\(1+2999\times0.01\approx31\)</span> 倍に膨らむ。<strong><span class="arithmatex">\(n\)</span> が大きいほど、わずかな相関が効いてくる。</strong></p>
+<p><strong>使った数学</strong>：極限（微I）。導出②の式変形。</p>
+</details>
 <div class="admonition quote">
 <p class="admonition-title">今期の核心</p>
 <p>みんなが空気を読んで似た答えをすると、<strong>いくら人数を集めても、独立な少人数ぶんの情報しか得られない</strong>。「大勢が賛成しているから確かだ」は、その大勢が互いを見て合わせているなら、まったく根拠にならない。これが第13回 <strong>コンドルセの陪審定理</strong>（独立な多数は賢いが、空気を読む多数は賢くない）の数理的な正体だ。</p>
@@ -1181,6 +1221,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       

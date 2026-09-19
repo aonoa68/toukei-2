@@ -988,6 +988,7 @@
 <li><strong>独立</strong> を定義できる：<span class="arithmatex">\(P(A\mid B)=P(A)\)</span>（Bを知ってもAの確率が変わらない）</li>
 <li>「独立」と「排反」を混同しない</li>
 <li>独立が今期（二項分布・正規分布・中心極限定理・区間推定・コンドルセ）の前提であることを知る</li>
+<li><strong>発展</strong>：条件付き確率の定義がなぜこの形になるのかを説明し、独立の2つの表現が同値であることを自分で導ける</li>
 </ul>
 <p>到達目標との対応：<strong>G1（条件付き確率・ベイズ）</strong> の出発点であり、<strong>G4（独立性）</strong> の定義回。</p>
 <hr />
@@ -1041,6 +1042,29 @@
 <blockquote>
 <p><strong>情報を得る ＝ 標本空間を絞り込む ＝ 確率を更新する。</strong> この考え方は第3回のベイズの定理にそのまま続く。</p>
 </blockquote>
+<details class="note" open="open">
+<summary>導出①：なぜ分母が <span class="arithmatex">\(P(B)\)</span> なのか</summary>
+<p>この定義は天下りに見えるが、やっていることは <strong>割合の測り直し</strong> である。</p>
+<p>全体を面積 1 の四角形だと思う。<span class="arithmatex">\(B\)</span> が起きたと分かった時点で、舞台は <span class="arithmatex">\(B\)</span> の内側だけに狭まる。<span class="arithmatex">\(B\)</span> の外側は起こらなかったのだから、もう数えない。</p>
+<p>狭まった舞台の広さは <span class="arithmatex">\(P(B)\)</span>。その中で <span class="arithmatex">\(A\)</span> も起きている部分の広さは <span class="arithmatex">\(P(A\cap B)\)</span>。だから「新しい舞台の中で <span class="arithmatex">\(A\)</span> が占める割合」は</p>
+<div class="arithmatex">\[P(A\mid B) = \frac{P(A\cap B)}{P(B)}\]</div>
+<p>分母が <span class="arithmatex">\(P(B)\)</span> なのは、<strong>舞台を <span class="arithmatex">\(B\)</span> に狭めたぶん、全体がふたたび 1 になるように測り直している</strong>からである。確かめてみると <span class="arithmatex">\(P(B\mid B)=P(B)/P(B)=1\)</span> になる。狭めた舞台の中では、<span class="arithmatex">\(B\)</span> はもう必ず起きている。</p>
+<p>場合の数で言えば「<span class="arithmatex">\(B\)</span> を満たす場合だけを分母に数え直す」こと。Colab の <code>両方女[少なくとも1人女].mean()</code> は、この絞り込みをそのまま実行している。</p>
+<p><strong>使った数学</strong>：割合の定義と、比の測り直し（算数）。確率の難しい性質は何も使っていない。</p>
+</details>
+<details class="note" open="open">
+<summary>導出②：2人の子ども問題を、定義に当てはめて解く</summary>
+<p><span class="arithmatex">\(A\)</span>＝「2人とも女」、<span class="arithmatex">\(B\)</span>＝「少なくとも1人は女」とおく。男女が半々で独立に決まるので、(上の子, 下の子) の4通りはどれも確率 <span class="arithmatex">\(1/4\)</span> である。</p>
+<ul>
+<li><span class="arithmatex">\(B\)</span> を満たすのは (男,女)、(女,男)、(女,女) の3通り。よって <span class="arithmatex">\(P(B)=3/4\)</span>。</li>
+<li><span class="arithmatex">\(A\)</span> が起きていれば <span class="arithmatex">\(B\)</span> も自動的に起きるので <span class="arithmatex">\(A\cap B\)</span> は (女,女) の1通りだけ。よって <span class="arithmatex">\(P(A\cap B)=1/4\)</span>。</li>
+</ul>
+<p>導出①の式に入れる。</p>
+<div class="arithmatex">\[P(A\mid B) = \frac{P(A\cap B)}{P(B)} = \frac{1/4}{3/4} = \frac{1}{3}\]</div>
+<p>直感が <span class="arithmatex">\(1/2\)</span> と答えてしまうのは、分母を <span class="arithmatex">\(P(B)=3/4\)</span> ではなく「もう1人の性別が2通り」だと思うからである。<strong>条件をつけた瞬間に、舞台が4通りから3通りへ変わる</strong>。情報が消したのは (男,男) の1通りだけで、残った3通りは等確率のままだから、分母は 2 ではなく 3 になる。</p>
+<p>事前は <span class="arithmatex">\(P(A)=1/4\)</span>、事後は <span class="arithmatex">\(P(A\mid B)=1/3\)</span>。情報を得て確率が更新された。</p>
+<p><strong>使った数学</strong>：場合の数と分数の割り算（算数）。</p>
+</details>
 <hr />
 <h2 id="3">3. 今期の主役 ―― 「独立」<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>ここで、統計学Ⅱでもっとも重要な概念を定義する。</p>
@@ -1075,6 +1099,21 @@
 </tbody>
 </table>
 <p>「1投目が表でも2投目の確率は変わらない」。一方「1枚目にハートを引くと、山札のハートが減るので2枚目の確率は下がる」。<strong>この差が独立かどうかの分かれ目</strong>だ。</p>
+<details class="note" open="open">
+<summary>導出③：独立の2つの表現は、同じことを言っている</summary>
+<p>独立は2通りに書かれる。この2つが同値であることは、導出①の定義を代入するだけで分かる（以下 <span class="arithmatex">\(P(B)&gt;0\)</span> とする）。</p>
+<p><strong>左から右へ</strong>：<span class="arithmatex">\(P(A\mid B)=P(A)\)</span> の両辺に <span class="arithmatex">\(P(B)\)</span> を掛ける。左辺は定義より <span class="arithmatex">\(P(A\cap B)/P(B)\)</span> だったから、</p>
+<div class="arithmatex">\[P(A\cap B) = P(A\mid B)\,P(B) = P(A)\,P(B)\]</div>
+<p><strong>右から左へ</strong>：<span class="arithmatex">\(P(A\cap B)=P(A)P(B)\)</span> の両辺を <span class="arithmatex">\(P(B)\)</span> で割る。左辺は定義より <span class="arithmatex">\(P(A\mid B)\)</span> だから、</p>
+<div class="arithmatex">\[P(A\mid B) = \frac{P(A)\,P(B)}{P(B)} = P(A)\]</div>
+<p>掛けるか割るかの一手で、どちらの向きにも移り合う。<strong>新しい仮定は何も足していない。</strong></p>
+<div class="admonition note">
+<p class="admonition-title">積の形は対称である</p>
+<p><span class="arithmatex">\(P(A\cap B)=P(A)P(B)\)</span> は、<span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> を入れ替えても同じ式になる。つまり「<span class="arithmatex">\(B\)</span> を知っても <span class="arithmatex">\(A\)</span> が変わらない」なら、自動的に「<span class="arithmatex">\(A\)</span> を知っても <span class="arithmatex">\(B\)</span> が変わらない」。<strong>独立は一方通行の関係ではなく、対等な関係</strong>である。<span class="arithmatex">\(P(A\mid B)=P(A)\)</span> の形では <span class="arithmatex">\(B\)</span> だけが特別な役に見えるが、積の形に直すとその対称性がはっきりする。</p>
+</div>
+<p>この <strong>積の形</strong> が、今期ずっと使われる。第4回の二項分布は「独立だから確率を掛けてよい」で組み立てられ、第6回の標本平均のばらつきも第7回の標準誤差も、もとをたどればこの掛け算から出てくる。第12〜13回で独立が壊れるとき、壊れるのはこの式である。<strong>今日のこの1行が、今期の残り全部を支えている。</strong></p>
+<p><strong>使った数学</strong>：定義の代入と、両辺への掛け算・割り算（算数）。</p>
+</details>
 <hr />
 <h2 id="4">4. なぜ「独立」が今期の主役なのか<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>これから学ぶ道具は、ほとんどが <strong>「独立」を前提</strong> にしている。</p>
@@ -1274,6 +1313,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       

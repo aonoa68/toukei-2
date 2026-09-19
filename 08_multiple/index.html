@@ -966,6 +966,7 @@
 <li>ファミリーワイズ・エラー率 <span class="arithmatex">\(1-(1-\alpha)^m\)</span> を説明できる</li>
 <li><strong>p-hacking</strong>（有意が出るまで試す・有意なものだけ報告）の危うさを見抜く</li>
 <li>多重比較補正（ボンフェローニ）と <strong>事前登録</strong> という対策を知る</li>
+<li><strong>発展</strong>：<span class="arithmatex">\(1-(1-\alpha)^m\)</span> を導き、ボンフェローニ補正が <strong>独立を仮定せずに</strong> 効く理由を説明できる</li>
 </ul>
 <p>到達目標との対応：<strong>G2（p値の限界・統計的誤用の批判的検証）</strong> の中核。</p>
 <hr />
@@ -1004,6 +1005,23 @@
 </tbody>
 </table>
 <p>20回検定すれば、効果ゼロでも6割超で「有意」が出る。<strong>「たくさん調べて、有意だったものだけ報告する」のは発見ではなく、偶然を拾っているだけ</strong>。これを <strong>p-hacking</strong> と呼ぶ。</p>
+<details class="note" open="open">
+<summary>導出①：ファミリーワイズ・エラー率 <span class="arithmatex">\(1-(1-\alpha)^m\)</span> はどこから来るか</summary>
+<p>効果がゼロ（帰無仮説が正しい）のとき、1回の検定で有意になってしまう確率は <span class="arithmatex">\(\alpha\)</span>。裏を返せば、<strong>偽陽性を出さない</strong>確率は <span class="arithmatex">\(1-\alpha\)</span> である。</p>
+<p><span class="arithmatex">\(m\)</span> 回の検定が互いに<strong>独立</strong>なら、<span class="arithmatex">\(m\)</span> 回すべてで偽陽性を出さない確率は掛け算でよい。</p>
+<div class="arithmatex">\[\Pr(\text{1回も偽陽性なし}) = (1-\alpha)^{m}\]</div>
+<p>知りたいのは「少なくとも1回は偽陽性」なので、余事象を取る。</p>
+<div class="arithmatex">\[\mathrm{FWER} = 1-(1-\alpha)^{m}\]</div>
+<p><span class="arithmatex">\(\alpha=0.05\)</span> なら <span class="arithmatex">\(m=5\)</span> で <span class="arithmatex">\(0.226\)</span>、<span class="arithmatex">\(m=10\)</span> で <span class="arithmatex">\(0.401\)</span>、<span class="arithmatex">\(m=20\)</span> で <span class="arithmatex">\(0.642\)</span>。上の表の理論値はこれである。</p>
+<p><strong>数値で確かめる</strong>：帰無仮説の下では p 値は 0 から 1 の一様分布に従う。20個の一様乱数を20万組つくり「少なくとも1つが 0.05 未満」の割合を数えると 0.6433（理論値 0.6415）。</p>
+<div class="admonition warning">
+<p class="admonition-title"><span class="arithmatex">\(m\)</span> 乗にできるのは『独立』のときだけ</p>
+<p>掛け算で <span class="arithmatex">\((1-\alpha)^m\)</span> とできるのは、<span class="arithmatex">\(m\)</span> 回の検定が互いに独立なときに限る。実際の多重比較は<strong>同じデータを共有</strong>しているので、ふつう独立ではない。</p>
+<p>極端な例として、20個の検定が完全に連動していれば、どれか1つが有意になる確率は <span class="arithmatex">\(m\)</span> によらず <span class="arithmatex">\(\alpha=0.05\)</span> のままである（実際に試すと 0.0501）。</p>
+<p>つまりこの式は上限に近い<strong>目安</strong>であって、どんな場面でも成り立つ等式ではない。本当の FWER は、相関の強さに応じて <span class="arithmatex">\(\alpha\)</span> と <span class="arithmatex">\(1-(1-\alpha)^m\)</span> の間のどこかに来る。</p>
+</div>
+<p><strong>使った数学</strong>：独立な事象の確率の積、余事象（高校の確率）。</p>
+</details>
 <hr />
 <h2 id="3">3. 対策 ―― 多重比較補正（ボンフェローニ）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p><span class="arithmatex">\(m\)</span> 回検定するなら基準を厳しくする。最も簡単な <strong>ボンフェローニ補正</strong> は有意水準を <span class="arithmatex">\(\alpha/m\)</span> にする（20回なら <span class="arithmatex">\(0.05/20=0.0025\)</span>）。</p>
@@ -1026,6 +1044,95 @@
 </tbody>
 </table>
 <p>補正すれば偽陽性率は5%前後に戻る（より緩やかな FDR 制御などもある）。だがもっと大事なのは、<strong>そもそも有意が出るまで検定を繰り返さないこと</strong>。</p>
+<details class="note" open="open">
+<summary>導出②：ボンフェローニ補正が効く理由 ―― こちらは独立を仮定しない</summary>
+<p><span class="arithmatex">\(A_i\)</span> を「<span class="arithmatex">\(i\)</span> 番目の検定が偽陽性になる」という事象とする。知りたいのは、どれか1つでも起きる確率 <span class="arithmatex">\(\Pr(A_1\cup\cdots\cup A_m)\)</span> である。</p>
+<p>ここで<strong>ブールの不等式</strong>（和事象の確率は、各事象の確率の和を超えない）を使う。</p>
+<div class="arithmatex">\[\Pr\!\left(\bigcup_{i=1}^{m} A_i\right) \;\le\; \sum_{i=1}^{m}\Pr(A_i)\]</div>
+<p>これは「重なっている分だけ、単純な足し算は数えすぎになる」というだけの事実で、<span class="arithmatex">\(A_i\)</span> どうしの関係を<strong>何も仮定していない</strong>。</p>
+<p>各検定の有意水準を <span class="arithmatex">\(\alpha/m\)</span> にすれば <span class="arithmatex">\(\Pr(A_i)=\alpha/m\)</span> なので、</p>
+<div class="arithmatex">\[\mathrm{FWER} \;\le\; m\cdot\frac{\alpha}{m} \;=\; \alpha\]</div>
+<p>20回なら <span class="arithmatex">\(0.05/20=0.0025\)</span>。これで FWER は 5% 以下に抑えられる。</p>
+<div class="admonition note">
+<p class="admonition-title">導出①との違いが、ここにある</p>
+<p>導出①は<strong>独立を仮定して等式</strong>を出した。導出②は<strong>何も仮定せずに不等式</strong>を出している。検定どうしがどれだけ絡み合っていても、ボンフェローニは必ず <span class="arithmatex">\(\alpha\)</span> 以下を保証する。簡単な割に強いのはこのためである。</p>
+<p>代償は<strong>保守的</strong>になること。不等式なので、実際の FWER は <span class="arithmatex">\(\alpha\)</span> よりかなり小さくなることが多い。基準を厳しくしすぎた分、本当にある差を見逃しやすくなる（検出力が下がる）。より緩やかな FDR 制御などが使われるのは、この代償を軽くするためである。</p>
+</div>
+<p><strong>数値で確かめる</strong>：20個の検定を3通りの相関構造でつくり、それぞれ20万回試した。</p>
+<table>
+<thead>
+<tr>
+<th>検定どうしの関係</th>
+<th>補正なしの FWER</th>
+<th>ボンフェローニ後</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完全に独立</td>
+<td>0.6400</td>
+<td>0.0488</td>
+</tr>
+<tr>
+<td>相関あり（<span class="arithmatex">\(\rho=0.5\)</span>）</td>
+<td>0.4192</td>
+<td>0.0356</td>
+</tr>
+<tr>
+<td>完全に連動</td>
+<td>0.0501</td>
+<td>0.0028</td>
+</tr>
+</tbody>
+</table>
+<p>補正なしの列は相関の有無で 0.05 から 0.64 まで大きく動くのに、補正後はどの場合も 0.05 を超えていない。同時に、下の行ほど 0.05 から遠い ―― これが「保守的」ということである。</p>
+<p><strong>使った数学</strong>：ブールの不等式（確率の劣加法性）。集合の和と包含関係（高校の集合）。</p>
+</details>
+<details class="note" open="open">
+<summary>導出③：p-hacking は、式の中の <span class="arithmatex">\(m\)</span> を見えなくする操作である</summary>
+<p>導出①の <span class="arithmatex">\(m\)</span> は「<strong>実際に行った</strong>検定の回数」であって、「報告した回数」ではない。ここがすべての鍵になる。</p>
+<p>有意が出るまで条件を変えて試し、当たった1つだけを報告したとする。読み手には <span class="arithmatex">\(m=1\)</span> に見えるが、真の <span class="arithmatex">\(m\)</span> は試した回数である。</p>
+<div class="arithmatex">\[\text{読み手が思う FWER}=1-(1-0.05)^{1}=0.05 \qquad \text{本当の FWER}=1-(1-0.05)^{m}\]</div>
+<p>裏で何回試していたかで、本当の値はこう変わる。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">裏で試した回数 <span class="arithmatex">\(m\)</span></th>
+<th>本当の FWER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>0.050</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>0.143</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>0.226</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>0.401</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>0.642</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td>0.923</td>
+</tr>
+</tbody>
+</table>
+<p>50回試して1つだけ報告すれば、効果がまったくなくても9割方「有意」が手に入る。</p>
+<p>HARKing・チェリーピッキング・optional stopping は、どれも <span class="arithmatex">\(m\)</span> を増やしながら、読み手からは <span class="arithmatex">\(m\)</span> を隠す操作である。補正しようにも、<strong>補正する側が真の <span class="arithmatex">\(m\)</span> を知らない</strong>。だからボンフェローニでは防げない。</p>
+<p>ここから次節の対策が出てくる。データを取る<strong>前に</strong>仮説と方法を固定して公開すれば、<span class="arithmatex">\(m\)</span> が事前に確定し、後から隠せなくなる。</p>
+<p><strong>使った数学</strong>：導出①と同じで、新しい数学は使っていない。効いているのは、式の <span class="arithmatex">\(m\)</span> が何を指しているかという<strong>読み方</strong>である。</p>
+</details>
 <hr />
 <h2 id="4">4. もっと根本の対策 ―― 事前登録<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>p-hacking には補正だけでは防げない巧妙な形がある。</p>
@@ -1206,6 +1313,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       

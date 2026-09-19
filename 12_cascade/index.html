@@ -984,6 +984,7 @@
 <li>カスケードが <strong>合理的な個人</strong> でも起きることを見抜く</li>
 <li>カスケードが「判断の独立」を壊すこと、その結果として群衆の知恵が失われることを知る</li>
 <li>現実のバブル・流行・取り付け騒ぎとの対応を理解する</li>
+<li><strong>発展</strong>：カスケードが始まる条件（先行者の差が2つ以上）を、尤度比の不等式から自分で導ける</li>
 </ul>
 <p>到達目標との対応：<strong>G4（独立性と集団の判断精度）</strong> の入口。今期クライマックスの前半。</p>
 <hr />
@@ -1000,6 +1001,59 @@
 <li>各人はベイズ的に <strong>合理的に</strong> 判断する。</li>
 </ul>
 <p>合理的な判断ルールはこう要約できる ―― <strong>「先行者の選択が一方に2つ以上傾いていたら、自分のシグナル1つでは覆せないので、自分のシグナルを捨てて多数に従う」</strong>。</p>
+<details class="note" open="open">
+<summary>導出①：カスケードをベイズのオッズで書く</summary>
+<p>正解の選択肢を <span class="arithmatex">\(V\)</span>（1 か 0）とする。どちらが正しいか事前には五分五分なので、<strong>事前オッズ</strong>は</p>
+<div class="arithmatex">\[\frac{P(V=1)}{P(V=0)}=\frac{0.5}{0.5}=1\]</div>
+<p>各人が受け取る私的シグナル <span class="arithmatex">\(s\)</span> は、確率 <span class="arithmatex">\(q=0.7\)</span> で正解を指す。つまり</p>
+<div class="arithmatex">\[P(s=1\mid V=1)=q,\qquad P(s=1\mid V=0)=1-q\]</div>
+<p>第3回のオッズ形式のベイズより、事後オッズは事前オッズに<strong>尤度比</strong>を掛けたものになる。</p>
+<div class="arithmatex">\[\underbrace{\frac{P(V=1\mid s)}{P(V=0\mid s)}}_{\text{事後オッズ}}=\underbrace{\frac{P(V=1)}{P(V=0)}}_{\text{事前オッズ}}\times\underbrace{\frac{P(s\mid V=1)}{P(s\mid V=0)}}_{\text{尤度比}}\]</div>
+<p><span class="arithmatex">\(s=1\)</span> を受け取ったときの尤度比は <span class="arithmatex">\(q/(1-q)=0.7/0.3=7/3\)</span>。事前オッズが 1 なので事後オッズも <span class="arithmatex">\(7/3&gt;1\)</span> となり、1 を選ぶ。<strong>私的シグナル1つの重みは、尤度比 <span class="arithmatex">\(7/3\)</span> という1つの数に集約される。</strong> この先の議論は、すべてこの数の掛け算で進む。</p>
+<p><strong>使った数学</strong>：条件付き確率とベイズの定理（第3回）。オッズと尤度比の掛け算。</p>
+</details>
+<details class="note" open="open">
+<summary>導出②：なぜ「差が2つ」で覆せなくなるのか</summary>
+<p>先行者の選択も証拠になる。カスケードが始まる前の人は自分のシグナルに従って選ぶので、<strong>その人の選択を見ることは、その人のシグナルを見ることと同じ</strong>である。だから先行者が 0 を選んでいれば、<span class="arithmatex">\(s=0\)</span> を1つ観測したのと同じ重み、つまり尤度比 <span class="arithmatex">\((1-q)/q=3/7\)</span> を掛けることになる。</p>
+<p>いま先行者の選択が 0 のほうに <span class="arithmatex">\(d\)</span> 人分傾いていて、自分のシグナルは <span class="arithmatex">\(s=1\)</span> だとする。証拠は独立に集まるので尤度比は掛け算になり、事後オッズは</p>
+<div class="arithmatex">\[\left(\frac{1-q}{q}\right)^{d}\times\frac{q}{1-q}=\left(\frac{1-q}{q}\right)^{d-1}\]</div>
+<p>これが 1 より大きければ自分のシグナルが勝ち、小さければ覆せない。<span class="arithmatex">\(q&gt;1/2\)</span> なら <span class="arithmatex">\((1-q)/q&lt;1\)</span> なので、</p>
+<div class="arithmatex">\[\left(\frac{1-q}{q}\right)^{d-1}&lt;1 \iff d\ge 2\]</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">先行者の差 <span class="arithmatex">\(d\)</span></th>
+<th style="text-align: right;">事後オッズ</th>
+<th>自分のシグナルは</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2.33</td>
+<td>勝つ</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.00</td>
+<td>互角</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.43</td>
+<td>覆せない</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.18</td>
+<td>覆せない</td>
+</tr>
+</tbody>
+</table>
+<p><span class="arithmatex">\(d=1\)</span> でちょうど互角になるのは偶然ではない。先行者1人ぶんと自分のシグナル1つは、まったく同じ大きさの尤度比を持つからである。<strong>上の節の「2つ以上傾いていたら従う」というルールは、この不等式から出てくる。</strong> <span class="arithmatex">\(q\)</span> の値にもよらない。<span class="arithmatex">\(q\)</span> が 0.7 でも 0.9 でも、<span class="arithmatex">\(q&gt;1/2\)</span> でありさえすれば <span class="arithmatex">\(d\ge2\)</span> で覆せなくなる。</p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(q=0.7\)</span>、先行2人が 0、自分のシグナルが 1 のとき、事後オッズは <span class="arithmatex">\((3/7)^2\times(7/3)=3/7\)</span>、正解が 1 である確率は <span class="arithmatex">\(3/10=0.300\)</span>。自分のシグナルは 1 を指しているのに、1 である確率のほうが低い。</p>
+<p><strong>使った数学</strong>：尤度比の掛け算（独立な証拠）、指数の不等式。</p>
+</details>
 <hr />
 <h2 id="3">3. 運の悪い出だしが、全員を道連れにする<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>正解は1だが、<strong>最初の2人がたまたま外れシグナル(0)</strong> を受け取ったとする。Colabで1人ずつ追うと：</p>
@@ -1044,6 +1098,20 @@
 <p class="admonition-title">独立が壊れる瞬間</p>
 <p>カスケードが始まると、3人目以降の選択は <strong>自分の私的情報を反映しなくなる</strong>。みんなが「前の人」という同じ情報源だけを見て動くので、判断が互いに相関し、独立でなくなる。新しい情報が集団に入らなくなるのだ。</p>
 </div>
+<details class="note" open="open">
+<summary>導出③：カスケードが始まると、情報の流れが止まる</summary>
+<p><span class="arithmatex">\(d\ge2\)</span> になった時点で、その人は<strong>自分のシグナルが何であっても同じ選択をする</strong>。導出②の不等式が <span class="arithmatex">\(s\)</span> の値によらず成り立つからだ。すると、その人の選択を見る次の人にとっては</p>
+<div class="arithmatex">\[\frac{P(\text{その人が 0 を選ぶ}\mid V=1)}{P(\text{その人が 0 を選ぶ}\mid V=0)}=\frac{1}{1}=1\]</div>
+<p>となる。<span class="arithmatex">\(V\)</span> が 1 でも 0 でも、その人は必ず 0 を選ぶからである。<strong>尤度比が 1 とは、証拠として何の重みもないということだ。</strong> 差 <span class="arithmatex">\(d\)</span> はもう増えない。後続が何人並んでも、公開される情報は先頭の2人分のまま凍りつく。</p>
+<p>ここから2つのことが同時に言える。</p>
+<ul>
+<li>カスケードに入った人は<strong>合理的に</strong>行動している。導出②の計算は正しく、自分のシグナルより先行者の証拠のほうが重いのは事実である。誰も計算を間違えていない。</li>
+<li>それでも集団は誤りうる。最初の2人の選択が偶然の外れシグナルから生まれたものなら、その誤りが尤度比として固定され、後続18人の私的情報は<strong>一切集団に入らない</strong>。</li>
+</ul>
+<p>Colabのシミュレーションが、カスケード中に公開情報の差 <span class="arithmatex">\(m\)</span> を更新しないのは、この「尤度比が 1」をそのまま実装したものである。</p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(q=0.7\)</span>、20人で30万回試すと、各自が独立に判断した群衆の多数決は 95.2%、前の人を真似る群れは 84.4% が正解する。一人の賢さはどちらも 70% で同じである。</p>
+<p><strong>使った数学</strong>：尤度比（第3回）、条件付き確率の計算。</p>
+</details>
 <hr />
 <h2 id="4">4. シミュレーション ―― 群れは、独立な群衆に負ける<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>シグナルをランダムにして3万回試し、<strong>「前の人を真似る群れ」</strong> と <strong>「各自が自分のシグナルだけで独立に判断する群衆」</strong> で正解率を比べる。どちらも一人の賢さ（シグナル正解率70%）は同じ、20人の集団：</p>
@@ -1248,6 +1316,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       

@@ -944,6 +944,7 @@
 <li><strong>効果量</strong>（Cohen's d）を理解し、計算・解釈できる</li>
 <li>「統計的に有意」と「実質的に重要」が別の軸であることを見抜く</li>
 <li>p値だけで結論せず、効果量（＋信頼区間）をセットで報告する作法を身につける</li>
+<li><strong>発展</strong>：<span class="arithmatex">\(t=d\sqrt{n/2}\)</span> を導き、p 値が <span class="arithmatex">\(n\)</span> で動く一方 <span class="arithmatex">\(d\)</span> が動かない理由を式で説明できる</li>
 </ul>
 <p>到達目標との対応：<strong>G2（p値の限界と効果量の重要性を理解し、統計的誤用を批判的に検証できる）</strong> の本丸。</p>
 <hr />
@@ -978,12 +979,107 @@
 </table>
 <p><strong>差は0.5点のまま変わらないのに、<span class="arithmatex">\(n\)</span> を大きくするだけで p値はいくらでも小さくなる。</strong> 10万人も調べれば、どうでもいい差が「p&lt;0.001 で有意！」になる。</p>
 <p>理由：t検定の統計量は（差の大きさ）×<span class="arithmatex">\(\sqrt{n}\)</span> におよそ比例する。差が小さくても <span class="arithmatex">\(n\)</span> を増やせば統計量は大きくなり、p値は下がる。<strong>p値は「差の重要さ」ではなく、半分は「標本の大きさ」を映しているだけ</strong>だ。</p>
+<details class="note" open="open">
+<summary>導出①：<span class="arithmatex">\(t = d\sqrt{n/2}\)</span> ―― p 値が <span class="arithmatex">\(n\)</span> で動く正体</summary>
+<p>2群の標本サイズが等しく <span class="arithmatex">\(n\)</span> のとき、独立2標本の <span class="arithmatex">\(t\)</span> 統計量は</p>
+<div class="arithmatex">\[t=\frac{\bar{x}_A-\bar{x}_B}{s_p\sqrt{\dfrac{1}{n}+\dfrac{1}{n}}}=\frac{\bar{x}_A-\bar{x}_B}{s_p\sqrt{2/n}}\]</div>
+<p>である（<span class="arithmatex">\(s_p\)</span> は2群をプールした標準偏差）。一方、効果量は同じ分子を <span class="arithmatex">\(s_p\)</span> で割ったものだった。</p>
+<div class="arithmatex">\[d=\frac{\bar{x}_A-\bar{x}_B}{s_p}\]</div>
+<p>分子が共通なので、<span class="arithmatex">\(\bar{x}_A-\bar{x}_B = d\,s_p\)</span> を <span class="arithmatex">\(t\)</span> の式に入れると <span class="arithmatex">\(s_p\)</span> が約分される。</p>
+<div class="arithmatex">\[t=\frac{d\,s_p}{s_p\sqrt{2/n}}=\frac{d}{\sqrt{2/n}}=d\sqrt{\frac{n}{2}}\]</div>
+<p><strong>この1本の式に、この回の主張がすべて入っている。</strong></p>
+<ul>
+<li><span class="arithmatex">\(d\)</span> は <strong>差の大きさ</strong>。単位を変えても <span class="arithmatex">\(n\)</span> を変えても動かない（導出②）。</li>
+<li><span class="arithmatex">\(\sqrt{n/2}\)</span> は <strong>標本の大きさ</strong>だけで決まる。<span class="arithmatex">\(d\)</span> とは無関係に、<span class="arithmatex">\(n\)</span> を増やせばいくらでも大きくなる。</li>
+</ul>
+<p><span class="arithmatex">\(t\)</span> はこの2つの<strong>積</strong>である。だから <span class="arithmatex">\(d\)</span> が 0.05 のまま動かなくても、<span class="arithmatex">\(n\)</span> を大きくすれば <span class="arithmatex">\(t\)</span> はいくらでも大きくなり、p 値はいくらでも 0 に近づく。第1節の表で起きていたのは、これである。</p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(d=0.5/10=0.05\)</span>（100点満点・SD=10 で 0.5点差）のとき、<span class="arithmatex">\(t\)</span> の平均的な大きさはこうなる。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">各群の <span class="arithmatex">\(n\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(d\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(\sqrt{n/2}\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(t=d\sqrt{n/2}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">7.07</td>
+<td style="text-align: right;">0.354</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">22.36</td>
+<td style="text-align: right;">1.118</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">70.71</td>
+<td style="text-align: right;">3.536</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">223.6</td>
+<td style="text-align: right;">11.18</td>
+</tr>
+</tbody>
+</table>
+<p><span class="arithmatex">\(d\)</span> の列は 1 行も動かない。動いているのは <span class="arithmatex">\(\sqrt{n/2}\)</span> の列だけで、その積である <span class="arithmatex">\(t\)</span> が増えていく。第1節で p 値が下がっていったのは、この <span class="arithmatex">\(t\)</span> が大きくなったからである。</p>
+<p>実データでも確かめられる。各群 500 の2群を乱数で作ると、<span class="arithmatex">\(t\)</span> の実測は 2.7249、<span class="arithmatex">\(d\sqrt{n/2}\)</span> も 2.7249 で完全に一致する。近似ではなく、同じ量を別の書き方で表しているだけだからである。</p>
+<p><strong>使った数学</strong>：文字式の約分（中学）。平方根の扱い。新しい概念は使っていない。</p>
+</details>
 <hr />
 <h2 id="2">2. 効果量 ―― 「差の大きさ」そのものを測る<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>p値が当てにならないなら、何を見るか。<strong>効果量（effect size）</strong> ―― 標本サイズに振り回されない、差の大きさそのものの指標だ。2群の平均差には <strong>Cohen's d</strong> を使う：</p>
 <div class="arithmatex">\[d = \frac{\bar{x}_A - \bar{x}_B}{s}\quad(\text{差が、標準偏差いくつぶんか})\]</div>
 <p>目安は <span class="arithmatex">\(d=0.2\)</span> 小、<span class="arithmatex">\(0.5\)</span> 中、<span class="arithmatex">\(0.8\)</span> 大。さっきの「0.5点差」は <span class="arithmatex">\(d\approx0.05\)</span> ―― 「小」の基準 0.2 にも遠く及ばない、無視してよい差だと分かる。<strong>p値は <span class="arithmatex">\(n\)</span> で激変するが、効果量はぶれない。</strong></p>
 <p>だから結果は「有意かどうか」だけでなく、必ず「効果量はどれだけか」をセットで見る。できれば効果量に信頼区間を付けて「どれくらいの差が、どれくらいの確かさであるか」を語る。</p>
+<details class="note" open="open">
+<summary>導出②：Cohen's <span class="arithmatex">\(d\)</span> は、ものさしの目盛りを変えても動かない</summary>
+<p>測定の単位を変えることは、すべての値を定数倍することである。点数を <span class="arithmatex">\(a\)</span> 倍のスケールで測り直したとしよう（<span class="arithmatex">\(x \to ax\)</span>）。</p>
+<p>分子の平均差は <span class="arithmatex">\(a\)</span> 倍になる。</p>
+<div class="arithmatex">\[\bar{x}_A - \bar{x}_B \;\to\; a(\bar{x}_A-\bar{x}_B)\]</div>
+<p>分母の標準偏差も <span class="arithmatex">\(a\)</span> 倍になる（第5回の線形変換：<span class="arithmatex">\(\mathrm{SD}[aX]=|a|\,\mathrm{SD}[X]\)</span>）。</p>
+<div class="arithmatex">\[s_p \;\to\; |a|\,s_p\]</div>
+<p>分子と分母が同じ倍率で変わるので、比は変わらない。</p>
+<div class="arithmatex">\[d \;\to\; \frac{a(\bar{x}_A-\bar{x}_B)}{|a|\,s_p} \;=\; d\]</div>
+<p>定数を足す場合（<span class="arithmatex">\(x \to x+b\)</span>）も、平均差は変わらず標準偏差も変わらないので <span class="arithmatex">\(d\)</span> は動かない。</p>
+<p>つまり <span class="arithmatex">\(d\)</span> は「標準偏差いくつぶんの差か」という<strong>比</strong>であり、ものさしの目盛りの取り方に依存しない。センチでもインチでも、偏差値でも素点でも、同じ値になる。</p>
+<p>一方 <span class="arithmatex">\(p\)</span> 値は、導出①で見たとおり <span class="arithmatex">\(n\)</span> に依存する。ここに両者の役割の違いがある。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>何を測るか</th>
+<th><span class="arithmatex">\(n\)</span> を増やすと</th>
+<th>単位を変えると</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(d\)</span></td>
+<td>差の<strong>大きさ</strong></td>
+<td>変わらない</td>
+<td>変わらない</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p\)</span></td>
+<td>差の<strong>見つけやすさ</strong></td>
+<td>小さくなる</td>
+<td>変わらない</td>
+</tr>
+</tbody>
+</table>
+<p>「有意かどうか」と「重要かどうか」が別の軸だというのは、この表の 2 行が別のものを測っているということである。</p>
+<p><strong>数値で確かめる</strong>：各群 500 の2群を乱数で作って <span class="arithmatex">\(d\)</span> を計算すると 0.1723。すべての値を10倍しても 0.1723、すべてに 7 を足しても 0.1723 で、まったく動かない。</p>
+<p><strong>使った数学</strong>：線形変換による平均と標準偏差の変化（第5回）。分数の約分。</p>
+</details>
 <hr />
 <h2 id="3-4">3. 4つの組み合わせ ―― 有意と重要は独立<a class="headerlink" href="#3-4" title="Permanent link">&para;</a></h2>
 <p>「統計的に有意か」と「実質的に重要（効果量が大きい）か」は別々の軸で、組み合わせは4通り。とくに危ないのが2つ：</p>
@@ -1013,6 +1109,50 @@
 </table>
 <p><strong>①をp値だけで「重要な発見」と誤り、②を「差はなかった」と切り捨てる</strong> ―― これがp値偏重の典型的な誤用だ。</p>
 <p>近年の <strong>再現性危機</strong>（多くの“有意な発見”が追試で再現しない問題）の一因もここにある。p&lt;0.05 という関門だけを見て、効果量・事前登録（第8回）・サンプル設計を軽視してきたことのツケだ。</p>
+<details class="note" open="open">
+<summary>導出③：効果量にも信頼区間が要る ―― <span class="arithmatex">\(d\)</span> もまた推定値である</summary>
+<p><span class="arithmatex">\(d\)</span> は母集団の真の効果量そのものではなく、<strong>標本から計算した推定値</strong>である。標本を取り直せば <span class="arithmatex">\(d\)</span> も動く。だから <span class="arithmatex">\(d\)</span> にも標準誤差があり、区間で語れる。</p>
+<p>2群の標本サイズが等しく <span class="arithmatex">\(n\)</span> のとき、<span class="arithmatex">\(d\)</span> の標準誤差はおよそ次の形になる。</p>
+<div class="arithmatex">\[\mathrm{SE}(d) \approx \sqrt{\frac{2}{n}+\frac{d^{2}}{4n}}\]</div>
+<p>第1項が <span class="arithmatex">\(2/n\)</span> なのは、2つの平均の<strong>差</strong>を見ているからである（各群の平均の分散が <span class="arithmatex">\(\sigma^2/n\)</span> で、独立なら差の分散はその2倍。統計学Ⅰ 第6回）。第2項は <span class="arithmatex">\(d\)</span> 自身の推定のばらつきで、<span class="arithmatex">\(d\)</span> が小さいときはほとんど効かない。</p>
+<p>95%信頼区間は <span class="arithmatex">\(d \pm 1.96\,\mathrm{SE}(d)\)</span> である。</p>
+<p><strong>数値で確かめる</strong>：上の表の①②に、そのまま当てはめてみる。</p>
+<table>
+<thead>
+<tr>
+<th>例</th>
+<th style="text-align: right;">各群 <span class="arithmatex">\(n\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(d\)</span></th>
+<th><span class="arithmatex">\(d\)</span> の95%信頼区間</th>
+<th>0 を含むか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 巨大標本×ごく小さな差</td>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">0.05</td>
+<td>[0.022, 0.078]</td>
+<td>含まない（＝有意）</td>
+</tr>
+<tr>
+<td>② 小標本×はっきりした差</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.70</td>
+<td>[−0.466, 1.866]</td>
+<td>含む（＝非有意）</td>
+</tr>
+</tbody>
+</table>
+<p>①は区間が 0 を含まないので「有意」である。だが<strong>区間の上端まで見ても 0.078</strong> ―― 「小」の目安 0.2 にすら届かない。有意であることと、意味のある大きさであることが、ここで完全に分離して見える。p 値をいくら小さくしても、この区間は 0.2 に近づかない。</p>
+<p>②は区間が 0 をまたぐので非有意だが、<strong>上端は 1.866</strong> ―― 大きな効果がある可能性をまったく否定できていない。区間が広いのは <span class="arithmatex">\(n=6\)</span> だからで、「差はなかった」ではなく「<span class="arithmatex">\(n\)</span> が足りず、何も言えていない」が正しい読み方である。</p>
+<p>点推定だけを報告すると、この幅の情報が消えてしまう。<span class="arithmatex">\(d\)</span> を区間で報告すべきなのは、このためである。</p>
+<div class="admonition note">
+<p class="admonition-title"><span class="arithmatex">\(\mathrm{SE}(d)\)</span> の式そのものの導出は範囲外</p>
+<p>この標準誤差は近似式であり、厳密に導くには <span class="arithmatex">\(d\)</span> の標本分布（非心 <span class="arithmatex">\(t\)</span> 分布）を扱う必要がある。それはこの科目で<strong>扱う範囲の外</strong>にある。ここで押さえるべきは、<span class="arithmatex">\(d\)</span> が推定値である以上ばらつきを持ち、区間で語るべきだという点である。</p>
+</div>
+<p><strong>使った数学</strong>：標準誤差の考え方と区間推定（統計学Ⅰ 第6回・第7回）。</p>
+</details>
 <div class="admonition quote">
 <p class="admonition-title">p値との正しい付き合い方</p>
 <p>p値は「偶然だけでこの差が出る出やすさ」を測るだけで、<strong>差の大きさでも、仮説が正しい確率でも、結果の重要さでもない</strong>。「有意差が出た」と聞いたら問う ―― <strong>『効果量は？ それは実生活で意味のある大きさ？』</strong>。p値と効果量、両方をそろえて初めて結論できる。</p>
@@ -1190,6 +1330,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       

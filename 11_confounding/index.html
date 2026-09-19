@@ -966,6 +966,7 @@
 <li><strong>統制（調整）</strong> で交絡の影響を取り除けることを、偏相関で確かめる</li>
 <li><strong>シンプソンのパラドックス</strong>（全体と層別で結論が逆転）を体験する</li>
 <li>「何でも統制すればよい」わけではない（コライダーの罠）ことを知る</li>
+<li><strong>発展</strong>：偏相関の式が「<span class="arithmatex">\(z\)</span> 経由で説明できる分を引いたもの」だと読め、シンプソンの逆転が加重平均で起きることを、自分で導ける</li>
 </ul>
 <p>到達目標との対応：<strong>G3（交絡・疑似相関を理解し、観察データからの安易な因果主張を見抜ける）</strong> の本丸。</p>
 <hr />
@@ -1002,6 +1003,17 @@
 <p class="admonition-title">交絡の構造</p>
 <p>第10回のRCTは「ランダム化で交絡を断つ」、今回は「交絡を測って統制で断つ」。どちらも交絡を無力化する道だ。違いは、RCTがデータを取る前に断つのに対し、統制は取った後のデータで調整する点。</p>
 </div>
+<details class="note" open="open">
+<summary>導出①：統制は、何を引き算しているのか（偏相関）</summary>
+<p>3つの変数を <span class="arithmatex">\(x\)</span>＝アイス売上、<span class="arithmatex">\(y\)</span>＝水難事故、<span class="arithmatex">\(z\)</span>＝気温とする。<span class="arithmatex">\(z\)</span> を統制したときの <span class="arithmatex">\(x\)</span> と <span class="arithmatex">\(y\)</span> の<strong>偏相関</strong>は、次の式で書ける。</p>
+<div class="arithmatex">\[r_{xy \cdot z} = \frac{r_{xy} - r_{xz} \, r_{yz}}{\sqrt{(1 - r_{xz}^2)(1 - r_{yz}^2)}}\]</div>
+<p>分子を見てほしい。<span class="arithmatex">\(r_{xz} \, r_{yz}\)</span> は「<span class="arithmatex">\(x\)</span> と <span class="arithmatex">\(z\)</span> のつながり」×「<span class="arithmatex">\(z\)</span> と <span class="arithmatex">\(y\)</span> のつながり」、つまり <strong><span class="arithmatex">\(z\)</span> を経由して説明できる分</strong>である。それを実際の <span class="arithmatex">\(r_{xy}\)</span> から引いている。残るのは「<span class="arithmatex">\(z\)</span> では説明できない、<span class="arithmatex">\(x\)</span> と <span class="arithmatex">\(y\)</span> の直接の関係」だ。</p>
+<p>分母は、引き算したあとの値を <span class="arithmatex">\(-1\)</span> から <span class="arithmatex">\(1\)</span> の範囲に戻すための目盛り直しにあたる。符号を決めているのは分子だけである。</p>
+<p>ここから<strong>疑似相関の見分け方</strong>が式として出てくる。もし <span class="arithmatex">\(x\)</span> と <span class="arithmatex">\(y\)</span> のつながりが <span class="arithmatex">\(z\)</span> 経由だけなら <span class="arithmatex">\(r_{xy} \approx r_{xz} \, r_{yz}\)</span> となり、分子がほぼ 0、したがって偏相関もほぼ 0 になる。</p>
+<p><strong>数値で確かめる</strong>：この回のシミュレーションでは <span class="arithmatex">\(r_{xy} = +0.782\)</span>、<span class="arithmatex">\(r_{xz} = +0.962\)</span>、<span class="arithmatex">\(r_{yz} = +0.817\)</span>。積は <span class="arithmatex">\(0.962 \times 0.817 = +0.786\)</span> で、<span class="arithmatex">\(r_{xy} = +0.782\)</span> とほぼ等しい。だから分子はほぼ 0 になり、偏相関は <span class="arithmatex">\(-0.024\)</span> ―― 本文の <span class="arithmatex">\(\approx -0.02\)</span> である。</p>
+<p>Colab では「それぞれから気温で説明できる分を回帰で引き、残差どうしの相関を取る」という手順で計算した。上の公式で計算しても、どちらも <span class="arithmatex">\(-0.0235\)</span> で<strong>完全に一致する</strong>。残差を取るという操作と、この分数の引き算は、同じことをしている。</p>
+<p><strong>使った数学</strong>：相関係数の定義と、2変数の回帰。新しい道具は使っていない。</p>
+</details>
 <hr />
 <h2 id="3">3. シンプソンのパラドックス ―― 結論が真逆になる<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>交絡はときに、<strong>全体と層別で結論を正反対にする</strong>。これが <strong>シンプソンのパラドックス</strong>。</p>
@@ -1038,6 +1050,21 @@
 </table>
 <p>学部別では <strong>両方Bが上</strong> なのに、全体では <strong>Aが上</strong>。なぜか ―― アプリAは受かりやすい <strong>文系</strong> の受験者が多く、アプリBは受かりにくい <strong>理系</strong> が多かった。学部（交絡）の構成比が偏っていたため、合算すると本当の優劣が覆い隠された。</p>
 <p><strong>どちらが正しい？</strong> ―― 学部で統制した（分けて見た）結論、すなわち <strong>Bが上</strong> が正しい。交絡をそろえずに合算した全体の数字に騙されてはいけない。</p>
+<details class="note" open="open">
+<summary>導出②：なぜ逆転が起こりうるのか ―― 分数の足し算の性質</summary>
+<p>分数の不等式として書くと、正体が見える。文系で B が上、理系でも B が上、とは</p>
+<div class="arithmatex">\[\frac{a}{b} &lt; \frac{c}{d} \qquad \frac{e}{f} &lt; \frac{g}{h}\]</div>
+<p>が両方成り立つことである（<span class="arithmatex">\(a/b\)</span> が A の文系合格率、<span class="arithmatex">\(c/d\)</span> が B の文系合格率、<span class="arithmatex">\(e/f\)</span> と <span class="arithmatex">\(g/h\)</span> が理系の同じもの）。ところが合算すると</p>
+<div class="arithmatex">\[\frac{a+e}{b+f} &gt; \frac{c+g}{d+h}\]</div>
+<p>となることがある。<strong>分数は、分子どうし分母どうしを足しても順序を保たない。</strong> 理由は、合算した率が単純平均ではなく、<strong>分母の大きさで重みづけした平均</strong>だからである。</p>
+<div class="arithmatex">\[\frac{a+e}{b+f} = \frac{b}{b+f} \cdot \frac{a}{b} + \frac{f}{b+f} \cdot \frac{e}{f}\]</div>
+<p>この重み <span class="arithmatex">\(\dfrac{b}{b+f}\)</span> が A と B で大きく違うと、層ごとの順序が合算でひっくり返る。</p>
+<p><strong>数値で確かめる</strong>：本文の数値をこの形に入れると、</p>
+<div class="arithmatex">\[A : \frac{140 + 24}{200 + 80} = \frac{164}{280} = 0.586 \qquad B : \frac{60 + 70}{80 + 200} = \frac{130}{280} = 0.464\]</div>
+<p>重みを見ると、A は受験者の <span class="arithmatex">\(200/280 = 71.4\%\)</span> が受かりやすい文系。B は文系が <span class="arithmatex">\(80/280 = 28.6\%\)</span> しかいない。<strong>A だけが有利な層に重みが寄っている。</strong> 層ごとの合格率では B が上（<span class="arithmatex">\(70\% &lt; 75\%\)</span>、<span class="arithmatex">\(30\% &lt; 35\%\)</span>）なのに全体で A が上に出るのは、合格率の差ではなく、この重みの差が原因である。</p>
+<p>逆にいえば、両アプリで学部の構成比が同じなら逆転は起きない。逆転を起こしているのは <strong>交絡（学部）の構成比の偏り</strong> であって、アプリの実力ではない。</p>
+<p><strong>使った数学</strong>：分数の加法と加重平均。確率論は使っていない。</p>
+</details>
 <hr />
 <h2 id="4">4. 統制すれば何でも解決？ ―― やりすぎの罠（コライダー）<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>「手元の変数を全部統制すればいい」も誤りだ。</p>
@@ -1046,6 +1073,19 @@
 <p class="admonition-title">だから因果ダイアグラム（DAG）</p>
 <p>「A→B」の矢印で変数間の因果の向きを描いた図を <strong>DAG</strong> という。これを描くと、どれが交絡（統制すべき）で、どれがコライダー（統制してはいけない）かが見分けられる。統制は機械作業ではなく、因果の仮説に基づく判断だ。</p>
 </div>
+<details class="note" open="open">
+<summary>導出③：コライダーを統制すると、ない相関が生まれる</summary>
+<p>導出①は「共通の<strong>原因</strong>」を統制する話だった。ここでは「共通の<strong>結果</strong>」を統制するとどうなるかを見る。2つの原因 <span class="arithmatex">\(x\)</span>、<span class="arithmatex">\(y\)</span> が共通の結果 <span class="arithmatex">\(c\)</span> を引き起こす構造である。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>x  →  c  ←  y
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    （合流点＝コライダー）
+</code></pre></div>
+<p>例を作ってみる。才能 <span class="arithmatex">\(x\)</span> と容姿 <span class="arithmatex">\(y\)</span> は<strong>互いに独立</strong>とし、どちらかが十分高ければ芸能界にデビューできる（<span class="arithmatex">\(x + y &gt; 1.5\)</span> なら <span class="arithmatex">\(c = 1\)</span>）とする。母集団では <span class="arithmatex">\(x\)</span> と <span class="arithmatex">\(y\)</span> に何の関係もない。</p>
+<p>ところが<strong>デビューした人だけ</strong>を見ると、<span class="arithmatex">\(x + y\)</span> が大きいという条件がついている。すると、才能がさほどでもないのにデビューできた人は、容姿のほうが高いはずだ。逆もまた同じ。<strong>条件をつけたこと自体が、2つの間に負の関係を作り出す。</strong></p>
+<p><strong>数値で確かめる</strong>：20万人で試すと、母集団全体では <span class="arithmatex">\(r = -0.002\)</span>（独立なのでほぼ 0）。しかしデビューした人（全体の 14.5%）だけに絞ると <span class="arithmatex">\(r = -0.686\)</span> になる。<strong>もともと存在しなかった相関が、統制によって作り出された。</strong></p>
+<p>導出①と見比べてほしい。同じ「統制」という操作が、交絡（共通原因）に対しては<strong>見せかけの相関を消し</strong>、コライダー（共通結果）に対しては<strong>ない相関を作り出す</strong>。しかも <span class="arithmatex">\(r_{xy \cdot z}\)</span> の計算式は、<span class="arithmatex">\(z\)</span> が原因なのか結果なのかを<strong>知らないまま実行できてしまう</strong>。式の見た目からは、どちらをやっているか区別がつかない。</p>
+<p>だから、<strong>何を統制すべきかはデータからは決まらない</strong>。変数どうしの因果の向きについての仮定が先にあって、はじめて「これは統制すべき交絡」「これは触ってはいけないコライダー」が決まる。統制は計算ではなく、判断である。</p>
+<p><strong>使った数学</strong>：条件付き確率（第2回）と相関係数。使ったのは「選抜すると条件付き分布が変わる」という一点だけ。</p>
+</details>
 <hr />
 <h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
@@ -1223,6 +1263,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       

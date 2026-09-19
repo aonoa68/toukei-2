@@ -984,6 +984,7 @@
 <li>「空気を読む」＝投票が相関することであり、それが定理を崩壊させることを数値で確かめる</li>
 <li><strong>集団浅慮（groupthink）</strong> と、独立を守る制度的工夫を知る</li>
 <li>「“空気を読む”ことが集団の判断精度を下げる」を <strong>数理的に</strong> 説明できる</li>
+<li><strong>発展</strong>：陪審定理の式と、実効人数 <span class="arithmatex">\(n_{\text{eff}}=n/[1+(n-1)\rho]\)</span> を自分で導ける</li>
 </ul>
 <p>到達目標との対応：<strong>G4（独立性を理解し、「空気を読む」ことが集団の判断精度を下げるメカニズムを説明できる）</strong> の頂点。今期の到達点。</p>
 <div class="admonition warning">
@@ -1017,7 +1018,7 @@
 </tr>
 <tr>
 <td>201</td>
-<td>93%</td>
+<td>92%</td>
 </tr>
 <tr>
 <td>1001</td>
@@ -1026,6 +1027,29 @@
 </tbody>
 </table>
 <p><strong>たった55%の凡人でも、独立に1000人集めれば多数決はほぼ確実に正解する。</strong> これが「群衆の智慧」の数学的な正体だ。第6回の裏返し ―― 独立な判断は誤りが互いに打ち消し合い、わずかな正解寄りの偏りだけが増幅される。<strong>独立であることが、集団を賢くしている。</strong></p>
+<details class="note" open="open">
+<summary>導出①：コンドルセの陪審定理はどこから出るのか</summary>
+<p><span class="arithmatex">\(n\)</span> 人が同じ問いに答える。各人は確率 <span class="arithmatex">\(p\)</span> で正解し、判断は互いに<strong>独立</strong>とする。正解した人数を <span class="arithmatex">\(K\)</span> とすると、<span class="arithmatex">\(K\)</span> は成功確率 <span class="arithmatex">\(p\)</span> の試行を <span class="arithmatex">\(n\)</span> 回くりかえしたときの成功回数、つまり<strong>二項分布</strong>に従う（第4回）。</p>
+<div class="arithmatex">\[P(K=k)=\binom{n}{k}p^{k}(1-p)^{n-k}\]</div>
+<p>多数決が正解するのは、正解した人が過半数を超えたときである。したがって</p>
+<div class="arithmatex">\[P_n=\sum_{k&gt;n/2}\binom{n}{k}p^{k}(1-p)^{n-k}\]</div>
+<p>ここで <span class="arithmatex">\(n\)</span> を大きくするとどうなるか。<strong>大数の法則</strong>より、正解者の割合 <span class="arithmatex">\(K/n\)</span> は <span class="arithmatex">\(p\)</span> に近づいていく。<span class="arithmatex">\(p&gt;1/2\)</span> なら <span class="arithmatex">\(K/n\)</span> は <span class="arithmatex">\(1/2\)</span> を超えた値に落ち着くので、「過半数」という条件はほぼ必ず満たされる。つまり <span class="arithmatex">\(P_n\to1\)</span>。</p>
+<p>独立性は、二項分布の式を立てるまさにその段階で使っている。各人の正解・不正解を掛け算でつないでよいのは、互いに独立だからである。<strong>定理の主役は人数ではなく、この掛け算を許す独立性のほうだ。</strong></p>
+<div class="admonition note">
+<p class="admonition-title">収束の速さは、この科目の範囲外</p>
+<p><span class="arithmatex">\(K/n\)</span> が <span class="arithmatex">\(p\)</span> に近づく速さや、<span class="arithmatex">\(P_n\)</span> が 1 に近づく速さを厳密に評価するには大偏差の評価が要る。ここでは「割合が <span class="arithmatex">\(p\)</span> に近づくから、<span class="arithmatex">\(p&gt;1/2\)</span> なら過半数を超え続ける」という筋道までとする。</p>
+</div>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(p=0.55\)</span> として上の式を厳密に計算すると、<span class="arithmatex">\(n=1\)</span> で 55.00%、<span class="arithmatex">\(n=51\)</span> で 76.41%、<span class="arithmatex">\(n=201\)</span> で 92.26%、<span class="arithmatex">\(n=1001\)</span> で 99.92%。</p>
+<p><strong>使った数学</strong>：二項分布（第4回）、大数の法則、独立な事象の確率の掛け算。</p>
+</details>
+<details class="note" open="open">
+<summary>導出②：一人の正解率が半分を下回ると、多数決は確実に誤る</summary>
+<p>導出①の議論は <span class="arithmatex">\(p\)</span> が <span class="arithmatex">\(1/2\)</span> より大きいことをどこにも使っていない。使ったのは「<span class="arithmatex">\(K/n\)</span> が <span class="arithmatex">\(p\)</span> に近づく」という事実だけである。だから <span class="arithmatex">\(p&lt;1/2\)</span> のときは、正解者の割合が <span class="arithmatex">\(1/2\)</span> を下回った値に落ち着き、過半数を超えることがほぼなくなる。つまり <span class="arithmatex">\(P_n\to0\)</span>。</p>
+<p><span class="arithmatex">\(p=1/2\)</span> ちょうどなら、<span class="arithmatex">\(P_n\)</span> は <span class="arithmatex">\(n\)</span> によらずおよそ <span class="arithmatex">\(1/2\)</span> のまま。人数を増やしても何も改善しない。</p>
+<p>まとめると、人数 <span class="arithmatex">\(n\)</span> は<strong>一人ひとりの正しさの向きを増幅する装置</strong>である。向きが正しければ増幅されて 1 へ、誤っていれば増幅されて 0 へ向かう。「多数決だから正しい」のではない。<strong>一人ひとりが半分より正しいことが、定理のもう一つの前提</strong>なのだ。</p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(p=0.45\)</span>（半分よりわずかに誤る人たち）で厳密に計算すると、<span class="arithmatex">\(n=51\)</span> で 23.59%、<span class="arithmatex">\(n=201\)</span> で 7.74%、<span class="arithmatex">\(n=1001\)</span> で 0.08%。人数を増やすほど、多数決は確実に誤るほうへ向かう。<span class="arithmatex">\(p=0.50\)</span> なら <span class="arithmatex">\(n\)</span> をどれだけ増やしても 50.00% のままである。</p>
+<p><strong>使った数学</strong>：導出①と同じ。<span class="arithmatex">\(p\)</span> と <span class="arithmatex">\(1/2\)</span> の大小だけが結論の向きを決める。</p>
+</details>
 <hr />
 <h2 id="2">2. 「空気を読む」とは、投票を相関させること<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>空気を読むとは、自分だけの判断ではなく、<strong>その場の雰囲気・多数派の気配に自分の答えを寄せる</strong>こと。モデルでは、全員が共有する「雰囲気」成分の重み <span class="arithmatex">\(\rho\)</span> を上げることで表せる（<span class="arithmatex">\(\rho=0\)</span> なら完全に独立、大きいほど同調）。</p>
@@ -1060,6 +1084,30 @@
 <hr />
 <h2 id="3">3. 人数を増やしても、空気を読む集団は救われない<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>「人数を増やせば挽回できるのでは？」――独立ならできる。だが空気を読む（相関した）集団では、<strong>いくら人を増やしても正解率は頭打ち</strong>になる。第6回（相関した標本は <span class="arithmatex">\(n\)</span> を増やしても下げ止まる）とまったく同じ構造だ。Colabのグラフでは、独立な集団（青）だけが人数とともに1へ伸び、空気を読む集団（橙・赤）は5000人集めても賢くならない。</p>
+<details class="note" open="open">
+<summary>導出③：相関が入ると、人数が「実効人数」に縮む</summary>
+<p>ここが今期の到達点である。</p>
+<p>各人の判断を、共有の「雰囲気」成分と個人の成分に分けて書く。Colabのモデルでは</p>
+<div class="arithmatex">\[X_i=\sqrt{\rho}\,U+\sqrt{1-\rho}\,Z_i\]</div>
+<p>とする。<span class="arithmatex">\(U\)</span> は全員が共有する雰囲気、<span class="arithmatex">\(Z_i\)</span> は各人だけが持つ独立な成分である。この <span class="arithmatex">\(X_i\)</span> どうしの相関はちょうど <span class="arithmatex">\(\rho\)</span> になる。<span class="arithmatex">\(\rho=0\)</span> なら完全に独立、<span class="arithmatex">\(\rho\)</span> が大きいほど全員が同じ雰囲気に従う。一人の正解率は <span class="arithmatex">\(\rho\)</span> によらず 55% のまま変わらないことに注意してほしい。<strong>変えているのは賢さではなく、独立性だけである。</strong></p>
+<p>第6回で導いたように、相関 <span class="arithmatex">\(\rho\)</span> を持つ <span class="arithmatex">\(n\)</span> 個の平均の分散は</p>
+<div class="arithmatex">\[\mathrm{Var}[\bar{X}]=\frac{\sigma^{2}}{n}\left[1+(n-1)\rho\right]\]</div>
+<p>となる。独立なら <span class="arithmatex">\(\sigma^{2}/n\)</span> だったものが、<span class="arithmatex">\([1+(n-1)\rho]\)</span> 倍に膨らんでいる。</p>
+<p>この分散を、<strong>独立な <span class="arithmatex">\(n_{\text{eff}}\)</span> 人の平均の分散</strong> <span class="arithmatex">\(\sigma^{2}/n_{\text{eff}}\)</span> と等しいと置いて <span class="arithmatex">\(n_{\text{eff}}\)</span> について解くと、</p>
+<div class="arithmatex">\[\frac{\sigma^{2}}{n_{\text{eff}}}=\frac{\sigma^{2}}{n}\left[1+(n-1)\rho\right]
+\quad\Longrightarrow\quad
+n_{\text{eff}}=\frac{n}{1+(n-1)\rho}\]</div>
+<p>これが<strong>実効人数</strong>である。<span class="arithmatex">\(\rho&gt;0\)</span> の集団は、統計的には <span class="arithmatex">\(n\)</span> 人ではなく <span class="arithmatex">\(n_{\text{eff}}\)</span> 人分の働きしかしていない。</p>
+<p><span class="arithmatex">\(\rho\)</span> を固定したまま <span class="arithmatex">\(n\to\infty\)</span> とすると、分母では <span class="arithmatex">\((n-1)\rho\)</span> が支配的になり、</p>
+<div class="arithmatex">\[n_{\text{eff}}\;\longrightarrow\;\frac{1}{\rho}\]</div>
+<p>で<strong>頭打ち</strong>になる。人数をいくら増やしても、実効人数は <span class="arithmatex">\(1/\rho\)</span> を超えない。<span class="arithmatex">\(\rho=0.2\)</span> なら、何万人集めても実質5人である。これが「人数を増やしても、空気を読む集団は救われない」ことの正体であり、導出①の <span class="arithmatex">\(P_n\to1\)</span> が成り立たなくなる理由でもある。定理が間違っているのではない。<strong>前提の独立が消えたので、定理が適用できないのだ。</strong></p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(\rho=0.2\)</span> のとき、実効人数は 201人で 4.90 人、1001人で 4.98 人、5001人で 5.00 人。頭打ちの <span class="arithmatex">\(1/\rho=5\)</span> に張り付いている。同じ条件で多数決の正解率をシミュレーションすると、201人で 60.7%、1001人で 61.0%、5001人で 61.5%。人数を25倍にしても 1 ポイントも動かない（シミュレーションなので 0.5 ポイント程度はぶれる）。</p>
+<div class="admonition note">
+<p class="admonition-title">実効人数は目安である</p>
+<p><span class="arithmatex">\(n_{\text{eff}}\)</span> は分散をそろえて置き換えた近似であり、多数決の正解率が独立な <span class="arithmatex">\(n_{\text{eff}}\)</span> 人とぴったり一致するわけではない。実際、<span class="arithmatex">\(p=0.55\)</span> で独立5人の多数決は 59.3%、<span class="arithmatex">\(\rho=0.2\)</span> の201人は約 61% で、近いが同じではない。それでも「201人が実質5人分に縮む」という桁の感覚は、この式が正しく与えている。</p>
+</div>
+<p><strong>使った数学</strong>：分散の加法性と共分散（第6回）、等式を <span class="arithmatex">\(n_{\text{eff}}\)</span> について解く、極限。</p>
+</details>
 <div class="admonition quote">
 <p class="admonition-title">今期の結論 ―― これは事実である</p>
 <p>集団が賢くなる条件は「人数が多いこと」ではない。<strong>一人ひとりが独立に判断すること</strong>だ。空気を読む・忖度する・多数派に合わせるという行為は、その独立性を自分から手放すこと ―― いわば <strong>集合知の自殺</strong> である。これは精神論でも価値観でもなく、コンドルセの陪審定理が示す数学的な帰結だ。多数が同じ意見でも、それが互いに空気を読んだ結果なら、その一致にはほとんど情報がない。</p>
@@ -1259,6 +1307,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       

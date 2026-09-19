@@ -962,6 +962,7 @@
 <li><strong>二項分布</strong>：独立な試行 <span class="arithmatex">\(n\)</span> 回中の成功回数の分布</li>
 <li><strong>ポアソン分布</strong>：稀な事象の件数の分布、二項→ポアソン近似</li>
 <li>両者の <strong>共通の前提が「独立」</strong> であり、独立が崩れると分布が壊れることを知る</li>
+<li><strong>発展</strong>：二項分布の式 <span class="arithmatex">\(\binom{n}{k}p^k(1-p)^{n-k}\)</span> と、<span class="arithmatex">\(E[X]=np\)</span>・<span class="arithmatex">\(V[X]=np(1-p)\)</span> を、自分で導ける</li>
 </ul>
 <p>到達目標との対応：<strong>G1（確率の理解）</strong> と <strong>G4（独立性）</strong>。</p>
 <hr />
@@ -979,6 +980,37 @@
 <p>成功確率 <span class="arithmatex">\(p\)</span> の試行を <strong>独立に</strong> <span class="arithmatex">\(n\)</span> 回くりかえし、成功回数を数えると <strong>二項分布</strong> <span class="arithmatex">\(\mathrm{Binom}(n,p)\)</span> になる。</p>
 <div class="arithmatex">\[P(X=k) = \binom{n}{k}\,p^{k}(1-p)^{n-k}, \qquad E[X]=np,\quad V[X]=np(1-p)\]</div>
 <p>Colabで1万セットのコイン投げをシミュレーションすると、ヒストグラムが理論の二項分布にぴったり重なり、平均 <span class="arithmatex">\(\approx 5\)</span>・分散 <span class="arithmatex">\(\approx 2.5\)</span> が再現される。</p>
+<details class="note" open="open">
+<summary>導出①：二項分布の式は「1つの並びの確率」×「並び方の数」</summary>
+<p>まず、<strong>特定の並び1つ</strong>の確率を考える。たとえば <span class="arithmatex">\(n=5\)</span> で「表・表・裏・表・裏」（成功 <span class="arithmatex">\(k=3\)</span> 回）という並び。</p>
+<p>各回が<strong>独立</strong>なら、同時に起きる確率は単純なかけ算でよい。</p>
+<div class="arithmatex">\[p \times p \times (1-p) \times p \times (1-p) \;=\; p^{3}(1-p)^{2}\]</div>
+<p><strong>かけ算にできるのは独立だからである。</strong> ここが唯一にして最大の前提になる。1回目の結果が2回目の確率を変えるなら、この式は最初の一歩で崩れる（→第4節）。</p>
+<p>並びが変わっても、成功が <span class="arithmatex">\(k\)</span> 回・失敗が <span class="arithmatex">\(n-k\)</span> 回であれば、かける中身の順番が入れ替わるだけで積は同じ <span class="arithmatex">\(p^{k}(1-p)^{n-k}\)</span> になる。</p>
+<p>あとは<strong>そのような並びが何通りあるか</strong>を数えればよい。<span class="arithmatex">\(n\)</span> 回のうちどの <span class="arithmatex">\(k\)</span> 回が成功かを選ぶ選び方なので <span class="arithmatex">\(\binom{n}{k}\)</span> 通り。同じ確率の排反な並びが <span class="arithmatex">\(\binom{n}{k}\)</span> 個あるので、足し合わせて</p>
+<div class="arithmatex">\[P(X=k)=\binom{n}{k}\,p^{k}(1-p)^{n-k}\]</div>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(n=10,\ p=0.5\)</span> のとき、この式で <span class="arithmatex">\(k=7,8,9,10\)</span> を足すと <span class="arithmatex">\(P(X\ge 7)=0.1719\)</span>。第1節の「約17%」はこの計算である。</p>
+<p><strong>使った数学</strong>：独立な事象の確率のかけ算、組合せ <span class="arithmatex">\(\binom{n}{k}\)</span>（数A）。</p>
+</details>
+<details class="note" open="open">
+<summary>導出②：<span class="arithmatex">\(E[X]=np\)</span> と <span class="arithmatex">\(V[X]=np(1-p)\)</span> ―― 分散だけが独立を必要とする</summary>
+<p><span class="arithmatex">\(i\)</span> 回目が成功なら <span class="arithmatex">\(1\)</span>、失敗なら <span class="arithmatex">\(0\)</span> をとる確率変数 <span class="arithmatex">\(X_i\)</span> を考えると、成功回数はただの和になる。</p>
+<div class="arithmatex">\[X = X_1+X_2+\dots+X_n\]</div>
+<p>まず<strong>1回分</strong>を計算する。<span class="arithmatex">\(X_i\)</span> は <span class="arithmatex">\(1\)</span> を確率 <span class="arithmatex">\(p\)</span>、<span class="arithmatex">\(0\)</span> を確率 <span class="arithmatex">\(1-p\)</span> でとるので、</p>
+<div class="arithmatex">\[E[X_i] = 1\cdot p + 0\cdot(1-p) = p\]</div>
+<p><span class="arithmatex">\(X_i^2\)</span> は <span class="arithmatex">\(X_i\)</span> と同じ値をとる（<span class="arithmatex">\(1^2=1\)</span>、<span class="arithmatex">\(0^2=0\)</span>）ので <span class="arithmatex">\(E[X_i^2]=p\)</span>。よって</p>
+<div class="arithmatex">\[V[X_i] = E[X_i^2]-\left(E[X_i]\right)^2 = p - p^2 = p(1-p)\]</div>
+<p>ここから <span class="arithmatex">\(n\)</span> 倍にする。期待値は<strong>和について常に線形</strong>なので、独立でなくても足してよい。</p>
+<div class="arithmatex">\[E[X] = \sum_{i=1}^{n} E[X_i] = np\]</div>
+<p>分散はそうはいかない。<span class="arithmatex">\(V[X+Y]=V[X]+V[Y]\)</span> が成り立つのは <span class="arithmatex">\(X,Y\)</span> が<strong>独立（または無相関）のときだけ</strong>である。独立を使って初めて</p>
+<div class="arithmatex">\[V[X] = \sum_{i=1}^{n} V[X_i] = np(1-p)\]</div>
+<div class="admonition warning">
+<p class="admonition-title">期待値は独立を必要とせず、分散は必要とする</p>
+<p>この違いが今日の要点である。第4節で「平均は同じなのに分散だけが約5倍に膨らむ」のを見るが、それは偶然ではない。独立が崩れたとき壊れるのは<strong>分散の式のほうだけ</strong>だからだ。</p>
+</div>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(n=10,\ p=0.5\)</span> なら <span class="arithmatex">\(E[X]=5\)</span>、<span class="arithmatex">\(V[X]=2.5\)</span>。二項分布の確率を定義どおりに足して計算しても <span class="arithmatex">\(5\)</span> と <span class="arithmatex">\(2.5\)</span> で一致する。</p>
+<p><strong>使った数学</strong>：期待値の線形性、<span class="arithmatex">\(V[X]=E[X^2]-(E[X])^2\)</span>、独立なときの分散の加法性。</p>
+</details>
 <div class="admonition warning">
 <p class="admonition-title">大前提は『独立』</p>
 <p>二項分布は <strong>各試行が独立</strong> であることを前提にしている。1回目の結果が2回目に影響しないからこそ、確率を単純にかけ算できる。この前提が崩れると二項分布は使えない（→第4節）。</p>
@@ -989,6 +1021,53 @@
 <strong>機会は膨大で、それぞれの確率は小さい</strong> 事象の件数は <strong>ポアソン分布</strong> <span class="arithmatex">\(\mathrm{Poisson}(\lambda)\)</span> になる。</p>
 <div class="arithmatex">\[P(X=k)=\frac{\lambda^{k}e^{-\lambda}}{k!},\qquad E[X]=V[X]=\lambda\]</div>
 <p><span class="arithmatex">\(\lambda\)</span> は「平均して何件起きるか」。二項分布で <span class="arithmatex">\(n\)</span> が大きく <span class="arithmatex">\(p\)</span> が小さいとき（<span class="arithmatex">\(\lambda=np\)</span> 一定）、二項分布はポアソン分布に近づく。Colabで <span class="arithmatex">\(n=10,50,500\)</span> と大きくすると、二項分布がポアソン分布に重なっていくのが見える。</p>
+<details class="note" open="open">
+<summary>導出③：なぜ二項分布はポアソン分布に近づくのか</summary>
+<p>仮定をはっきりさせる。<strong><span class="arithmatex">\(\lambda=np\)</span> を一定に保ったまま、<span class="arithmatex">\(n\)</span> を大きく・<span class="arithmatex">\(p\)</span> を小さくしていく</strong>。機会の数は増えるが、1回あたりの確率がそれに反比例して小さくなる、という状況である。</p>
+<p>二項分布の式に <span class="arithmatex">\(p=\lambda/n\)</span> を代入して、部分に分ける。</p>
+<div class="arithmatex">\[\binom{n}{k}\left(\frac{\lambda}{n}\right)^{k}\left(1-\frac{\lambda}{n}\right)^{n-k} \;=\; \underbrace{\frac{n(n-1)\cdots(n-k+1)}{n^{k}}}_{(\mathrm{i})}\cdot\frac{\lambda^{k}}{k!}\cdot\underbrace{\left(1-\frac{\lambda}{n}\right)^{n}}_{(\mathrm{ii})}\cdot\underbrace{\left(1-\frac{\lambda}{n}\right)^{-k}}_{(\mathrm{iii})}\]</div>
+<p><span class="arithmatex">\(k\)</span> を固定して <span class="arithmatex">\(n\)</span> を大きくすると、(i) は <span class="arithmatex">\(\frac{n}{n}\cdot\frac{n-1}{n}\cdots\)</span> という <span class="arithmatex">\(k\)</span> 個の分数の積なので <span class="arithmatex">\(1\)</span> に近づく。(ii) は <span class="arithmatex">\(e^{-\lambda}\)</span> に近づく。(iii) も <span class="arithmatex">\(1\)</span> に近づく。残るのは</p>
+<div class="arithmatex">\[P(X=k) \;\longrightarrow\; \frac{\lambda^{k}e^{-\lambda}}{k!}\]</div>
+<p>これがポアソン分布である。<strong>結論はあくまで近似</strong>であり、<span class="arithmatex">\(n\)</span> が小さいうちは一致しない。</p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(\lambda=5\)</span> に固定して <span class="arithmatex">\(n\)</span> を変え、二項分布とポアソン分布の確率の差の最大値を見る。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"><span class="arithmatex">\(n\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(p=\lambda/n\)</span></th>
+<th style="text-align: right;">確率の差の最大</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0.0706</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.0095</td>
+</tr>
+<tr>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.0009</td>
+</tr>
+<tr>
+<td style="text-align: right;">5000</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.0001</td>
+</tr>
+</tbody>
+</table>
+<p><span class="arithmatex">\(n=10\)</span> ではまるで別物だが、<span class="arithmatex">\(n=500\)</span> では小数第3位まで一致する。「<span class="arithmatex">\(n\)</span> が大きく <span class="arithmatex">\(p\)</span> が小さい」がどの程度を指すのかが、数字で見える。</p>
+<div class="admonition note">
+<p class="admonition-title">極限の厳密な扱いは範囲外</p>
+<p><span class="arithmatex">\(\left(1-\lambda/n\right)^{n} \to e^{-\lambda}\)</span> の証明や、極限と和の交換の正当化は、この授業で扱う統計数理の範囲外である。ここでは「何を仮定すると何が出るか」の筋道を押さえておけばよい。</p>
+</div>
+<p><strong>使った数学</strong>：指数関数の極限 <span class="arithmatex">\(\left(1+x/n\right)^{n}\to e^{x}\)</span>（数Ⅲ）、式の分解。</p>
+</details>
 <table>
 <thead>
 <tr>
@@ -1217,6 +1296,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       

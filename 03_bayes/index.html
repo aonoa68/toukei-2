@@ -1000,6 +1000,7 @@
 <li>事前確率・尤度・事後確率の役割を説明できる</li>
 <li><strong>基準率の誤謬</strong> と <strong>陽性的中率</strong> を理解し、「検査の精度」と「的中率」を混同しない</li>
 <li>逐次更新（今日の事後＝明日の事前）が学習の数理であることを知る</li>
+<li><strong>発展</strong>：ベイズの定理を条件付き確率の定義から導き、オッズ形式（事後オッズ＝事前オッズ×尤度比）を自分で書ける</li>
 </ul>
 <p>到達目標との対応：<strong>G1（条件付き確率とベイズの定理を理解し、情報の更新プロセスを説明できる）</strong> の本丸。</p>
 <hr />
@@ -1072,6 +1073,28 @@
 </tbody>
 </table>
 <p><strong>ベイズの定理＝データで信念を更新する計算。</strong> 事前 1% が、陽性というデータで 50% に更新された。</p>
+<details class="note" open="open">
+<summary>導出①：ベイズの定理は、定義を2通りに書いただけ</summary>
+<p>第2回の条件付き確率の定義を、2つの向きで書いてみる。</p>
+<div class="arithmatex">\[P(H\mid D) = \frac{P(H\cap D)}{P(D)}, \qquad P(D\mid H) = \frac{P(H\cap D)}{P(H)}\]</div>
+<p>どちらにも同じ <span class="arithmatex">\(P(H\cap D)\)</span> が現れている。2本目を <span class="arithmatex">\(P(H\cap D)\)</span> について解くと <span class="arithmatex">\(P(H\cap D)=P(D\mid H)\,P(H)\)</span>。これを1本目に代入すれば、</p>
+<div class="arithmatex">\[P(H\mid D) = \frac{P(D\mid H)\,P(H)}{P(D)}\]</div>
+<p>これがベイズの定理である。<strong>「定理」という名前がついているが、やったことは条件付き確率の定義を2通りに書いて、共通部分を消しただけ</strong>で、新しい原理は何も使っていない。</p>
+<p>第2回で「<span class="arithmatex">\(P(A\mid B)\)</span> と <span class="arithmatex">\(P(B\mid A)\)</span> は別物だ」と学んだ。ベイズの定理は、その続きとして「では両者はどう関係しているのか」に答えている。向きを逆にするには、事前確率 <span class="arithmatex">\(P(H)\)</span> を掛けて <span class="arithmatex">\(P(D)\)</span> で割ればよい ―― それだけのことである。</p>
+<p><strong>使った数学</strong>：条件付き確率の定義（第2回）と、式の代入（算数）。</p>
+</details>
+<details class="note" open="open">
+<summary>導出②：分母 <span class="arithmatex">\(P(D)\)</span> を開くと、偽陽性が姿を現す</summary>
+<p>分母の <span class="arithmatex">\(P(D)\)</span> は「陽性になる確率」である。陽性になる道は2つしかない。<strong>本当に病気で陽性</strong>になるか、<strong>健康なのに誤って陽性</strong>になるか。この2つは重ならず、これで全部を尽くす。だから足せばよい（全確率の公式）。</p>
+<div class="arithmatex">\[P(D) = \underbrace{P(D\mid H)\,P(H)}_{\text{真陽性}} \;+\; \underbrace{P(D\mid \bar{H})\,P(\bar{H})}_{\text{偽陽性}}\]</div>
+<p>数値を入れる。感度 <span class="arithmatex">\(P(D\mid H)=0.99\)</span>、有病率 <span class="arithmatex">\(P(H)=0.01\)</span>。特異度が 99% なので、健康な人が誤って陽性になる確率は <span class="arithmatex">\(P(D\mid\bar{H})=0.01\)</span>。</p>
+<div class="arithmatex">\[P(D) = 0.99\times 0.01 \;+\; 0.01\times 0.99 = 0.0099 + 0.0099 = 0.0198\]</div>
+<p>2つの項が <strong>ぴったり同じ大きさ</strong> になっている。したがって</p>
+<div class="arithmatex">\[P(H\mid D) = \frac{0.99\times 0.01}{0.0198} = \frac{0.0099}{0.0198} = \frac{1}{2}\]</div>
+<p>上の自然頻度の表にある 9,900 と 9,900、合計 19,800 は、この式の各項に 100 万を掛けただけのものである。式と表は同じ計算をしている。</p>
+<p>ここに基準率の誤謬の正体がある。偽陽性の <strong>率</strong> は 1% と小さい。しかしそれが掛かる相手（健康な人）は 99% と多い。<strong>小さい率 × 大きい人数</strong> が、<strong>大きい率 × 小さい人数</strong> に追いついてしまう。率だけを見て、その率が掛かる相手の大きさを見ないと、判断を誤る。</p>
+<p><strong>使った数学</strong>：全確率の公式（場合分けして足す）と、掛け算・割り算。</p>
+</details>
 <hr />
 <h2 id="3">3. 基準率を動かすと、答えは激変する<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>同じ性能（感度99%・特異度99%）の検査でも、<strong>病気の珍しさ（基準率）</strong> が変われば陽性的中率はまるで違う。</p>
@@ -1110,6 +1133,25 @@
 <p class="admonition-title">応用が効く</p>
 <p>迷惑メール判定、防犯カメラの顔認証、まれな不正の検知 ―― すべて同じ罠がある。「精度99%のAIが警告した」と聞いても、対象がもともと稀なら、警告の大半は誤検知かもしれない。</p>
 </div>
+<details class="note" open="open">
+<summary>導出③：オッズで書くと、分母 <span class="arithmatex">\(P(D)\)</span> が消える</summary>
+<p>「病気 <span class="arithmatex">\(H\)</span>」と「健康 <span class="arithmatex">\(\bar{H}\)</span>」の2つの仮説について、ベイズの定理をそれぞれ書き、<strong>比を取る</strong>。分母はどちらも同じ <span class="arithmatex">\(P(D)\)</span> なので、割り算で消えてしまう。</p>
+<div class="arithmatex">\[\frac{P(H\mid D)}{P(\bar{H}\mid D)} \;=\; \frac{P(D\mid H)}{P(D\mid \bar{H})} \;\times\; \frac{P(H)}{P(\bar{H})}\]</div>
+<p>言葉にすると、こうなる。</p>
+<div class="arithmatex">\[\text{事後オッズ} \;=\; \text{尤度比} \;\times\; \text{事前オッズ}\]</div>
+<p>検査の例で確かめる。事前オッズは <span class="arithmatex">\(0.01/0.99 = 1/99\)</span>。尤度比は 感度 ÷ 偽陽性率 で <span class="arithmatex">\(0.99/0.01 = 99\)</span>。掛け合わせると</p>
+<div class="arithmatex">\[\text{事後オッズ} = \frac{1}{99}\times 99 = 1\]</div>
+<p>オッズ 1 は「病気と健康が五分五分」、確率に直すと <span class="arithmatex">\(1/(1+1)=1/2\)</span>。導出②と同じ答えが、割り算ひとつで出た。</p>
+<p>この形の利点は、<strong>2つの効き方が分離して見える</strong>ことである。検査の性能は <strong>尤度比</strong> としてだけ効き、病気の珍しさは <strong>事前オッズ</strong> としてだけ効く。前節の表で「検査の性能は何も変わっていないのに答えが激変する」のは、尤度比 99 を据え置いたまま、事前オッズだけを動かしているからである。</p>
+<div class="admonition note">
+<p class="admonition-title">逐次更新は、尤度比を掛け続けるだけ</p>
+<p>この形なら、次節の逐次更新も一行で書ける。検査を2回受けて2回とも陽性なら、尤度比をもう一度掛ければよい。</p>
+<div class="arithmatex">\[\text{事後オッズ} = \frac{1}{99}\times 99 \times 99 = 99\]</div>
+<p>確率に直すと <span class="arithmatex">\(99/100 = 99\%\)</span>。1回目の陽性では五分五分だったものが、2回目で 99% になる。<strong>「今日の事後は明日の事前」とは、オッズに尤度比を掛け足していくこと</strong>である。</p>
+<p>ただしこれは2回の検査が <strong>独立</strong> であることを使っている。同じ検体を同じ方法で二度測れば、1回目に誤った原因は2回目にも効くので独立にならず、掛け算はできない（第2回）。</p>
+</div>
+<p><strong>使った数学</strong>：ベイズの定理を2回書いて割り算（算数）。オッズと確率の変換 <span class="arithmatex">\(p = o/(1+o)\)</span>。</p>
+</details>
 <hr />
 <h2 id="4">4. 逐次更新 ―― 今日の事後は、明日の事前<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>ベイズの真価は、<strong>データが来るたびに信念を更新できる</strong>こと。今日の事後確率を明日の事前確率として使い、新しいデータでまた更新する。</p>
@@ -1295,6 +1337,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       

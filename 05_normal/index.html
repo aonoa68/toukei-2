@@ -962,6 +962,7 @@
 <li>連続分布では「1点の確率は0」、<strong>面積が確率</strong>（68–95–99.7則）であることを理解する</li>
 <li>標準化 <span class="arithmatex">\(z=\dfrac{x-\mu}{\sigma}\)</span> を使える</li>
 <li><strong>正規分布が現れる理由＝多数の独立な要因の和</strong> を知り、同時に「すべてが正規ではない」ことを見抜く</li>
+<li><strong>発展</strong>：標準化 <span class="arithmatex">\(z=(x-\mu)/\sigma\)</span> が平均0・標準偏差1になることを、自分で導ける</li>
 </ul>
 <p>到達目標との対応：<strong>G1（確率の理解）</strong>。第6回の中心極限定理への直接の橋渡し。</p>
 <hr />
@@ -997,6 +998,32 @@
 </tbody>
 </table>
 <p><strong>標準化</strong>：どんな正規分布も <span class="arithmatex">\(z=\dfrac{x-\mu}{\sigma}\)</span> で「平均0・標準偏差1」の標準正規分布に直せる。偏差値はその応用で <span class="arithmatex">\(\text{偏差値}=50+10z\)</span>。平均・ばらつきの違うテスト間で点を比べる道具だ。</p>
+<details class="note" open="open">
+<summary>導出①：標準化すると、なぜ平均0・標準偏差1になるのか</summary>
+<p>標準化は、見かけは割り算だが、中身は<strong>1次式</strong>である。</p>
+<div class="arithmatex">\[z=\frac{x-\mu}{\sigma}=\frac{1}{\sigma}x+\left(-\frac{\mu}{\sigma}\right)\]</div>
+<p>つまり <span class="arithmatex">\(a=1/\sigma\)</span>、<span class="arithmatex">\(b=-\mu/\sigma\)</span> とした <span class="arithmatex">\(aX+b\)</span> にほかならない。<span class="arithmatex">\(E[aX+b]=aE[X]+b\)</span> と <span class="arithmatex">\(\mathrm{SD}[aX+b]=|a|\,\mathrm{SD}[X]\)</span> という規則（導出②で示す）を当てはめると、</p>
+<div class="arithmatex">\[E[Z]=\frac{1}{\sigma}\mu-\frac{\mu}{\sigma}=0, \qquad \mathrm{SD}[Z]=\left|\frac{1}{\sigma}\right|\cdot\sigma=1\]</div>
+<p>中心を <span class="arithmatex">\(\mu\)</span> だけずらして原点に合わせ、物差しの目盛りを <span class="arithmatex">\(\sigma\)</span> で割って1に揃えている。<strong>どんな <span class="arithmatex">\(\mu,\sigma\)</span> でも同じ形に着地する</strong>から、正規分布表は標準正規の1枚だけで足りる。偏差値 <span class="arithmatex">\(50+10z\)</span> も同じ規則で、平均50・標準偏差10になる。</p>
+<p><strong>数値で確かめる</strong>：霊長類265種の体重（平均 5,880.9 g、標準偏差 13,109.8 g）を標準化すると、平均は <span class="arithmatex">\(-1.1\times10^{-16}\)</span>（計算誤差の範囲で0）、標準偏差はちょうど 1.000000。<span class="arithmatex">\(50+10z\)</span> に直すと平均 50.000、標準偏差 10.000。</p>
+<div class="admonition warning">
+<p class="admonition-title">標準化は分布の『形』を変えない</p>
+<p>標準化でそろうのは中心と目盛りだけで、山の形はそのままである。<strong>歪んだデータを標準化しても正規分布にはならない。</strong> 体重のデータは標準化しても歪んだままで、第4節で見る「裾の重さ」は少しも消えない。標準化を正規化と呼ぶことがあるが、正規分布にする操作ではない。</p>
+</div>
+<p><strong>使った数学</strong>：1次式の読み替え、期待値と分散の変換規則（導出②）。</p>
+</details>
+<details class="note" open="open">
+<summary>導出②：<span class="arithmatex">\(E[aX+b]=aE[X]+b\)</span> と <span class="arithmatex">\(V[aX+b]=a^2V[X]\)</span></summary>
+<p>期待値は和と定数倍について線形なので、そのまま</p>
+<div class="arithmatex">\[E[aX+b]=aE[X]+b\]</div>
+<p>分散は定義に戻る。<span class="arithmatex">\(Y=aX+b\)</span> とおくと <span class="arithmatex">\(E[Y]=aE[X]+b\)</span> なので、偏差は</p>
+<div class="arithmatex">\[Y-E[Y]=(aX+b)-(aE[X]+b)=a\left(X-E[X]\right)\]</div>
+<p><strong>足した <span class="arithmatex">\(b\)</span> がここで消える。</strong> 全員を同じだけずらしても、互いの差は変わらないからである。あとは二乗して期待値をとるだけ。</p>
+<div class="arithmatex">\[V[Y]=E\left[\left(Y-E[Y]\right)^2\right]=E\left[a^2\left(X-E[X]\right)^2\right]=a^2V[X]\]</div>
+<p>平方根を取って <span class="arithmatex">\(\mathrm{SD}[aX+b]=|a|\,\mathrm{SD}[X]\)</span>。<strong>定数を足してもばらつきは変わらず、定数倍だけがばらつきを変える。</strong> テストで全員に10点加点しても差は縮まらない、というのはこの式の帰結である。</p>
+<p><strong>数値で確かめる</strong>：体重をグラム単位から <span class="arithmatex">\(0.001\)</span> 倍（kg）にして <span class="arithmatex">\(3\)</span> を足すと、平均は 8.8809（<span class="arithmatex">\(0.001\times 5{,}880.9+3=8.8809\)</span>）、標準偏差は 13.1098（<span class="arithmatex">\(0.001\times 13{,}109.8=13.1098\)</span>）。規則どおりで、<span class="arithmatex">\(+3\)</span> は標準偏差に影響していない。</p>
+<p><strong>使った数学</strong>：期待値の線形性、分散の定義 <span class="arithmatex">\(V[X]=E[(X-E[X])^2]\)</span>。</p>
+</details>
 <hr />
 <h2 id="3">3. なぜ正規分布が現れるのか ―― 独立な要因の「和」<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>身長、測定誤差、テストの点……正規分布に近いものは多い。なぜか。</p>
@@ -1029,6 +1056,56 @@
 </tbody>
 </table>
 <p><strong>これが正規分布が至るところに現れる理由</strong>であり、次回の <strong>中心極限定理</strong> の正体でもある。鍵はやはり <strong>「独立に足す」</strong> こと。要因が独立でなければ、この収束は起きない。</p>
+<details class="note" open="open">
+<summary>導出③：中心極限定理は、何を仮定して何を主張しているのか</summary>
+<p>ここは証明ではなく、<strong>主張の正確な読み方</strong>である。次回の本題に入る前に、仮定と結論を区別しておく。</p>
+<p><span class="arithmatex">\(X_1,\dots,X_n\)</span> が互いに<strong>独立</strong>で、同じ分布に従い、平均 <span class="arithmatex">\(\mu\)</span> と<strong>有限の分散</strong> <span class="arithmatex">\(\sigma^2\)</span> をもつとする。和を <span class="arithmatex">\(S_n=X_1+\dots+X_n\)</span> と書くと、<span class="arithmatex">\(E[S_n]=n\mu\)</span>、<span class="arithmatex">\(V[S_n]=n\sigma^2\)</span>（分散のほうは独立を使っている）。これを標準化した量が、</p>
+<div class="arithmatex">\[\frac{S_n-n\mu}{\sigma\sqrt{n}} \;\longrightarrow\; N(0,1) \qquad (n \to \infty)\]</div>
+<p>読み取るべき点は4つある。</p>
+<ol>
+<li><strong>独立</strong> が要る。要因が互いに影響し合えば成り立たない。</li>
+<li><strong>分散が有限</strong> であることが要る。裾が極端に重く分散が発散する分布では成り立たない。</li>
+<li>近づくのは <strong>和（または平均）の分布</strong> であって、データ1つ1つの分布ではない。</li>
+<li><span class="arithmatex">\(n\)</span> が有限のうちは <strong>近似</strong> にすぎない。どれくらい近いかは分布の形による。</li>
+</ol>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\([0,1]\)</span> の一様乱数を <span class="arithmatex">\(k\)</span> 個足した和を20万回作り、標準化して正規分布と比べたときの累積確率の最大のズレ。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">足す個数 <span class="arithmatex">\(k\)</span></th>
+<th style="text-align: right;">正規分布とのズレ（最大）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0587</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.0183</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.0062</td>
+</tr>
+<tr>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0.0031</td>
+</tr>
+</tbody>
+</table>
+<p>上の表の「1個は真っ平ら、2個で三角、5個で釣鐘、30個でぴたり」が、数字でも確かめられる。</p>
+<div class="admonition note">
+<p class="admonition-title">この授業で扱う統計数理の範囲外</p>
+<p>中心極限定理の証明には特性関数（モーメント母関数）が必要で、この授業の範囲を超える。第1節の密度関数が<strong>なぜあの形なのか</strong>も同様に扱わない。ここでは、仮定と結論を正確に述べられること、そして仮定が崩れたときに何が起きるかを見抜けることを目標にする。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">『和が正規』であって『データが正規』ではない</p>
+<p>この定理は独立な要因の<strong>足し算</strong>について述べている。体重や年収のように、要因が<strong>掛け算的・自己強化的</strong>に効いて生まれる量は、いくらデータを集めても正規にはならない。次の第4節がその話である。</p>
+</div>
+<p><strong>使った数学</strong>：期待値と分散の変換規則（導出②）、独立なときの分散の加法性。</p>
+</details>
 <hr />
 <h2 id="4">4. だが「すべてが正規」ではない<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>正規分布は強力だが、<strong>世の中のデータがすべて正規だと思い込むのは誤り</strong>だ。</p>
@@ -1210,6 +1287,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
       
