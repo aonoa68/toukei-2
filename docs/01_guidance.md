@@ -11,9 +11,15 @@
 !!! info "今日のリンク"
     - [📊 スライドを開く](slides/01.html)
     - [📓 Colabノートを開く（01_review.ipynb）](https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/01_review.ipynb)
+    - [🎬 解説動画を見る](https://notebook.google.com/notebook/1f6eb003-6de4-4174-9f2e-a2423ff4d2c2)
     - [📝 課題を提出する（Moodle・第1回）](https://moodle.hokusei.ac.jp/mod/assign/view.php?id=990636)
     - 課題の本文は**このページの末尾**にあります
 <!-- LINKS:END -->
+
+!!! tip "解説動画について"
+    このページの内容をもとにした**解説動画**を用意しました（Gemini Notebook で生成）。予習にも復習にも使えます。
+
+    ただし**AIが資料から自動生成したもの**なので、細かい言い回しや強調のしかたはこのページと完全には一致しません。**正確な定義・数値・前提は、必ずこのページ本体で確認してください。**
 
 ## この回のゴール
 
