@@ -179,7 +179,7 @@ $$P(A\mid B) = P(A) \qquad\Longleftrightarrow\qquad P(A\cap B)=P(A)\,P(B)$$
 
 ## 今日の課題（Moodle提出）
 
-**配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle**
+**配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle ／ 提出期限：次回授業の開始時刻まで**
 
 第2回のColabノート `02_conditional.ipynb` を上から実行し、結果を見たうえで答えること。
 
