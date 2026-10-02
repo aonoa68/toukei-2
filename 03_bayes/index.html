@@ -1012,7 +1012,9 @@
 </ul>
 <p>この病気は <strong>100人に1人（有病率1%）</strong> がかかる。あなたは検査で <strong>陽性</strong> になった。</p>
 <p><strong>問い：あなたが本当に病気である確率は？</strong></p>
-<p>直感は「99%の精度だから99%くらい」と答える。だが正解は <strong>約50%</strong> ―― コイン投げと変わらない。</p>
+<p>直感は「99%の精度だから99%くらい」と答える。だが正解は <strong>約50%</strong> である。
+検査の性能が低いのではない。<strong>50%という数字は、この有病率1%のもとでの答え</strong>であって、
+「どんな病気でも五分五分」でも「検査が当てずっぽうと同じ」でもない（有病率を変えると下の第3節のように大きく変わる）。</p>
 <h3 id="100">自然頻度で考えるとわかる（100万人を検査）<a class="headerlink" href="#100" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1072,6 +1074,43 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">記号の対応（この回でずっと使う）</p>
+<ul>
+<li><span class="arithmatex">\(H\)</span> … 仮説（hypothesis）。この例では「<strong>病気である</strong>」</li>
+<li><span class="arithmatex">\(\bar{H}\)</span> … その否定。「<strong>健康である</strong>」</li>
+<li><span class="arithmatex">\(D\)</span> … 観測されたデータ（data）。この例では「<strong>検査が陽性</strong>」</li>
+</ul>
+<p>検査の3つの数値は、この記号ではこう書ける。</p>
+<table>
+<thead>
+<tr>
+<th>検査の用語</th>
+<th>記号</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>感度</td>
+<td><span class="arithmatex">\(P(D\mid H)\)</span></td>
+<td>0.99</td>
+</tr>
+<tr>
+<td>特異度</td>
+<td><span class="arithmatex">\(P(\bar{D}\mid\bar{H})\)</span></td>
+<td>0.99</td>
+</tr>
+<tr>
+<td>偽陽性率</td>
+<td><span class="arithmatex">\(P(D\mid\bar{H}) = 1-\text{特異度}\)</span></td>
+<td>0.01</td>
+</tr>
+</tbody>
+</table>
+<p>特異度は「健康な人を<strong>陰性</strong>と正しく言える確率」なので、健康な人が<strong>陽性</strong>になる確率は
+その余事象、つまり <span class="arithmatex">\(1-\)</span> 特異度 <span class="arithmatex">\(=0.01\)</span> になる。</p>
+</div>
 <p><strong>ベイズの定理＝データで信念を更新する計算。</strong> 事前 1% が、陽性というデータで 50% に更新された。</p>
 <details class="note" open="open">
 <summary>導出①：ベイズの定理は、定義を2通りに書いただけ</summary>
@@ -1087,7 +1126,7 @@
 <summary>導出②：分母 <span class="arithmatex">\(P(D)\)</span> を開くと、偽陽性が姿を現す</summary>
 <p>分母の <span class="arithmatex">\(P(D)\)</span> は「陽性になる確率」である。陽性になる道は2つしかない。<strong>本当に病気で陽性</strong>になるか、<strong>健康なのに誤って陽性</strong>になるか。この2つは重ならず、これで全部を尽くす。だから足せばよい（全確率の公式）。</p>
 <div class="arithmatex">\[P(D) = \underbrace{P(D\mid H)\,P(H)}_{\text{真陽性}} \;+\; \underbrace{P(D\mid \bar{H})\,P(\bar{H})}_{\text{偽陽性}}\]</div>
-<p>数値を入れる。感度 <span class="arithmatex">\(P(D\mid H)=0.99\)</span>、有病率 <span class="arithmatex">\(P(H)=0.01\)</span>。特異度が 99% なので、健康な人が誤って陽性になる確率は <span class="arithmatex">\(P(D\mid\bar{H})=0.01\)</span>。</p>
+<p>数値を入れる。感度 <span class="arithmatex">\(P(D\mid H)=0.99\)</span>、有病率 <span class="arithmatex">\(P(H)=0.01\)</span>。特異度が 99% なので、健康な人が誤って陽性になる確率はその余事象で <span class="arithmatex">\(P(D\mid\bar{H})=1-0.99=0.01\)</span>（偽陽性率）。</p>
 <div class="arithmatex">\[P(D) = 0.99\times 0.01 \;+\; 0.01\times 0.99 = 0.0099 + 0.0099 = 0.0198\]</div>
 <p>2つの項が <strong>ぴったり同じ大きさ</strong> になっている。したがって</p>
 <div class="arithmatex">\[P(H\mid D) = \frac{0.99\times 0.01}{0.0198} = \frac{0.0099}{0.0198} = \frac{1}{2}\]</div>
@@ -1148,7 +1187,13 @@
 <p>この形なら、次節の逐次更新も一行で書ける。検査を2回受けて2回とも陽性なら、尤度比をもう一度掛ければよい。</p>
 <div class="arithmatex">\[\text{事後オッズ} = \frac{1}{99}\times 99 \times 99 = 99\]</div>
 <p>確率に直すと <span class="arithmatex">\(99/100 = 99\%\)</span>。1回目の陽性では五分五分だったものが、2回目で 99% になる。<strong>「今日の事後は明日の事前」とは、オッズに尤度比を掛け足していくこと</strong>である。</p>
-<p>ただしこれは2回の検査が <strong>独立</strong> であることを使っている。同じ検体を同じ方法で二度測れば、1回目に誤った原因は2回目にも効くので独立にならず、掛け算はできない（第2回）。</p>
+<p>ただしこれは、2回の検査が <strong>同じ真の状態のもとで条件付きに独立</strong> であること、つまり</p>
+<div class="arithmatex">\[P(D_2\mid H, D_1)=P(D_2\mid H), \qquad P(D_2\mid \bar{H}, D_1)=P(D_2\mid \bar{H})\]</div>
+<p>が成り立つことを使っている。「病気かどうかが決まっていれば、1回目の結果は2回目の出方に影響しない」という意味である。</p>
+<p>注意したいのは、<strong><span class="arithmatex">\(D_1\)</span> と <span class="arithmatex">\(D_2\)</span> そのものは独立ではない</strong>ことである。1回目が陽性なら病気の可能性が上がり、
+したがって2回目も陽性になりやすい（<span class="arithmatex">\(P(D_2\mid D_1) &gt; P(D_2)\)</span>）。独立なのは「<span class="arithmatex">\(H\)</span> を固定したとき」だけである。</p>
+<p>この条件付き独立が崩れる例がある。同じ検体を同じ方法で二度測れば、1回目に誤らせた原因（検体の取り方、試薬の癖）が
+2回目にも同じように効くので、<span class="arithmatex">\(H\)</span> を固定しても2回の結果は連動する。そのときこの掛け算はできない（第2回）。</p>
 </div>
 <p><strong>使った数学</strong>：ベイズの定理を2回書いて割り算（算数）。オッズと確率の変換 <span class="arithmatex">\(p = o/(1+o)\)</span>。</p>
 </details>
@@ -1159,9 +1204,22 @@
 <blockquote>
 <p>数学的には、事前を <span class="arithmatex">\(\mathrm{Beta}(a,b)\)</span> にすると、表 <span class="arithmatex">\(k\)</span> 回・裏 <span class="arithmatex">\(n-k\)</span> 回の観測で事後は <span class="arithmatex">\(\mathrm{Beta}(a+k,\;b+n-k)\)</span> になる（共役事前）。</p>
 </blockquote>
-<p><code>03_bayes.ipynb</code> では、真の値 <span class="arithmatex">\(p=0.7\)</span> のコインを投げ続けると、事後分布が回数とともに <strong>0.7 の周りに鋭く締まっていく</strong>様子が見える。これが <strong>学習</strong> の数理的な姿だ。事前の思い込みがあっても、データを積めば信念は正しい方へ更新される。</p>
+<p><code>03_bayes.ipynb</code> では、真の値 <span class="arithmatex">\(p=0.7\)</span> のコインを投げ続けると、事後分布が回数とともに <strong>0.7 の周りに締まっていく</strong>様子が見える。
+グラフの横軸は「未知の表確率 <span class="arithmatex">\(p\)</span> の候補」、縦軸はその候補あたりの <strong>確からしさ（密度）</strong> で、ある区間の <strong>下の面積</strong> が
+その区間に <span class="arithmatex">\(p\)</span> が入る確率を表す。最初（0回）は真っ平らで、「<span class="arithmatex">\(p\)</span> について何も分からない」状態を表している。
+なお <span class="arithmatex">\(p=0.7\)</span> は<strong>データを作る側だけが知っている値</strong>であり、推定には観測した表・裏の回数しか使っていない。</p>
+<div class="admonition warning">
+<p class="admonition-title">「毎回かならず真値に近づく」のではない</p>
+<p>Colabの乱数では、事後平均は <strong>5回後 0.714 → 20回後 0.773 → 100回後 0.696</strong> と動く。
+<strong>20回後のほうが、5回後より真値 0.7 から離れている。</strong>計算の誤りではなく、標本のばらつきである。</p>
+<p>言えるのは「<strong>このモデルが正しく、データが十分にあれば、真値の付近を絞り込める</strong>」であって、
+「観測を増やすたびに必ず近づく」ではない。また一様な事前も「無知の唯一の表現」ではなく、<strong>今回置いた設定</strong>である。</p>
+</div>
+<p>それでも、長い目で見れば事前の思い込みはデータに押し流されていく。これが <strong>学習</strong> の数理的な姿だ。</p>
 <blockquote>
-<p>第12〜13回では逆に、人々が互いを真似て <strong>同じ情報ばかり</strong> を見ると、集団の信念が間違った方向に固まる（情報カスケード）。ベイズ更新が健全に働くにも、<strong>独立で多様な情報</strong>が要る。ここでも独立性が効いてくる。</p>
+<p>第12〜13回では逆に、人々が互いを真似て <strong>同じ情報ばかり</strong> を見ると、集団の信念が間違った方向に固まる（情報カスケード）。
+問題は「依存したデータでは更新できない」ことではない。<strong>もとは1つの情報を、独立した別々の証拠だと思って重複して数えてしまう</strong>ことである。
+上の導出③で尤度比を2回掛けられたのは、2回の検査が条件付き独立だったからであって、同じ噂を10人から聞いても尤度比を10回掛けてはいけない。</p>
 </blockquote>
 <hr />
 <h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
@@ -1204,7 +1262,7 @@
 <p><strong>A2.</strong> A1で陽性的中率が検査の精度（99%）より大きく下がる <strong>主な理由</strong> は？</p>
 <ul>
 <li>(ア) 検査の機械の誤差が大きいから</li>
-<li>(イ) 病気の人がもともと少ない（基準率が低い）ため、健康な人からの偽陽性が多数を占めるから</li>
+<li>(イ) 病気の人がもともと少ない（基準率が低い）ため、健康な人から出る偽陽性が、真陽性と同じくらいの人数になるから</li>
 <li>(ウ) 陽性的中率は常に50%になると決まっているから</li>
 </ul>
 <p><strong>A3.</strong> ベイズの定理 <span class="arithmatex">\(P(H\mid D)=\dfrac{P(D\mid H)P(H)}{P(D)}\)</span> で、<strong>事前確率</strong> にあたるのはどれか？</p>
@@ -1221,7 +1279,7 @@
 </ul>
 <hr />
 <h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
-<p><strong>B1.（30点）</strong> 感度99%・特異度99%という高性能の検査でも、稀な病気では陽性的中率が約50%にしかならない。<strong>なぜそうなるのか</strong> を、4〜6文で説明しなさい。次の2点に必ず触れること。</p>
+<p><strong>B1.（30点）</strong> 感度99%・特異度99%という高性能の検査でも、<strong>有病率が1%の病気では</strong>陽性的中率が約50%にしかならない。<strong>なぜそうなるのか</strong> を、4〜6文で説明しなさい。次の2点に必ず触れること。</p>
 <ol>
 <li>「基準率（有病率）」という言葉を使い、なぜ偽陽性が無視できないほど出るのか</li>
 <li>直感が外す原因を、第2回で学んだ「条件付き確率の向き」と結びつけて</li>
