@@ -1018,7 +1018,7 @@
 <p>ある家庭に子どもが <strong>2人</strong> いる（男女は半々で独立に決まるとする）。
 いま <strong>「少なくとも1人は女の子」</strong> だと分かっている。</p>
 <p><strong>問い：2人とも女の子である確率は？</strong></p>
-<p>直感の多くは「もう1人が女か男か、だから 1/2」と答える。だが正解は <strong>約 1/3</strong> だ。</p>
+<p>直感の多くは「もう1人が女か男か、だから 1/2」と答える。だが正解は <strong>1/3</strong> である（下のシミュレーションでは約0.333）。</p>
 <p>理由は、もともとの組み合わせが等確率で4通りあること。</p>
 <table>
 <thead>
@@ -1157,7 +1157,7 @@
 <p>掛けるか割るかの一手で、どちらの向きにも移り合う。<strong>新しい仮定は何も足していない。</strong></p>
 <div class="admonition note">
 <p class="admonition-title">積の形は対称である</p>
-<p><span class="arithmatex">\(P(A\cap B)=P(A)P(B)\)</span> は、<span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> を入れ替えても同じ式になる。つまり「<span class="arithmatex">\(B\)</span> を知っても <span class="arithmatex">\(A\)</span> が変わらない」なら、自動的に「<span class="arithmatex">\(A\)</span> を知っても <span class="arithmatex">\(B\)</span> が変わらない」。<strong>独立は一方通行の関係ではなく、対等な関係</strong>である。<span class="arithmatex">\(P(A\mid B)=P(A)\)</span> の形では <span class="arithmatex">\(B\)</span> だけが特別な役に見えるが、積の形に直すとその対称性がはっきりする。</p>
+<p><span class="arithmatex">\(P(A\cap B)=P(A)P(B)\)</span> は、<span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> を入れ替えても同じ式になる。<strong>独立は一方通行の関係ではなく、対等な関係</strong>である。さらに <span class="arithmatex">\(P(A)&gt;0\)</span> なら、逆向きにも <span class="arithmatex">\(P(B\mid A)=P(B)\)</span> と書ける（割る相手が <span class="arithmatex">\(P(A)\)</span> になるので、こちらが正であることが要る）。<span class="arithmatex">\(P(A\mid B)=P(A)\)</span> の形では <span class="arithmatex">\(B\)</span> だけが特別な役に見えるが、積の形に直すとその対称性がはっきりする。</p>
 </div>
 <p>この <strong>積の形</strong> が、今期ずっと使われる。第4回の二項分布は「独立だから確率を掛けてよい」で組み立てられ、第6回の標本平均のばらつきも第7回の標準誤差も、もとをたどればこの掛け算から出てくる。第12〜13回で独立が壊れるとき、壊れるのはこの式である。<strong>今日のこの1行が、今期の残り全部を支えている。</strong></p>
 <p><strong>使った数学</strong>：定義の代入と、両辺への掛け算・割り算（算数）。</p>
@@ -1204,7 +1204,7 @@
 <p><strong>一方が起きたと知っても、もう一方の確率が変わらない</strong>という、確率どうしの関係である。</p>
 <p>「互いに影響し合わない」という<strong>因果の話ではない</strong>。
 たとえば2人の学生が連絡を取り合っていなくても、同じ路線の運休で2人とも欠席するなら、
-「Aが欠席した」と知ることで「Bも欠席している」確率は上がる。<strong><span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> の間に直接の因果関係がなくても、共通の原因があれば従属になる。</strong></p>
+「Aが欠席した」と知ることで「Bも欠席している」確率は上がる。<strong><span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> の間に直接の因果関係がなくても、共通の原因によって従属になることがある。</strong></p>
 <p>今日その定義を手に入れた ―― これが第13回「コンドルセの陪審定理」への伏線になる。</p>
 </div>
 <hr />
