@@ -985,7 +985,7 @@
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>条件付き確率 <span class="arithmatex">\(P(A\mid B)\)</span> を理解する ―― 情報を得ると確率は更新される</li>
-<li><strong>独立</strong> を定義できる：<span class="arithmatex">\(P(A\mid B)=P(A)\)</span>（Bを知ってもAの確率が変わらない）</li>
+<li><strong>独立</strong> を定義できる：<span class="arithmatex">\(P(A\mid B)=P(A)\)</span>（<span class="arithmatex">\(P(B)&gt;0\)</span>）。分母を気にしなくてよい同値な形は <span class="arithmatex">\(P(A\cap B)=P(A)P(B)\)</span></li>
 <li>「独立」と「排反」を混同しない</li>
 <li>独立が今期（二項分布・正規分布・中心極限定理・区間推定・コンドルセ）の前提であることを知る</li>
 <li><strong>発展</strong>：条件付き確率の定義がなぜこの形になるのかを説明し、独立の2つの表現が同値であることを自分で導ける</li>
@@ -1037,7 +1037,16 @@
 <hr />
 <h2 id="2">2. 条件付き確率とは<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>事象 <span class="arithmatex">\(B\)</span> が起きたと分かったうえでの <span class="arithmatex">\(A\)</span> の確率を <strong>条件付き確率</strong> と呼び、こう書く。</p>
-<div class="arithmatex">\[P(A\mid B) = \frac{P(A \cap B)}{P(B)}\]</div>
+<div class="arithmatex">\[P(A\mid B) = \frac{P(A \cap B)}{P(B)} \qquad (P(B)&gt;0)\]</div>
+<div class="admonition note">
+<p class="admonition-title">記号の読み方</p>
+<ul>
+<li><span class="arithmatex">\(A \cap B\)</span> … 「<span class="arithmatex">\(A\)</span> <strong>かつ</strong> <span class="arithmatex">\(B\)</span>」（両方が起きる）</li>
+<li><span class="arithmatex">\(P(A\mid B)\)</span> … 「<span class="arithmatex">\(B\)</span> <strong>という条件のもとでの</strong> <span class="arithmatex">\(A\)</span> の確率」</li>
+</ul>
+<p>縦棒の右側は<strong>条件</strong>であって、<strong>先に起きた出来事という意味ではない</strong>。
+時間の前後とは関係がなく、<span class="arithmatex">\(P(B\mid A)\)</span> のように向きを逆にすることもできる（第3回のベイズはまさにこれ）。</p>
+</div>
 <p>意味は「<span class="arithmatex">\(B\)</span> という条件の世界に絞り込み、その中で <span class="arithmatex">\(A\)</span> が占める割合」。Colabのコード <code>両方女[少なくとも1人女].mean()</code> は、まさに <strong>「条件を満たす世帯だけに絞って、その中の割合を測る」</strong> 操作だった。</p>
 <blockquote>
 <p><strong>情報を得る ＝ 標本空間を絞り込む ＝ 確率を更新する。</strong> この考え方は第3回のベイズの定理にそのまま続く。</p>
@@ -1116,17 +1125,31 @@
 </details>
 <hr />
 <h2 id="4">4. なぜ「独立」が今期の主役なのか<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<p>これから学ぶ道具は、ほとんどが <strong>「独立」を前提</strong> にしている。</p>
+<p>この授業で扱う道具は、<strong>独立を仮定した基本形</strong>から入る。</p>
 <ul>
-<li>第4回 <strong>二項分布</strong> … 独立なコイン投げを <span class="arithmatex">\(n\)</span> 回くりかえす</li>
-<li>第5回 <strong>正規分布</strong> … 独立な多数の要因の和</li>
+<li>第4回 <strong>二項分布</strong> … 独立な試行を <span class="arithmatex">\(n\)</span> 回くりかえす</li>
+<li>第5回 <strong>正規分布</strong> … 独立な多数の要因が足し合わさる場合の近似</li>
 <li>第6回 <strong>中心極限定理</strong> … 独立な標本の平均</li>
-<li>第7回 <strong>区間推定</strong> … 独立な標本だから誤差が計算できる</li>
+<li>第7回 <strong>区間推定</strong> … 独立な標本を仮定して誤差の幅を計算する</li>
 </ul>
-<p>そして第12〜13回で、人々が <strong>「空気を読んで」</strong> 互いの判断を真似し始めると、この <strong>独立が壊れ</strong>、集団の判断が劣化することを見る。</p>
+<p>そして第12〜13回で、人々が <strong>「空気を読んで」</strong> 互いの判断を真似し始めると、この <strong>独立の仮定が成り立たなくなり</strong>、
+<strong>独立を前提に導いた多数決の保証がそのままでは使えなくなる</strong>ことを見る。</p>
+<div class="admonition warning">
+<p class="admonition-title">「独立でなければ統計が使えない」ではない</p>
+<p>独立は<strong>便利な仮定</strong>であって、統計の必要条件ではない。
+依存関係がある場合でも、<strong>その依存をモデルに組み込めば</strong>推定はできる（時系列、階層モデル、クラスター標本など）。</p>
+<p>この授業が独立から始めるのは、<strong>式がいちばん簡単になるから</strong>である。
+気をつけるべきなのは、<strong>独立でないデータに、独立を仮定した公式をそのまま当てはめること</strong>のほうだ。</p>
+<p>なお、<strong>正規分布に従うこと</strong>と<strong>複数の観測が独立であること</strong>は別の話である。
+正規分布は1つの変数の分布の形、独立は複数の変数の関係であって、どちらか一方だけが成り立つこともある。</p>
+</div>
 <div class="admonition quote">
 <p class="admonition-title">独立とは</p>
-<p>「他に影響されず、自分の情報だけで決まっている」状態。これが壊れると、推測統計の土台そのものが揺らぐ。今日その定義を手に入れた ―― これが第13回「コンドルセの陪審定理」への伏線になる。</p>
+<p><strong>一方が起きたと知っても、もう一方の確率が変わらない</strong>という、確率どうしの関係である。</p>
+<p>「互いに影響し合わない」という<strong>因果の話ではない</strong>。
+たとえば2人の学生が連絡を取り合っていなくても、同じ路線の運休で2人とも欠席するなら、
+「Aが欠席した」と知ることで「Bも欠席している」確率は上がる。<strong>因果の矢印がなくても、従属にはなる。</strong></p>
+<p>今日その定義を手に入れた ―― これが第13回「コンドルセの陪審定理」への伏線になる。</p>
 </div>
 <hr />
 <h2 id="5">5. 注意 ―― 「独立」と「排反」は別物<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
@@ -1135,7 +1158,7 @@
 <li><span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> は <strong>排反</strong>（同時には起きない。3は偶数ではない）</li>
 <li>だが <strong>独立ではない</strong>：<span class="arithmatex">\(B\)</span>（3が出た）と分かれば <span class="arithmatex">\(A\)</span>（偶数）の確率は <span class="arithmatex">\(1/2 \to 0\)</span> に変わる</li>
 </ul>
-<p><strong>排反は「重ならない」、独立は「影響しない」。</strong> まったく別の概念。Colabでも <code>P(偶数 | 3が出た) = 0.000</code> となり、条件で確率が激変する＝独立でないことが確認できる。</p>
+<p><strong>排反は「重ならない」、独立は「知っても確率が変わらない」。</strong> まったく別の概念。Colabでも <code>P(偶数 | 3が出た) = 0.000</code> となり、条件で確率が激変する＝独立でないことが確認できる。</p>
 <hr />
 <h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
@@ -1207,12 +1230,13 @@
 <li>もしこの2つを「独立だ」と勘違いして確率を計算すると、どんな間違いが起こりそうか</li>
 </ol>
 <blockquote>
-<p>ヒント：「雨が降る」と「傘を持つ人が増える」、「ある学生が欠席する」と「その友人も欠席する」など。<strong>「排反（同時に起きない）」と混同しない</strong>こと ―― 独立は「影響しない」、排反は「重ならない」。</p>
+<p>ヒント：「雨が降る」と「傘を持つ人が増える」、「ある学生が欠席する」と「その友人も欠席する」など。<strong>「排反（同時に起きない）」と混同しない</strong>こと ―― 独立は「知っても確率が変わらない」、排反は「重ならない」。
+なお、<strong>排反な2つの出来事を挙げて「従属である」と説明するのは正しい</strong>（確率が正なら、排反な事象は独立になりえない）。同時に起こりうる例のほうが説明しやすいが、どちらでも構わない。</p>
 <p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
 </blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
-<p>第3回「ベイズの定理の深掘り」。「精度99%の検査で陽性。本当に病気である確率は？」 ―― 直感は99%、正解は数%。条件付き確率を <strong>逆向き</strong> <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span> に使い、データで信念を更新する技術を学ぶ。</p>
+<p>第3回「ベイズの定理の深掘り」。「精度99%の検査で陽性。本当に病気である確率は？」 ―― 直感は99%だが、<strong>それは決まらない</strong>。検査性能の定義と、<strong>その集団でのもともとの病気の割合</strong>が分からないと答えが出ない。割合が低ければ数%にもなる。条件付き確率を <strong>逆向き</strong> <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span> に使い、データで信念を更新する技術を学ぶ。</p>
 </div>
 
 
