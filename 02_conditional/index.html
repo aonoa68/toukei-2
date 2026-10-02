@@ -398,6 +398,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#35-a-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 もうひとつ計算してみる ―― \(A\) と \(B\) が重なりきらない例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -872,6 +883,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#35-a-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 もうひとつ計算してみる ―― \(A\) と \(B\) が重なりきらない例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1094,20 +1116,36 @@
 <tr>
 <td>独立</td>
 <td>コインを2回投げる（A=2投目表, B=1投目表）</td>
-<td>0.500</td>
-<td>0.500</td>
+<td><span class="arithmatex">\(1/2=0.500\)</span></td>
+<td><span class="arithmatex">\(1/2=0.500\)</span></td>
 <td>変わらない → <strong>独立</strong></td>
 </tr>
 <tr>
 <td>従属</td>
 <td>トランプを戻さず2枚引く（A=2枚目♥, B=1枚目♥）</td>
-<td>0.250</td>
-<td>0.235</td>
+<td><span class="arithmatex">\(13/52=0.250\)</span></td>
+<td><span class="arithmatex">\(12/51\approx0.235\)</span></td>
 <td>下がる → <strong>従属</strong></td>
 </tr>
 </tbody>
 </table>
 <p>「1投目が表でも2投目の確率は変わらない」。一方「1枚目にハートを引くと、山札のハートが減るので2枚目の確率は下がる」。<strong>この差が独立かどうかの分かれ目</strong>だ。</p>
+<div class="admonition question">
+<p class="admonition-title">「2枚目なのに、分母が52なのはなぜ？」</p>
+<p><span class="arithmatex">\(P(A)=13/52\)</span> の <span class="arithmatex">\(A\)</span> は「<strong>2枚目</strong>がハート」である。1枚目に見えない。</p>
+<p><strong>1枚目が何だったか知らない段階</strong>では、よく混ぜた山札の2番目の位置にハートが来る確率は、
+1番目の位置と同じく <span class="arithmatex">\(13/52\)</span> である。どの位置も対等だからだ。</p>
+<p>ところが <strong>1枚目がハートだと分かった</strong>なら、残りは51枚でハートは12枚なので <span class="arithmatex">\(12/51\approx0.235\)</span>。
+<strong>情報を得たから分母と分子が切り替わった</strong> ―― これが条件付き確率である。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">シミュレーションの数字は、理論値とぴたりとは一致しない</p>
+<p>Colabで同じことを乱数で確かめると、独立なコインの例でも
+<span class="arithmatex">\(\widehat{P}(A)=0.500350\)</span>、<span class="arithmatex">\(\widehat{P}(A\mid B)=0.498873\)</span> のように<strong>わずかにずれる</strong>。</p>
+<p>これは<strong>有限回しか試していないことによるばらつき</strong>であって、独立でない証拠ではない。
+逆に「近い数字が出たから独立だと<strong>証明された</strong>」とも言えない。
+<strong>独立かどうかは、数え方（確率の定義）から決まる</strong>のであって、実測値の一致で決めるものではない。</p>
+</div>
 <details class="note" open="open">
 <summary>導出③：独立の2つの表現は、同じことを言っている</summary>
 <p>独立は2通りに書かれる。この2つが同値であることは、導出①の定義を代入するだけで分かる（以下 <span class="arithmatex">\(P(B)&gt;0\)</span> とする）。</p>
@@ -1123,6 +1161,23 @@
 <p>この <strong>積の形</strong> が、今期ずっと使われる。第4回の二項分布は「独立だから確率を掛けてよい」で組み立てられ、第6回の標本平均のばらつきも第7回の標準誤差も、もとをたどればこの掛け算から出てくる。第12〜13回で独立が壊れるとき、壊れるのはこの式である。<strong>今日のこの1行が、今期の残り全部を支えている。</strong></p>
 <p><strong>使った数学</strong>：定義の代入と、両辺への掛け算・割り算（算数）。</p>
 </details>
+<hr />
+<h2 id="35-a-b">3.5 もうひとつ計算してみる ―― <span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> が重なりきらない例<a class="headerlink" href="#35-a-b" title="Permanent link">&para;</a></h2>
+<p>子ども問題は <span class="arithmatex">\(A\)</span>（2人とも女）が起きれば必ず <span class="arithmatex">\(B\)</span>（少なくとも1人女）も起きるので、<span class="arithmatex">\(P(A\cap B)=P(A)\)</span> になっていた。
+<strong>いつもそうなるわけではない。</strong><span class="arithmatex">\(A\)</span> だけ・<span class="arithmatex">\(B\)</span> だけ・両方、の3通りがある例で確かめる。</p>
+<blockquote>
+<p>学生100人を調べたところ、<strong>アルバイトをしている人が30人</strong>、<strong>一人暮らしの人が20人</strong>、
+<strong>その両方に当てはまる人が12人</strong>だった。この100人から1人を等確率で選ぶ。
+<span class="arithmatex">\(A\)</span>＝「アルバイトをしている」、<span class="arithmatex">\(B\)</span>＝「一人暮らしである」とする。</p>
+</blockquote>
+<div class="arithmatex">\[P(A)=\frac{30}{100}=0.30,\qquad P(B)=\frac{20}{100}=0.20,\qquad P(A\cap B)=\frac{12}{100}=0.12\]</div>
+<div class="arithmatex">\[P(A\mid B)=\frac{P(A\cap B)}{P(B)}=\frac{12/100}{20/100}=\frac{12}{20}=0.60\]</div>
+<p><strong>分母が100人から20人に切り替わり、分子が30人から12人に切り替わった。</strong>これが「条件の世界に絞り込む」ということである。</p>
+<p>向きを逆にすると値が変わることも確かめておく。</p>
+<div class="arithmatex">\[P(B\mid A)=\frac{12/100}{30/100}=\frac{12}{30}=0.40\]</div>
+<p><span class="arithmatex">\(P(A\mid B)=0.60\)</span> と <span class="arithmatex">\(P(B\mid A)=0.40\)</span> は<strong>別の量</strong>である。縦棒のどちら側が条件かで答えが変わる。</p>
+<p>そして <span class="arithmatex">\(P(A)=0.30\)</span> に対して <span class="arithmatex">\(P(A\mid B)=0.60\)</span> なので、<strong>この100人の中では <span class="arithmatex">\(A\)</span> と <span class="arithmatex">\(B\)</span> は独立ではない</strong>。
+（積の形でも確かめられる：<span class="arithmatex">\(P(A)P(B)=0.30\times0.20=0.06 \neq 0.12=P(A\cap B)\)</span>）</p>
 <hr />
 <h2 id="4">4. なぜ「独立」が今期の主役なのか<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>この授業で扱う道具は、<strong>独立を仮定した基本形</strong>から入る。</p>
@@ -1193,11 +1248,11 @@
 <p>第2回のColabノート <code>02_conditional.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
 <hr />
 <h3 id="a10-440">パートA：選択問題（各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
-<p><strong>A1.</strong> 子どもが2人いる家庭で「<strong>少なくとも1人は女の子</strong>」と分かっているとき、「2人とも女の子」である確率に <strong>最も近い</strong> のは？</p>
+<p><strong>A1.</strong> 学生100人のうち、アルバイトをしている人が30人、一人暮らしの人が20人、<strong>その両方</strong>に当てはまる人が12人だった。この100人から1人を等確率で選ぶ。<span class="arithmatex">\(A\)</span>＝「アルバイトをしている」、<span class="arithmatex">\(B\)</span>＝「一人暮らしである」とするとき、<span class="arithmatex">\(P(A\mid B)\)</span> はいくつか。</p>
 <ul>
-<li>(ア) 約 1/4</li>
-<li>(イ) 約 1/3</li>
-<li>(ウ) 約 1/2</li>
+<li>(ア) 0.12</li>
+<li>(イ) 0.60</li>
+<li>(ウ) 0.40</li>
 </ul>
 <p><strong>A2.</strong> 条件付き確率 <span class="arithmatex">\(P(A\mid B)\)</span> の説明として <strong>最も適切</strong> なのは？</p>
 <ul>
