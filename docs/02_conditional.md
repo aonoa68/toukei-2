@@ -10,6 +10,7 @@
 <!-- LINKS:START -->
 !!! info "今日のリンク"
     - [📊 スライドを開く](slides/02.html)
+    - [🎬 解説動画を見る（8分半）](https://notebook.google.com/notebook/8933ab9f-b168-483e-8967-bcd5c99130ba)
     - [📓 Colabノートを開く（02_conditional.ipynb）](https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/02_conditional.ipynb)
     - [📝 課題を提出する（Moodle・第2回）](https://moodle.hokusei.ac.jp/mod/assign/view.php?id=990637)
     - 課題の本文は**このページの末尾**にあります
