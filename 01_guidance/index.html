@@ -1,0 +1,1288 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="北星学園大学「統計学Ⅱ」2026年度 後期 授業資料">
+      
+      
+        <meta name="author" content="小野原 彩香">
+      
+      
+        <link rel="canonical" href="https://aonoa68.github.io/toukei-2/01_guidance/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../02_conditional/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>第01回 Ⅰの復習とⅡの位置づけ - 統計学Ⅱ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#01-i" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="統計学Ⅱ" class="md-header__button md-logo" aria-label="統計学Ⅱ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            統計学Ⅱ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第01回 Ⅰの復習とⅡの位置づけ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="ダークモードに切り替え"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="ダークモードに切り替え" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="ライトモードに切り替え"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="ライトモードに切り替え" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="統計学Ⅱ" class="md-nav__button md-logo" aria-label="統計学Ⅱ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    統計学Ⅱ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第01回 Ⅰの復習とⅡの位置づけ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第01回 Ⅰの復習とⅡの位置づけ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回のゴール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 統計学Ⅰは何を示したか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 統計学Ⅱは何を新しく問うのか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 今期を貫く「独立性」という糸
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 予告編：賢い集団は、本当に賢いのか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 評価とルール（統計学Ⅰと同じ）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日の課題（Moodle提出）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_conditional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第02回 条件付き確率
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_bayes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第03回 ベイズの定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_discrete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第04回 二項・ポアソン分布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_normal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第05回 正規分布の数理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_clt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第06回 中心極限定理の再考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_interval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第07回 区間推定の理論
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_multiple/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第08回 検定の多重性問題
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_effectsize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第09回 効果量とp値批判
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_causal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10回 因果推論入門
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_confounding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11回 交絡と疑似相関
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_cascade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12回 情報カスケード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_condorcet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13回 コンドルセの陪審定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_synthesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14回 総括：孤高の意思決定者として
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回のゴール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 統計学Ⅰは何を示したか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 統計学Ⅱは何を新しく問うのか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 今期を貫く「独立性」という糸
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 予告編：賢い集団は、本当に賢いのか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 評価とルール（統計学Ⅰと同じ）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日の課題（Moodle提出）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="01-i">第01回　ガイダンス：統計学Ⅰの復習と本講義の位置づけ<a class="headerlink" href="#01-i" title="Permanent link">&para;</a></h1>
+<p><strong>9/29（火）Ⅲ講 13:00〜14:40・B402教室</strong></p>
+<blockquote>
+<p>Ⅰ＝直感の敗北。Ⅱ＝集団の敗北。―― そして、それを数学で証明する</p>
+</blockquote>
+<hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="../slides/01.html">📊 スライドを開く</a></li>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/01_review.ipynb">📓 Colabノートを開く（01_review.ipynb）</a></li>
+<li><a href="https://notebook.google.com/notebook/1f6eb003-6de4-4174-9f2e-a2423ff4d2c2">🎬 解説動画を見る（7分半）</a></li>
+<li><a href="https://moodle.hokusei.ac.jp/mod/assign/view.php?id=990636">📝 課題を提出する（Moodle・第1回）</a></li>
+<li>課題の本文は<strong>このページの末尾</strong>にあります</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
+<div class="admonition tip">
+<p class="admonition-title">解説動画について</p>
+<p>このページの内容をもとに、<strong>7分半の解説動画</strong>を用意しました（Gemini Notebook で生成）。予習にも復習にも使えます。ページを読む前に見ても、読んだあとの確認に使っても構いません。</p>
+<p>ただし<strong>AIが資料から自動生成したもの</strong>なので、細かい言い回しや強調のしかたはこのページと完全には一致しません。<strong>正確な定義・数値・前提は、必ずこのページ本体で確認してください。</strong></p>
+</div>
+<h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>統計学Ⅰの要点（代表値・ばらつき・相関）を高速で思い出す</li>
+<li>統計学Ⅱの全体像 ―― 確率論で武装し、統計的「誤用」と「空気を読む」ことの害を見抜く ―― の地図を頭に入れる</li>
+<li>今期を貫く一本の糸が <strong>「独立性」</strong> であることを知る</li>
+<li>（Ⅱから来た人は）Colab を起動して ▶ を押せるようになる</li>
+</ul>
+<p>到達目標との対応：<strong>全体の地図</strong> と <strong>G1（確率・ベイズ）の入口</strong>。</p>
+<hr />
+<h2 id="1-i">1. 統計学Ⅰは何を示したか<a class="headerlink" href="#1-i" title="Permanent link">&para;</a></h2>
+<p>Ⅰの主張はひとつだった ―― <strong>人間の直感は、速いが、系統的に間違える</strong>。モンティ・ホール、誕生日のパラドックス、平均年収の罠、相関と因果の取り違え。どれも「なんとなく」外れるのではなく、<strong>毎回おなじ向きに</strong> 外れた。それが認知バイアスだった。</p>
+<p>Ⅱでも、まずこの感覚を取り戻すところから始める。今日のColabノートで、Ⅰの2つの教訓を<strong>Ⅰと同じ霊長類376種のデータ</strong>で再確認する。見覚えのある数字が出てくるはずだ。</p>
+<table>
+<thead>
+<tr>
+<th>Ⅰの教訓</th>
+<th>今日の確認</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平均は外れ値に弱い（代表値は主張）</td>
+<td>歪んだ体重で「平均5,881g &gt; 中央値3,006g」を見る</td>
+</tr>
+<tr>
+<td>相関 ≠ 因果</td>
+<td><strong>対数変換した</strong>離乳日齢と行動圏の相関（r=0.657）が、対数体重で調整すると0.051まで小さくなるのを見る</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">このデータの「1行」が何かを確認しておく</p>
+<p>使うのは PanTHERIA という<strong>種単位</strong>のデータベースで、<strong>1行が1種</strong>である。したがって体重の平均・中央値は「世界中のサルを1頭ずつ数えた平均」ではなく、<strong>体重の値が得られている種を同じ重みで扱った要約</strong>である。個体数による重み付けはしていない。</p>
+<p>また、全376種のうち<strong>実際に使える種数は分析ごとに違う</strong>（欠損があるため）。ノートは種数を出力するので、そこを見ること。</p>
+<p>さらに、近縁な種は共通の祖先に由来して似る（<strong>系統的な非独立性</strong>）。今日は記述的な確認にとどめるが、ここから検定や因果の議論に進むなら、種を独立な反復として扱ってよいかを別途考える必要がある。</p>
+</div>
+<hr />
+<h2 id="2-ii">2. 統計学Ⅱは何を新しく問うのか<a class="headerlink" href="#2-ii" title="Permanent link">&para;</a></h2>
+<p>Ⅰが扱ったのは <strong>一人の人間の直感</strong> だった。Ⅱが扱うのは、その先 ―― <strong>集団</strong> と、推測を支える <strong>確率論の数理</strong> である。</p>
+<p>シラバスの到達目標は4つ。</p>
+<ol>
+<li><strong>条件付き確率とベイズの定理</strong>を理解し、情報の更新プロセスを説明できる（第2〜3回）</li>
+<li><strong>p値の限界と効果量</strong>の重要性を理解し、統計的誤用を批判的に検証できる（第8〜9回）</li>
+<li><strong>因果推論の基礎（交絡・疑似相関）</strong>を理解し、観察データからの安易な因果主張を見抜ける（第10〜11回）</li>
+<li><strong>独立性の概念</strong>を理解し、「空気を読む」ことが集団の判断精度を下げるメカニズムを説明できる（第12〜13回）</li>
+</ol>
+<p>この4つを貫く設計を、地図にするとこうなる。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>確率論で武装する        第2回 条件付き確率（独立性を定義）
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   │                    第3回 ベイズの定理（信念の更新）
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   │                    第4回 二項・ポアソン（独立試行）
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   │                    第5回 正規分布（独立な和の極限として現れる）
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   ▼
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>推測の前提を問い直す      第6回 中心極限定理の再考（CLTの隠れた前提＝独立）
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   │                    第7回 区間推定（依存を無視すると区間の幅を見誤る）
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   ▼
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>誤用を見抜く             第8回 検定の多重性（p-hacking）
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   │                    第9回 効果量とp値批判
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>   ▼
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>因果に近づく             第10回 RCTと観察研究
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>   │                    第11回 交絡と疑似相関
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>   ▼
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>集団の意思決定を解剖する   第12回 情報カスケード
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>   │                    第13回 コンドルセの陪審定理（独立な多数決＝集合知）
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>   ▼
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>統合                     第14回 孤高の意思決定者として
+</code></pre></div>
+<hr />
+<h2 id="3">3. 今期を貫く「独立性」という糸<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>統計学Ⅱのほとんどの回は、一本の概念で繋がっている ―― <strong>独立性</strong> だ。</p>
+<ul>
+<li>第2回で <strong>独立を定義する</strong>（<span class="arithmatex">\(P(A\cap B)=P(A)P(B)\)</span>。<span class="arithmatex">\(P(B)&gt;0\)</span> なら <span class="arithmatex">\(P(A\mid B)=P(A)\)</span> と同値）。</li>
+<li>
+<p>ただし「独立」が効いてくる場所は、回によって違う。ここは丁寧に分けておく。</p>
+<table>
+<thead>
+<tr>
+<th>対象</th>
+<th>独立性との関係</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二項分布（第4回）</td>
+<td>独立で成功確率の等しい試行の成功回数として導くので、<strong>独立を仮定している</strong></td>
+</tr>
+<tr>
+<td>正規分布（第5回）</td>
+<td><strong>分布の形の話であって、独立性とは別</strong>。<span class="arithmatex">\(X_1=X_2=Z\sim N(0,1)\)</span> は両方とも正規分布だが独立ではない</td>
+</tr>
+<tr>
+<td>中心極限定理（第6回）</td>
+<td>入門で扱う版は独立同分布＋有限分散を仮定する。<strong>依存を許す版もある</strong></td>
+</tr>
+<tr>
+<td>平均・区間推定（第7回）</td>
+<td>平均そのものは独立でなくても偏らない（<span class="arithmatex">\(E[\bar X]=\mu\)</span>）。問題は<strong>その精度をどう見積もるか</strong></td>
+</tr>
+</tbody>
+</table>
+<p>つまり「独立でないとお手上げ」ではない。<strong>独立を仮定した計算を、依存のあるデータにそのまま当てると危ない</strong>、というのが正確な言い方である。
+- そして第12〜13回で、その前提が <strong>「空気を読む」ことによって壊れる</strong> 現場を目撃する。</p>
+</li>
+</ul>
+<div class="admonition quote">
+<p class="admonition-title">このコースの立場（精神論ではない）</p>
+<p><strong>コンドルセの陪審定理</strong>（1785年）が言うのは、次の条件つきの命題である。正解のある二択問題で、各人が同じ確率 <span class="arithmatex">\(p &gt; 1/2\)</span> で正答し、その正誤が<strong>互いに独立</strong>なら、人数を増やすほど多数決の正答率は1に近づく。<strong><span class="arithmatex">\(p&gt;1/2\)</span> という条件も独立性と同じくらい重要</strong>で、<span class="arithmatex">\(p&lt;1/2\)</span> なら人数を増やすほど逆に悪くなる。</p>
+<p>では独立でなくなると何が起きるか。<strong>ここは依存の仕組みによる。</strong>「定理が崩れた瞬間に集団が全員そろって間違える」わけではない。</p>
+<p>たとえば、正答率55%の一人の判断を残り全員がそのまま真似るモデルを考えてみよう。判断は完全に相関するが、多数決の正答率は <span class="arithmatex">\(0.55\)</span> のままである。<strong>人数を増やす効果が消えるだけで、「必ず間違える」のではない</strong>（正解する確率55%、間違える確率45%）。依存があっても多数決の利点が残る条件も研究されている。</p>
+<p>だからこの授業で問うのは「集団は愚かか」ではなく、<strong>どういう条件で集団判断が改善し、どういう条件で改善しなくなるのか</strong>である。第12〜13回で、依存の入れ方を変えながらモデルとシミュレーションで検討する。</p>
+</div>
+<hr />
+<h2 id="4">4. 予告編：賢い集団は、本当に賢いのか<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>今日のColabの最後で、その予告編を一瞬だけ見る。</p>
+<p>正解率がコインより少しだけ高い（<strong>55%</strong>）人を集めて多数決をする。<strong>独立に</strong>判断する限り、人数を増やすと多数決の正解率は急速に上がり、<strong>ほぼ100%</strong> に達する。これがコンドルセの陪審定理だ。</p>
+<p>ただしこれは「<span class="arithmatex">\(p&gt;1/2\)</span> かつ独立」という条件の上に乗っている。人々が互いに合わせ始めると、<strong>人数を増やしても正答率が上がらなくなる</strong>。どういう依存の仕方でどれだけ効果が失われるのかを、第13回でモデルを変えながら確かめる。</p>
+<p>なお、今日のノートで確かめるのは <strong>201人までの独立判断のモデル</strong>である。「人数を無限に増やせば1に近づく」という極限の主張そのものを、有限回のシミュレーションが証明するわけではない。</p>
+<div class="admonition tip">
+<p class="admonition-title">今日のColab</p>
+<p><code>01_review.ipynb</code> を開き、上から ▶ を押すだけ。Ⅰの復習（代表値・相関）と、Ⅱの予告編（コンドルセ）を、自分の目で確認すること。</p>
+</div>
+<hr />
+<h2 id="5-i">5. 評価とルール（統計学Ⅰと同じ）<a class="headerlink" href="#5-i" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>このルールは、<strong><a href="../#_4">トップページの「評価と提出のルール」</a></strong> にも書いてあります。学期中はそちらを見てください。</p>
+</blockquote>
+<ul>
+<li>評価は <strong>毎回のMoodle課題（100%）</strong>。各回100点（選択40 ＋ 記述60）。</li>
+<li>記述は「考え方」を見る。<strong>正解の暗記ではなく、なぜそう判断したか</strong>を書く。</li>
+<li>課題には <strong>AIによる自動フィードバック</strong>が付く。提出後に講評が返る。</li>
+<li>Google Colab を使う。GoogleアカウントとノートPC（またはタブレット）を毎回持参すること。</li>
+<li><strong>提出期限は、次回授業の開始前まで。</strong></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">提出が遅れた場合</p>
+<p>期限を過ぎても受け付けます。ただし<strong>採点した点数に係数をかけます</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>遅れ</th>
+<th>評点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>期限から<strong>1週間以内</strong></td>
+<td>採点結果の <strong>70%</strong></td>
+</tr>
+<tr>
+<td><strong>1週間を超える</strong></td>
+<td>採点結果の <strong>50%</strong></td>
+</tr>
+<tr>
+<td>未提出</td>
+<td><strong>0点</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>出さないより出すほうが必ず得になる</strong>ようにしてあります。遅れても必ず提出してください。
+講評には「採点85点 × 70%（遅延1週間以内）＝ 60点」のように内訳を書きます。</p>
+</div>
+<hr />
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（選択40点 ＋ 記述60点）／ 提出先：Moodle ／ 提出期限：次回授業の開始時刻まで</strong></p>
+<p>第1回のColabノート <code>01_review.ipynb</code> を上から実行し、結果を見たうえで答えること。
+（統計学Ⅰを受けていない人も、ノートを実行すれば全問答えられる。）</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 今日のノートで見た霊長類の体重データでは、平均と中央値の関係はどうなっていた？</p>
+<ul>
+<li>(ア) 平均 ＜ 中央値</li>
+<li>(イ) 平均 ＝ 中央値</li>
+<li>(ウ) 平均 ＞ 中央値</li>
+</ul>
+<p><strong>A2.</strong> 離乳日齢と行動圏の相関係数が r ≈ 0.66 だった。ここから言えることとして <strong>最も適切</strong> なのは？</p>
+<ul>
+<li>(ア) 乳離れを遅くすれば、必ず行動圏が広がる（因果が証明された）</li>
+<li>(イ) 正の相関はあるが、これだけでは「離乳の遅さが原因で行動圏が広がる」とは言い切れない</li>
+<li>(ウ) 相関係数が1未満なので、離乳日齢と行動圏は無関係である</li>
+</ul>
+<p><strong>A3.</strong> 正解率55%（コインより少しだけ賢い）の人を、<strong>それぞれが独立に</strong>判断させて多数決をとる。人数を増やすと多数決の正解率は？</p>
+<ul>
+<li>(ア) ずっと55%のまま変わらない</li>
+<li>(イ) 人数とともに上がり、ほぼ100%に近づく</li>
+<li>(ウ) 人数が増えるほど下がっていく</li>
+</ul>
+<p><strong>A4.</strong> A3のように「人数を増やすと多数決の正解率が上がっていく（コンドルセの陪審定理）」が成り立つために必要な前提は、次のどれか？</p>
+<ul>
+<li>(ア) 全員が同じ結論になるよう、事前に話し合って合わせること</li>
+<li>(イ) 一人ひとりの正解率がちょうど50%であること</li>
+<li>(ウ) 一人ひとりの正解率が <strong>50%を上回り</strong>、かつ互いに <strong>独立に</strong> 判断すること</li>
+</ul>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong></p>
+<p>今日のノートの3つの話（代表値・相関と交絡・多数決）から1つ選び、次の2点を <strong>150〜250字程度</strong>で書きなさい。</p>
+<ol>
+<li><strong>実行前のあなたの予想</strong>と、実際の結果。<strong>一致していても、していなくても構わない</strong></li>
+<li>その結果になる<strong>仕組み</strong>と、答えを左右している<strong>前提</strong></li>
+</ol>
+<p>（統計学Ⅰを受けた人は、Ⅰで扱った内容と結びつけて書いてよい）</p>
+<p><strong>B2.（30点）</strong> 身近な「集団で何かを決めた・同じ方向に流れた」出来事を1つ挙げなさい（会議・流行・口コミ・SNSなど何でもよい）。その例について、コンドルセの定理が使える状況かどうかを、次の3条件に照らして検討しなさい。</p>
+<ol>
+<li><strong>判定できる正解があるか</strong>（好みや流行には、そもそも正解がない場合がある）</li>
+<li><strong>各人の正答確率が 1/2 を上回っていそうか</strong></li>
+<li><strong>各人の判断が独立といえるか</strong></li>
+</ol>
+<p>3つのうち<strong>判断できない条件があれば、「何が分かれば判断できるか」</strong>を書くこと。条件が揃わない例を選んでも構いません。</p>
+<blockquote>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+<p><strong>字数は目安です。多少の過不足で減点はしません。</strong>見るのは、設問が挙げた要素（上の箇条書き）が書けているかどうかです。ただし要素が抜けていれば、その分は引きます。
+（B2で考えたことは、第12〜13回「情報カスケード／コンドルセの陪審定理」で数理的に回収する。）</p>
+</blockquote>
+<div class="admonition abstract">
+<p class="admonition-title">次回予告</p>
+<p>第2回「確率論の基礎(1)：条件付き確率」。「子どもが2人、<strong>少なくとも1人は女の子</strong>。2人とも女の子の確率は？」 ―― 男女が各1/2で2人が独立、という仮定のもとでは <strong>1/3</strong> になる（女女・女男・男女が等確率だから）。</p>
+<p>ただし「2人のうち<strong>無作為に選んだ1人</strong>が女の子だった」なら、もう1人も女の子である確率は <strong>1/2</strong> である。<strong>同じ「女の子がいる」でも、その情報をどう得たかで答えが変わる</strong>。ここが条件付き確率の勘所で、今期の主役 <strong>「独立性」</strong> もここで定義する。</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="前: ホーム">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                ホーム
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02_conditional/" class="md-footer__link md-footer__link--next" aria-label="次: 第02回 条件付き確率">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                第02回 条件付き確率
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

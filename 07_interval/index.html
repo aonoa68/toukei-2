@@ -1,0 +1,1215 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="北星学園大学「統計学Ⅱ」2026年度 後期 授業資料">
+      
+      
+        <meta name="author" content="小野原 彩香">
+      
+      
+        <link rel="canonical" href="https://aonoa68.github.io/toukei-2/07_interval/">
+      
+      
+        <link rel="prev" href="../06_clt/">
+      
+      
+        <link rel="next" href="../08_multiple/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>第07回 区間推定の理論 - 統計学Ⅱ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#07" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="統計学Ⅱ" class="md-header__button md-logo" aria-label="統計学Ⅱ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            統計学Ⅱ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第07回 区間推定の理論
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="ダークモードに切り替え"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="ダークモードに切り替え" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="ライトモードに切り替え"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="ライトモードに切り替え" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="統計学Ⅱ" class="md-nav__button md-logo" aria-label="統計学Ⅱ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    統計学Ⅱ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_guidance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第01回 Ⅰの復習とⅡの位置づけ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_conditional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第02回 条件付き確率
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_bayes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第03回 ベイズの定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_discrete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第04回 二項・ポアソン分布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_normal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第05回 正規分布の数理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_clt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第06回 中心極限定理の再考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第07回 区間推定の理論
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第07回 区間推定の理論
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回のゴール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 信頼区間の作り方
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 「95%」の本当の意味 ―― カバレッジ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 独立が崩れると ―― 「95%」が嘘になる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日のまとめ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日の課題（Moodle提出）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_multiple/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第08回 検定の多重性問題
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_effectsize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第09回 効果量とp値批判
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_causal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10回 因果推論入門
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_confounding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11回 交絡と疑似相関
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_cascade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12回 情報カスケード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_condorcet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13回 コンドルセの陪審定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_synthesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14回 総括：孤高の意思決定者として
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回のゴール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 信頼区間の作り方
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 「95%」の本当の意味 ―― カバレッジ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 独立が崩れると ―― 「95%」が嘘になる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日のまとめ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日の課題（Moodle提出）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="07">第07回　区間推定の理論<a class="headerlink" href="#07" title="Permanent link">&para;</a></h1>
+<p><strong>11/17（火）Ⅲ講 13:00〜14:40・B402教室</strong></p>
+<blockquote>
+<p>信頼区間はどう作られ、独立が崩れるとどう嘘になるか</p>
+</blockquote>
+<hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="../slides/07.html">📊 スライドを開く</a></li>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/07_interval.ipynb">📓 Colabノートを開く（07_interval.ipynb）</a></li>
+<li><a href="https://moodle.hokusei.ac.jp/mod/assign/view.php?id=990642">📝 課題を提出する（Moodle・第7回）</a></li>
+<li>課題の本文は<strong>このページの末尾</strong>にあります</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
+<div class="admonition tip">
+<p class="admonition-title">考え方をガイドで確かめる</p>
+<p>この回の考え方は、統計の考え方ガイドの<a href="https://aonoa68.github.io/teaching/guide/interval/">「推定と信頼区間」</a>でも解説しています。霊長類のデータを動かしながら確かめられます。</p>
+</div>
+<h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>信頼区間の作り方を理解する：<span class="arithmatex">\(\bar{x}\pm t_{0.975,n-1}\,s/\sqrt{n}\)</span></li>
+<li>「95%」の本当の意味＝<strong>カバレッジ</strong>（手続きの当たり率）を説明できる（Ⅰの復習）</li>
+<li>区間の幅を決める3要素（標準誤差・信頼度・<span class="arithmatex">\(n\)</span>）を知る</li>
+<li><strong>独立が崩れると95%信頼区間が95%を守れない</strong>ことを確かめる</li>
+<li><strong>発展</strong>：信頼区間の式が不等式を <span class="arithmatex">\(\mu\)</span> について解いたものであること、独立が崩れると被覆率が落ちる理由を、自分で導ける</li>
+</ul>
+<p>到達目標との対応：<strong>G2（統計的誤用の批判）</strong> と <strong>G4（独立性）</strong>。</p>
+<hr />
+<h2 id="1">1. 信頼区間の作り方<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>母平均 <span class="arithmatex">\(\mu\)</span> を標本から推定したい。点推定は標本平均 <span class="arithmatex">\(\bar{x}\)</span> ひとつだが、それだけでは「どれくらい確かか」が分からない。そこで <strong>区間</strong> で示す。</p>
+<div class="arithmatex">\[\bar{x} \;\pm\; t_{0.975,\,n-1}\times \frac{s}{\sqrt{n}}\]</div>
+<ul>
+<li><span class="arithmatex">\(s/\sqrt{n}\)</span> … 第6回の <strong>標準誤差</strong>（標本平均のばらつき）</li>
+<li><span class="arithmatex">\(t_{0.975,\,n-1}\)</span> … 母分散が未知なので、正規分布の代わりに <strong>t分布</strong> を使う（<span class="arithmatex">\(n\)</span> が小さいほど区間が広がる）</li>
+</ul>
+<details class="note" open="open">
+<summary>導出①：信頼区間の式は、不等式を <span class="arithmatex">\(\mu\)</span> について解いたもの</summary>
+<p>統計学Ⅰ第7回では、母分散 <span class="arithmatex">\(\sigma^2\)</span> が既知の場合を導いた。標準化した量が標準正規分布に従うことから出発する。</p>
+<div class="arithmatex">\[\Pr\!\left(-1.96 \le \frac{\bar{X}-\mu}{\sigma/\sqrt{n}} \le 1.96\right) = 0.95\]</div>
+<p>かっこの中を <span class="arithmatex">\(\mu\)</span> について解く。各辺に <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> を掛け、<span class="arithmatex">\(\bar{X}\)</span> を移項して符号を整理すると、</p>
+<div class="arithmatex">\[\Pr\!\left(\bar{X}-1.96\frac{\sigma}{\sqrt{n}} \;\le\; \mu \;\le\; \bar{X}+1.96\frac{\sigma}{\sqrt{n}}\right) = 0.95\]</div>
+<p>これが信頼区間である。<strong>新しい原理は何も使っていない。不等式を変形しただけ</strong>だ。</p>
+<p>現実には <span class="arithmatex">\(\sigma\)</span> は未知なので、標本から <span class="arithmatex">\(s\)</span> を計算して代わりに使う。すると分母までランダムになり、分子と分母の両方が揺れるぶん、分布は正規分布より裾が重くなる。これが自由度 <span class="arithmatex">\(n-1\)</span> の <strong>t分布</strong> で、<span class="arithmatex">\(1.96\)</span> が <span class="arithmatex">\(t_{0.975,\,n-1}\)</span> に置き換わる。</p>
+<div class="arithmatex">\[\bar{x} \;\pm\; t_{0.975,\,n-1}\frac{s}{\sqrt{n}}\]</div>
+<p><span class="arithmatex">\(n\)</span> が小さいほど <span class="arithmatex">\(s\)</span> の当てにならなさが効くので、<span class="arithmatex">\(t\)</span> の値は大きくなり区間は広がる。<span class="arithmatex">\(n=30\)</span> なら <span class="arithmatex">\(t_{0.975,29}=2.045\)</span> で、<span class="arithmatex">\(1.96\)</span> よりわずかに大きい。</p>
+<p>t分布の密度関数そのものの導出は、この科目で扱う統計数理の範囲外である。ここでは「なぜ正規分布のままではいけないのか」が分かれば十分。</p>
+<p><strong>使った数学</strong>：不等式の同値変形（数I）。標準化（統計学Ⅰ第6回）。</p>
+</details>
+<hr />
+<h2 id="2-95">2. 「95%」の本当の意味 ―― カバレッジ<a class="headerlink" href="#2-95" title="Permanent link">&para;</a></h2>
+<p>95%信頼区間の正しい意味は「真の値がこの区間に95%の確率で入る」では <strong>ない</strong>。正しくは：</p>
+<blockquote>
+<p>同じ手続きで標本を取り直して区間を作る、を何度も繰り返すと、そのうち約95%の区間が真の値を含む。</p>
+</blockquote>
+<p>これを <strong>カバレッジ（被覆率）</strong> という。Colabで100本の区間を描くと、約95本が真の母平均を含み、約5本が外す。<strong>「95%」は真値についての確率ではなく、手続きの当たり率</strong>だ。</p>
+<p>区間の <strong>幅</strong> を決めるのは3つ：標準誤差 <span class="arithmatex">\(s/\sqrt{n}\)</span>、信頼度（95%か99%か）、標本サイズ <span class="arithmatex">\(n\)</span>。<span class="arithmatex">\(n\)</span> を増やすと幅は狭まる ―― <strong>ただし、標本が独立なら</strong>。</p>
+<details class="note" open="open">
+<summary>導出②：ランダムなのは <span class="arithmatex">\(\mu\)</span> ではなく、区間の側</summary>
+<p>被覆率の定義を式で書くと、こうなる。</p>
+<div class="arithmatex">\[\Pr\Big(\mu \in \big[\;\bar{X}-t\tfrac{S}{\sqrt{n}},\;\; \bar{X}+t\tfrac{S}{\sqrt{n}}\;\big]\Big) \;=\; 0.95\]</div>
+<p><strong>この式のどこに確率変数があるか</strong> を確かめてほしい。大文字で書いた <span class="arithmatex">\(\bar{X}\)</span> と <span class="arithmatex">\(S\)</span> は標本から計算される量で、標本を取り直すたびに値が変わる。一方 <span class="arithmatex">\(\mu\)</span> は母集団が持っている定数で、動かない。</p>
+<p>つまり確率がかかっているのは <strong>区間の端点</strong> であって、<span class="arithmatex">\(\mu\)</span> ではない。標本ごとに区間が左右に動き、そのうち95%が、動かない <span class="arithmatex">\(\mu\)</span> をまたぐ。これが「95%」の中身である。</p>
+<p>だから「真の値が95%の確率でこの区間にある」は、式の読み違いになる。手元にある区間はすでに計算が済んでいて、端点はもう動かない。その区間が <span class="arithmatex">\(\mu\)</span> を含むか含まないかは決まっており、確率は 0 か 1 しかない。95%という数は <strong>その区間を作った手続き</strong> についての性質であって、目の前の1本についての性質ではない。</p>
+<p><strong>使った数学</strong>：確率変数と定数の区別（統計学Ⅰ第6回）。</p>
+</details>
+<hr />
+<h2 id="3-95">3. 独立が崩れると ―― 「95%」が嘘になる<a class="headerlink" href="#3-95" title="Permanent link">&para;</a></h2>
+<p>第6回で見たとおり、標本が <strong>相関する</strong>（みんなが空気を読んで似た回答をする）と、本当のばらつきは <span class="arithmatex">\(s/\sqrt{n}\)</span> より大きい。なのに区間は <span class="arithmatex">\(s/\sqrt{n}\)</span> で作る ―― つまり <strong>狭すぎる区間</strong> になり、真値をしょっちゅう外す。</p>
+<p>Colabで、独立な標本と相関した標本（<span class="arithmatex">\(\rho=0.3\)</span>）でカバレッジを1万回ずつ測ると：</p>
+<table>
+<thead>
+<tr>
+<th>標本</th>
+<th>「95%信頼区間」の実際のカバレッジ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>独立（<span class="arithmatex">\(\rho=0\)</span>）</td>
+<td>約 95% ← 正しく機能</td>
+</tr>
+<tr>
+<td>相関（<span class="arithmatex">\(\rho=0.3\)</span>＝空気を読む）</td>
+<td><strong>約 42% ← 半分以下！</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>独立なら約95%。だが空気を読むと、『95%信頼区間』は4割程度しか真値を含まない。</strong> 名前は「95%」でも中身はまるで違う。狭い区間を見て「精密に推定できた」と喜ぶのは、独立性を確認していなければ早とちりだ。</p>
+<details class="note" open="open">
+<summary>導出③：なぜ被覆率が 95% から 42% まで落ちるのか</summary>
+<p>区間が真値を捕まえる確率は、<strong>区間の半幅が、標本平均の本当のばらつきに対してどれだけ余裕を持っているか</strong> で決まる。相関があると、この比が2か所で同時に悪化する。</p>
+<p><strong>① 捕まえるべき的は広がる。</strong> 第6回の導出②より、標本平均の真の標準偏差は</p>
+<div class="arithmatex">\[\mathrm{SD}[\bar{X}] \;=\; \frac{\sigma}{\sqrt{n}}\sqrt{1+(n-1)\rho}\]</div>
+<p><span class="arithmatex">\(n=30,\ \rho=0.3\)</span> では <span class="arithmatex">\(\sqrt{9.7}=3.11\)</span> 倍に膨らむ。</p>
+<p><strong>② 区間の方は逆に縮む。</strong> 半幅は <span class="arithmatex">\(t\,s/\sqrt{n}\)</span> で作るが、等相関のもとでは標本の中のばらつき <span class="arithmatex">\(s\)</span> 自体が小さく出る。共通の要因で全員が同じ向きに動くぶん、標本の内部では差が見えにくくなるからだ。実際 <span class="arithmatex">\(\mathbb{E}[s^2]=\sigma^2(1-\rho)\)</span> となり、<span class="arithmatex">\(\rho=0.3\)</span> なら <span class="arithmatex">\(s\)</span> は平均して <span class="arithmatex">\(\sqrt{0.7}=0.837\)</span> 倍に縮む。</p>
+<p>両方を合わせると、</p>
+<div class="arithmatex">\[\frac{\text{真のばらつき}}{\text{区間が想定するばらつき}} \;=\; \sqrt{\frac{1+(n-1)\rho}{1-\rho}} \;=\; \sqrt{\frac{9.7}{0.7}} \;=\; 3.72\]</div>
+<p>本来 <span class="arithmatex">\(t=2.045\)</span> 個分の幅が必要なのに、実質 <span class="arithmatex">\(2.045/3.72=0.55\)</span> 個分しか取れていない。標準正規で見積もると被覆率は</p>
+<div class="arithmatex">\[2\Phi(0.55)-1 \;\approx\; 0.42\]</div>
+<p>本文の表の <strong>約42%</strong> は、この計算が出した値である。<strong>区間が狭くなるのと的が広がるのが、同じ1つの原因から同時に起きる。</strong> だから被覆率はこれほど急激に落ちる。</p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(n=30,\ \rho=0.3\)</span> で2万回のシミュレーションを行うと、被覆率は 41.7%、<span class="arithmatex">\(\mathbb{E}[s^2]\)</span> の実測は 0.701（理論値 <span class="arithmatex">\(\sigma^2(1-\rho)=0.70\)</span>）。独立な標本では 95.2% で、名前どおりに機能する。</p>
+<p><strong>使った数学</strong>：第6回の導出②。標準正規分布の分布関数（微I）。</p>
+<div class="admonition warning">
+<p class="admonition-title">同じことが検定にも起きる</p>
+<p>標準誤差が小さく見積もられれば、t 値は大きくなり p値は小さく出る。<strong>狭すぎる信頼区間と、小さすぎる p値は、同じ原因から同時に生まれる。</strong> 第8回以降の検定の話も、この土台の上にある。</p>
+</div>
+</details>
+<div class="admonition quote">
+<p class="admonition-title">今期の背骨</p>
+<p>区間推定も検定も、すべて「標本は独立」という土台の上に建っている。空気を読む集団から取ったデータでは、その土台が抜けている。<strong>狭い区間・小さいp値は、精密さの証ではなく、独立性の崩壊を見落とした結果かもしれない。</strong> これを疑えることが、統計的誤用を見抜く力だ。</p>
+</div>
+<hr />
+<h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ポイント</th>
+<th>中身</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>信頼区間</td>
+<td><span class="arithmatex">\(\bar{x}\pm t_{0.975,n-1}\,s/\sqrt{n}\)</span>。母分散未知なので t 分布</td>
+</tr>
+<tr>
+<td>95%の意味</td>
+<td>真値の確率ではなく、手続きを繰り返したときの<strong>カバレッジ</strong>（当たり率）</td>
+</tr>
+<tr>
+<td>幅を決めるもの</td>
+<td>標準誤差・信頼度・<span class="arithmatex">\(n\)</span>（独立が前提）</td>
+</tr>
+<tr>
+<td>独立が崩れると</td>
+<td>区間が狭すぎてカバレッジが95%を大きく割る＝「95%」が嘘になる</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（選択40点 ＋ 記述60点）／ 提出先：Moodle ／ 提出期限：次回授業の開始時刻まで</strong></p>
+<p>第7回のColabノート <code>07_interval.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 母分散が未知のとき、母平均の95%信頼区間を作るのに使う分布は？</p>
+<ul>
+<li>(ア) 正規分布（z）</li>
+<li>(イ) t分布</li>
+<li>(ウ) 二項分布</li>
+</ul>
+<p><strong>A2.</strong> 「95%信頼区間」の正しい意味はどれか？</p>
+<ul>
+<li>(ア) 真の値が、この区間の中に95%の確率で入っている</li>
+<li>(イ) 同じ手続きで区間を作り直すことを繰り返すと、約95%の区間が真の値を含む</li>
+<li>(ウ) 標本の95%がこの区間に入っている</li>
+</ul>
+<p><strong>A3.</strong> 信頼区間の <strong>幅</strong> を狭くする（推定を精密にする）要因として正しいのは？</p>
+<ul>
+<li>(ア) 標本サイズ <span class="arithmatex">\(n\)</span> を増やす（ただし標本が独立な場合）</li>
+<li>(イ) 信頼度を95%から99%に上げる</li>
+<li>(ウ) 標準誤差を大きくする</li>
+</ul>
+<p><strong>A4.</strong> Colabで、相関した標本（ρ=0.3、空気を読む）に対して「95%信頼区間」のカバレッジを測ると、どうなったか？</p>
+<ul>
+<li>(ア) 約95%を保った</li>
+<li>(イ) 約42%まで下がった（区間が狭すぎて、半分以下しか真値を含まない）</li>
+<li>(ウ) 約99%に上がった</li>
+</ul>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 「95%信頼区間」の意味を、<strong>よくある誤解</strong>（真値が95%の確率で入る）と対比しながら、正しく<strong>150〜250字程度</strong>で説明しなさい。「カバレッジ（手続きの当たり率）」という考え方を必ず使うこと。</p>
+<p><strong>B2.（30点）</strong> Colabで、標本が独立でない（空気を読んで相関する）と、「95%信頼区間」が実際には4割程度しか真値を含まないことを見た。これを踏まえて次の2点を書きなさい。</p>
+<ol>
+<li>なぜ相関した標本だと区間が「狭すぎる」ものになり、カバレッジが下がるのか（第6回の標準誤差と結びつけて）</li>
+<li>「とても狭い信頼区間が出た＝精密に推定できた」と早とちりするのが危険なのはなぜか</li>
+</ol>
+<blockquote>
+<p>ヒント：B2は第6回（相関するとSEが本当のばらつきを過小評価）の直接の帰結。狭い区間・小さいp値を見たら、まず「独立か？」を疑う習慣につながる。</p>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+<p><strong>字数は目安です。多少の過不足で減点はしません。</strong>見るのは、設問が挙げた要素（上の箇条書き）が書けているかどうかです。ただし要素が抜けていれば、その分は引きます。</p>
+</blockquote>
+<div class="admonition abstract">
+<p class="admonition-title">次回予告</p>
+<p>第8回「検定の多重性問題」。「20種類のゼリービーンズとニキビの関係を検定したら、緑だけ有意になった」 ―― たくさん試すと偶然の有意が出る。p-hacking の罠へ。</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../06_clt/" class="md-footer__link md-footer__link--prev" aria-label="前: 第06回 中心極限定理の再考">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                第06回 中心極限定理の再考
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../08_multiple/" class="md-footer__link md-footer__link--next" aria-label="次: 第08回 検定の多重性問題">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                第08回 検定の多重性問題
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

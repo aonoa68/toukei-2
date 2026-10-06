@@ -1,0 +1,1318 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="北星学園大学「統計学Ⅱ」2026年度 後期 授業資料">
+      
+      
+        <meta name="author" content="小野原 彩香">
+      
+      
+        <link rel="canonical" href="https://aonoa68.github.io/toukei-2/13_condorcet/">
+      
+      
+        <link rel="prev" href="../12_cascade/">
+      
+      
+        <link rel="next" href="../14_synthesis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>第13回 コンドルセの陪審定理 - 統計学Ⅱ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#13" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="統計学Ⅱ" class="md-header__button md-logo" aria-label="統計学Ⅱ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            統計学Ⅱ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第13回 コンドルセの陪審定理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="ダークモードに切り替え"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="ダークモードに切り替え" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="ライトモードに切り替え"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="ライトモードに切り替え" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="統計学Ⅱ" class="md-nav__button md-logo" aria-label="統計学Ⅱ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    統計学Ⅱ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_guidance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第01回 Ⅰの復習とⅡの位置づけ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_conditional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第02回 条件付き確率
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_bayes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第03回 ベイズの定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_discrete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第04回 二項・ポアソン分布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_normal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第05回 正規分布の数理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_clt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第06回 中心極限定理の再考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_interval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第07回 区間推定の理論
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_multiple/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第08回 検定の多重性問題
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_effectsize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第09回 効果量とp値批判
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_causal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10回 因果推論入門
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_confounding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11回 交絡と疑似相関
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_cascade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12回 情報カスケード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13回 コンドルセの陪審定理
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13回 コンドルセの陪審定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回のゴール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. コンドルセの陪審定理 ―― 独立な多数は賢い
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 「空気を読む」とは、投票を相関させること
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 人数を増やしても、空気を読む集団は救われない
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 集団浅慮（グループシンク）と、独立を守る仕組み
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ディベート（教室で）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日のまとめ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日の課題（Moodle提出）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_synthesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14回 総括：孤高の意思決定者として
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回のゴール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. コンドルセの陪審定理 ―― 独立な多数は賢い
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 「空気を読む」とは、投票を相関させること
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 人数を増やしても、空気を読む集団は救われない
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 集団浅慮（グループシンク）と、独立を守る仕組み
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ディベート（教室で）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日のまとめ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日の課題（Moodle提出）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="13">第13回　「空気を読む」ことの愚かさ：コンドルセの陪審定理<a class="headerlink" href="#13" title="Permanent link">&para;</a></h1>
+<p><strong>1/12（火）Ⅲ講 13:00〜14:40・B402教室</strong></p>
+<blockquote>
+<p>独立な多数は賢い。だが空気を読んだ瞬間、その知恵は消える</p>
+</blockquote>
+<hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="../slides/13.html">📊 スライドを開く</a></li>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/13_condorcet.ipynb">📓 Colabノートを開く（13_condorcet.ipynb）</a></li>
+<li><a href="https://moodle.hokusei.ac.jp/mod/assign/view.php?id=990648">📝 課題を提出する（Moodle・第13回）</a></li>
+<li>課題の本文は<strong>このページの末尾</strong>にあります</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
+<h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>コンドルセの陪審定理</strong> を理解する：一人の正解率&gt;0.5 かつ独立なら、多数決の正解率は人数とともに1へ</li>
+<li>「空気を読む」＝投票が相関することであり、それが定理を崩壊させることを数値で確かめる</li>
+<li><strong>集団浅慮（groupthink）</strong> と、独立を守る制度的工夫を知る</li>
+<li>「“空気を読む”ことが集団の判断精度を下げる」を <strong>数理的に</strong> 説明できる</li>
+<li><strong>発展</strong>：陪審定理の式と、実効人数 <span class="arithmatex">\(n_{\text{eff}}=n/[1+(n-1)\rho]\)</span> を自分で導ける</li>
+</ul>
+<p>到達目標との対応：<strong>G4（独立性を理解し、「空気を読む」ことが集団の判断精度を下げるメカニズムを説明できる）</strong> の頂点。今期の到達点。</p>
+<div class="admonition warning">
+<p class="admonition-title">はじめに（これは道徳の話ではない）</p>
+<p>「空気を読むことの愚かさ」は、人を挑発するための言葉ではない。<strong>コンドルセの陪審定理</strong>（1785年）という、200年以上前から数学的に証明されている事実の話だ。本回では、その定理が成り立つ条件（独立）と、条件が壊れたとき（空気を読む）に何が起きるかを、シミュレーションで確かめる。</p>
+</div>
+<hr />
+<h2 id="1">1. コンドルセの陪審定理 ―― 独立な多数は賢い<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>設定はシンプル。</p>
+<ul>
+<li>ある問いに正解（YES/NO）がある。</li>
+<li>一人ひとりはコインより少し賢い ―― 正解率 <strong>55%</strong>。</li>
+<li>全員が <strong>独立に</strong> 判断し、<strong>多数決</strong> で答えを決める。</li>
+</ul>
+<p><strong>コンドルセの陪審定理</strong>：一人の正解率が 0.5 より高く、各人が独立に判断するなら、<strong>多数決の正解率は、人数を増やすほど 1 に近づく</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>人数（独立）</th>
+<th>多数決の正解率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>55%</td>
+</tr>
+<tr>
+<td>51</td>
+<td>76%</td>
+</tr>
+<tr>
+<td>201</td>
+<td>92%</td>
+</tr>
+<tr>
+<td>1001</td>
+<td><strong>99.9%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>たった55%の凡人でも、独立に1000人集めれば多数決はほぼ確実に正解する。</strong> これが「群衆の智慧」の数学的な正体だ。第6回の裏返し ―― 独立な判断は誤りが互いに打ち消し合い、わずかな正解寄りの偏りだけが増幅される。<strong>独立であることが、集団を賢くしている。</strong></p>
+<details class="note" open="open">
+<summary>導出①：コンドルセの陪審定理はどこから出るのか</summary>
+<p><span class="arithmatex">\(n\)</span> 人が同じ問いに答える。各人は確率 <span class="arithmatex">\(p\)</span> で正解し、判断は互いに<strong>独立</strong>とする。正解した人数を <span class="arithmatex">\(K\)</span> とすると、<span class="arithmatex">\(K\)</span> は成功確率 <span class="arithmatex">\(p\)</span> の試行を <span class="arithmatex">\(n\)</span> 回くりかえしたときの成功回数、つまり<strong>二項分布</strong>に従う（第4回）。</p>
+<div class="arithmatex">\[P(K=k)=\binom{n}{k}p^{k}(1-p)^{n-k}\]</div>
+<p>多数決が正解するのは、正解した人が過半数を超えたときである。したがって</p>
+<div class="arithmatex">\[P_n=\sum_{k&gt;n/2}\binom{n}{k}p^{k}(1-p)^{n-k}\]</div>
+<p>ここで <span class="arithmatex">\(n\)</span> を大きくするとどうなるか。<strong>大数の法則</strong>より、正解者の割合 <span class="arithmatex">\(K/n\)</span> は <span class="arithmatex">\(p\)</span> に近づいていく。<span class="arithmatex">\(p&gt;1/2\)</span> なら <span class="arithmatex">\(K/n\)</span> は <span class="arithmatex">\(1/2\)</span> を超えた値に落ち着くので、「過半数」という条件はほぼ必ず満たされる。つまり <span class="arithmatex">\(P_n\to1\)</span>。</p>
+<p>独立性は、二項分布の式を立てるまさにその段階で使っている。各人の正解・不正解を掛け算でつないでよいのは、互いに独立だからである。<strong>定理の主役は人数ではなく、この掛け算を許す独立性のほうだ。</strong></p>
+<div class="admonition note">
+<p class="admonition-title">収束の速さは、この科目の範囲外</p>
+<p><span class="arithmatex">\(K/n\)</span> が <span class="arithmatex">\(p\)</span> に近づく速さや、<span class="arithmatex">\(P_n\)</span> が 1 に近づく速さを厳密に評価するには大偏差の評価が要る。ここでは「割合が <span class="arithmatex">\(p\)</span> に近づくから、<span class="arithmatex">\(p&gt;1/2\)</span> なら過半数を超え続ける」という筋道までとする。</p>
+</div>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(p=0.55\)</span> として上の式を厳密に計算すると、<span class="arithmatex">\(n=1\)</span> で 55.00%、<span class="arithmatex">\(n=51\)</span> で 76.41%、<span class="arithmatex">\(n=201\)</span> で 92.26%、<span class="arithmatex">\(n=1001\)</span> で 99.92%。</p>
+<p><strong>使った数学</strong>：二項分布（第4回）、大数の法則、独立な事象の確率の掛け算。</p>
+</details>
+<details class="note" open="open">
+<summary>導出②：一人の正解率が半分を下回ると、多数決は確実に誤る</summary>
+<p>導出①の議論は <span class="arithmatex">\(p\)</span> が <span class="arithmatex">\(1/2\)</span> より大きいことをどこにも使っていない。使ったのは「<span class="arithmatex">\(K/n\)</span> が <span class="arithmatex">\(p\)</span> に近づく」という事実だけである。だから <span class="arithmatex">\(p&lt;1/2\)</span> のときは、正解者の割合が <span class="arithmatex">\(1/2\)</span> を下回った値に落ち着き、過半数を超えることがほぼなくなる。つまり <span class="arithmatex">\(P_n\to0\)</span>。</p>
+<p><span class="arithmatex">\(p=1/2\)</span> ちょうどなら、<span class="arithmatex">\(P_n\)</span> は <span class="arithmatex">\(n\)</span> によらずおよそ <span class="arithmatex">\(1/2\)</span> のまま。人数を増やしても何も改善しない。</p>
+<p>まとめると、人数 <span class="arithmatex">\(n\)</span> は<strong>一人ひとりの正しさの向きを増幅する装置</strong>である。向きが正しければ増幅されて 1 へ、誤っていれば増幅されて 0 へ向かう。「多数決だから正しい」のではない。<strong>一人ひとりが半分より正しいことが、定理のもう一つの前提</strong>なのだ。</p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(p=0.45\)</span>（半分よりわずかに誤る人たち）で厳密に計算すると、<span class="arithmatex">\(n=51\)</span> で 23.59%、<span class="arithmatex">\(n=201\)</span> で 7.74%、<span class="arithmatex">\(n=1001\)</span> で 0.08%。人数を増やすほど、多数決は確実に誤るほうへ向かう。<span class="arithmatex">\(p=0.50\)</span> なら <span class="arithmatex">\(n\)</span> をどれだけ増やしても 50.00% のままである。</p>
+<p><strong>使った数学</strong>：導出①と同じ。<span class="arithmatex">\(p\)</span> と <span class="arithmatex">\(1/2\)</span> の大小だけが結論の向きを決める。</p>
+</details>
+<hr />
+<h2 id="2">2. 「空気を読む」とは、投票を相関させること<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>空気を読むとは、自分だけの判断ではなく、<strong>その場の雰囲気・多数派の気配に自分の答えを寄せる</strong>こと。モデルでは、全員が共有する「雰囲気」成分の重み <span class="arithmatex">\(\rho\)</span> を上げることで表せる（<span class="arithmatex">\(\rho=0\)</span> なら完全に独立、大きいほど同調）。</p>
+<p>一人の正解率は <strong>55%のまま</strong>。変えるのは「独立か、空気に従うか」だけ。201人の多数決で <span class="arithmatex">\(\rho\)</span> を上げると：</p>
+<table>
+<thead>
+<tr>
+<th>空気を読む度 <span class="arithmatex">\(\rho\)</span></th>
+<th>201人の多数決の正解率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0（完全に独立）</td>
+<td><strong>約 92%</strong></td>
+</tr>
+<tr>
+<td>0.2（少しだけ空気を読む）</td>
+<td>約 61%</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>約 58%</td>
+</tr>
+<tr>
+<td>0.8</td>
+<td>約 56%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ほんの少し空気を読むだけ（<span class="arithmatex">\(\rho=0.2\)</span>）で、92%が61%まで崩れ落ちる</strong> ―― ほとんど一人の55%に逆戻り。201人という人数の価値が、ほぼ完全に消える。空気を読むと、みんなが同じ「雰囲気」という1つの判断に従うので、実質 <strong>たった1人で決めているのと同じ</strong> になるからだ。</p>
+<hr />
+<h2 id="3">3. 人数を増やしても、空気を読む集団は救われない<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>「人数を増やせば挽回できるのでは？」――独立ならできる。だが空気を読む（相関した）集団では、<strong>いくら人を増やしても正解率は頭打ち</strong>になる。第6回（相関した標本は <span class="arithmatex">\(n\)</span> を増やしても下げ止まる）とまったく同じ構造だ。Colabのグラフでは、独立な集団（青）だけが人数とともに1へ伸び、空気を読む集団（橙・赤）は5000人集めても賢くならない。</p>
+<details class="note" open="open">
+<summary>導出③：相関が入ると、人数が「実効人数」に縮む</summary>
+<p>ここが今期の到達点である。</p>
+<p>各人の判断を、共有の「雰囲気」成分と個人の成分に分けて書く。Colabのモデルでは</p>
+<div class="arithmatex">\[X_i=\sqrt{\rho}\,U+\sqrt{1-\rho}\,Z_i\]</div>
+<p>とする。<span class="arithmatex">\(U\)</span> は全員が共有する雰囲気、<span class="arithmatex">\(Z_i\)</span> は各人だけが持つ独立な成分である。この <span class="arithmatex">\(X_i\)</span> どうしの相関はちょうど <span class="arithmatex">\(\rho\)</span> になる。<span class="arithmatex">\(\rho=0\)</span> なら完全に独立、<span class="arithmatex">\(\rho\)</span> が大きいほど全員が同じ雰囲気に従う。一人の正解率は <span class="arithmatex">\(\rho\)</span> によらず 55% のまま変わらないことに注意してほしい。<strong>変えているのは賢さではなく、独立性だけである。</strong></p>
+<p>第6回で導いたように、相関 <span class="arithmatex">\(\rho\)</span> を持つ <span class="arithmatex">\(n\)</span> 個の平均の分散は</p>
+<div class="arithmatex">\[\mathrm{Var}[\bar{X}]=\frac{\sigma^{2}}{n}\left[1+(n-1)\rho\right]\]</div>
+<p>となる。独立なら <span class="arithmatex">\(\sigma^{2}/n\)</span> だったものが、<span class="arithmatex">\([1+(n-1)\rho]\)</span> 倍に膨らんでいる。</p>
+<p>この分散を、<strong>独立な <span class="arithmatex">\(n_{\text{eff}}\)</span> 人の平均の分散</strong> <span class="arithmatex">\(\sigma^{2}/n_{\text{eff}}\)</span> と等しいと置いて <span class="arithmatex">\(n_{\text{eff}}\)</span> について解くと、</p>
+<div class="arithmatex">\[\frac{\sigma^{2}}{n_{\text{eff}}}=\frac{\sigma^{2}}{n}\left[1+(n-1)\rho\right]
+\quad\Longrightarrow\quad
+n_{\text{eff}}=\frac{n}{1+(n-1)\rho}\]</div>
+<p>これが<strong>実効人数</strong>である。<span class="arithmatex">\(\rho&gt;0\)</span> の集団は、統計的には <span class="arithmatex">\(n\)</span> 人ではなく <span class="arithmatex">\(n_{\text{eff}}\)</span> 人分の働きしかしていない。</p>
+<p><span class="arithmatex">\(\rho\)</span> を固定したまま <span class="arithmatex">\(n\to\infty\)</span> とすると、分母では <span class="arithmatex">\((n-1)\rho\)</span> が支配的になり、</p>
+<div class="arithmatex">\[n_{\text{eff}}\;\longrightarrow\;\frac{1}{\rho}\]</div>
+<p>で<strong>頭打ち</strong>になる。人数をいくら増やしても、実効人数は <span class="arithmatex">\(1/\rho\)</span> を超えない。<span class="arithmatex">\(\rho=0.2\)</span> なら、何万人集めても実質5人である。これが「人数を増やしても、空気を読む集団は救われない」ことの正体であり、導出①の <span class="arithmatex">\(P_n\to1\)</span> が成り立たなくなる理由でもある。定理が間違っているのではない。<strong>前提の独立が消えたので、定理が適用できないのだ。</strong></p>
+<p><strong>数値で確かめる</strong>：<span class="arithmatex">\(\rho=0.2\)</span> のとき、実効人数は 201人で 4.90 人、1001人で 4.98 人、5001人で 5.00 人。頭打ちの <span class="arithmatex">\(1/\rho=5\)</span> に張り付いている。同じ条件で多数決の正解率をシミュレーションすると、201人で 60.7%、1001人で 61.0%、5001人で 61.5%。人数を25倍にしても 1 ポイントも動かない（シミュレーションなので 0.5 ポイント程度はぶれる）。</p>
+<div class="admonition note">
+<p class="admonition-title">実効人数は目安である</p>
+<p><span class="arithmatex">\(n_{\text{eff}}\)</span> は分散をそろえて置き換えた近似であり、多数決の正解率が独立な <span class="arithmatex">\(n_{\text{eff}}\)</span> 人とぴったり一致するわけではない。実際、<span class="arithmatex">\(p=0.55\)</span> で独立5人の多数決は 59.3%、<span class="arithmatex">\(\rho=0.2\)</span> の201人は約 61% で、近いが同じではない。それでも「201人が実質5人分に縮む」という桁の感覚は、この式が正しく与えている。</p>
+</div>
+<p><strong>使った数学</strong>：分散の加法性と共分散（第6回）、等式を <span class="arithmatex">\(n_{\text{eff}}\)</span> について解く、極限。</p>
+</details>
+<div class="admonition quote">
+<p class="admonition-title">今期の結論 ―― これは事実である</p>
+<p>集団が賢くなる条件は「人数が多いこと」ではない。<strong>一人ひとりが独立に判断すること</strong>だ。空気を読む・忖度する・多数派に合わせるという行為は、その独立性を自分から手放すこと ―― いわば <strong>集合知の自殺</strong> である。これは精神論でも価値観でもなく、コンドルセの陪審定理が示す数学的な帰結だ。多数が同じ意見でも、それが互いに空気を読んだ結果なら、その一致にはほとんど情報がない。</p>
+</div>
+<hr />
+<h2 id="4">4. 集団浅慮（グループシンク）と、独立を守る仕組み<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>独立が失われた集団が、自信満々に間違った結論へ進む現象を、社会心理学では <strong>集団浅慮（groupthink）</strong> と呼ぶ。歴史上の組織的失敗の多くがこれで説明される。だからこそ賢い組織は <strong>独立性を制度で守る</strong>：</p>
+<ul>
+<li>偉い人から先に意見を言わない（さもないと全員がその「空気」に従う＝<span class="arithmatex">\(\rho\)</span> が上がる）</li>
+<li>まず各自が <strong>無記名で同時に</strong> 書いて出す（投票・ブレインライティング）</li>
+<li>わざと反対役（悪魔の代弁者）を置く</li>
+<li>多様な背景の人を入れる（同じ空気を共有させない）</li>
+</ul>
+<p>どれも狙いは一つ ―― <strong>判断の独立を守り、<span class="arithmatex">\(\rho\)</span> を下げること</strong>だ。</p>
+<hr />
+<h2 id="5">5. ディベート（教室で）<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>テーマ：<strong>「会議では空気を読むべきか」</strong>。コンドルセとカスケード（第12回）の言葉を使って、賛成・反対に分かれて論じよう。道徳ではなく <strong>数理</strong> で。</p>
+<ul>
+<li>空気を読むことに利点はあるか（スピード・摩擦の回避）？ そのとき集団の判断精度はどうなるか？</li>
+<li>「みんなが賛成しているから安心だ」と言える条件は？ 言えない条件は？</li>
+<li>あなたが意思決定者なら、<span class="arithmatex">\(\rho\)</span> を下げるためにどんなルールを置くか？</li>
+</ul>
+<hr />
+<h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ポイント</th>
+<th>中身</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンドルセの陪審定理</td>
+<td>一人の正解率&gt;0.5 かつ <strong>独立</strong> なら、多数決の正解率は人数とともに1へ</td>
+</tr>
+<tr>
+<td>空気を読む</td>
+<td>判断が共有の「雰囲気」に相関する（<span class="arithmatex">\(\rho\)</span> が上がる）</td>
+</tr>
+<tr>
+<td>崩壊</td>
+<td><span class="arithmatex">\(\rho=0.2\)</span> でも201人の正解率は92%→61%。人数を増やしても頭打ち</td>
+</tr>
+<tr>
+<td>集団浅慮</td>
+<td>独立を失った集団が自信満々に誤る。独立を制度で守るしかない</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（選択40点 ＋ 記述60点）／ 提出先：Moodle ／ 提出期限：次回授業の開始時刻まで</strong></p>
+<p>第13回のColabノート <code>13_condorcet.ipynb</code> を上から実行し、結果を見たうえで答えること。
+<strong>この課題は、到達目標（独立性と集団の判断精度）の総仕上げである。</strong></p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> コンドルセの陪審定理が成り立つための条件として、<strong>両方とも必要</strong> なのはどれか？</p>
+<ul>
+<li>(ア) 一人の正解率が0.5より高い／全員が独立に判断する</li>
+<li>(イ) 一人の正解率がちょうど0.5／全員が同じ意見になる</li>
+<li>(ウ) 人数が偶数である／全員が専門家である</li>
+</ul>
+<p><strong>A2.</strong> 一人の正解率55%の人が <strong>独立に</strong> 多数決すると、人数を増やしたとき正解率は？</p>
+<ul>
+<li>(ア) 55%のまま変わらない</li>
+<li>(イ) 人数とともに上がり、1（ほぼ確実）に近づく</li>
+<li>(ウ) 下がっていく</li>
+</ul>
+<p><strong>A3.</strong> Colabで、201人・一人の正解率55%のまま「空気を読む度合い ρ」を0から0.2に上げると、多数決の正解率はどうなったか？</p>
+<ul>
+<li>(ア) 92%のまま変わらなかった</li>
+<li>(イ) 約92%から約61%へ大きく下がった</li>
+<li>(ウ) さらに上がって99%になった</li>
+</ul>
+<p><strong>A4.</strong> <strong>一人の正解率が55%</strong>の集団が「空気を読む（投票が相関する）」とき、人数を5000人まで増やすとどうなるか？</p>
+<ul>
+<li>(ア) 独立な集団と同じく、正解率は1に近づく</li>
+<li>(イ) 正解率は頭打ちになり、人数を増やしても賢くならない</li>
+<li>(ウ) 人数を増やすほど正解率が0に近づく</li>
+</ul>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（40点／この回はB1を重視）</strong> <strong>到達目標の総仕上げ</strong>。
+「“空気を読む”ことが、集団の判断精度を下げる」――このメカニズムを、<strong>コンドルセの陪審定理</strong>と<strong>独立性</strong>という言葉を使って、数理的に説明しなさい（<strong>250〜400字程度</strong>）。次の要素をすべて含めること：</p>
+<ol>
+<li>コンドルセの陪審定理は何を主張し、その <strong>前提</strong> は何か</li>
+<li>「空気を読む」とは、各人の判断にとって何が起きることか（独立との関係）</li>
+<li>その結果、Colabの数値（例：201人で92%→61%、人数を増やしても頭打ち）がなぜ起きるのか</li>
+<li>「多数が同じ意見だから正しい」がいつ信用でき、いつ危険か</li>
+</ol>
+<p><strong>B2.（20点）</strong> 第12回（情報カスケード）と今回（コンドルセ）はコインの裏表である。両者に <strong>共通する核心</strong> は何か、あなたの言葉で <strong>150〜200字程度</strong>で述べなさい。</p>
+<blockquote>
+<p>文字数の目安：B1・B2あわせて 400〜600字。<strong>道徳論（「空気を読むのは良くない」だけ）では評価しない。数理（独立・相関・正解率）で説明すること。</strong> コピペ・引き写しは評価しない。</p>
+<p><strong>字数は目安です。多少の過不足で減点はしません。</strong>見るのは、設問が挙げた要素（上の箇条書き）が書けているかどうかです。ただし要素が抜けていれば、その分は引きます。</p>
+<p>※この回は今期の到達点。「空気を読むのは悪い」という感想ではなく、<strong>なぜ・どういう仕組みで集団の精度が下がるのか</strong>を、数理の言葉で説明できているかを最重視する。</p>
+</blockquote>
+<div class="admonition abstract">
+<p class="admonition-title">次回予告</p>
+<p>第14回「総括：孤高の意思決定者として」。Ⅰ＝直感の敗北、Ⅱ＝集団の敗北。では我々はどう判断すればよいのか。14回の地図を俯瞰し、第1回の自分と再会する。</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../12_cascade/" class="md-footer__link md-footer__link--prev" aria-label="前: 第12回 情報カスケード">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                第12回 情報カスケード
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../14_synthesis/" class="md-footer__link md-footer__link--next" aria-label="次: 第14回 総括：孤高の意思決定者として">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                第14回 総括：孤高の意思決定者として
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

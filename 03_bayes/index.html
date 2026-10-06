@@ -1,0 +1,1613 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="北星学園大学「統計学Ⅱ」2026年度 後期 授業資料">
+      
+      
+        <meta name="author" content="小野原 彩香">
+      
+      
+        <link rel="canonical" href="https://aonoa68.github.io/toukei-2/03_bayes/">
+      
+      
+        <link rel="prev" href="../02_conditional/">
+      
+      
+        <link rel="next" href="../04_discrete/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>第03回 ベイズの定理 - 統計学Ⅱ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#03-2" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="統計学Ⅱ" class="md-header__button md-logo" aria-label="統計学Ⅱ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            統計学Ⅱ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第03回 ベイズの定理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="ダークモードに切り替え"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="ダークモードに切り替え" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="ライトモードに切り替え"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="ライトモードに切り替え" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="統計学Ⅱ" class="md-nav__button md-logo" aria-label="統計学Ⅱ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    統計学Ⅱ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_guidance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第01回 Ⅰの復習とⅡの位置づけ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_conditional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第02回 条件付き確率
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第03回 ベイズの定理
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第03回 ベイズの定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回のゴール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第2回の答案から ―― 冒頭で確認すること
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第2回の答案から ―― 冒頭で確認すること">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 分母をどこに取るか（小テスト A1 の誤答）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 条件の名前で、求めた確率を呼んでしまう
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 記号の書き方・事象の立て方
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第3回につながること
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 直感クイズ ―― 検査が陽性、あなたは病気か？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 直感クイズ ―― 検査が陽性、あなたは病気か？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自然頻度で考えるとわかる（100万人を検査）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ベイズの定理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 基準率を動かすと、答えは激変する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 逐次更新 ―― 今日の事後は、明日の事前
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日のまとめ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日の課題（Moodle提出）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_discrete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第04回 二項・ポアソン分布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_normal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第05回 正規分布の数理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_clt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第06回 中心極限定理の再考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_interval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第07回 区間推定の理論
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_multiple/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第08回 検定の多重性問題
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_effectsize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第09回 効果量とp値批判
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_causal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10回 因果推論入門
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_confounding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11回 交絡と疑似相関
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_cascade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12回 情報カスケード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_condorcet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13回 コンドルセの陪審定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_synthesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14回 総括：孤高の意思決定者として
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回のゴール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第2回の答案から ―― 冒頭で確認すること
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第2回の答案から ―― 冒頭で確認すること">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 分母をどこに取るか（小テスト A1 の誤答）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 条件の名前で、求めた確率を呼んでしまう
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 記号の書き方・事象の立て方
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第3回につながること
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 直感クイズ ―― 検査が陽性、あなたは病気か？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 直感クイズ ―― 検査が陽性、あなたは病気か？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自然頻度で考えるとわかる（100万人を検査）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ベイズの定理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 基準率を動かすと、答えは激変する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 逐次更新 ―― 今日の事後は、明日の事前
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日のまとめ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日の課題（Moodle提出）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="今日の課題（Moodle提出）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a10-440" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートA：選択問題（各10点 ×4＝40点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bai60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パートB：記述問題（AIフィードバック対象・60点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="03-2">第03回　確率論の基礎(2)：ベイズの定理の深掘り<a class="headerlink" href="#03-2" title="Permanent link">&para;</a></h1>
+<p><strong>10/13（火）Ⅲ講 13:00〜14:40・B402教室</strong></p>
+<blockquote>
+<p>「データで信念を更新する」。直感を裏切る <strong>基準率の誤謬</strong></p>
+</blockquote>
+<hr />
+<!-- LINKS:START -->
+<div class="admonition info">
+<p class="admonition-title">今日のリンク</p>
+<ul>
+<li><a href="../slides/03.html">📊 スライドを開く</a></li>
+<li><a href="https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/03_bayes.ipynb">📓 Colabノートを開く（03_bayes.ipynb）</a></li>
+<li><a href="https://moodle.hokusei.ac.jp/mod/assign/view.php?id=990638">📝 課題を提出する（Moodle・第3回）</a></li>
+<li>課題の本文は<strong>このページの末尾</strong>にあります</li>
+</ul>
+</div>
+<!-- LINKS:END -->
+
+<div class="admonition tip">
+<p class="admonition-title">考え方をガイドで確かめる</p>
+<p>この回の考え方は、統計の考え方ガイドの<a href="https://aonoa68.github.io/teaching/guide/bayes/">「確率とベイズ」</a>でも解説しています。霊長類のデータを動かしながら確かめられます。</p>
+</div>
+<h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>ベイズの定理を理解する：<span class="arithmatex">\(P(H\mid D)=\dfrac{P(D\mid H)\,P(H)}{P(D)}\)</span></li>
+<li>事前確率・尤度・事後確率の役割を説明できる</li>
+<li><strong>基準率の誤謬</strong> と <strong>陽性的中率</strong> を理解し、「検査の精度」と「的中率」を混同しない</li>
+<li>逐次更新（今日の事後＝明日の事前）が学習の数理であることを知る</li>
+<li><strong>発展</strong>：ベイズの定理を条件付き確率の定義から導き、オッズ形式（事後オッズ＝事前オッズ×尤度比）を自分で書ける</li>
+</ul>
+<p>到達目標との対応：<strong>G1（条件付き確率とベイズの定理を理解し、情報の更新プロセスを説明できる）</strong> の本丸。</p>
+<hr />
+<h2 id="2">第2回の答案から ―― 冒頭で確認すること<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>第2回の課題（条件付き確率と独立）は、<strong>学生17名が提出し、記述は13名が満点</strong>だった。
+減点した4名と、小テストの誤答に、<strong>共通する型が3つ</strong>ある。
+どれも今日のベイズの定理に直接ひびくので、先に確認しておく。</p>
+<h3 id="1-a1">① 分母をどこに取るか（小テスト A1 の誤答）<a class="headerlink" href="#1-a1" title="Permanent link">&para;</a></h3>
+<p>学生100人のうち、アルバイト30人、一人暮らし20人、両方12人。
+このとき <span class="arithmatex">\(P(A\mid B)\)</span>（一人暮らしの人がアルバイトをしている確率）はいくつか。</p>
+<table>
+<thead>
+<tr>
+<th>答え</th>
+<th>何の確率か</th>
+<th>計算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.12</td>
+<td><span class="arithmatex">\(P(A\cap B)\)</span> ―― 100人のうち両方の人</td>
+<td><span class="arithmatex">\(12 \div 100\)</span></td>
+</tr>
+<tr>
+<td><strong>0.60</strong></td>
+<td><span class="arithmatex">\(P(A\mid B)\)</span> ―― <strong>一人暮らしの20人のうち</strong>アルバイトの人</td>
+<td><span class="arithmatex">\(12 \div 20\)</span></td>
+</tr>
+<tr>
+<td>0.40</td>
+<td><span class="arithmatex">\(P(B\mid A)\)</span> ―― アルバイト30人のうち一人暮らしの人</td>
+<td><span class="arithmatex">\(12 \div 30\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>同じ12人を、3つの違う分母で割っている。</strong>どれを分母にするかで答えが3つに分かれる。
+今日のベイズの定理は、まさに<strong>この分母を取り替える</strong>計算である。</p>
+<h3 id="2_1">② 条件の名前で、求めた確率を呼んでしまう<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>次の書き方が複数見られた（教員の答案にも同じ言い間違いがあった）。</p>
+<blockquote>
+<p>✗ このため、<strong>「少なくとも1人は女」という確率は 1/3</strong></p>
+</blockquote>
+<p>字義どおり読むと <span class="arithmatex">\(P(\text{少なくとも1人は女}) = 1/3\)</span> になる。
+だが実際は <span class="arithmatex">\(P(\text{少なくとも1人は女}) = 3/4\)</span> である。1/3 なのは別のものだ。</p>
+<blockquote>
+<p>○ <strong>「少なくとも1人は女」という条件のもとで、「2人とも女」である確率</strong>が 1/3</p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">これは今日いちばん危ない言い間違い</p>
+<p>条件付き確率には<strong>条件</strong>と<strong>知りたいこと</strong>の2つが入っている。
+片方の名前だけで呼ぶと、どちらを指しているのか分からなくなる。</p>
+<p>今日の検査の例でいえば、「<strong>陽性の確率</strong>は50%」と書くと間違いになる。
+50%なのは「<strong>陽性という条件のもとで、病気である確率</strong>」であって、
+陽性になる確率そのものは約2%である。</p>
+</div>
+<h3 id="3">③ 記号の書き方・事象の立て方<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>書かれていたこと</th>
+<th>直し方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(P(A/B)\)</span> と書いた</td>
+<td>条件付き確率は <span class="arithmatex">\(P(A\mid B)\)</span>。<strong>縦棒は割り算ではない</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(A\)</span>＝「授業をとっている人（100人）」と定義した</td>
+<td><span class="arithmatex">\(A\)</span>・<span class="arithmatex">\(B\)</span> は<strong>出来事（事象）</strong>。人の集まりではない。「指名された人が履修者である」のように書く</td>
+</tr>
+<tr>
+<td>「それぞれ 1/4」を書かなかった</td>
+<td>4通りが<strong>等確率だからこそ</strong>、3通りに絞って 1/3 になる。等確率でなければこの計算はできない</td>
+</tr>
+<tr>
+<td>「従属だから因果関係がある」と読める書き方</td>
+<td>従属は「一方を知るともう一方の確率が変わる」だけ。<strong>原因かどうかは問わない</strong>（第10回で扱う）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3_1">第3回につながること<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>今日は <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span> と <span class="arithmatex">\(P(\text{陽性}\mid\text{病気})\)</span> の取り違えが主題になる。
+①の「分母をどこに取るか」と②の「条件の名前で呼んでしまう」は、
+<strong>どちらもこの取り違えと同じ構造</strong>である。第2回で引っかかった人は、今日も同じ場所で迷う。</p>
+<hr />
+<h2 id="1">1. 直感クイズ ―― 検査が陽性、あなたは病気か？<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>性能のとても良い検査がある。</p>
+<ul>
+<li>感度 <span class="arithmatex">\(P(\text{陽性}\mid\text{病気})\)</span>：99%</li>
+<li>特異度 <span class="arithmatex">\(P(\text{陰性}\mid\text{健康})\)</span>：99%</li>
+</ul>
+<p>この病気は <strong>100人に1人（有病率1%）</strong> がかかる。あなたは検査で <strong>陽性</strong> になった。</p>
+<p><strong>問い：あなたが本当に病気である確率は？</strong></p>
+<p>直感は「99%の精度だから99%くらい」と答える。だが正解は <strong>約50%</strong> である。
+検査の性能が低いのではない。<strong>50%という数字は、この有病率1%のもとでの答え</strong>であって、
+「どんな病気でも五分五分」でも「検査が当てずっぽうと同じ」でもない（有病率を変えると下の第3節のように大きく変わる）。</p>
+<h3 id="100">自然頻度で考えるとわかる（100万人を検査）<a class="headerlink" href="#100" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>人数</th>
+<th>うち陽性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>病気の人（1%）</td>
+<td>10,000</td>
+<td><strong>9,900</strong>（真陽性）</td>
+</tr>
+<tr>
+<td>健康な人（99%）</td>
+<td>990,000</td>
+<td><strong>9,900</strong>（偽陽性）</td>
+</tr>
+</tbody>
+</table>
+<p>陽性になった 19,800 人のうち、本当に病気なのは 9,900 人。だから</p>
+<div class="arithmatex">\[P(\text{病気}\mid\text{陽性}) = \frac{9{,}900}{19{,}800} = 50\%\]</div>
+<p>病気の人はそもそも少ないので、「健康なのに誤って陽性」の人が「本当に病気で陽性」と同じだけ出てしまう。<strong>検査の精度（99%）と陽性的中率（50%）はまったく別の数字</strong>だ。</p>
+<div class="admonition warning">
+<p class="admonition-title">今日の最重要ポイント</p>
+<p>直感は <span class="arithmatex">\(P(\text{陽性}\mid\text{病気})=99\%\)</span> を <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})=99\%\)</span> と取り違える。これは第2回でやった <strong>条件付き確率の「向き」の混同</strong>そのもの。<span class="arithmatex">\(P(A\mid B)\)</span> と <span class="arithmatex">\(P(B\mid A)\)</span> は別物だった。</p>
+</div>
+<hr />
+<h2 id="2_2">2. ベイズの定理<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h2>
+<p>いまの計算を式にすると、<strong>ベイズの定理</strong> になる。</p>
+<div class="arithmatex">\[\underbrace{P(H\mid D)}_{\text{事後確率}} = \frac{\overbrace{P(D\mid H)}^{\text{尤度}}\;\overbrace{P(H)}^{\text{事前確率}}}{P(D)}\]</div>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>意味</th>
+<th>検査の例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事前確率 <span class="arithmatex">\(P(H)\)</span></td>
+<td>データを見る前の信念</td>
+<td>有病率 1%</td>
+</tr>
+<tr>
+<td>尤度 <span class="arithmatex">\(P(D\mid H)\)</span></td>
+<td>その仮説のもとでデータが出る確率</td>
+<td>感度 99%</td>
+</tr>
+<tr>
+<td>事後確率 <span class="arithmatex">\(P(H\mid D)\)</span></td>
+<td>データを見た後に更新した信念</td>
+<td>陽性的中率 50%</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">記号の対応（この回でずっと使う）</p>
+<ul>
+<li><span class="arithmatex">\(H\)</span> … 仮説（hypothesis）。この例では「<strong>病気である</strong>」</li>
+<li><span class="arithmatex">\(\bar{H}\)</span> … その否定。「<strong>健康である</strong>」</li>
+<li><span class="arithmatex">\(D\)</span> … 観測されたデータ（data）。この例では「<strong>検査が陽性</strong>」</li>
+</ul>
+<p>検査の3つの数値は、この記号ではこう書ける。</p>
+<table>
+<thead>
+<tr>
+<th>検査の用語</th>
+<th>記号</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>感度</td>
+<td><span class="arithmatex">\(P(D\mid H)\)</span></td>
+<td>0.99</td>
+</tr>
+<tr>
+<td>特異度</td>
+<td><span class="arithmatex">\(P(\bar{D}\mid\bar{H})\)</span></td>
+<td>0.99</td>
+</tr>
+<tr>
+<td>偽陽性率</td>
+<td><span class="arithmatex">\(P(D\mid\bar{H}) = 1-\text{特異度}\)</span></td>
+<td>0.01</td>
+</tr>
+</tbody>
+</table>
+<p>特異度は「健康な人を<strong>陰性</strong>と正しく言える確率」なので、健康な人が<strong>陽性</strong>になる確率は
+その余事象、つまり <span class="arithmatex">\(1-\)</span> 特異度 <span class="arithmatex">\(=0.01\)</span> になる。</p>
+</div>
+<p><strong>ベイズの定理＝データで信念を更新する計算。</strong> 事前 1% が、陽性というデータで 50% に更新された。</p>
+<details class="note" open="open">
+<summary>導出①：ベイズの定理は、定義を2通りに書いただけ</summary>
+<p>第2回の条件付き確率の定義を、2つの向きで書いてみる。</p>
+<div class="arithmatex">\[P(H\mid D) = \frac{P(H\cap D)}{P(D)}, \qquad P(D\mid H) = \frac{P(H\cap D)}{P(H)}\]</div>
+<p>どちらにも同じ <span class="arithmatex">\(P(H\cap D)\)</span> が現れている。2本目を <span class="arithmatex">\(P(H\cap D)\)</span> について解くと <span class="arithmatex">\(P(H\cap D)=P(D\mid H)\,P(H)\)</span>。これを1本目に代入すれば、</p>
+<div class="arithmatex">\[P(H\mid D) = \frac{P(D\mid H)\,P(H)}{P(D)}\]</div>
+<p>これがベイズの定理である。<strong>「定理」という名前がついているが、やったことは条件付き確率の定義を2通りに書いて、共通部分を消しただけ</strong>で、新しい原理は何も使っていない。</p>
+<p>第2回で「<span class="arithmatex">\(P(A\mid B)\)</span> と <span class="arithmatex">\(P(B\mid A)\)</span> は別物だ」と学んだ。ベイズの定理は、その続きとして「では両者はどう関係しているのか」に答えている。向きを逆にするには、事前確率 <span class="arithmatex">\(P(H)\)</span> を掛けて <span class="arithmatex">\(P(D)\)</span> で割ればよい ―― それだけのことである。</p>
+<p><strong>使った数学</strong>：条件付き確率の定義（第2回）と、式の代入（算数）。</p>
+</details>
+<details class="note" open="open">
+<summary>導出②：分母 <span class="arithmatex">\(P(D)\)</span> を開くと、偽陽性が姿を現す</summary>
+<p>分母の <span class="arithmatex">\(P(D)\)</span> は「陽性になる確率」である。陽性になる道は2つしかない。<strong>本当に病気で陽性</strong>になるか、<strong>健康なのに誤って陽性</strong>になるか。この2つは重ならず、これで全部を尽くす。だから足せばよい（全確率の公式）。</p>
+<div class="arithmatex">\[P(D) = \underbrace{P(D\mid H)\,P(H)}_{\text{真陽性}} \;+\; \underbrace{P(D\mid \bar{H})\,P(\bar{H})}_{\text{偽陽性}}\]</div>
+<p>数値を入れる。感度 <span class="arithmatex">\(P(D\mid H)=0.99\)</span>、有病率 <span class="arithmatex">\(P(H)=0.01\)</span>。特異度が 99% なので、健康な人が誤って陽性になる確率はその余事象で <span class="arithmatex">\(P(D\mid\bar{H})=1-0.99=0.01\)</span>（偽陽性率）。</p>
+<div class="arithmatex">\[P(D) = 0.99\times 0.01 \;+\; 0.01\times 0.99 = 0.0099 + 0.0099 = 0.0198\]</div>
+<p>2つの項が <strong>ぴったり同じ大きさ</strong> になっている。したがって</p>
+<div class="arithmatex">\[P(H\mid D) = \frac{0.99\times 0.01}{0.0198} = \frac{0.0099}{0.0198} = \frac{1}{2}\]</div>
+<p>上の自然頻度の表にある 9,900 と 9,900、合計 19,800 は、この式の各項に 100 万を掛けただけのものである。式と表は同じ計算をしている。</p>
+<p>ここに基準率の誤謬の正体がある。偽陽性の <strong>率</strong> は 1% と小さい。しかしそれが掛かる相手（健康な人）は 99% と多い。<strong>小さい率 × 大きい人数</strong> が、<strong>大きい率 × 小さい人数</strong> に追いついてしまう。率だけを見て、その率が掛かる相手の大きさを見ないと、判断を誤る。</p>
+<p><strong>使った数学</strong>：全確率の公式（場合分けして足す）と、掛け算・割り算。</p>
+</details>
+<hr />
+<h2 id="3_2">3. 基準率を動かすと、答えは激変する<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h2>
+<p>同じ性能（感度99%・特異度99%）の検査でも、<strong>病気の珍しさ（基準率）</strong> が変われば陽性的中率はまるで違う。</p>
+<table>
+<thead>
+<tr>
+<th>有病率（基準率）</th>
+<th>陽性的中率 <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.01%</td>
+<td>1.0%</td>
+</tr>
+<tr>
+<td>0.1%</td>
+<td>9.0%</td>
+</tr>
+<tr>
+<td>1%</td>
+<td>50.0%</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>91.7%</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>99.0%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>検査の性能は何も変わっていないのに</strong>、珍しい病気ほど陽性的中率は低い。直感がこれを外すのは、<strong>基準率（その事象がもともとどれくらい起こりやすいか）を無視する</strong>から ―― これを <strong>基準率の誤謬（base rate fallacy）</strong> と呼ぶ。</p>
+<div class="admonition tip">
+<p class="admonition-title">応用が効く</p>
+<p>迷惑メール判定、防犯カメラの顔認証、まれな不正の検知 ―― すべて同じ罠がある。「精度99%のAIが警告した」と聞いても、対象がもともと稀なら、警告の大半は誤検知かもしれない。</p>
+</div>
+<details class="note" open="open">
+<summary>導出③：オッズで書くと、分母 <span class="arithmatex">\(P(D)\)</span> が消える</summary>
+<p>「病気 <span class="arithmatex">\(H\)</span>」と「健康 <span class="arithmatex">\(\bar{H}\)</span>」の2つの仮説について、ベイズの定理をそれぞれ書き、<strong>比を取る</strong>。分母はどちらも同じ <span class="arithmatex">\(P(D)\)</span> なので、割り算で消えてしまう。</p>
+<div class="arithmatex">\[\frac{P(H\mid D)}{P(\bar{H}\mid D)} \;=\; \frac{P(D\mid H)}{P(D\mid \bar{H})} \;\times\; \frac{P(H)}{P(\bar{H})}\]</div>
+<p>言葉にすると、こうなる。</p>
+<div class="arithmatex">\[\text{事後オッズ} \;=\; \text{尤度比} \;\times\; \text{事前オッズ}\]</div>
+<p>検査の例で確かめる。事前オッズは <span class="arithmatex">\(0.01/0.99 = 1/99\)</span>。尤度比は 感度 ÷ 偽陽性率 で <span class="arithmatex">\(0.99/0.01 = 99\)</span>。掛け合わせると</p>
+<div class="arithmatex">\[\text{事後オッズ} = \frac{1}{99}\times 99 = 1\]</div>
+<p>オッズ 1 は「病気と健康が五分五分」、確率に直すと <span class="arithmatex">\(1/(1+1)=1/2\)</span>。導出②と同じ答えが、割り算ひとつで出た。</p>
+<p>この形の利点は、<strong>2つの効き方が分離して見える</strong>ことである。検査の性能は <strong>尤度比</strong> としてだけ効き、病気の珍しさは <strong>事前オッズ</strong> としてだけ効く。前節の表で「検査の性能は何も変わっていないのに答えが激変する」のは、尤度比 99 を据え置いたまま、事前オッズだけを動かしているからである。</p>
+<div class="admonition note">
+<p class="admonition-title">逐次更新は、尤度比を掛け続けるだけ</p>
+<p>この形なら、次節の逐次更新も一行で書ける。検査を2回受けて2回とも陽性なら、尤度比をもう一度掛ければよい。</p>
+<div class="arithmatex">\[\text{事後オッズ} = \frac{1}{99}\times 99 \times 99 = 99\]</div>
+<p>確率に直すと <span class="arithmatex">\(99/100 = 99\%\)</span>。1回目の陽性では五分五分だったものが、2回目で 99% になる。<strong>「今日の事後は明日の事前」とは、オッズに尤度比を掛け足していくこと</strong>である。</p>
+<p>ただしこれは、2回の検査が <strong>同じ真の状態のもとで条件付きに独立</strong> であること、つまり</p>
+<div class="arithmatex">\[P(D_2\mid H, D_1)=P(D_2\mid H), \qquad P(D_2\mid \bar{H}, D_1)=P(D_2\mid \bar{H})\]</div>
+<p>が成り立つことを使っている。「病気かどうかが決まっていれば、1回目の結果は2回目の出方に影響しない」という意味である。</p>
+<p>注意したいのは、<strong><span class="arithmatex">\(D_1\)</span> と <span class="arithmatex">\(D_2\)</span> そのものは独立ではない</strong>ことである。1回目が陽性なら病気の可能性が上がり、
+したがって2回目も陽性になりやすい（<span class="arithmatex">\(P(D_2\mid D_1) &gt; P(D_2)\)</span>）。独立なのは「<span class="arithmatex">\(H\)</span> を固定したとき」だけである。</p>
+<p>この条件付き独立が崩れる例がある。同じ検体を同じ方法で二度測れば、1回目に誤らせた原因（検体の取り方、試薬の癖）が
+2回目にも同じように効くので、<span class="arithmatex">\(H\)</span> を固定しても2回の結果は連動する。そのときこの掛け算はできない（第2回）。</p>
+</div>
+<p><strong>使った数学</strong>：ベイズの定理を2回書いて割り算（算数）。オッズと確率の変換 <span class="arithmatex">\(p = o/(1+o)\)</span>。</p>
+</details>
+<hr />
+<h2 id="4">4. 逐次更新 ―― 今日の事後は、明日の事前<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>ベイズの真価は、<strong>データが来るたびに信念を更新できる</strong>こと。今日の事後確率を明日の事前確率として使い、新しいデータでまた更新する。</p>
+<p>例：あるコインの「表が出る確率 <span class="arithmatex">\(p\)</span>」を当てたい。最初は何も分からない（一様な事前）。投げるたびに信念がどう締まるかをColabで見る。</p>
+<blockquote>
+<p>数学的には、事前を <span class="arithmatex">\(\mathrm{Beta}(a,b)\)</span> にすると、表 <span class="arithmatex">\(k\)</span> 回・裏 <span class="arithmatex">\(n-k\)</span> 回の観測で事後は <span class="arithmatex">\(\mathrm{Beta}(a+k,\;b+n-k)\)</span> になる（共役事前）。</p>
+</blockquote>
+<p><code>03_bayes.ipynb</code> では、真の値 <span class="arithmatex">\(p=0.7\)</span> のコインを投げ続けると、事後分布が回数とともに <strong>0.7 の周りに締まっていく</strong>様子が見える。
+グラフの横軸は「未知の表確率 <span class="arithmatex">\(p\)</span> の候補」、縦軸はその候補あたりの <strong>確からしさ（密度）</strong> で、ある区間の <strong>下の面積</strong> が
+その区間に <span class="arithmatex">\(p\)</span> が入る確率を表す。最初（0回）は真っ平らで、「<span class="arithmatex">\(p\)</span> について何も分からない」状態を表している。
+なお <span class="arithmatex">\(p=0.7\)</span> は<strong>データを作る側だけが知っている値</strong>であり、推定には観測した表・裏の回数しか使っていない。</p>
+<div class="admonition warning">
+<p class="admonition-title">「毎回かならず真値に近づく」のではない</p>
+<p>Colabの乱数では、事後平均は <strong>5回後 0.714 → 20回後 0.773 → 100回後 0.696</strong> と動く。
+<strong>20回後のほうが、5回後より真値 0.7 から離れている。</strong>計算の誤りではなく、標本のばらつきである。</p>
+<p>言えるのは「<strong>このモデルが正しく、データが十分にあれば、真値の付近を絞り込める</strong>」であって、
+「観測を増やすたびに必ず近づく」ではない。また一様な事前も「無知の唯一の表現」ではなく、<strong>今回置いた設定</strong>である。</p>
+</div>
+<p>それでも、長い目で見れば事前の思い込みはデータに押し流されていく。これが <strong>学習</strong> の数理的な姿だ。</p>
+<blockquote>
+<p>第12〜13回では逆に、人々が互いを真似て <strong>同じ情報ばかり</strong> を見ると、集団の信念が間違った方向に固まる（情報カスケード）。
+問題は「依存したデータでは更新できない」ことではない。<strong>もとは1つの情報を、独立した別々の証拠だと思って重複して数えてしまう</strong>ことである。
+上の導出③で尤度比を2回掛けられたのは、2回の検査が条件付き独立だったからであって、同じ噂を10人から聞いても尤度比を10回掛けてはいけない。</p>
+</blockquote>
+<hr />
+<h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>用語</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ベイズの定理</td>
+<td><span class="arithmatex">\(P(H\mid D)=\dfrac{P(D\mid H)\,P(H)}{P(D)}\)</span>。データで信念を更新する</td>
+</tr>
+<tr>
+<td>事前 / 尤度 / 事後</td>
+<td>見る前の信念 / データの出やすさ / 更新後の信念</td>
+</tr>
+<tr>
+<td>基準率の誤謬</td>
+<td>事象のもともとの珍しさ（基準率）を無視する誤り</td>
+</tr>
+<tr>
+<td>陽性的中率</td>
+<td><span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span>。検査の精度とは別物</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
+<p><strong>配点：100点（選択40点 ＋ 記述60点）／ 提出先：Moodle ／ 提出期限：次回授業の開始時刻まで</strong></p>
+<p>第3回のColabノート <code>03_bayes.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
+<hr />
+<h3 id="a10-440">パートA：選択問題（各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<p><strong>A1.</strong> 感度99%・特異度99%の検査で、有病率が <strong>1%（100人に1人）</strong> の病気のとき、陽性と出た人が本当に病気である確率（陽性的中率）に <strong>最も近い</strong> のは？</p>
+<ul>
+<li>(ア) 約 1%　(イ) 約 50%　(ウ) 約 99%</li>
+</ul>
+<p><strong>A2.</strong> A1で陽性的中率が検査の精度（99%）より大きく下がる <strong>主な理由</strong> は？</p>
+<ul>
+<li>(ア) 検査の機械の誤差が大きいから</li>
+<li>(イ) 病気の人がもともと少ない（基準率が低い）ため、健康な人から出る偽陽性が、真陽性と同じくらいの人数になるから</li>
+<li>(ウ) 陽性的中率は常に50%になると決まっているから</li>
+</ul>
+<p><strong>A3.</strong> ベイズの定理 <span class="arithmatex">\(P(H\mid D)=\dfrac{P(D\mid H)P(H)}{P(D)}\)</span> で、<strong>事前確率</strong> にあたるのはどれか？</p>
+<ul>
+<li>(ア) <span class="arithmatex">\(P(H)\)</span>（データを見る前の信念）</li>
+<li>(イ) <span class="arithmatex">\(P(D\mid H)\)</span>（尤度）</li>
+<li>(ウ) <span class="arithmatex">\(P(H\mid D)\)</span>（事後確率）</li>
+</ul>
+<p><strong>A4.</strong> 検査の例で、直感が「陽性なら99%病気だ」と誤るのは、2つの確率を混同しているからである。取り違えているペアとして正しいのは？</p>
+<ul>
+<li>(ア) <span class="arithmatex">\(P(\text{陽性}\mid\text{病気})\)</span> と <span class="arithmatex">\(P(\text{病気}\mid\text{陽性})\)</span> を取り違えている</li>
+<li>(イ) 事前確率と尤度が等しいと思い込んでいる</li>
+<li>(ウ) 感度と特異度を取り違えている</li>
+</ul>
+<hr />
+<h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
+<p><strong>B1.（30点）</strong> 感度99%・特異度99%という高性能の検査でも、<strong>有病率が1%の病気では</strong>陽性的中率が約50%にしかならない。<strong>なぜそうなるのか</strong> を、<strong>150〜250字程度</strong>で説明しなさい。次の2点に必ず触れること。</p>
+<ol>
+<li>「基準率（有病率）」という言葉を使い、なぜ偽陽性が無視できないほど出るのか</li>
+<li>直感が外す原因を、第2回で学んだ「条件付き確率の向き」と結びつけて</li>
+</ol>
+<p><strong>B2.（30点）</strong> ベイズの定理は「<strong>データで信念を更新する</strong>」道具だった。あなた自身の経験で、<strong>最初の思い込み（事前）が、新しい情報（データ）によって更新された</strong>例を1つ挙げ、次の2点を書きなさい。</p>
+<ol>
+<li>最初どう思っていたか（事前）、どんな情報を得て（データ）、どう考えが変わったか（事後）</li>
+<li>もし「基準率（もともとの起こりやすさ）」を考えていれば、最初の思い込みは違っていたか</li>
+</ol>
+<blockquote>
+<p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+<p><strong>字数は目安です。多少の過不足で減点はしません。</strong>見るのは、設問が挙げた要素（上の箇条書き）が書けているかどうかです。ただし要素が抜けていれば、その分は引きます。</p>
+</blockquote>
+<div class="admonition abstract">
+<p class="admonition-title">次回予告</p>
+<p>第4回「離散確率分布：二項分布・ポアソン分布」。「コインを10回投げて7回表。イカサマ？」 ―― 独立な試行を <span class="arithmatex">\(n\)</span> 回くりかえすと、結果はどんな分布になるか。第2回で定義した「独立」が、分布の前提として効いてくる。</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../02_conditional/" class="md-footer__link md-footer__link--prev" aria-label="前: 第02回 条件付き確率">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                第02回 条件付き確率
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04_discrete/" class="md-footer__link md-footer__link--next" aria-label="次: 第04回 二項・ポアソン分布">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                第04回 二項・ポアソン分布
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
