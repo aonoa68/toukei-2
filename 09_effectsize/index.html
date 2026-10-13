@@ -613,7 +613,7 @@
   <a href="#a10-440" class="md-nav__link">
     <span class="md-ellipsis">
       
-        パートA：選択問題（自動採点・各10点 ×4＝40点）
+        パートA：選択問題（各10点 ×4＝40点）
       
     </span>
   </a>
@@ -876,7 +876,7 @@
   <a href="#a10-440" class="md-nav__link">
     <span class="md-ellipsis">
       
-        パートA：選択問題（自動採点・各10点 ×4＝40点）
+        パートA：選択問題（各10点 ×4＝40点）
       
     </span>
   </a>
@@ -1096,13 +1096,13 @@
 <tr>
 <td>① 巨大標本×ごく小さな差</td>
 <td>p≈0（有意）</td>
-<td>0.05（ごく小）</td>
+<td>0.065（ごく小）</td>
 <td>「重要な発見」と誤る</td>
 </tr>
 <tr>
-<td>② 小標本×はっきりした差</td>
-<td>p=0.25（非有意）</td>
-<td>0.70（大）</td>
+<td>② 小標本×本当は大きい差</td>
+<td>p=0.745（非有意）</td>
+<td>0.19（推定値・小）</td>
 <td>「差はなかった」と切り捨てる</td>
 </tr>
 </tbody>
@@ -1130,22 +1130,24 @@
 <tbody>
 <tr>
 <td>① 巨大標本×ごく小さな差</td>
-<td style="text-align: right;">10,000</td>
-<td style="text-align: right;">0.05</td>
-<td>[0.022, 0.078]</td>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;">0.065</td>
+<td>[0.053, 0.077]</td>
 <td>含まない（＝有意）</td>
 </tr>
 <tr>
-<td>② 小標本×はっきりした差</td>
+<td>② 小標本×本当は大きい差</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">0.70</td>
-<td>[−0.466, 1.866]</td>
+<td style="text-align: right;">0.19</td>
+<td>[−0.942, 1.327]</td>
 <td>含む（＝非有意）</td>
 </tr>
 </tbody>
 </table>
-<p>①は区間が 0 を含まないので「有意」である。だが<strong>区間の上端まで見ても 0.078</strong> ―― 「小」の目安 0.2 にすら届かない。有意であることと、意味のある大きさであることが、ここで完全に分離して見える。p 値をいくら小さくしても、この区間は 0.2 に近づかない。</p>
-<p>②は区間が 0 をまたぐので非有意だが、<strong>上端は 1.866</strong> ―― 大きな効果がある可能性をまったく否定できていない。区間が広いのは <span class="arithmatex">\(n=6\)</span> だからで、「差はなかった」ではなく「<span class="arithmatex">\(n\)</span> が足りず、何も言えていない」が正しい読み方である。</p>
+<p>①は区間が 0 を含まないので「有意」である。だが<strong>区間の上端まで見ても 0.077</strong> ―― 「小」の目安 0.2 にすら届かない。有意であることと、意味のある大きさであることが、ここで完全に分離して見える。p 値をいくら小さくしても、この区間は 0.2 に近づかない。</p>
+<p>②はもっと重要なことを教えてくれる。このデータは<strong>本当は 0.8σ の差がある集団から作った</strong>（50点 vs 58点、<span class="arithmatex">\(\sigma=10\)</span>）。つまり真の効果量は <span class="arithmatex">\(d=0.8\)</span>（大）である。ところが <span class="arithmatex">\(n=6\)</span> で測ると、<strong>推定値は <span class="arithmatex">\(d=0.19\)</span></strong> にしかならなかった。</p>
+<p>区間は <span class="arithmatex">\([-0.942,\ 1.327]\)</span> と 0 をまたぐので非有意。上端は 1.327 で、<strong>大きな効果がある可能性をまったく否定できていない</strong>。つまり「差はなかった」ではなく「<span class="arithmatex">\(n\)</span> が足りず、何も言えていない」が正しい読み方である。</p>
+<p>そして注意すべきは、<strong>効果量も <span class="arithmatex">\(n\)</span> が小さければ当てにならない</strong>という点だ。<span class="arithmatex">\(d\)</span> は <span class="arithmatex">\(p\)</span> 値と違って <span class="arithmatex">\(n\)</span> に振り回されない量だが、それは「期待値として偏らない」という意味であって、<strong>1回の推定値がぶれないという意味ではない</strong>。真の <span class="arithmatex">\(d=0.8\)</span> が <span class="arithmatex">\(0.19\)</span> と出ることもある。だから <span class="arithmatex">\(d\)</span> も、点推定だけでなく<strong>区間で見る</strong>。</p>
 <p>点推定だけを報告すると、この幅の情報が消えてしまう。<span class="arithmatex">\(d\)</span> を区間で報告すべきなのは、このためである。</p>
 <div class="admonition note">
 <p class="admonition-title"><span class="arithmatex">\(\mathrm{SE}(d)\)</span> の式そのものの導出は範囲外</p>
@@ -1187,10 +1189,10 @@
 </table>
 <hr />
 <h2 id="moodle">今日の課題（Moodle提出）<a class="headerlink" href="#moodle" title="Permanent link">&para;</a></h2>
-<p><strong>配点：100点（自動採点40点 ＋ 記述60点）／ 提出先：Moodle</strong></p>
+<p><strong>配点：100点（選択40点 ＋ 記述60点）／ 提出先：Moodle ／ 提出期限：次回授業の開始時刻まで</strong></p>
 <p>第9回のColabノート <code>09_effectsize.ipynb</code> を上から実行し、結果を見たうえで答えること。</p>
 <hr />
-<h3 id="a10-440">パートA：選択問題（自動採点・各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
+<h3 id="a10-440">パートA：選択問題（各10点 ×4＝40点）<a class="headerlink" href="#a10-440" title="Permanent link">&para;</a></h3>
 <p><strong>A1.</strong> 本当の平均差がごく小さい（0.5点）まま、標本サイズ <span class="arithmatex">\(n\)</span> だけを大きくしていくと、p値はどうなるか？</p>
 <ul>
 <li>(ア) ずっと変わらない</li>
@@ -1209,7 +1211,7 @@
 <li>(イ) 差は確かにありそうだが、大きさは無視できるほど小さく、実質的な重要性は低い</li>
 <li>(ウ) 効果量が小さいので、この差は完全に存在しない</li>
 </ul>
-<p><strong>A4.</strong> 小さい標本（n=6）で「効果量は大きい（d=0.7）が p=0.25 で非有意」という結果が出た。最も適切な態度は？</p>
+<p><strong>A4.</strong> <strong>ある別の研究で</strong>、小さい標本（n=6）から「効果量は大きい（d=0.7）が p=0.25 で非有意」という結果が出た。最も適切な態度は？</p>
 <ul>
 <li>(ア) 非有意なので「差はなかった」と結論する</li>
 <li>(イ) 大きい効果量が見えているので、標本不足で見逃した可能性を考え、サンプルを増やして再検討する</li>
@@ -1217,7 +1219,7 @@
 </ul>
 <hr />
 <h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
-<p><strong>B1.（30点）</strong> 「10万人を対象に調査したところ、新薬で症状スコアが平均0.5ポイント下がり、統計的に有意だった（p&lt;0.001）」という発表がある。この結果を <strong>どう読むべきか</strong>、p値と効果量の違いに触れて4〜6文で説明しなさい。「p値が小さい＝効果が大きい」という誤解を正すこと。</p>
+<p><strong>B1.（30点）</strong> 「10万人を対象に調査したところ、新薬で症状スコアが平均0.5ポイント下がり、統計的に有意だった（p&lt;0.001）」という発表がある。この結果を <strong>どう読むべきか</strong>、p値と効果量の違いに触れて<strong>150〜250字程度</strong>で説明しなさい。「p値が小さい＝効果が大きい」という誤解を正すこと。</p>
 <p><strong>B2.（30点）</strong> 「統計的に有意」と「実質的に重要」は別の軸である。
 あなたの身近な例（勉強法・健康・商品の宣伝など何でもよい）で、<strong>「有意だが重要でない」または「重要そうだが（標本が小さく）有意と言えない」</strong> にあてはまりそうな状況を1つ考え、次の2点を書きなさい。</p>
 <ol>
@@ -1226,6 +1228,7 @@
 </ol>
 <blockquote>
 <p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
+<p><strong>字数は目安です。多少の過不足で減点はしません。</strong>見るのは、設問が挙げた要素（上の箇条書き）が書けているかどうかです。ただし要素が抜けていれば、その分は引きます。</p>
 </blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
