@@ -13,6 +13,7 @@
     - [📓 Colabノートを開く（03_bayes.ipynb）](https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/03_bayes.ipynb)
     - [📝 課題を提出する（Moodle・第3回）](https://moodle.hokusei.ac.jp/mod/assign/view.php?id=990638)
     - 課題の本文は**このページの末尾**にあります
+    - [🤖 NotebookLMで復習する](https://notebook.google.com/notebook/5b49b49d-75bd-4b60-883e-d397e6724770)（この回の資料にAIが答えます）
 <!-- LINKS:END -->
 
 !!! tip "考え方をガイドで確かめる"
