@@ -489,6 +489,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. ベイズの定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        さっきの計算を、そのまま定理に当てはめる
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -514,7 +531,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -1003,6 +1020,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. ベイズの定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        さっきの計算を、そのまま定理に当てはめる
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1028,7 +1062,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -1319,6 +1353,57 @@
 <p>特異度は「健康な人を<strong>陰性</strong>と正しく言える確率」なので、健康な人が<strong>陽性</strong>になる確率は
 その余事象、つまり <span class="arithmatex">\(1-\)</span> 特異度 <span class="arithmatex">\(=0.01\)</span> になる。</p>
 </div>
+<h3 id="_2">さっきの計算を、そのまま定理に当てはめる<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>第1節で手計算した 100 万人の表は、<strong>ベイズの定理の部品そのもの</strong>だった。
+どの数字が式のどこに入るのかを、ひとつずつ対応させてみる。</p>
+<table>
+<thead>
+<tr>
+<th>式の部品</th>
+<th>100万人の表のどこか</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事前確率 <span class="arithmatex">\(P(H)\)</span></td>
+<td>病気の人 10,000 ÷ 100万</td>
+<td><span class="arithmatex">\(0.01\)</span></td>
+</tr>
+<tr>
+<td>尤度 <span class="arithmatex">\(P(D\mid H)\)</span></td>
+<td>病気で陽性 9,900 ÷ 病気 10,000</td>
+<td><span class="arithmatex">\(0.99\)</span></td>
+</tr>
+<tr>
+<td>分母 <span class="arithmatex">\(P(D)\)</span></td>
+<td>陽性になった人 19,800 ÷ 100万</td>
+<td><span class="arithmatex">\(0.0198\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>あとは代入するだけである。</p>
+<div class="arithmatex">\[P(H\mid D) \;=\; \frac{P(D\mid H)\,P(H)}{P(D)} \;=\; \frac{0.99 \times 0.01}{0.0198} \;=\; \frac{0.0099}{0.0198} \;=\; 0.5\]</div>
+<p><strong>この式は、第1節でやった割り算と同じことをしている。</strong></p>
+<ul>
+<li>分子 <span class="arithmatex">\(0.99 \times 0.01 = 0.0099\)</span> に 100万を掛けると <strong>9,900人</strong>（真陽性）</li>
+<li>分母 <span class="arithmatex">\(0.0198\)</span> に 100万を掛けると <strong>19,800人</strong>（陽性になった人ぜんぶ）</li>
+</ul>
+<div class="arithmatex">\[\frac{0.0099}{0.0198} \quad\Longleftrightarrow\quad \frac{9{,}900 \text{人}}{19{,}800 \text{人}}\]</div>
+<p>違うのは <strong>人数で書くか、割合で書くか</strong> だけだ。
+ベイズの定理は新しい計算を持ち込んだのではなく、
+「<strong>陽性の人のうち、本当に病気の人はどれだけか</strong>」という同じ問いを、記号で書き直したものである。</p>
+<div class="admonition question">
+<p class="admonition-title">分母の 0.0198 はどこから来たのか</p>
+<p>有病率 1% と感度 99% は問題文に書いてあるが、<span class="arithmatex">\(P(D)=0.0198\)</span> はどこにも書いていない。
+これは<strong>自分で作る</strong>数字である。陽性になる道は</p>
+<ul>
+<li>病気で陽性になる … <span class="arithmatex">\(0.99 \times 0.01 = 0.0099\)</span></li>
+<li>健康なのに陽性になる … <span class="arithmatex">\(0.01 \times 0.99 = 0.0099\)</span></li>
+</ul>
+<p>の2つしかないので、足して <span class="arithmatex">\(0.0198\)</span>。この作り方が下の <strong>導出②</strong> である。
+<strong>ベイズの定理でいちばん手間がかかるのは、この分母を組み立てるところ</strong>だと思っておくとよい。</p>
+</div>
 <p><strong>ベイズの定理＝データで信念を更新する計算。</strong> 事前 1% が、陽性というデータで 50% に更新された。</p>
 <details class="note" open="open">
 <summary>導出①：ベイズの定理は、定義を2通りに書いただけ</summary>
@@ -1430,7 +1515,7 @@
 上の導出③で尤度比を2回掛けられたのは、2回の検査が条件付き独立だったからであって、同じ噂を10人から聞いても尤度比を10回掛けてはいけない。</p>
 </blockquote>
 <hr />
-<h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_3">今日のまとめ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
