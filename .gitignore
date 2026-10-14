@@ -5,3 +5,5 @@ __pycache__/
 .DS_Store
 .ipynb_checkpoints/
 統計学Ⅱ2026.pdf
+採点/
+slides/*.html
