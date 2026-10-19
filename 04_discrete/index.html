@@ -444,7 +444,7 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. ポアソン分布 ―― 稀な事象の件数
+        3. ポアソン分布 ―― 一定の範囲で起こる件数
       
     </span>
   </a>
@@ -853,7 +853,7 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. ポアソン分布 ―― 稀な事象の件数
+        3. ポアソン分布 ―― 一定の範囲で起こる件数
       
     </span>
   </a>
@@ -960,8 +960,8 @@
 <ul>
 <li>確率変数・期待値・分散を理解する</li>
 <li><strong>二項分布</strong>：独立な試行 <span class="arithmatex">\(n\)</span> 回中の成功回数の分布</li>
-<li><strong>ポアソン分布</strong>：稀な事象の件数の分布、二項→ポアソン近似</li>
-<li>両者の <strong>共通の前提が「独立」</strong> であり、独立が崩れると分布が壊れることを知る</li>
+<li><strong>ポアソン分布</strong>：一定の範囲で起こる件数の分布、二項→ポアソン近似</li>
+<li>両者が置いている前提（<strong>成功確率が一定・各試行が独立</strong> ／ <strong>発生率が一定・区間ごとに独立</strong>）を言えるようになり、独立が崩れると分布が壊れることを知る</li>
 <li><strong>発展</strong>：二項分布の式 <span class="arithmatex">\(\binom{n}{k}p^k(1-p)^{n-k}\)</span> と、<span class="arithmatex">\(E[X]=np\)</span>・<span class="arithmatex">\(V[X]=np(1-p)\)</span> を、自分で導ける</li>
 </ul>
 <p>到達目標との対応：<strong>G1（確率の理解）</strong> と <strong>G4（独立性）</strong>。</p>
@@ -969,7 +969,11 @@
 <h2 id="1-107">1. 直感クイズ ―― 10回投げて7回表。イカサマ？<a class="headerlink" href="#1-107" title="Permanent link">&para;</a></h2>
 <p>公正なコイン（表の確率0.5）を10回投げたら表が <strong>7回</strong> 出た。</p>
 <p><strong>問い：これは「イカサマだ」と言えるほど珍しいか？</strong></p>
-<p>二項分布で計算すると、<strong>7回以上が出る確率は約17%</strong>。5〜6回に1回は起きる、ありふれた偶然だ。これだけではイカサマとは言えない。</p>
+<p>二項分布で計算すると、<strong>7回以上が出る確率は約17%</strong>（<span class="arithmatex">\(P(X\ge 7)=0.1719\)</span>）。5〜6回に1回は起きる、ありふれた偶然だ。これだけではイカサマとは言えない。</p>
+<div class="admonition note">
+<p class="admonition-title">ここで見ているのは「表が多い側」だけ</p>
+<p>ちょうど7回の確率（<span class="arithmatex">\(P(X=7)=0.1172\)</span>）と、7回<strong>以上</strong>の確率（<span class="arithmatex">\(0.1719\)</span>）は別物である。ここで見ているのは後者、しかも「表が多い側」だけだ。「どちら向きでも同じくらい偏る確率」を見るなら、裏が多い側も足して <span class="arithmatex">\(P(X\le 3)+P(X\ge 7)=34.4\%\)</span> になる。片側だけを見るのか両側を見るのかは、第8〜9回の検定で正面から扱う。</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">後の伏線</p>
 <p>「珍しさ」を確率で測るこの発想は、第8〜9回の <strong>仮説検定・p値</strong> につながる。「珍しい＝偶然では説明しにくい」をどこで線引きするかが、後の大問題になる。</p>
@@ -979,13 +983,21 @@
 <p><strong>確率変数</strong>：偶然で値が決まる量（ここでは「10回中の表の回数」）。</p>
 <p>成功確率 <span class="arithmatex">\(p\)</span> の試行を <strong>独立に</strong> <span class="arithmatex">\(n\)</span> 回くりかえし、成功回数を数えると <strong>二項分布</strong> <span class="arithmatex">\(\mathrm{Binom}(n,p)\)</span> になる。</p>
 <div class="arithmatex">\[P(X=k) = \binom{n}{k}\,p^{k}(1-p)^{n-k}, \qquad E[X]=np,\quad V[X]=np(1-p)\]</div>
+<p>この形になるために、実は4つの条件を置いている。</p>
+<ol>
+<li>試行回数 <span class="arithmatex">\(n\)</span> が決まっている</li>
+<li>各試行の結果を<strong>成功・失敗の2値</strong>で表せる</li>
+<li>成功確率 <span class="arithmatex">\(p\)</span> が<strong>毎回同じ</strong></li>
+<li>各試行が<strong>独立</strong></li>
+</ol>
+<p><strong>今日とくに注目するのは4の独立だが、3もいっしょに使っている。</strong> 独立でも各回の <span class="arithmatex">\(p\)</span> が違えば、ふつうの二項分布にはならない。たとえば独立な2回で成功確率が <span class="arithmatex">\(0.1\)</span> と <span class="arithmatex">\(0.9\)</span> なら、2回とも成功する確率は <span class="arithmatex">\(0.1\times0.9=0.09\)</span>。平均をとって「<span class="arithmatex">\(p=0.5\)</span> の二項分布」と置き換えると <span class="arithmatex">\(0.25\)</span> になり、合わない。</p>
 <p>Colabで1万セットのコイン投げをシミュレーションすると、ヒストグラムが理論の二項分布にぴったり重なり、平均 <span class="arithmatex">\(\approx 5\)</span>・分散 <span class="arithmatex">\(\approx 2.5\)</span> が再現される。</p>
 <details class="note" open="open">
 <summary>導出①：二項分布の式は「1つの並びの確率」×「並び方の数」</summary>
 <p>まず、<strong>特定の並び1つ</strong>の確率を考える。たとえば <span class="arithmatex">\(n=5\)</span> で「表・表・裏・表・裏」（成功 <span class="arithmatex">\(k=3\)</span> 回）という並び。</p>
 <p>各回が<strong>独立</strong>なら、同時に起きる確率は単純なかけ算でよい。</p>
 <div class="arithmatex">\[p \times p \times (1-p) \times p \times (1-p) \;=\; p^{3}(1-p)^{2}\]</div>
-<p><strong>かけ算にできるのは独立だからである。</strong> ここが唯一にして最大の前提になる。1回目の結果が2回目の確率を変えるなら、この式は最初の一歩で崩れる（→第4節）。</p>
+<p><strong>かけ算にできるのは独立だからである。</strong> そして、かける中身がどの回も <span class="arithmatex">\(p\)</span> と <span class="arithmatex">\(1-p\)</span> で書けるのは、成功確率が毎回同じだからだ。1回目の結果が2回目の確率を変えるなら、この式は最初の一歩で崩れる（→第4節）。独立性は、今日とくに注目する前提である。</p>
 <p>並びが変わっても、成功が <span class="arithmatex">\(k\)</span> 回・失敗が <span class="arithmatex">\(n-k\)</span> 回であれば、かける中身の順番が入れ替わるだけで積は同じ <span class="arithmatex">\(p^{k}(1-p)^{n-k}\)</span> になる。</p>
 <p>あとは<strong>そのような並びが何通りあるか</strong>を数えればよい。<span class="arithmatex">\(n\)</span> 回のうちどの <span class="arithmatex">\(k\)</span> 回が成功かを選ぶ選び方なので <span class="arithmatex">\(\binom{n}{k}\)</span> 通り。同じ確率の排反な並びが <span class="arithmatex">\(\binom{n}{k}\)</span> 個あるので、足し合わせて</p>
 <div class="arithmatex">\[P(X=k)=\binom{n}{k}\,p^{k}(1-p)^{n-k}\]</div>
@@ -993,7 +1005,7 @@
 <p><strong>使った数学</strong>：独立な事象の確率のかけ算、組合せ <span class="arithmatex">\(\binom{n}{k}\)</span>（数A）。</p>
 </details>
 <details class="note" open="open">
-<summary>導出②：<span class="arithmatex">\(E[X]=np\)</span> と <span class="arithmatex">\(V[X]=np(1-p)\)</span> ―― 分散だけが独立を必要とする</summary>
+<summary>導出②：<span class="arithmatex">\(E[X]=np\)</span> と <span class="arithmatex">\(V[X]=np(1-p)\)</span> ―― 期待値と分散で、独立の要り方が違う</summary>
 <p><span class="arithmatex">\(i\)</span> 回目が成功なら <span class="arithmatex">\(1\)</span>、失敗なら <span class="arithmatex">\(0\)</span> をとる確率変数 <span class="arithmatex">\(X_i\)</span> を考えると、成功回数はただの和になる。</p>
 <div class="arithmatex">\[X = X_1+X_2+\dots+X_n\]</div>
 <p>まず<strong>1回分</strong>を計算する。<span class="arithmatex">\(X_i\)</span> は <span class="arithmatex">\(1\)</span> を確率 <span class="arithmatex">\(p\)</span>、<span class="arithmatex">\(0\)</span> を確率 <span class="arithmatex">\(1-p\)</span> でとるので、</p>
@@ -1002,24 +1014,38 @@
 <div class="arithmatex">\[V[X_i] = E[X_i^2]-\left(E[X_i]\right)^2 = p - p^2 = p(1-p)\]</div>
 <p>ここから <span class="arithmatex">\(n\)</span> 倍にする。期待値は<strong>和について常に線形</strong>なので、独立でなくても足してよい。</p>
 <div class="arithmatex">\[E[X] = \sum_{i=1}^{n} E[X_i] = np\]</div>
-<p>分散はそうはいかない。<span class="arithmatex">\(V[X+Y]=V[X]+V[Y]\)</span> が成り立つのは <span class="arithmatex">\(X,Y\)</span> が<strong>独立（または無相関）のときだけ</strong>である。独立を使って初めて</p>
+<p>分散はそうはいかない。一般には、<span class="arithmatex">\(X_i\)</span> どうしの<strong>共分散</strong>の項が付いてくる。</p>
+<div class="arithmatex">\[V[X] = \sum_{i=1}^{n} V[X_i] \;+\; 2\sum_{i&lt;j}\mathrm{Cov}(X_i,X_j) \;=\; np(1-p) + 2\sum_{i&lt;j}\mathrm{Cov}(X_i,X_j)\]</div>
+<p>各試行が独立なら共分散はすべて <span class="arithmatex">\(0\)</span> になるので、第2項が消えて</p>
 <div class="arithmatex">\[V[X] = \sum_{i=1}^{n} V[X_i] = np(1-p)\]</div>
+<p>（独立は、共分散を <span class="arithmatex">\(0\)</span> にするための<strong>十分条件</strong>である。独立でなくても共分散の合計が <span class="arithmatex">\(0\)</span> なら、分散はそのまま足せる。）</p>
 <div class="admonition warning">
-<p class="admonition-title">期待値は独立を必要とせず、分散は必要とする</p>
-<p>この違いが今日の要点である。第4節で「平均は同じなのに分散だけが約5倍に膨らむ」のを見るが、それは偶然ではない。独立が崩れたとき壊れるのは<strong>分散の式のほうだけ</strong>だからだ。</p>
+<p class="admonition-title">期待値は独立でなくても足せる。分散では共分散の影響を考える</p>
+<p>この違いが今日の要点である。第4節で「平均は同じなのに分散だけが約5.4倍に膨らむ」のを見るが、それは偶然ではない。期待値の式に共分散は現れず、<strong>分散の式にだけ現れる</strong>からだ。</p>
 </div>
 <p><strong>数値で確かめる</strong>：<span class="arithmatex">\(n=10,\ p=0.5\)</span> なら <span class="arithmatex">\(E[X]=5\)</span>、<span class="arithmatex">\(V[X]=2.5\)</span>。二項分布の確率を定義どおりに足して計算しても <span class="arithmatex">\(5\)</span> と <span class="arithmatex">\(2.5\)</span> で一致する。</p>
 <p><strong>使った数学</strong>：期待値の線形性、<span class="arithmatex">\(V[X]=E[X^2]-(E[X])^2\)</span>、独立なときの分散の加法性。</p>
 </details>
 <div class="admonition warning">
-<p class="admonition-title">大前提は『独立』</p>
-<p>二項分布は <strong>各試行が独立</strong> であることを前提にしている。1回目の結果が2回目に影響しないからこそ、確率を単純にかけ算できる。この前提が崩れると二項分布は使えない（→第4節）。</p>
+<p class="admonition-title">大前提は『成功確率が一定・各試行が独立』</p>
+<p>二項分布は、<strong>成功確率 <span class="arithmatex">\(p\)</span> が毎回同じ</strong>で、<strong>各試行が独立</strong>であることを前提にしている。1回目の結果が2回目に影響しないからこそ、確率を単純にかけ算できる。この前提が崩れると、<strong>成功回数が二項分布になる保証はなくなる</strong>（→第4節）。</p>
 </div>
 <hr />
-<h2 id="3">3. ポアソン分布 ―― 稀な事象の件数<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h2 id="3">3. ポアソン分布 ―― 一定の範囲で起こる件数<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>「1日の迷惑電話の件数」「1ページの誤植の数」「1時間の来客数」――
-<strong>機会は膨大で、それぞれの確率は小さい</strong> 事象の件数は <strong>ポアソン分布</strong> <span class="arithmatex">\(\mathrm{Poisson}(\lambda)\)</span> になる。</p>
+<strong>一定の時間や空間の範囲で起こる件数</strong>を表すモデルが <strong>ポアソン分布</strong> <span class="arithmatex">\(\mathrm{Poisson}(\lambda)\)</span> である。</p>
 <div class="arithmatex">\[P(X=k)=\frac{\lambda^{k}e^{-\lambda}}{k!},\qquad E[X]=V[X]=\lambda\]</div>
+<p>ここで考えているのは、次の3つが置ける場合である。</p>
+<ol>
+<li>単位時間（単位面積）あたりの<strong>発生率が一定</strong></li>
+<li><strong>重ならない区間の件数が互いに独立</strong></li>
+<li>ごく短い区間に<strong>複数件がまとまって起こることが、ほとんどない</strong></li>
+</ol>
+<p>この3つから、一定時間内の件数がポアソン分布になるモデルが得られる。なお「稀な事象」というのは、観測期間全体の件数が少ないという意味ではなく、<strong>一つ一つの小さな機会での発生確率が小さい</strong>という意味である。</p>
+<div class="admonition warning">
+<p class="admonition-title">例の名前だけで分布は決まらない</p>
+<p>同じ「来客数」でも、団体客がまとめて来店するなら3が崩れ、昼と深夜で来店ペースが違うなら1が崩れる。そういう場面では、このモデルは合わない。<strong>具体例の名前ではなく、上の条件が置けそうかどうかで判断する。</strong></p>
+</div>
 <p><span class="arithmatex">\(\lambda\)</span> は「平均して何件起きるか」。二項分布で <span class="arithmatex">\(n\)</span> が大きく <span class="arithmatex">\(p\)</span> が小さいとき（<span class="arithmatex">\(\lambda=np\)</span> 一定）、二項分布はポアソン分布に近づく。Colabで <span class="arithmatex">\(n=10,50,500\)</span> と大きくすると、二項分布がポアソン分布に重なっていくのが見える。</p>
 <details class="note" open="open">
 <summary>導出③：なぜ二項分布はポアソン分布に近づくのか</summary>
@@ -1061,7 +1087,8 @@
 </tr>
 </tbody>
 </table>
-<p><span class="arithmatex">\(n=10\)</span> ではまるで別物だが、<span class="arithmatex">\(n=500\)</span> では小数第3位まで一致する。「<span class="arithmatex">\(n\)</span> が大きく <span class="arithmatex">\(p\)</span> が小さい」がどの程度を指すのかが、数字で見える。</p>
+<p><span class="arithmatex">\(n=10\)</span> ではまるで別物だが、<span class="arithmatex">\(\lambda=5\)</span> のこの例では、<span class="arithmatex">\(n=500\)</span> まで来ると確率の差は最大でも約 <span class="arithmatex">\(0.0009\)</span> になる。「<span class="arithmatex">\(n\)</span> が大きく <span class="arithmatex">\(p\)</span> が小さい」がどの程度を指すのかが、数字で見える。</p>
+<p>なお「差が <span class="arithmatex">\(0.001\)</span> 未満」は「小数第3位まで同じ数字が並ぶ」ことではない。<span class="arithmatex">\(n=500\)</span>・<span class="arithmatex">\(k=5\)</span> の確率は、二項が <span class="arithmatex">\(0.17635\)</span>、ポアソンが <span class="arithmatex">\(0.17547\)</span> で、小数第3位に丸めると <span class="arithmatex">\(0.176\)</span> と <span class="arithmatex">\(0.175\)</span> に分かれる。</p>
 <div class="admonition note">
 <p class="admonition-title">極限の厳密な扱いは範囲外</p>
 <p><span class="arithmatex">\(\left(1-\lambda/n\right)^{n} \to e^{-\lambda}\)</span> の証明や、極限と和の交換の正当化は、この授業で扱う統計数理の範囲外である。ここでは「何を仮定すると何が出るか」の筋道を押さえておけばよい。</p>
@@ -1088,16 +1115,23 @@
 <td><span class="arithmatex">\(\lambda\)</span>（平均件数）</td>
 </tr>
 <tr>
-<td>共通の前提</td>
-<td><strong>各試行が独立</strong></td>
-<td><strong>各事象が独立</strong></td>
+<td>前提</td>
+<td><span class="arithmatex">\(n\)</span> が固定・<strong>成功確率 <span class="arithmatex">\(p\)</span> が一定</strong>・<strong>各試行が独立</strong></td>
+<td><strong>発生率が一定</strong>・<strong>重ならない区間の件数が独立</strong>・短い区間に複数件が集中しない</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="4">4. もし試行が「独立でなかったら」？<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<p>二項分布もポアソン分布も、前提は <strong>各試行が独立</strong>。では独立が崩れたら？</p>
-<p>10人が順番に答えるクイズで、各人が <strong>8割の確率で前の人の答えを真似る</strong>（空気を読む）とする。一人ひとりはコインで決めるつもりでも、互いに影響し合っている。Colabで「10人中の正解者数」の分布を見ると：</p>
+<p>二項分布もポアソン分布も、<strong>独立</strong>を前提にしていた。では独立が崩れたら？</p>
+<p>10人が順番に答えるクイズを考える。ルールはこうだ。</p>
+<ul>
+<li>1人目は、公正なコインで答えを決める（正解する確率 <span class="arithmatex">\(0.5\)</span>）</li>
+<li>2人目以降は、<strong>8割の確率で直前の人と同じ答えにし</strong>、残り2割では自分でコインを投げる</li>
+</ul>
+<p>一人ひとりはコインで決めるつもりでも、互いに影響し合っている。
+（自分で投げたときにも偶然同じ答えになるので、<strong>直前の人と答えが一致する確率は <span class="arithmatex">\(0.8+0.2\times0.5=0.9\)</span></strong>。8割のほうは「真似ることを選ぶ確率」である。）</p>
+<p><strong>このルールでは、どの人も正解する確率は <span class="arithmatex">\(0.5\)</span> のまま</strong>であることに注意しよう。変わるのは、正解・不正解が<strong>そろいやすくなる</strong>ことだけだ。Colabで「10人中の正解者数」の分布を見ると：</p>
 <table>
 <thead>
 <tr>
@@ -1122,10 +1156,21 @@
 </tr>
 </tbody>
 </table>
-<p><strong>平均は同じ。だが分散は約5倍に膨らみ、0人や10人といった極端な結果が激増する。</strong> みんなが同じ方向に流れるからだ。</p>
+<p><strong>平均は5人のまま。だが分散は約5.4倍（SDなら約2.3倍）に膨らみ、0人や10人といった極端な結果が激増する。</strong></p>
+<ul>
+<li>平均が動かないのは、<strong>一人ひとりの正解確率が <span class="arithmatex">\(0.5\)</span> に保たれている</strong>から（期待値に共分散は効かない）</li>
+<li>分散が膨らむのは、真似によって答えの間に<strong>正の相関</strong>が生まれ、共分散の項が足されるから</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">「独立でない」＝「分散が増える」ではない</p>
+<p>増えるのは、<strong>正の相関</strong>が生じたときである。たとえば10人を5組に分け、各組の2人目は必ず1人目と<strong>逆</strong>の答えを出すとしよう。一人ひとりの正解確率は <span class="arithmatex">\(0.5\)</span> のままだが、どの組でもちょうど1人が正解するので、正解者数は<strong>いつも5人・分散は <span class="arithmatex">\(0\)</span></strong>。独立ではないのに、独立なとき（<span class="arithmatex">\(2.5\)</span>）より小さい。
+<strong>独立が崩れたときに何が起きるかは、相関の向きで決まる。</strong></p>
+</div>
 <div class="admonition quote">
 <p class="admonition-title">今期の背骨</p>
-<p>独立が崩れると、二項分布という前提が成り立たない。「平均は同じ」でも「ばらつきは激増」する。この『真似ると極端な結果が増える』現象こそ、第12回 <strong>情報カスケード</strong>・第13回 <strong>コンドルセの陪審定理</strong> で集団の判断を狂わせる正体だ。今日その種を見た。</p>
+<p>独立が崩れると、二項分布という前提が成り立たない。一人ひとりの正解確率は <span class="arithmatex">\(0.5\)</span> のままなのに、<strong>正解者数の分布は二項分布では予測できなくなる</strong>。
+ただし今回のモデルでは、全員不正解が増えるのと同じだけ全員正解も増える。だから「集団としての正解率が下がった」ことまでは、今日の実験からは言えない。言えるのは <strong>結果が極端に振れやすくなる</strong> ことである。
+この依存が、情報の集約や多数決の信頼性にどう関わるか ―― そこを第12回 <strong>情報カスケード</strong>・第13回 <strong>コンドルセの陪審定理</strong> で扱う。今日はその種を見た。</p>
 </div>
 <hr />
 <h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
@@ -1143,13 +1188,13 @@
 <td>二項分布</td>
 <td>独立な試行 <span class="arithmatex">\(n\)</span> 回中の成功回数</td>
 <td><span class="arithmatex">\(\binom{n}{k}p^k(1-p)^{n-k}\)</span></td>
-<td>各試行が独立</td>
+<td><span class="arithmatex">\(n\)</span> 固定・<span class="arithmatex">\(p\)</span> 一定・各試行が独立</td>
 </tr>
 <tr>
 <td>ポアソン分布</td>
-<td>稀な事象の件数</td>
+<td>一定の範囲で起こる件数</td>
 <td><span class="arithmatex">\(\dfrac{\lambda^k e^{-\lambda}}{k!}\)</span></td>
-<td>各事象が独立</td>
+<td>発生率一定・区間ごとに独立・集中発生なし</td>
 </tr>
 </tbody>
 </table>
@@ -1175,6 +1220,9 @@
 <li>(イ) ある書店に1時間あたりに来店する客の人数</li>
 <li>(ウ) 10人の学生のうち、特定の1人が選ばれるかどうか</li>
 </ul>
+<blockquote>
+<p>第3節の3条件（発生率が一定・重ならない区間の件数が独立・短い区間に複数件が集中しない）が置けそうなものを選ぶこと。</p>
+</blockquote>
 <p><strong>A4.</strong> Colabで「10人が8割の確率で前の人の答えを真似る（独立でない）」場合、独立なときと比べて起きたことは？</p>
 <ul>
 <li>(ア) 平均も分散もほとんど変わらない</li>
@@ -1183,14 +1231,14 @@
 </ul>
 <hr />
 <h3 id="bai60">パートB：記述問題（AIフィードバック対象・60点）<a class="headerlink" href="#bai60" title="Permanent link">&para;</a></h3>
-<p><strong>B1.（30点）</strong> 二項分布とポアソン分布について、<strong>①それぞれどんな場面で使うか ②両者に共通する前提は何か</strong> を、具体例を1つずつ挙げながら<strong>150〜250字程度</strong>で説明しなさい。</p>
-<p><strong>B2.（30点）</strong> Colabの最後で、「各人が前の人を真似る（独立でない）」と、10人中の正解者数の <strong>分散が大きく膨らみ、全員一致のような極端な結果が増える</strong> ことを見た。これを踏まえて次の2点を書きなさい。</p>
+<p><strong>B1.（30点）</strong> 二項分布とポアソン分布について、<strong>①それぞれどんな場面で使うか ②それぞれどんな前提を置いているか</strong> を、具体例を1つずつ挙げながら<strong>150〜250字程度</strong>で説明しなさい。②では、両者に共通する「独立」に加えて、二項分布の「試行回数が決まっていて成功確率が毎回同じ」・ポアソン分布の「発生率が一定」にも触れること。</p>
+<p><strong>B2.（30点）</strong> Colabの最後で、「各人が前の人を真似る（独立でない）」と、10人中の正解者数の <strong>分散が大きく膨らみ、全員一致のような極端な結果が増える</strong> ことを見た。<strong>このモデルでは、一人ひとりが正解する確率は0.5に保たれている</strong>（真似ても、各人の正解率は変わらない）。これを踏まえて次の2点を書きなさい。</p>
 <ol>
-<li>なぜ「真似る（独立が崩れる）」と、平均は同じなのに極端な結果が増えるのか、自分の言葉で説明する</li>
+<li>それでも極端な結果が増えるのはなぜか。<strong>平均が5人のまま変わらない理由</strong>と、<strong>分散が大きくなる理由</strong>を、分けて説明する</li>
 <li>もし現実に「みんなが独立に判断していると思い込んで」二項分布で予測したら、実際の集団（真似合う集団）に対してどんな読み違いをするか</li>
 </ol>
 <blockquote>
-<p>ヒント：B2は第12〜13回（情報カスケード・コンドルセの陪審定理）の予告になっている。「みんなが同じ方向に流れる」とき何が起きるか、を意識して書くとよい。</p>
+<p>ヒント：B2は第12〜13回（情報カスケード・コンドルセの陪審定理）への助走である。「みんなが同じ方向に流れる」とき、予測は何を外すのか、を意識して書くとよい。</p>
 <p>文字数の目安：B1・B2あわせて 300〜500字。コピペ・引き写しは評価しない。<strong>自分の言葉</strong>で書くこと。</p>
 <p><strong>字数は目安です。多少の過不足で減点はしません。</strong>見るのは、設問が挙げた要素（上の箇条書き）が書けているかどうかです。ただし要素が抜けていれば、その分は引きます。</p>
 </blockquote>
