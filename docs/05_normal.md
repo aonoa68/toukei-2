@@ -13,6 +13,7 @@
     - [📓 Colabノートを開く（05_normal.ipynb）](https://colab.research.google.com/github/aonoa68/toukei-2/blob/main/colab/05_normal.ipynb)
     - [📝 課題を提出する（Moodle・第5回）](https://moodle.hokusei.ac.jp/mod/assign/view.php?id=990640)
     - 課題の本文は**このページの末尾**にあります
+    - [🤖 NotebookLMで復習する](https://notebook.google.com/notebook/54748070-9e2f-4a5b-a634-1b85375ad9ad)（この回の内容をAIに質問できます）
 <!-- LINKS:END -->
 
 ## この回のゴール
