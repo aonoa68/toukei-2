@@ -24,6 +24,8 @@
 - 標準誤差 $\mathrm{SE}=\sigma/\sqrt{n}$ の意味と、その **独立という前提** を理解する
 - 標本が独立でない（相関する）と、本当のばらつきが SE より大きくなり、推測が崩れることを知る
 - 「$n$ を増やせば解決」が相関のもとでは通用しないことを見抜く
+- **大数の法則**と**中心極限定理**が別の主張であることを言える
+- **標本誤差**と**非標本誤差**を区別し、**$n$ を増やしても直らない誤差がある**ことを知る
 - **発展**：$\mathrm{Var}[\bar{X}]=\sigma^2/n$ と、相関があるときの $\dfrac{\sigma^2}{n}\left[1+(n-1)\rho\right]$ を、自分で導ける
 
 到達目標との対応：**G1（確率の理解）** と **G4（独立性と集団判断）** をつなぐ、今期の要の回。
@@ -31,6 +33,14 @@
 ---
 
 ## 1. CLTの復習 ―― 歪んだ母集団でも、標本平均は正規
+
+!!! info "先に定義 ―― よく混同される2つ"
+    - **大数の法則（law of large numbers）**：標本の大きさ \( n \) を大きくしていくと、**標本平均は母平均 \( \mu \) に近づく**。
+      例：サイコロを投げれば投げるほど、出た目の平均は \( (1+2+\dots+6)/6=3.5 \) に近づく。
+    - **中心極限定理（central limit theorem, CLT）**：\( n \) を大きくしていくと、**標本平均の分布の形が正規分布に近づく**（平均 \( \mu \)、分散 \( \sigma^2/n \)）。
+
+    **大数の法則は「どこに寄るか」、CLTは「どう散らばるか」を言っている。** 寄り先を教えるのが前者、寄りかたのばらつき具合を教えるのが後者だ。
+    推定ができるのは前者のおかげ、**誤差の大きさが言える**のは後者のおかげである。どちらも**独立**を前提にしている。
 
 母集団を思いきり歪ませる（指数分布：平均10・右に長い裾、正規とは似ても似つかない）。ここから **独立に** $n=30$ を選んで平均を取る、を1万回くりかえすと――
 
@@ -140,10 +150,70 @@ $$\mathrm{SE} = \frac{\sigma}{\sqrt{n}}$$
 
 ---
 
+## 4. もうひとつの「n を増やせば解決」の嘘 ―― 誤差には2種類ある
+
+第3節で見たのは、**標本の中の相関**が \( n \) では直らないことだった。実は、\( n \) で直らない失敗はもう1つある。**そもそも誰を標本に選んだか**である。
+
+!!! info "先に定義"
+    - **無作為抽出（random sampling）**：母集団のどの個体も、標本に選ばれる確率が**等しい**抽出法。**ランダム＝出鱈目ではない。**「手近な人に聞く」は無作為抽出ではない。
+    - **抽出枠**：実際に抽出のもとにする名簿（有権者名簿、顧客リスト、電話帳）。**母集団そのものではない。**
+    - **標本誤差（sampling error）**：正しく無作為抽出しても生じる、標本の値と母数とのずれ。第1〜3節で扱ってきた \( \sigma/\sqrt{n} \) がこれである。
+    - **非標本誤差**：抽出とは無関係に生じる誤差。名簿の偏り、無回答、記入・入力・集計のミス。
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img" aria-labelledby="t t2" style="width:100%;height:auto;max-width:720px;display:block;margin:0.6em auto" font-family="system-ui,-apple-system,'Hiragino Sans','Yu Gothic',Meiryo,sans-serif" font-size="13"><title id="t">標本抽出の構造と2種類の誤差</title><desc id="t2">母集団と抽出枠はずれており、枠外の調査対象（カバー不足）と枠内の非対象（カバー超過）が生じる。標本誤差はnを増やすと小さくなるが、非標本誤差と偏りは小さくならない。</desc><text x="16.0" y="22.0" font-size="14" text-anchor="start" font-weight="bold" fill="currentColor" fill-opacity="1.0">抽出の構造 ―― 母集団と名簿はずれている</text><rect x="28.0" y="42.0" width="230.0" height="150.0" rx="8" fill="#5c6bc0" fill-opacity="0.1" stroke="#5c6bc0" stroke-width="1.6"/><text x="38.0" y="62.0" font-size="11.5" text-anchor="start" font-weight="bold" fill="#5c6bc0" fill-opacity="1.0">母集団（本当に知りたい全体）</text><rect x="150.0" y="78.0" width="230.0" height="110.0" rx="8" fill="#00897b" fill-opacity="0.12" stroke="#00897b" stroke-width="1.6" stroke-dasharray="6 4"/><text x="370.0" y="72.0" font-size="11.5" text-anchor="end" font-weight="bold" fill="#00897b" fill-opacity="1.0">抽出枠（名簿）</text><text x="72.0" y="130.0" font-size="11" text-anchor="middle" font-weight="bold" fill="#c62828" fill-opacity="1.0">カバー不足</text><text x="72.0" y="148.0" font-size="9.5" text-anchor="middle" font-weight="normal" fill="#c62828" fill-opacity="0.9">（枠外の調査対象）</text><text x="330.0" y="130.0" font-size="11" text-anchor="middle" font-weight="bold" fill="#c62828" fill-opacity="1.0">カバー超過</text><text x="330.0" y="148.0" font-size="9.5" text-anchor="middle" font-weight="normal" fill="#c62828" fill-opacity="0.9">（枠内の非対象）</text><rect x="430.0" y="95.0" width="110.0" height="54.0" rx="8" fill="#ef6c00" fill-opacity="0.16" stroke="#ef6c00" stroke-width="1.6"/><text x="485.0" y="127.0" font-size="13" text-anchor="middle" font-weight="bold" fill="currentColor" fill-opacity="1.0">標本</text><line x1="382.0" y1="122.0" x2="416.0" y2="122.0" stroke="#ef6c00" stroke-width="2"/><polygon points="426.0,122.0 414.0,116.5 414.0,127.5" fill="#ef6c00"/><text x="404.0" y="112.0" font-size="10" text-anchor="middle" font-weight="normal" fill="#ef6c00" fill-opacity="1.0">抽出</text><line x1="485.0" y1="91.0" x2="485.0" y2="70.0" stroke="#5c6bc0" stroke-width="2"/><polygon points="485.0,60.0 479.5,72.0 490.5,72.0" fill="#5c6bc0"/><text x="495.0" y="72.0" font-size="10.5" text-anchor="start" font-weight="normal" fill="#5c6bc0" fill-opacity="1.0">統計的推測</text><line x1="16.0" y1="214.0" x2="704.0" y2="214.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.3"/><text x="16.0" y="240.0" font-size="14" text-anchor="start" font-weight="bold" fill="currentColor" fill-opacity="1.0">誤差の入口は2つある</text><rect x="28.0" y="252.0" width="310.0" height="62.0" rx="8" fill="#00897b" fill-opacity="0.12" stroke="#00897b" stroke-width="1.6"/><text x="42.0" y="274.0" font-size="12.5" text-anchor="start" font-weight="bold" fill="#00897b" fill-opacity="1.0">標本誤差</text><text x="42.0" y="294.0" font-size="11" text-anchor="start" font-weight="normal" fill="currentColor" fill-opacity="1.0">正しく無作為抽出しても生じるずれ。</text><text x="42.0" y="310.0" font-size="11" text-anchor="start" font-weight="normal" fill="currentColor" fill-opacity="0.85">n を増やすと小さくなる（SE = σ/√n）。</text><rect x="382.0" y="252.0" width="310.0" height="62.0" rx="8" fill="#c62828" fill-opacity="0.1" stroke="#c62828" stroke-width="1.6"/><text x="396.0" y="274.0" font-size="12.5" text-anchor="start" font-weight="bold" fill="#c62828" fill-opacity="1.0">非標本誤差・抽出の偏り</text><text x="396.0" y="294.0" font-size="11" text-anchor="start" font-weight="normal" fill="currentColor" fill-opacity="1.0">名簿の偏り、無回答、記入・入力ミス。</text><text x="396.0" y="310.0" font-size="11" text-anchor="start" font-weight="bold" fill="#c62828" fill-opacity="1.0">n を増やしても小さくならない。</text></svg>
+
+### 抽出枠は、母集団とずれている
+
+名簿は母集団と完全には一致しない。**枠に載っていない調査対象（カバー不足）**と、**枠に載っているが対象でないもの（カバー超過）**が、必ず出る。電話帳を名簿に使えば、電話を持たない人は最初から選ばれない。
+
+!!! warning "「渋谷の駅前で100人に聞きました」はなぜ無作為抽出でないのか"
+    選ばれる確率が等しくないから ―― ではなく、もっと手前の問題がある。**母集団が何なのかが決まっていない。**
+    渋谷駅前の100人と巣鴨駅前の100人では、答えが違ってよい。**何の母集団について語っているのかが言えないなら、標本誤差を計算する意味もない。**
+
+### 母集団に似せて選ぶ（割当法）は、無作為抽出の代わりにならない
+
+**割当法（quota sampling）**：年齢や性別の構成が母集団と同じになるように、人数を割り当てて集める方法。一見もっともらしいが、**手段と結果が逆になっている。**
+
+- 無作為に抽出する → **結果として**母集団に似てくる
+- 母集団に似せて抽出する → **無作為抽出になるわけではない**
+
+似せられるのは、**あらかじめ分かっている特性だけ**である。そして調査の目的は、**分かっていない特性**を知ることだ。分かっている特性だけを揃えて標本を作ると、**肝心の知りたい特性のほうが偏りうる。**
+
+### 1936年 ―― 240万人を集めて、18ポイント外した
+
+アメリカ大統領選で、老舗の週刊誌 *Literary Digest* は約1,000万通の調査票を送り、**約240万通**を回収した。当時として桁違いの規模である。同誌は共和党ランドンの勝利を予測した。結果は民主党ルーズベルトの圧勝だった。
+
+**240万人分のデータがあって、なぜ外したのか。**
+
+| | 値 |
+|---|---|
+| 回収数 | 約 240万 |
+| この \( n \) での理論上の標本誤差（母比率50%・95%） | **±0.06%** |
+| 実際のずれ（ルーズベルトの得票率の見積もりと実績） | 4割強と見積もり → 実際は6割超。**約18ポイント** |
+
+**理論上の標本誤差のおよそ280倍、外している。** 原因は \( n \) の不足ではない。
+
+- **名簿の偏り**：電話帳・自誌の購読者名簿・クラブ会員名簿を使った。大恐慌期に電話や雑誌購読を維持できたのは所得の高い層で、その層は共和党支持に偏っていた（**選択バイアス**）
+- **無回答バイアス**：回収率は2割強。返信した人と、しなかった人は同じではない
+
+一方、新興のギャラップ社は**はるかに少ない標本**でルーズベルトの勝利を当てた。ただしギャラップ社も割当法を使っており、**1948年の選挙では外している**。以後、無作為抽出法が定着した。
+
+!!! danger "この回の主張が、2つそろう"
+    \( n \) は、次の2つを直さない。
+
+    - 標本の中が**相関**していると、\( n \) を増やしても実効標本サイズは \( 1/\rho \) で頭打ちになる（第3節）
+    - 抽出が**偏って**いると、\( n \) を増やしても偏ったままである（本節）
+
+    どちらも「たくさん集めたから確かだ」を無効にする。**数の多さは、独立性も代表性も買えない。**
+    そして第12〜13回で見るとおり、**「みんなが言っているから正しい」も同じ構造の誤り**である。
+
+---
+
 ## 今日のまとめ
 
 | ポイント | 中身 |
 |---|---|
+| 大数の法則とCLT | 前者は「どこに寄るか」、後者は「どう散らばるか」。別の主張 |
 | CLT | 母集団が歪んでいても、**独立な**標本平均は正規分布に近づく |
 | 標準誤差 | $\mathrm{SE}=\sigma/\sqrt{n}$。ただし**独立が前提** |
 | 独立が崩れると | 本当のばらつきが SE より大きい→過剰な自信→偽の有意差・狭すぎる区間 |

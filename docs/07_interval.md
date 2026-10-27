@@ -23,6 +23,7 @@
 - 信頼区間の作り方を理解する：$\bar{x}\pm t_{0.975,n-1}\,s/\sqrt{n}$
 - 「95%」の本当の意味＝**カバレッジ**（手続きの当たり率）を説明できる（Ⅰの復習）
 - 区間の幅を決める3要素（標準誤差・信頼度・$n$）を知る
+- 求める精度から、**必要な標本の大きさ**を見積もれる
 - **独立が崩れると95%信頼区間が95%を守れない**ことを確かめる
 - **発展**：信頼区間の式が不等式を $\mu$ について解いたものであること、独立が崩れると被覆率が落ちる理由を、自分で導ける
 
@@ -60,6 +61,43 @@ $$\bar{x} \;\pm\; t_{0.975,\,n-1}\times \frac{s}{\sqrt{n}}$$
     t分布の密度関数そのものの導出は、この科目で扱う統計数理の範囲外である。ここでは「なぜ正規分布のままではいけないのか」が分かれば十分。
 
     **使った数学**：不等式の同値変形（数I）。標準化（統計学Ⅰ第6回）。
+
+### で、結局何人集めればいいのか ―― 必要な標本の大きさ
+
+区間の幅が \( n \) で決まるなら、話は逆向きにも使える。**どれくらいの精度がほしいかを決めれば、必要な人数が出る。**
+
+比率を調べる場合（内閣支持率、賛成率）、95%の標本誤差は
+
+$$\pm 1.96\sqrt{\frac{p(1-p)}{n}}$$
+
+\( p \) は未知だが、\( p(1-p) \) は \( p=0.5 \) のとき最大の \( 0.25 \) になる。**50%を仮定しておけば、いちばん厳しい側で見積もれる。**
+
+| 標本の大きさ \( n \) | 標本誤差 |
+|---:|---:|
+| 100 | ±9.8% |
+| 400 | ±4.9% |
+| 2,500 | ±2.0% |
+| 10,000 | ±1.0% |
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" aria-labelledby="t t2" style="width:100%;height:auto;max-width:720px;display:block;margin:0.6em auto" font-family="system-ui,-apple-system,'Hiragino Sans','Yu Gothic',Meiryo,sans-serif" font-size="13"><title id="t">標本の大きさと標本誤差</title><desc id="t2">標本誤差は 1/√n で小さくなる。n=100で±9.8%、400で±4.9%、2500で±2.0%、10000で±1.0%。精度を2倍にするには標本を4倍にする必要がある。</desc><line x1="70.0" y1="40.0" x2="70.0" y2="240.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.5"/><line x1="70.0" y1="240.0" x2="550.0" y2="240.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.5"/><line x1="66.0" y1="240.0" x2="70.0" y2="240.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/><text x="62.0" y="244.0" font-size="10" text-anchor="end" font-weight="normal" fill="currentColor" fill-opacity="0.7">±0%</text><line x1="66.0" y1="211.4" x2="70.0" y2="211.4" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/><text x="62.0" y="215.4" font-size="10" text-anchor="end" font-weight="normal" fill="currentColor" fill-opacity="0.7">±2%</text><line x1="70.0" y1="211.4" x2="550.0" y2="211.4" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/><line x1="66.0" y1="182.9" x2="70.0" y2="182.9" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/><text x="62.0" y="186.9" font-size="10" text-anchor="end" font-weight="normal" fill="currentColor" fill-opacity="0.7">±4%</text><line x1="70.0" y1="182.9" x2="550.0" y2="182.9" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/><line x1="66.0" y1="154.3" x2="70.0" y2="154.3" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/><text x="62.0" y="158.3" font-size="10" text-anchor="end" font-weight="normal" fill="currentColor" fill-opacity="0.7">±6%</text><line x1="70.0" y1="154.3" x2="550.0" y2="154.3" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/><line x1="66.0" y1="125.7" x2="70.0" y2="125.7" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/><text x="62.0" y="129.7" font-size="10" text-anchor="end" font-weight="normal" fill="currentColor" fill-opacity="0.7">±8%</text><line x1="70.0" y1="125.7" x2="550.0" y2="125.7" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/><line x1="66.0" y1="97.1" x2="70.0" y2="97.1" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/><text x="62.0" y="101.1" font-size="10" text-anchor="end" font-weight="normal" fill="currentColor" fill-opacity="0.7">±10%</text><line x1="70.0" y1="97.1" x2="550.0" y2="97.1" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/><line x1="66.0" y1="68.6" x2="70.0" y2="68.6" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/><text x="62.0" y="72.6" font-size="10" text-anchor="end" font-weight="normal" fill="currentColor" fill-opacity="0.7">±12%</text><line x1="70.0" y1="68.6" x2="550.0" y2="68.6" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/><line x1="66.0" y1="40.0" x2="70.0" y2="40.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/><text x="62.0" y="44.0" font-size="10" text-anchor="end" font-weight="normal" fill="currentColor" fill-opacity="0.7">±14%</text><line x1="70.0" y1="40.0" x2="550.0" y2="40.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/><line x1="125.5" y1="240.0" x2="125.5" y2="245.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.45"/><text x="125.5" y="259.0" font-size="10" text-anchor="middle" font-weight="normal" fill="currentColor" fill-opacity="0.75">100</text><line x1="236.6" y1="240.0" x2="236.6" y2="245.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.45"/><text x="236.6" y="259.0" font-size="10" text-anchor="middle" font-weight="normal" fill="currentColor" fill-opacity="0.75">400</text><line x1="383.4" y1="240.0" x2="383.4" y2="245.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.45"/><text x="383.4" y="259.0" font-size="10" text-anchor="middle" font-weight="normal" fill="currentColor" fill-opacity="0.75">2,500</text><line x1="494.5" y1="240.0" x2="494.5" y2="245.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.45"/><text x="494.5" y="259.0" font-size="10" text-anchor="middle" font-weight="normal" fill="currentColor" fill-opacity="0.75">10,000</text><text x="550.0" y="278.0" font-size="11" text-anchor="end" font-weight="normal" fill="currentColor" fill-opacity="0.8">標本の大きさ n （対数目盛）</text><polyline points="70.0,42.0 73.0,45.7 76.0,49.3 79.0,52.8 82.0,56.3 85.0,59.7 88.0,63.0 91.0,66.3 94.0,69.6 97.0,72.7 100.0,75.8 103.0,78.9 106.0,81.9 109.0,84.8 112.0,87.7 115.0,90.5 118.0,93.3 121.0,96.0 124.0,98.7 127.0,101.3 130.0,103.9 133.0,106.4 136.0,108.9 139.0,111.3 142.0,113.7 145.0,116.0 148.0,118.3 151.0,120.6 154.0,122.8 157.0,125.0 160.0,127.1 163.0,129.2 166.0,131.2 169.0,133.3 172.0,135.2 175.0,137.2 178.0,139.1 181.0,141.0 184.0,142.8 187.0,144.6 190.0,146.4 193.0,148.1 196.0,149.8 199.0,151.5 202.0,153.1 205.0,154.7 208.0,156.3 211.0,157.9 214.0,159.4 217.0,160.9 220.0,162.4 223.0,163.8 226.0,165.2 229.0,166.6 232.0,168.0 235.0,169.3 238.0,170.6 241.0,171.9 244.0,173.2 247.0,174.4 250.0,175.6 253.0,176.8 256.0,178.0 259.0,179.1 262.0,180.3 265.0,181.4 268.0,182.5 271.0,183.5 274.0,184.6 277.0,185.6 280.0,186.6 283.0,187.6 286.0,188.6 289.0,189.5 292.0,190.5 295.0,191.4 298.0,192.3 301.0,193.2 304.0,194.0 307.0,194.9 310.0,195.7 313.0,196.5 316.0,197.4 319.0,198.1 322.0,198.9 325.0,199.7 328.0,200.4 331.0,201.2 334.0,201.9 337.0,202.6 340.0,203.3 343.0,204.0 346.0,204.6 349.0,205.3 352.0,205.9 355.0,206.6 358.0,207.2 361.0,207.8 364.0,208.4 367.0,209.0 370.0,209.6 373.0,210.1 376.0,210.7 379.0,211.2 382.0,211.8 385.0,212.3 388.0,212.8 391.0,213.3 394.0,213.8 397.0,214.3 400.0,214.8 403.0,215.2 406.0,215.7 409.0,216.1 412.0,216.6 415.0,217.0 418.0,217.4 421.0,217.9 424.0,218.3 427.0,218.7 430.0,219.1 433.0,219.5 436.0,219.8 439.0,220.2 442.0,220.6 445.0,220.9 448.0,221.3 451.0,221.6 454.0,222.0 457.0,222.3 460.0,222.6 463.0,223.0 466.0,223.3 469.0,223.6 472.0,223.9 475.0,224.2 478.0,224.5 481.0,224.8 484.0,225.1 487.0,225.3 490.0,225.6 493.0,225.9 496.0,226.1 499.0,226.4 502.0,226.6 505.0,226.9 508.0,227.1 511.0,227.4 514.0,227.6 517.0,227.8 520.0,228.1 523.0,228.3 526.0,228.5 529.0,228.7 532.0,228.9 535.0,229.1 538.0,229.3 541.0,229.5 544.0,229.7 547.0,229.9 550.0,230.1" fill="none" stroke="#5c6bc0" stroke-width="2.4"/><circle cx="125.5" cy="100.0" r="4.5" fill="#ef6c00"/><text x="134.5" y="93.0" font-size="11.5" text-anchor="start" font-weight="bold" fill="#ef6c00" fill-opacity="1.0">±9.8%</text><circle cx="236.6" cy="170.0" r="4.5" fill="#ef6c00"/><text x="245.6" y="163.0" font-size="11.5" text-anchor="start" font-weight="bold" fill="#ef6c00" fill-opacity="1.0">±4.9%</text><circle cx="383.4" cy="211.4" r="4.5" fill="#ef6c00"/><text x="392.4" y="204.4" font-size="11.5" text-anchor="start" font-weight="bold" fill="#ef6c00" fill-opacity="1.0">±2.0%</text><circle cx="494.5" cy="225.7" r="4.5" fill="#ef6c00"/><text x="503.5" y="218.7" font-size="11.5" text-anchor="start" font-weight="bold" fill="#ef6c00" fill-opacity="1.0">±1.0%</text><text x="88.0" y="62.0" font-size="11.5" text-anchor="start" font-weight="normal" fill="currentColor" fill-opacity="0.85">標本誤差 ＝ ±1.96√(0.25/n)   （母比率50%のとき）</text><line x1="125.5" y1="100.0" x2="236.6" y2="100.0" stroke="#c62828" stroke-width="1.4" stroke-opacity="0.8" stroke-dasharray="4 3"/><line x1="236.6" y1="100.0" x2="236.6" y2="170.0" stroke="#c62828" stroke-width="1.4" stroke-opacity="0.8" stroke-dasharray="4 3"/><text x="244.6" y="132.9" font-size="11.5" text-anchor="start" font-weight="bold" fill="#c62828" fill-opacity="1.0">n を4倍にして、やっと誤差が半分</text><line x1="16.0" y1="268.0" x2="704.0" y2="268.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.3"/><text x="16.0" y="292.0" font-size="12.5" text-anchor="start" font-weight="bold" fill="#00897b" fill-opacity="1.0">40%か50%か60%かを見分けたい → 最低400人</text><text x="16.0" y="312.0" font-size="12" text-anchor="start" font-weight="normal" fill="currentColor" fill-opacity="0.85">50%か55%かを見分けたい → 最低2,500人（誤差±4.9%では区間が重なってしまう）</text></svg>
+
+**\( \sqrt{n} \) で効くので、誤差を半分にするには標本を4倍にしなければならない。** 100人を400人にして、やっと ±9.8% が ±4.9% になる。ここが、精度にコストがかかる理由である。
+
+**では何人必要か。それは「何を見分けたいか」で決まる。**
+
+- ある比率が **40%なのか50%なのか60%なのか** を見分けたい
+    - \( n=100 \)（±9.8%）では、40%なら 30.2〜49.8%、50%なら 40.2〜59.8% と**区間が重なる**。判定できない
+    - \( n=400 \)（±4.9%）なら、35.1〜44.9% と 45.1〜54.9% で**重ならない**。判定できる
+    - → **最低400人**
+- **50%なのか55%なのか** を細かく見分けたい
+    - \( n=400 \)（±4.9%）では 45.1〜54.9% と 50.1〜59.9% で重なる
+    - \( n=2{,}500 \)（±2.0%）なら 48.0〜52.0% と 53.0〜57.0% で重ならない
+    - → **最低2,500人**
+
+!!! warning "この表が答えているのは、標本誤差だけである"
+    上の人数は、**正しく無作為抽出でき、回答が互いに独立である**ことを前提にした計算である。
+    第6回で見たとおり、**抽出が偏っていれば \( n \) では直らず、回答が相関していれば \( n \) を増やしても実効標本サイズは頭打ちになる。**
+    「必要な人数」を計算する前に、**その人数が意味を持つ条件が揃っているか**を確かめること。次の第3節が、まさにその話である。
 
 ---
 
@@ -143,6 +181,7 @@ Colabで、独立な標本と相関した標本（$\rho=0.3$）でカバレッ�
 | 信頼区間 | $\bar{x}\pm t_{0.975,n-1}\,s/\sqrt{n}$。母分散未知なので t 分布 |
 | 95%の意味 | 真値の確率ではなく、手続きを繰り返したときの**カバレッジ**（当たり率） |
 | 幅を決めるもの | 標準誤差・信頼度・$n$（独立が前提） |
+| 必要な標本の大きさ | 誤差を半分にするには $n$ を4倍。40/50/60を見分けるなら400、50/55なら2,500 |
 | 独立が崩れると | 区間が狭すぎてカバレッジが95%を大きく割る＝「95%」が嘘になる |
 
 ---
