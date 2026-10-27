@@ -446,6 +446,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前回の答案から
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="前回の答案から">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日につながること
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -490,7 +518,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -828,6 +856,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前回の答案から
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="前回の答案から">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今日につながること
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -872,7 +928,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -966,6 +1022,63 @@
 <li><strong>発展</strong>：標準化 <span class="arithmatex">\(z=(x-\mu)/\sigma\)</span> が平均0・標準偏差1になることを、自分で導ける</li>
 </ul>
 <p>到達目標との対応：<strong>G1（確率の理解）</strong>。第6回の中心極限定理への直接の橋渡し。</p>
+<hr />
+<h2 id="_2">前回の答案から<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>第4回の記述（パートB・60点）は、採点済み19名で<strong>55〜59点</strong>に収まった。全員が水準に達している。
+今回から<strong>この節を置く</strong>。毎回、前の回で何が書けて何が書けなかったかを最初に返す。</p>
+<div class="admonition warning">
+<p class="admonition-title">① ポアソン分布の前提が、1つだけ落ちる（19名中13名）</p>
+<p>二項分布の3つ（<strong>試行回数 n が決まっている・成功確率 p が毎回同じ・各試行が独立</strong>）は
+ほぼ全員が書けていた。落ちるのは、ほぼこの1つだけである。</p>
+<blockquote>
+<p><strong>ごく短い区間に、複数件がまとまって起こらない</strong></p>
+</blockquote>
+<p>なぜこの仮定が要るのか。「1時間に平均3件」なら、1秒のあいだに2件同時に来ることは無視できる、
+という話である。これが崩れるのは、<strong>同じ原因で一斉に起こる</strong>とき――災害時の通報、
+バズった直後のアクセス。そういうデータにポアソン分布を当てると、
+<strong>極端な集中を過小評価する。</strong></p>
+<p>前提が崩れると、平均は合っていても極端な側を読み違える。
+これは前回のB2（独立が崩れると分散が激増する）と<strong>まったく同じ構造</strong>である。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">② 「正の相関」という言葉にたどり着いた人が19名中6名</p>
+<p>残り13名は「同じ方向にそろう」「固まりやすい」「流される」で止まっていた。
+<strong>機序そのものは全員が理解している。言葉が無いだけ</strong>である。渡しておく。</p>
+<div class="arithmatex">\[\mathrm{Var}(\text{合計}) \;=\; \sum \mathrm{Var}(\text{各人}) \;+\; \sum \mathrm{Cov}(\text{ペアごと})\]</div>
+<p>平均（期待値）は足し算だけで決まるので、<strong>共分散の項が効かない → 5人のまま</strong>。
+分散には共分散が乗るので、<strong>2.5 → 13.5（5.4倍）</strong>、全員一致は <strong>0.2% → 38%</strong>。</p>
+<p>いちばん短く正確に書けていたのがこれ。</p>
+<blockquote>
+<p>真似によって答えの間に<strong>正の相関</strong>が生まれ、<strong>共分散の項が足される</strong>ために分散が大きくなる</p>
+</blockquote>
+<p>読み違いの指摘で鋭かったのがこれ。</p>
+<blockquote>
+<p>「これほど全員一致が起きるはずがない、<strong>偶然ではない特別な理由があるはずだ</strong>」と誤解する</p>
+</blockquote>
+<p>独立を誤って仮定すると、<strong>ただの同調に別の原因を探してしまう。</strong>第12〜13回の核心である。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">③ Colabの数値を引用した人が、19名中ゼロ</p>
+<p>観点「根拠」が満点にならなかった唯一の理由がこれだった。第4回は減点していない。
+<strong>課題文に書いていなかったのは、こちらの手落ちである。</strong></p>
+<blockquote>
+<p>「分散が大きくなる」より「<strong>2.5から13.5へ5.4倍になった</strong>」のほうが伝わる。</p>
+</blockquote>
+<p><strong>第5回から、課題文に「Colabが出した数値を1つ以上引用すること」と明記した。</strong>
+ただし今回のB2（裾の重いデータの例を自分で挙げる）は<strong>対象外</strong>である。
+自分で例を作る設問に、ノートの数値を入れる必然性はない。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">④ 言いすぎに注意 ―― 「真似ると集団の判断が悪くなる」</p>
+<p>前回のモデルから言えるのは<strong>「極端に振れやすくなる」ことまで</strong>である。
+全員不正解が増えるのと<strong>同じだけ全員正解も増える</strong>ので、正解率そのものは下がっていない。
+正解率の話は第13回で、条件つきで扱う。</p>
+</div>
+<h3 id="_3">今日につながること<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>前回は「<strong>独立な試行を足す</strong>」と二項分布になった。今日は「<strong>独立な要因をたくさん足す</strong>」と正規分布になる。</p>
+<p>そして前回とまったく同じ注意が効く。<strong>独立が崩れていれば、どちらも当てはまらない。</strong>
+さらに今日は、独立であっても当てはまらない場合を見る。
+足し算ではなく<strong>掛け算的・自己強化的</strong>に生まれる量――年収・都市の人口・フォロワー数――である。</p>
 <hr />
 <h2 id="1">1. 正規分布の形 ―― μ と σ<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>正規分布の確率密度関数は次式。</p>
@@ -1117,7 +1230,7 @@
 <p>裾の重いデータに正規分布を当てはめて「平均±2σで95%」などと計算すると、現実離れした結論になる。<strong>まず分布の形（ヒストグラム）を確かめてから</strong>手法を選ぶこと。</p>
 </div>
 <hr />
-<h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_4">今日のまとめ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
