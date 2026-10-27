@@ -960,6 +960,7 @@
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>確率変数・期待値・分散を理解する</li>
+<li>確率変数に <strong>離散型と連続型</strong> があることを理解する（値を1つずつ数え上げられるか、測定の目盛りをいくらでも細かくできるか）</li>
 <li><strong>二項分布</strong>：独立な試行 <span class="arithmatex">\(n\)</span> 回中の成功回数の分布</li>
 <li><strong>ポアソン分布</strong>：一定の範囲で起こる件数の分布、二項→ポアソン近似</li>
 <li>両者が置いている前提（<strong>成功確率が一定・各試行が独立</strong> ／ <strong>発生率が一定・区間ごとに独立</strong>）を言えるようになり、独立が崩れると分布が壊れることを知る</li>
@@ -982,6 +983,21 @@
 <hr />
 <h2 id="2-n">2. 二項分布 ―― 独立な試行を n 回<a class="headerlink" href="#2-n" title="Permanent link">&para;</a></h2>
 <p><strong>確率変数</strong>：偶然で値が決まる量（ここでは「10回中の表の回数」）。</p>
+<div class="admonition note">
+<p class="admonition-title">確率変数には2種類ある ―― 離散型と連続型</p>
+<p>確率変数は、<strong>とりうる値をどう刻めるか</strong>で2つに分かれる。</p>
+<ul>
+<li><strong>離散型</strong>：とりうる値を1つずつ数え上げられる。サイコロの目は <span class="arithmatex">\(1,2,\dots,6\)</span> で、<span class="arithmatex">\(1.1\)</span> や <span class="arithmatex">\(5.4\)</span> という目はない。「知っていますか？ Yes / No」も、10回中の表の回数 <span class="arithmatex">\(0,1,\dots,10\)</span> も離散型である。</li>
+<li><strong>連続型</strong>：<strong>測定の目盛りを、いくらでも細かくできる</strong>。身長を「120〜121 cm が2人、121〜122 cm が3人」と数えていたのを、「120〜120.5 cm が1人、120.5〜121 cm が1人……」と刻み直せる。さらに 120.25 cm でも刻める。体重・気温・時間も同じである。</li>
+</ul>
+<p>見分け方は「<strong>隣り合う2つの値のあいだに、もう1つ値を入れられるか</strong>」。入れられないのが離散型、いくらでも入れられるのが連続型だ。</p>
+<p><strong>今日の二項分布・ポアソン分布は離散型。次回の正規分布は連続型</strong>である。この違いは見た目だけの話ではなく、「確率がどこにあるか」が変わる（→第5回）。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">数えられる量でも、連続型の道具を使うことがある</p>
+<p>金額（1円刻み）、年齢（1歳刻み）、人口（1人刻み）は、厳密には離散型である。それでも刻みがデータの散らばりに比べて細かいときは、連続型の道具（正規分布、面積としての確率）で近似するのがふつうだ。<strong>どちらに分類されるかと、どちらの道具を使うかは、別の話である。</strong></p>
+<p>逆向きもある。離散型の二項分布は、<span class="arithmatex">\(n\)</span> を大きくすると連続型の正規分布で近似できる（<span class="arithmatex">\(p=0.5\)</span> で <span class="arithmatex">\(n\)</span> を増やしていくと釣鐘型に重なる。→第5〜6回）。<strong>離散と連続は、互いに近づく関係にある。</strong></p>
+</div>
 <p>成功確率 <span class="arithmatex">\(p\)</span> の試行を <strong>独立に</strong> <span class="arithmatex">\(n\)</span> 回くりかえし、成功回数を数えると <strong>二項分布</strong> <span class="arithmatex">\(\mathrm{Binom}(n,p)\)</span> になる。</p>
 <div class="arithmatex">\[P(X=k) = \binom{n}{k}\,p^{k}(1-p)^{n-k}, \qquad E[X]=np,\quad V[X]=np(1-p)\]</div>
 <p>この形になるために、実は4つの条件を置いている。</p>
@@ -1175,6 +1191,7 @@
 </div>
 <hr />
 <h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>確率変数には離散型（数え上げられる）と連続型（目盛りをいくらでも細かくできる）があり、今日の2つはどちらも離散型である。</p>
 <table>
 <thead>
 <tr>
