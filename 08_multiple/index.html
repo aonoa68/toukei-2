@@ -535,6 +535,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. 効果ゼロでも、20色のうち1つは「有意」になる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        なぜ「差がない」のほうを立てるのか
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -571,7 +588,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -836,6 +853,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. 効果ゼロでも、20色のうち1つは「有意」になる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        なぜ「差がない」のほうを立てるのか
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -872,7 +906,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -974,6 +1008,28 @@
 <p>有名な風刺漫画（xkcd "Significant"）：「<strong>緑のゼリービーンズはニキビの原因だ！</strong>（p&lt;0.05）」。20色を1つずつ調べたら、緑だけ偶然 p&lt;0.05 になった、というオチだ。</p>
 <p>Colabで再現する。20色すべて <strong>本当は効果ゼロ</strong>（食べた群と食べない群が同じ分布）なのに、t検定すると <strong>有意な色が出てしまう</strong>。これを「緑が原因だ」と報告したら完全な誤りだ。</p>
 <p>なぜか。1回の検定で偶然有意になる確率は5%。だが <strong>20回もやれば</strong>、どれか1つが偶然5%を引く確率はぐっと上がる。</p>
+<div class="admonition info">
+<p class="admonition-title">先に定義 ―― 検定の言葉</p>
+<ul>
+<li><strong>帰無仮説 <span class="arithmatex">\( H_0 \)</span></strong>：「差がない」「効果がゼロ」という、<strong>棄却したい</strong>ほうの仮説。</li>
+<li><strong>対立仮説 <span class="arithmatex">\( H_1 \)</span></strong>：「差がある」という、<strong>本当に主張したい</strong>ほうの仮説。</li>
+<li><strong>有意水準 <span class="arithmatex">\( \alpha \)</span></strong>：帰無仮説が正しいのに棄却してしまう確率の上限。ふつう 0.05。</li>
+<li><strong>有意である</strong>：検定統計量が、帰無仮説のもとではめったに出ない領域（<strong>棄却域</strong>）に入った、ということ。</li>
+</ul>
+</div>
+<h3 id="_2">なぜ「差がない」のほうを立てるのか<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>主張したいのは「差がある」なのに、立てるのは「差がない」。わざわざ回りくどい。理由は2つある。</p>
+<p><strong>理由1：仮説は、偽であることは示せても、真であることは示しにくい。</strong></p>
+<p>「朝顔が咲くのは、周りが明るくなるからだ」が<strong>正しい</strong>と示すには、気温のせいではない・暗い時間の長さのせいではない……と、あらゆる対抗仮説を潰さなければならない。しかも<strong>潰し切れたかどうかが分からない。</strong>
+一方「暗いままでも咲く」が1例でも見つかれば、<strong>正しくないこと</strong>は示せる。<strong>反証のほうが、はるかに易しい。</strong> だから「差がない」のほうを立てて、それを壊しにいく。</p>
+<p><strong>理由2：2種類ある間違いのうち、片方だけを自分で決めたいから。</strong></p>
+<p>2つを対置する形にすると、有意水準 <span class="arithmatex">\( \alpha \)</span> が「<strong>無い差を『あった』と言ってしまう確率</strong>」そのものになる。つまり <strong>自分で決め打てるほうの間違いを、帰無仮説の側に寄せている。</strong> もう一方（ある差を見逃す確率）は決め打てない ―― これが第9回の<strong>検出力</strong>の話になる。</p>
+<div class="admonition warning">
+<p class="admonition-title">だから、言えることは限られている</p>
+<p>帰無仮説を棄却できても、言えるのは「<strong>帰無仮説は採用できない</strong>」までである。対立仮説が正しいと積極的に証明したわけではない。
+そして棄却できなかったときに言えるのは「<strong>差があるとは言えない</strong>」であって、<strong>「差がない」ではない</strong>（→第9回）。</p>
+<p>この「言えることの狭さ」を忘れると、本節以降の多重比較の問題がなぜ深刻なのかも見えなくなる。<strong>もともと1回の検定で言えることは、それほど強くない。</strong></p>
+</div>
 <hr />
 <h2 id="2">2. 偽陽性が積み上がる ―― ファミリーワイズ・エラー<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>効果ゼロのとき、1回の検定で有意になる確率は <span class="arithmatex">\(\alpha=0.05\)</span>。独立に <span class="arithmatex">\(m\)</span> 回検定して <strong>少なくとも1回は偽陽性が出る</strong> 確率は：</p>
@@ -1147,7 +1203,7 @@
 <p>「有意差が出ました（p&lt;0.05）」と聞いたら、まず問う ―― <strong>『それ、何回検定したうちの1つ？』『仮説は先に決めてあった？』</strong>。多くの“発見”は、たくさん試した中のまぐれ当たりだ。これを疑えることが、第9回（効果量とp値批判）へとつながる。</p>
 </div>
 <hr />
-<h2 id="_2">今日のまとめ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_3">今日のまとめ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
