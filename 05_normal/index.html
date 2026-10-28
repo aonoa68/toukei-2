@@ -1373,7 +1373,34 @@
 <h2 id="4">4. だが「すべてが正規」ではない<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>正規分布は強力だが、<strong>世の中のデータがすべて正規だと思い込むのは誤り</strong>だ。</p>
 <p><strong>生き物の体重</strong>・世帯年収・都市の人口・SNSのフォロワー数・地震の規模などは、<strong>少数の極端に大きな値</strong>を持つ <strong>裾の重い分布（べき分布・対数正規など）</strong> に従う。これらは「独立な要因の足し算」ではなく「掛け算的・自己強化的」なメカニズムで生まれるため、正規にならない。</p>
-<p>裾の重い分布では <strong>少数の巨大値が平均を吊り上げ、平均 ＞ 中央値</strong> になる（第1回「平均年収の罠」そのもの。Colabでは 平均≈517 / 中央値≈405）。</p>
+<p>裾の重い分布では <strong>少数の巨大値が平均を吊り上げ、平均 ＞ 中央値</strong> になる（第1回「平均年収の罠」そのもの）。</p>
+<p>Colabの §4 が出す値はこうなる。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">平均</th>
+<th style="text-align: right;">中央値</th>
+<th style="text-align: right;">歪度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正規分布（シミュレーション）</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">+0.00</td>
+</tr>
+<tr>
+<td>霊長類の体重（実データ・265種）</td>
+<td style="text-align: right;"><strong>5,881 g</strong></td>
+<td style="text-align: right;"><strong>3,006 g</strong></td>
+<td style="text-align: right;"><strong>+7.60</strong></td>
+</tr>
+</tbody>
+</table>
+<p>正規分布では平均と中央値が一致するのに、体重では<strong>平均が中央値の約2倍</strong>になっている。
+さらに <strong>平均 − 1SD = −7,254 g</strong> ―― <strong>ありえないマイナスの体重</strong>が範囲に入ってしまう。</p>
 <div class="admonition warning">
 <p class="admonition-title">統計的誤用を防ぐ第一歩</p>
 <p>裾の重いデータに正規分布を当てはめて「平均±2σで95%」などと計算すると、現実離れした結論になる。<strong>まず分布の形（ヒストグラム）を確かめてから</strong>手法を選ぶこと。</p>
