@@ -13,3 +13,9 @@ slides/*.html
 *.mp4
 *.m4a
 *.mov
+
+# 取り寄せただけで、まだどのページも参照していない外部データ
+# （使うことになったら、この3行を外してコミットする）
+docs/data/FEH_*.csv
+docs/data/b01_01.xlsx
+docs/data/産業構造マップ_*.csv
