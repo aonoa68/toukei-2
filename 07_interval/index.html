@@ -626,6 +626,17 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
+        どういうときに使うのか
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         この回で使う式
       
     </span>
@@ -717,7 +728,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         で、結局何人集めればいいのか ―― 必要な標本の大きさ
@@ -744,7 +755,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -1154,6 +1165,17 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
+        どういうときに使うのか
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         この回で使う式
       
     </span>
@@ -1245,7 +1267,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         で、結局何人集めればいいのか ―― 必要な標本の大きさ
@@ -1272,7 +1294,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -1364,6 +1386,7 @@
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>信頼区間とは何か</strong>を説明できる（点推定との違い、「推定値 ± 係数 × 標準誤差」という形）</li>
+<li><strong>区間推定をどういうときに使うのか</strong>（全数調査では要らない／2つを比べてよいかの判断）を言える</li>
 <li>信頼区間の作り方を理解する：<span class="arithmatex">\(\bar{x}\pm t_{0.975,n-1}\,s/\sqrt{n}\)</span></li>
 <li>「95%」の本当の意味＝<strong>カバレッジ</strong>（手続きの当たり率）を説明できる（Ⅰの復習）</li>
 <li><strong>どの場合に t を使い、どの場合に z でよいか</strong>を、理由とともに言える（分かれ目は <span class="arithmatex">\(n\)</span> の大小ではない）</li>
@@ -1602,7 +1625,80 @@
 <p><strong>統計学Ⅰを取っていない人は、先にそちらを読むとこの回が楽になる。</strong>
 この科目で新しいのは、<strong>係数が <span class="arithmatex">\(t\)</span> になること</strong>と、<strong>独立が崩れたときに何が起きるか</strong>の2点である。</p>
 </div>
-<h3 id="_6">この回で使う式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_6">どういうときに使うのか<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>区間推定が要るのは、次の<strong>3つがそろったときだけ</strong>である。</p>
+<ol>
+<li>知りたい相手（<strong>母集団</strong>）が、<strong>全部は調べられない</strong></li>
+<li>そこから<strong>一部を取り出して</strong>調べた</li>
+<li>その結果から、<strong>母集団について何か言いたい</strong></li>
+</ol>
+<p>逆に、<strong>全部を測ったのなら区間推定は要らない。</strong>
+名簿にある全員の年齢を数えた平均は、推定値ではなく<strong>平均そのもの</strong>である。そこに「誤差」はない。</p>
+<div class="admonition danger">
+<p class="admonition-title">よくある誤用 ―― 全数調査のデータに信頼区間を付ける</p>
+<p>標本を取っていないのに信頼区間が付いている表を見たら、
+<strong>その人が何を母集団だと考えているのか</strong>を確かめること。
+社会調査の報告書では、ここが曖昧なまま「±1.2%」と書かれていることがある。</p>
+</div>
+<p><strong>役に立つ場面は、大きく4つある。</strong></p>
+<div class="admonition note">
+<p class="admonition-title">① 数字を鵜呑みにしないための目盛りになる</p>
+<p>「内閣支持率 <strong>45%</strong>」とだけ出ていると、45 という数が事実のように見える。
+実際には調査人数に応じた幅がある。だから「前回の 45.2% から 44.8% に下がった」という報道は、
+<strong>誤差の中の動き</strong>であって、下がったとは言えない。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">② 2つを比べてよいかどうかが分かる ―― いちばん実用的</p>
+<p>A案の賛成が 40%、B案が 50%。<strong>差があると言ってよいか。</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">調べた人数</th>
+<th style="text-align: right;">誤差</th>
+<th>A案の区間</th>
+<th>B案の区間</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100人</td>
+<td style="text-align: right;">±9.8%</td>
+<td>30.2〜49.8%</td>
+<td>40.2〜59.8%</td>
+<td><strong>重なる → 言えない</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">400人</td>
+<td style="text-align: right;">±4.9%</td>
+<td>35.1〜44.9%</td>
+<td>45.1〜54.9%</td>
+<td>重ならない → 言える</td>
+</tr>
+</tbody>
+</table>
+<p>同じ「40% と 50%」でも、<strong>人数しだいで結論が逆になる。</strong>
+だから調査は、<strong>何人に聞くかを先に決めなければならない。</strong>その計算が<a href="#3_2">第3節</a>である。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">③ 最悪どれくらいかを見積もれる</p>
+<p>不良率を「2%」と1つの数で報告するより、「<strong>0.5%〜3.5%</strong>」と幅で報告するほうが、
+保証や在庫の<strong>最悪値</strong>を見積もれる。意思決定は、点ではなく幅で行うものである。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">④ 論文・報告書では、ほぼ必須</p>
+<p>医学や心理学の論文は、効果の大きさを「1.8倍」とだけ書かず、
+「<strong>1.2〜2.7倍</strong>」と信頼区間を併記する。点推定だけの報告は、いまはまず通らない。</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">この科目にとっての意味</p>
+<p>①〜④はどれも「<strong>幅を正しく見積もれている</strong>」ことが前提になっている。
+幅が本当より狭ければ、②では「差がある」と誤って言い切り、
+③では最悪値を甘く見積もり、④では存在しない効果を報告することになる。</p>
+<p><strong>その幅が壊れる条件が、第4節の「独立が崩れたとき」である。</strong>
+区間推定が何の役に立つかを押さえておくと、それが壊れることの重さも分かる。</p>
+</div>
+<h3 id="_7">この回で使う式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>上の「推定値 ± 係数 × 標準誤差」を、この科目の記号で書くと次のようになる。</p>
 <div class="arithmatex">\[\bar{x} \;\pm\; t_{0.975,\,n-1}\times \frac{s}{\sqrt{n}}\]</div>
 <ul>
@@ -1848,7 +1944,7 @@ t に変えても、独立の崩れはそのまま残る。</p>
 （「支持率は −3%〜12%」のような、ありえない区間が出る）。
 目安として <span class="arithmatex">\(n\hat{p}\)</span> と <span class="arithmatex">\(n(1-\hat{p})\)</span> が<strong>どちらも5以上</strong>（厳しめに見るなら10以上）なら使ってよい。</p>
 </div>
-<h3 id="_7">で、結局何人集めればいいのか ―― 必要な標本の大きさ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_8">で、結局何人集めればいいのか ―― 必要な標本の大きさ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>区間の幅が <span class="arithmatex">\( n \)</span> で決まるなら、話は逆向きにも使える。<strong>どれくらいの精度がほしいかを決めれば、必要な人数が出る。</strong></p>
 <p>上で作った比率の区間の<strong>半幅</strong>が、調査でいう <strong>標本誤差</strong> である。</p>
 <div class="arithmatex">\[\pm 1.96\sqrt{\frac{p(1-p)}{n}}\]</div>
@@ -1949,7 +2045,7 @@ t に変えても、独立の崩れはそのまま残る。</p>
 <p>区間推定も検定も、すべて「標本は独立」という土台の上に建っている。空気を読む集団から取ったデータでは、その土台が抜けている。<strong>狭い区間・小さいp値は、精密さの証ではなく、独立性の崩壊を見落とした結果かもしれない。</strong> これを疑えることが、統計的誤用を見抜く力だ。</p>
 </div>
 <hr />
-<h2 id="_8">今日のまとめ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_9">今日のまとめ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
