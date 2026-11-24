@@ -2198,9 +2198,23 @@ t に変えても、独立の崩れはそのまま残る。</p>
 実質 <strong>0.55 個分</strong>しか取れていない。</p>
 </div>
 <div>
-<div class="arithmatex">\[ 2\Phi(0.55)-1 \;\approx\; 0.42 \]</div>
-<p><strong>その余裕で何%当たるかを、標準正規分布で読んだ。</strong>
-<span class="arithmatex">\(\pm 0.55\)</span> の範囲に入る確率は約42%。
+<div class="arithmatex">\[ \Phi(z) \;=\; \Pr(Z \le z) \]</div>
+<p><strong><span class="arithmatex">\(\Phi\)</span> とは何か。標準正規分布を「下から <span class="arithmatex">\(z\)</span> まで」で切ったときの面積</strong>である
+（<span class="arithmatex">\(\Phi\)</span> はギリシャ文字の大文字ファイ）。
+第7回で <span class="arithmatex">\(1.96\)</span> を逆引きしたときに使った関数と<strong>同じもの</strong>で、あのときは
+<span class="arithmatex">\(\Phi(z)=0.975\)</span> となる <span class="arithmatex">\(z\)</span> を探した。ここでは逆に、<span class="arithmatex">\(z\)</span> を与えて面積を読む。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \Pr(-z \le Z \le z) \;=\; \Phi(z)-\Phi(-z) \;=\; 2\Phi(z)-1 \]</div>
+<p><strong>中央に入る確率を <span class="arithmatex">\(\Phi\)</span> で書いた。</strong>
+「<span class="arithmatex">\(z\)</span> まで」から「<span class="arithmatex">\(-z\)</span> まで」を引けば、あいだの面積が出る。
+標準正規分布は<strong>左右対称</strong>なので <span class="arithmatex">\(\Phi(-z)=1-\Phi(z)\)</span>、代入すると
+<span class="arithmatex">\(\Phi(z)-(1-\Phi(z))=2\Phi(z)-1\)</span> になる。</p>
+</div>
+<div>
+<div class="arithmatex">\[ 2\Phi(0.55)-1 \;=\; 2\times 0.7088-1 \;=\; 0.4177 \;\approx\; 0.42 \]</div>
+<p><strong><span class="arithmatex">\(z=0.55\)</span> を入れた。</strong><span class="arithmatex">\(\Phi(0.55)=0.7088\)</span>（Python なら <code>norm.cdf(0.55)</code>）。
+<span class="arithmatex">\(\pm 0.55\)</span> の範囲に入る確率は約 <strong>42%</strong>。
 本文の表の <strong>約42%</strong> は、この計算が出した値である。</p>
 </div>
 </div>

@@ -668,6 +668,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3p-hacking-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出③：p-hacking は、式の中の \(m\) を見えなくする操作である
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1081,6 +1092,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3p-hacking-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出③：p-hacking は、式の中の \(m\) を見えなくする操作である
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1487,12 +1509,39 @@
 </table>
 <p>補正なしの列は相関の有無で 0.05 から 0.64 まで大きく動くのに、補正後はどの場合も 0.05 を超えていない。同時に、下の行ほど 0.05 から遠い ―― これが「保守的」ということである。</p>
 <p><strong>使った数学</strong>：ブールの不等式（確率の劣加法性）。集合の和と包含関係（高校の集合）。</p>
-<details class="note" open="open">
-<summary>導出③：p-hacking は、式の中の <span class="arithmatex">\(m\)</span> を見えなくする操作である</summary>
-<p>導出①の <span class="arithmatex">\(m\)</span> は「<strong>実際に行った</strong>検定の回数」であって、「報告した回数」ではない。ここがすべての鍵になる。</p>
-<p>有意が出るまで条件を変えて試し、当たった1つだけを報告したとする。読み手には <span class="arithmatex">\(m=1\)</span> に見えるが、真の <span class="arithmatex">\(m\)</span> は試した回数である。</p>
-<div class="arithmatex">\[\text{読み手が思う FWER}=1-(1-0.05)^{1}=0.05 \qquad \text{本当の FWER}=1-(1-0.05)^{m}\]</div>
-<p>裏で何回試していたかで、本当の値はこう変わる。</p>
+<h3 id="3p-hacking-m">導出③：p-hacking は、式の中の <span class="arithmatex">\(m\)</span> を見えなくする操作である<a class="headerlink" href="#3p-hacking-m" title="Permanent link">&para;</a></h3>
+<p>この節には<strong>新しい数学は出てこない。</strong>使うのは導出①の式だけである。
+効いているのは、<strong>その式の <span class="arithmatex">\(m\)</span> が何を指しているか</strong>という読み方のほうだ。</p>
+<div class="admonition tip">
+<p class="admonition-title">下のボタンで、1行ずつ送れる</p>
+<p>同じ1本の式を、<strong>読み手の側</strong>と<strong>書き手の側</strong>の2通りに読み比べる。</p>
+</div>
+<div class="deriv">
+<div>
+<div class="arithmatex">\[ \mathrm{FWER} \;=\; 1-(1-\alpha)^{m} \]</div>
+<p><strong>導出①の式を、そのまま持ってくる。</strong>
+🔴 ここの <span class="arithmatex">\(m\)</span> は「<strong>実際に行った</strong>検定の回数」であって、「<strong>報告した</strong>回数」ではない。
+<strong>この一点が、すべての鍵になる。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ \underbrace{1-(1-0.05)^{\,1}}_{\text{読み手が入れる } m=1} \;=\; 0.05 \]</div>
+<p><strong>読み手の側。</strong>論文に「この検定をしたら p&lt;0.05 でした」と1つだけ書いてあれば、
+読み手は <span class="arithmatex">\(m=1\)</span> だと思って読む。<strong>5%の話をしているつもり</strong>になる。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \underbrace{1-(1-0.05)^{\,20}}_{\text{実際に行った } m=20} \;=\; 0.642 \]</div>
+<p><strong>書き手の側。</strong>裏で20通り試して、当たった1つだけを書いたのなら、
+<strong>本当に起きていたのはこちら</strong>である。効果がゼロでも、<strong>64%の確率で「有意」が手に入る。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ 0.05 \quad\text{と}\quad 0.642 \]</div>
+<p><strong>同じデータ、同じ p値、同じ式。違うのは <span class="arithmatex">\(m\)</span> に何を入れたかだけ。</strong></p>
+<p>🔴 <strong>そして、補正する側は真の <span class="arithmatex">\(m\)</span> を知らない。</strong>
+ボンフェローニは <span class="arithmatex">\(\alpha/m\)</span> で割る方法だが、割るべき <span class="arithmatex">\(m\)</span> が隠されていては使えない。
+<strong>だからこれは、補正では防げない種類の問題である。</strong></p>
+</div>
+</div>
+<p>裏で試した回数ごとに、本当の値はこう変わる。</p>
 <table>
 <thead>
 <tr>
@@ -1523,15 +1572,14 @@
 </tr>
 <tr>
 <td style="text-align: right;">50</td>
-<td>0.923</td>
+<td><strong>0.923</strong></td>
 </tr>
 </tbody>
 </table>
-<p>50回試して1つだけ報告すれば、効果がまったくなくても9割方「有意」が手に入る。</p>
-<p>HARKing・チェリーピッキング・optional stopping は、どれも <span class="arithmatex">\(m\)</span> を増やしながら、読み手からは <span class="arithmatex">\(m\)</span> を隠す操作である。補正しようにも、<strong>補正する側が真の <span class="arithmatex">\(m\)</span> を知らない</strong>。だからボンフェローニでは防げない。</p>
-<p>ここから次節の対策が出てくる。データを取る<strong>前に</strong>仮説と方法を固定して公開すれば、<span class="arithmatex">\(m\)</span> が事前に確定し、後から隠せなくなる。</p>
+<p><strong>50回試して1つだけ報告すれば、効果がまったくなくても9割方「有意」が手に入る。</strong></p>
+<p>HARKing・チェリーピッキング・optional stopping は、どれも <span class="arithmatex">\(m\)</span> を増やしながら、読み手からは <span class="arithmatex">\(m\)</span> を隠す操作である。</p>
+<p>ここから次節の対策が出てくる。データを取る<strong>前に</strong>仮説と方法を固定して公開すれば、<strong><span class="arithmatex">\(m\)</span> が事前に確定し、後から隠せなくなる。</strong></p>
 <p><strong>使った数学</strong>：導出①と同じで、新しい数学は使っていない。効いているのは、式の <span class="arithmatex">\(m\)</span> が何を指しているかという<strong>読み方</strong>である。</p>
-</details>
 <hr />
 <h2 id="4">4. もっと根本の対策 ―― 事前登録<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>p-hacking には補正だけでは防げない巧妙な形がある。</p>
