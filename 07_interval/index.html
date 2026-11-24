@@ -612,6 +612,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        そもそも信頼区間とは何か
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回で使う式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#t-n" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -695,7 +717,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         で、結局何人集めればいいのか ―― 必要な標本の大きさ
@@ -722,7 +744,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -1118,6 +1140,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        そもそも信頼区間とは何か
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この回で使う式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#t-n" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1201,7 +1245,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         で、結局何人集めればいいのか ―― 必要な標本の大きさ
@@ -1228,7 +1272,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         今日のまとめ
@@ -1319,6 +1363,7 @@
 </div>
 <h2 id="_1">この回のゴール<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong>信頼区間とは何か</strong>を説明できる（点推定との違い、「推定値 ± 係数 × 標準誤差」という形）</li>
 <li>信頼区間の作り方を理解する：<span class="arithmatex">\(\bar{x}\pm t_{0.975,n-1}\,s/\sqrt{n}\)</span></li>
 <li>「95%」の本当の意味＝<strong>カバレッジ</strong>（手続きの当たり率）を説明できる（Ⅰの復習）</li>
 <li><strong>どの場合に t を使い、どの場合に z でよいか</strong>を、理由とともに言える（分かれ目は <span class="arithmatex">\(n\)</span> の大小ではない）</li>
@@ -1460,7 +1505,105 @@
 <p>Colabで、独立なときのカバレッジと相関したときのカバレッジを並べて確かめる。</p>
 <hr />
 <h2 id="1_1">1. 信頼区間の作り方（母平均）<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h2>
-<p>母平均 <span class="arithmatex">\(\mu\)</span> を標本から推定したい。点推定は標本平均 <span class="arithmatex">\(\bar{x}\)</span> ひとつだが、それだけでは「どれくらい確かか」が分からない。そこで <strong>区間</strong> で示す。</p>
+<h3 id="_5">そもそも信頼区間とは何か<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">先に定義</p>
+<ul>
+<li><strong>母数</strong>：知りたい相手（母平均 <span class="arithmatex">\(\mu\)</span>、母比率 <span class="arithmatex">\(p\)</span> など）。ふつうは<strong>見えない</strong></li>
+<li><strong>点推定</strong>：標本から計算した<strong>1つの値</strong>で母数を言い当てること（例：標本平均 <span class="arithmatex">\(\bar{x}\)</span>）</li>
+<li><strong>区間推定</strong>：1つの値ではなく、<strong>下限と上限の2つの数</strong>で「このあたり」と示すこと</li>
+<li><strong>信頼区間</strong>：区間推定で作った、その区間のこと</li>
+</ul>
+</div>
+<p><strong>なぜ1つの値では足りないのか。</strong></p>
+<p>標本は毎回ちがう。30人を取って平均を出しても、別の30人では違う値が出る。
+だから <span class="arithmatex">\(\bar{x}\)</span> をそのまま言い切っても、母平均 <span class="arithmatex">\(\mu\)</span> とぴったり一致していることは、まずない。
+<strong>どれくらい外れうるか</strong>を一緒に示す必要がある。その幅が信頼区間である。</p>
+<p><strong>形はいつも同じ。</strong></p>
+<div class="arithmatex">\[ \underbrace{\text{推定値}}_{\bar{x}} \;\pm\; \underbrace{\text{係数}}_{t\ \text{や}\ 1.96} \times \underbrace{\text{標準誤差}}_{s/\sqrt{n}} \]</div>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>中身</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>推定値</strong></td>
+<td>標本平均 <span class="arithmatex">\(\bar{x}\)</span></td>
+<td>区間の<strong>中心</strong>。点推定そのもの</td>
+</tr>
+<tr>
+<td><strong>標準誤差</strong></td>
+<td><span class="arithmatex">\(s/\sqrt{n}\)</span></td>
+<td>標本平均が標本ごとにどれだけ散らばるか（第6回）。<strong>物差しの1目盛り</strong></td>
+</tr>
+<tr>
+<td><strong>係数</strong></td>
+<td><span class="arithmatex">\(t\)</span> や <span class="arithmatex">\(1.96\)</span></td>
+<td>その目盛りを<strong>何本ぶん</strong>取るか。信頼度で決まる</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">実際に1本作ってみる（今日のColab）</p>
+<p>真の母平均 50 の母集団（本当は見えない）から、30人を取ったときの出力。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標本平均 <span class="arithmatex">\(\bar{x}\)</span>（点推定）</td>
+<td style="text-align: right;"><strong>45.86</strong></td>
+</tr>
+<tr>
+<td>標本標準偏差 <span class="arithmatex">\(s\)</span></td>
+<td style="text-align: right;">8.36</td>
+</tr>
+<tr>
+<td>標準誤差 <span class="arithmatex">\(SE=s/\sqrt{n}\)</span></td>
+<td style="text-align: right;"><strong>1.53</strong></td>
+</tr>
+<tr>
+<td>係数 <span class="arithmatex">\(t_{0.975,\,29}\)</span></td>
+<td style="text-align: right;"><strong>2.045</strong></td>
+</tr>
+<tr>
+<td>半幅 <span class="arithmatex">\(t \times SE\)</span></td>
+<td style="text-align: right;">3.12</td>
+</tr>
+<tr>
+<td>95%信頼区間</td>
+<td style="text-align: right;"><strong>[42.74, 48.98]</strong></td>
+</tr>
+</tbody>
+</table>
+<p>「50のあたり」と言うかわりに「<strong>42.7 から 49.0 のあいだ</strong>」と幅で言う。これが区間推定である。</p>
+<p>🔴 <strong>ところが、この区間は真の母平均 50 を含んでいない。</strong>
+ノートも <code>入っている？ → False</code> と出したはずである。<strong>いきなり外した。</strong></p>
+<p>これは失敗ではない。95%信頼区間は<strong>20回に1回くらいは外す</strong>ように作られている。
+続けて100本作ると、真値を含んだのは <strong>89本</strong>だった（理論は約95本）。
+つまり「95%」は、<strong>手元の1本が当たっている保証ではない。</strong>
+その意味を正確にするのが、第2節のカバレッジである。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">もっと基礎から知りたい人へ</p>
+<p>信頼区間そのものの考え方は、<strong>統計学Ⅰ 第7回「点推定と区間推定」</strong>に、
+霊長類のデータを使った具体例と、係数 1.96 の出どころまで含めて書いてある。</p>
+<ul>
+<li><a href="https://aonoa68.github.io/toukei-1/07_estimation/">統計学Ⅰ 第7回　点推定と区間推定</a></li>
+</ul>
+<p><strong>統計学Ⅰを取っていない人は、先にそちらを読むとこの回が楽になる。</strong>
+この科目で新しいのは、<strong>係数が <span class="arithmatex">\(t\)</span> になること</strong>と、<strong>独立が崩れたときに何が起きるか</strong>の2点である。</p>
+</div>
+<h3 id="_6">この回で使う式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>上の「推定値 ± 係数 × 標準誤差」を、この科目の記号で書くと次のようになる。</p>
 <div class="arithmatex">\[\bar{x} \;\pm\; t_{0.975,\,n-1}\times \frac{s}{\sqrt{n}}\]</div>
 <ul>
 <li><span class="arithmatex">\(s/\sqrt{n}\)</span> … 第6回の <strong>標準誤差</strong>（標本平均のばらつき）</li>
@@ -1705,7 +1848,7 @@ t に変えても、独立の崩れはそのまま残る。</p>
 （「支持率は −3%〜12%」のような、ありえない区間が出る）。
 目安として <span class="arithmatex">\(n\hat{p}\)</span> と <span class="arithmatex">\(n(1-\hat{p})\)</span> が<strong>どちらも5以上</strong>（厳しめに見るなら10以上）なら使ってよい。</p>
 </div>
-<h3 id="_5">で、結局何人集めればいいのか ―― 必要な標本の大きさ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_7">で、結局何人集めればいいのか ―― 必要な標本の大きさ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>区間の幅が <span class="arithmatex">\( n \)</span> で決まるなら、話は逆向きにも使える。<strong>どれくらいの精度がほしいかを決めれば、必要な人数が出る。</strong></p>
 <p>上で作った比率の区間の<strong>半幅</strong>が、調査でいう <strong>標本誤差</strong> である。</p>
 <div class="arithmatex">\[\pm 1.96\sqrt{\frac{p(1-p)}{n}}\]</div>
@@ -1806,7 +1949,7 @@ t に変えても、独立の崩れはそのまま残る。</p>
 <p>区間推定も検定も、すべて「標本は独立」という土台の上に建っている。空気を読む集団から取ったデータでは、その土台が抜けている。<strong>狭い区間・小さいp値は、精密さの証ではなく、独立性の崩壊を見落とした結果かもしれない。</strong> これを疑えることが、統計的誤用を見抜く力だ。</p>
 </div>
 <hr />
-<h2 id="_6">今日のまとめ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_8">今日のまとめ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
