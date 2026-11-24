@@ -137,6 +137,12 @@ $$\mathrm{SE} = \frac{\sigma}{\sqrt{n}}$$
 
     統計学Ⅰ第6回で導いた式だが、ここでは **どの行で独立を使ったか** に注目して見直す。
 
+    （前提の \( \mathbb{E}[X_i]=\mu,\ \mathrm{Var}[X_i]=\sigma^2 \) が**なぜ成り立つのか**も、
+    [統計学Ⅰ 第6回 導出①](https://aonoa68.github.io/toukei-1/06_sampling_clt/#1-sesigmasqrtn)の
+    ステップ1〜4で、期待値の定義から計算して出してある。
+    鍵は、無作為抽出なら**どの個体も確率 \( 1/N \) で引かれる**こと。
+    🔴 **独立と無作為抽出は別の前提**で、崩れ方も違う。）
+
     （\( \mathrm{Var}[aX]=a^2\mathrm{Var}[X] \) と「独立なら分散は足せる」が**なぜ成り立つのか**は、
     [統計学Ⅰ 第6回 導出①](https://aonoa68.github.io/toukei-1/06_sampling_clt/#1-sesigmasqrtn)の
     ステップ4〜7で、分散の定義から1行ずつ出している。）
