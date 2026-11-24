@@ -123,6 +123,9 @@
 
     この分散を、**独立な $n_{\text{eff}}$ 人の平均の分散** $\sigma^{2}/n_{\text{eff}}$ と等しいと置いて $n_{\text{eff}}$ について解くと、
 
+    （この式変形と、$n\to\infty$ で $n_{\text{eff}}\to 1/\rho$ になるところは、
+    [第6回 導出③](06_clt.md#3-n_1)で1行ずつ送れるようにしてある。）
+
     $$\frac{\sigma^{2}}{n_{\text{eff}}}=\frac{\sigma^{2}}{n}\left[1+(n-1)\rho\right]
     \quad\Longrightarrow\quad
     n_{\text{eff}}=\frac{n}{1+(n-1)\rho}$$

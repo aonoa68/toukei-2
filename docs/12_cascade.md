@@ -57,6 +57,8 @@
     $$P(s=1\mid V=1)=q,\qquad P(s=1\mid V=0)=1-q$$
 
     第3回のオッズ形式のベイズより、事後オッズは事前オッズに**尤度比**を掛けたものになる。
+    （この形が**ベイズの定理を2つ並べて割るだけ**で出ることは、[第3回](03_bayes.md)で確かめた。
+    分母の $P(s)$ が両方に共通なので、割り算で消えるのがポイントである。）
 
     $$\underbrace{\frac{P(V=1\mid s)}{P(V=0\mid s)}}_{\text{事後オッズ}}=\underbrace{\frac{P(V=1)}{P(V=0)}}_{\text{事前オッズ}}\times\underbrace{\frac{P(s\mid V=1)}{P(s\mid V=0)}}_{\text{尤度比}}$$
 
