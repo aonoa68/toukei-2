@@ -196,10 +196,31 @@ $$ \mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \sum_{i=1}^{n}\mathrm{Var
 
 <div markdown>
 
-$$ \mathrm{Cov}[X_i,X_j] \;=\; \rho\,\sigma^2 \qquad (i \ne j) $$
+$$ \mathrm{Cov}[X,Y] \;=\; \mathbb{E}\!\left[(X-\mu_X)(Y-\mu_Y)\right] $$
 
-**どの2人を取っても相関が同じ $\rho$ だと置いた（等相関）。**
-相関係数の定義 $\rho = \mathrm{Cov}[X_i,X_j]/(\sigma\cdot\sigma)$ を、共分散について解いただけ。
+**共分散とは何か。**「片方が平均より上のとき、もう片方も上に出やすいか」を測る量。
+**連動していれば積が正になりやすく、していなければ平均してゼロ**になる。
+ただし**単位が付く**（身長×体重なら cm·kg）ので、大きさだけでは強さが分からない。
+
+</div>
+
+<div markdown>
+
+$$ \rho \;=\; \frac{\mathrm{Cov}[X,Y]}{\sigma_X\,\sigma_Y} $$
+
+**相関係数は、共分散を両方の標準偏差で割って単位を消したもの。**
+こうすると必ず $-1 \le \rho \le 1$ に収まり、**強さだけを比べられる**。
+（統計学Ⅰ第5回の $r$ と同じ量。あちらは標本から計算した値、こちらは母集団の値。）
+
+</div>
+
+<div markdown>
+
+$$ \mathrm{Cov}[X_i,X_j] \;=\; \rho\,\sigma_{X_i}\sigma_{X_j} \;=\; \rho\,\sigma^2 \qquad (i \ne j) $$
+
+**上の式を共分散について解き、等相関を置いた。**
+$X_i$ はどれも同じ母集団から取るので $\sigma_{X_i}=\sigma_{X_j}=\sigma$、したがって $\rho\sigma^2$。
+**どの2人を取っても相関が同じ $\rho$** だと仮定している（等相関）。
 
 </div>
 

@@ -622,10 +622,48 @@ $$ \sqrt{1+(n-1)\rho} \;=\; \sqrt{1+29\times 0.3} \;=\; \sqrt{9.7} \;=\; 3.11 $$
 
 <div markdown>
 
-$$ \mathbb{E}[s^2] \;=\; \sigma^2(1-\rho) $$
+$$ s^2 \;=\; \frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2 $$
 
-**② 区間のほうは逆に縮む（分子）。**半幅は $t\,s/\sqrt{n}$ で作るが、
-等相関のもとでは**標本の中のばらつき $s$ 自体が小さく出る**。
+**② 区間のほうは逆に縮む（分子）。**半幅は $t\,s/\sqrt{n}$ で作るので、
+**区間の広さを決めているのは $s$** である。その $s$ が相関でどうなるかを、ここから4段で出す。
+
+</div>
+
+<div markdown>
+
+$$ \mathbb{E}\!\left[\sum_{i=1}^{n}(X_i-\bar{X})^2\right] \;=\; n\sigma^2 \;-\; n\,\mathbb{E}\!\left[(\bar{X}-\mu)^2\right] $$
+
+**不偏分散のときに出した恒等式を、そのまま持ってくる。**
+（[統計学Ⅰ 第8回 導出①](https://aonoa68.github.io/toukei-1/08_ttest/#1-n-1)で、二乗和を展開して出したもの。）
+🔴 **この式の導出には独立を使っていない。**だから、**相関していてもそのまま使える。**
+
+</div>
+
+<div markdown>
+
+$$ n\,\mathbb{E}\!\left[(\bar{X}-\mu)^2\right] \;=\; n\,\mathrm{Var}[\bar{X}] \;=\; \sigma^2\left[1+(n-1)\rho\right] $$
+
+**第2項を、第6回 導出②の結果で置き換えた。**
+$\mathrm{Var}[\bar{X}] = \dfrac{\sigma^2}{n}\left[1+(n-1)\rho\right]$ に $n$ を掛けただけ。
+**ここで相関が入ってくる。**
+
+</div>
+
+<div markdown>
+
+$$ \mathbb{E}\!\left[\sum_{i=1}^{n}(X_i-\bar{X})^2\right] \;=\; n\sigma^2 - \sigma^2\left[1+(n-1)\rho\right] \;=\; \sigma^2(n-1)(1-\rho) $$
+
+**まとめた。**$n-1-(n-1)\rho = (n-1)(1-\rho)$ とくくれる。
+
+</div>
+
+<div markdown>
+
+$$ \mathbb{E}[s^2] \;=\; \frac{\sigma^2(n-1)(1-\rho)}{n-1} \;=\; \sigma^2(1-\rho) $$
+
+**$n-1$ で割って答え。**
+$\rho=0$ なら $\sigma^2$ に戻る（不偏）。$\rho=0.3$ なら **$0.7\sigma^2$**。
+つまり**標本の中のばらつきが、本当より小さく見えている**。
 共通の要因で全員が同じ向きに動くので、標本の内部では差が見えにくくなるからである。
 
 </div>
