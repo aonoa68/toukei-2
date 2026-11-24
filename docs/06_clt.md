@@ -137,6 +137,10 @@ $$\mathrm{SE} = \frac{\sigma}{\sqrt{n}}$$
 
     統計学Ⅰ第6回で導いた式だが、ここでは **どの行で独立を使ったか** に注目して見直す。
 
+    （\( \mathrm{Var}[aX]=a^2\mathrm{Var}[X] \) と「独立なら分散は足せる」が**なぜ成り立つのか**は、
+    [統計学Ⅰ 第6回 導出①](https://aonoa68.github.io/toukei-1/06_sampling_clt/#1-sesigmasqrtn)の
+    ステップ4〜7で、分散の定義から1行ずつ出している。）
+
     分散は定数倍について $\mathrm{Var}[aX]=a^2\mathrm{Var}[X]$ なので、
 
     $$\mathrm{Var}[\bar{X}] \;=\; \mathrm{Var}\!\left[\frac{1}{n}\sum_{i=1}^{n} X_i\right] \;=\; \frac{1}{n^2}\,\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right]$$
@@ -183,6 +187,8 @@ $$\mathrm{SE} = \frac{\sigma}{\sqrt{n}}$$
 $$ \mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \sum_{i=1}^{n}\mathrm{Var}[X_i] \;+\; \sum_{i \ne j}\mathrm{Cov}[X_i,X_j] $$
 
 **出発点。和の分散の、一般の形。**
+この形そのものは \( (a+b)^2=a^2+b^2+2ab \) の展開から出る
+（[統計学Ⅰ 第6回 導出①](https://aonoa68.github.io/toukei-1/06_sampling_clt/#1-sesigmasqrtn) のステップ6）。
 導出①では第2項を**ゼロとして捨てていた**。独立なら共分散が0になるからである。
 **いま外すのは、この1行だけ。**
 
