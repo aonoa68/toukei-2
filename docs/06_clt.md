@@ -169,27 +169,102 @@ $$\mathrm{SE} = \frac{\sigma}{\sqrt{n}}$$
 
 **独立なら理論どおり。だが相関すると、本当のばらつきは素朴な $\sigma/\sqrt{n}$ の約3倍。** つまり「空気を読んだ」標本では、推定は実際よりずっと不確実なのに、$\sigma/\sqrt{n}$ を信じると **過剰に自信を持つ**。検定なら偽の有意差、区間推定なら狭すぎる信頼区間（→第7回）につながる。
 
-???+ note "導出②：相関があるとき、標本平均の分散はどうなるか"
+### 導出②：相関があるとき、標本平均の分散はどうなるか
 
-    導出①の「独立」の1行を外してみる。一般に、和の分散は共分散の項を持つ。
+導出①で使った「**独立**」の1行を外してみる。すると何が起きるか。
 
-    $$\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \sum_{i=1}^{n}\mathrm{Var}[X_i] \;+\; \sum_{i \ne j}\mathrm{Cov}[X_i,X_j]$$
+!!! tip "下のボタンで、1行ずつ送れる"
+    「次の式へ ▶」を押すと、変形が1段ずつ現れる。**各行には、何をしたのかが付いている。**
 
-    どの2つを取っても相関が同じ $\rho$ だとすると $\mathrm{Cov}[X_i,X_j]=\rho\sigma^2$ で、$i \ne j$ となる組 $(i,j)$ は $n(n-1)$ 個ある。したがって
+<div class="deriv" markdown>
 
-    $$\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; n\sigma^2 \;+\; n(n-1)\rho\sigma^2 \;=\; n\sigma^2\left[1+(n-1)\rho\right]$$
+<div markdown>
 
-    $n^2$ で割って、
+$$ \mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \sum_{i=1}^{n}\mathrm{Var}[X_i] \;+\; \sum_{i \ne j}\mathrm{Cov}[X_i,X_j] $$
 
-    $$\mathrm{Var}[\bar{X}] \;=\; \frac{\sigma^2}{n}\left[1+(n-1)\rho\right]$$
+**出発点。和の分散の、一般の形。**
+導出①では第2項を**ゼロとして捨てていた**。独立なら共分散が0になるからである。
+**いま外すのは、この1行だけ。**
 
-    $\rho=0$ を入れると角かっこが 1 になり、導出①の $\sigma^2/n$ に戻る。**独立は、この式の特別な場合にすぎない。**
+</div>
 
-    角かっこの中身が、素朴な分散を何倍に膨らませるかを表している。$n=30$、$\rho=0.3$ なら $1+29\times0.3=9.7$ 倍、標準偏差では $\sqrt{9.7}=3.11$ 倍。上の表の「約3倍」は、この式が出した値である。
+<div markdown>
 
-    **数値で確かめる**：$n=30,\ \rho=0.3,\ \sigma=1$ の理論値 $\mathrm{SD}[\bar{X}]=0.569$ に対し、2万回のシミュレーションでの実測は 0.573。
+$$ \mathrm{Cov}[X_i,X_j] \;=\; \rho\,\sigma^2 \qquad (i \ne j) $$
 
-    **使った数学**：共分散を含む和の分散（微I）。組の数え上げ（$n(n-1)$ 通り）。
+**どの2人を取っても相関が同じ $\rho$ だと置いた（等相関）。**
+相関係数の定義 $\rho = \mathrm{Cov}[X_i,X_j]/(\sigma\cdot\sigma)$ を、共分散について解いただけ。
+
+</div>
+
+<div markdown>
+
+$$ \#\{(i,j) : i \ne j\} \;=\; n(n-1) $$
+
+**共分散の項が何個あるかを数えた。**
+$i$ の選び方が $n$ 通り、それぞれに $j$ が $n-1$ 通り。順序つきで数えるので $n(n-1)$ 個。
+
+</div>
+
+<div markdown>
+
+$$ \mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; n\sigma^2 \;+\; n(n-1)\,\rho\sigma^2 $$
+
+**代入した。**第1項は $\sigma^2$ が $n$ 個、第2項は $\rho\sigma^2$ が $n(n-1)$ 個。
+
+</div>
+
+<div markdown>
+
+$$ \mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; n\sigma^2\left[1+(n-1)\rho\right] $$
+
+**$n\sigma^2$ でくくった。**
+角かっこの中身が、**素朴な計算を何倍に膨らませるか**を表している。
+
+</div>
+
+<div markdown>
+
+$$ \mathrm{Var}[\bar{X}] \;=\; \frac{1}{n^2}\,\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \frac{\sigma^2}{n}\left[1+(n-1)\rho\right] $$
+
+**$n^2$ で割った。**標本平均は和の $1/n$ 倍で、分散では**二乗で効く**（$\mathrm{Var}[aX]=a^2\mathrm{Var}[X]$）。
+
+</div>
+
+<div markdown>
+
+$$ \mathrm{SD}[\bar{X}] \;=\; \frac{\sigma}{\sqrt{n}}\sqrt{1+(n-1)\rho} $$
+
+**平方根を取った。**見慣れた $\sigma/\sqrt{n}$ に、**膨らみの係数 $\sqrt{1+(n-1)\rho}$ が掛かった形**になっている。
+第7回の導出③（被覆率が42%に落ちる計算）が使っているのは、この式である。
+
+</div>
+
+<div markdown>
+
+$$ \rho=0 \;\Longrightarrow\; \mathrm{Var}[\bar{X}] \;=\; \frac{\sigma^2}{n}\left[1+0\right] \;=\; \frac{\sigma^2}{n} $$
+
+**$\rho=0$ を入れると、導出①に戻る。**
+角かっこが 1 になるだけである。
+> **独立は、この式の特別な場合にすぎない。**
+
+</div>
+
+<div markdown>
+
+$$ n=30,\ \rho=0.3 \;\Longrightarrow\; 1+29\times 0.3 \;=\; 9.7 \qquad \sqrt{9.7}=3.11 $$
+
+**数字を入れてみる。**分散で **9.7倍**、標準偏差では **3.11倍**。
+上の表の「**約3倍**」は、この式が出した値である。
+「空気を読む」程度の $\rho=0.3$ で、誤差の見積もりが3倍ずれる。
+
+</div>
+
+</div>
+
+**数値で確かめる**：$n=30,\ \rho=0.3,\ \sigma=1$ の理論値 $\mathrm{SD}[\bar{X}]=0.569$ に対し、2万回のシミュレーションでの実測は 0.573。
+
+**使った数学**：共分散を含む和の分散（微I）。組の数え上げ（$n(n-1)$ 通り）。
 
 ---
 
