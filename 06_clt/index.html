@@ -1272,6 +1272,9 @@
 <details class="note" open="open">
 <summary>導出①：<span class="arithmatex">\(\mathrm{SE}=\sigma/\sqrt{n}\)</span> を、前提の側から見直す</summary>
 <p>統計学Ⅰ第6回で導いた式だが、ここでは <strong>どの行で独立を使ったか</strong> に注目して見直す。</p>
+<p>（<span class="arithmatex">\( \mathrm{Var}[aX]=a^2\mathrm{Var}[X] \)</span> と「独立なら分散は足せる」が<strong>なぜ成り立つのか</strong>は、
+<a href="https://aonoa68.github.io/toukei-1/06_sampling_clt/#1-sesigmasqrtn">統計学Ⅰ 第6回 導出①</a>の
+ステップ4〜7で、分散の定義から1行ずつ出している。）</p>
 <p>分散は定数倍について <span class="arithmatex">\(\mathrm{Var}[aX]=a^2\mathrm{Var}[X]\)</span> なので、</p>
 <div class="arithmatex">\[\mathrm{Var}[\bar{X}] \;=\; \mathrm{Var}\!\left[\frac{1}{n}\sum_{i=1}^{n} X_i\right] \;=\; \frac{1}{n^2}\,\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right]\]</div>
 <p>ここまでは、標本が独立でなくても成り立つ。<strong>次の1行が問題</strong>である。</p>
@@ -1318,6 +1321,8 @@
 <div>
 <div class="arithmatex">\[ \mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \sum_{i=1}^{n}\mathrm{Var}[X_i] \;+\; \sum_{i \ne j}\mathrm{Cov}[X_i,X_j] \]</div>
 <p><strong>出発点。和の分散の、一般の形。</strong>
+この形そのものは <span class="arithmatex">\( (a+b)^2=a^2+b^2+2ab \)</span> の展開から出る
+（<a href="https://aonoa68.github.io/toukei-1/06_sampling_clt/#1-sesigmasqrtn">統計学Ⅰ 第6回 導出①</a> のステップ6）。
 導出①では第2項を<strong>ゼロとして捨てていた</strong>。独立なら共分散が0になるからである。
 <strong>いま外すのは、この1行だけ。</strong></p>
 </div>
