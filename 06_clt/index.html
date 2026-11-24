@@ -1327,9 +1327,22 @@
 <strong>いま外すのは、この1行だけ。</strong></p>
 </div>
 <div>
-<div class="arithmatex">\[ \mathrm{Cov}[X_i,X_j] \;=\; \rho\,\sigma^2 \qquad (i \ne j) \]</div>
-<p><strong>どの2人を取っても相関が同じ <span class="arithmatex">\(\rho\)</span> だと置いた（等相関）。</strong>
-相関係数の定義 <span class="arithmatex">\(\rho = \mathrm{Cov}[X_i,X_j]/(\sigma\cdot\sigma)\)</span> を、共分散について解いただけ。</p>
+<div class="arithmatex">\[ \mathrm{Cov}[X,Y] \;=\; \mathbb{E}\!\left[(X-\mu_X)(Y-\mu_Y)\right] \]</div>
+<p><strong>共分散とは何か。</strong>「片方が平均より上のとき、もう片方も上に出やすいか」を測る量。
+<strong>連動していれば積が正になりやすく、していなければ平均してゼロ</strong>になる。
+ただし<strong>単位が付く</strong>（身長×体重なら cm·kg）ので、大きさだけでは強さが分からない。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \rho \;=\; \frac{\mathrm{Cov}[X,Y]}{\sigma_X\,\sigma_Y} \]</div>
+<p><strong>相関係数は、共分散を両方の標準偏差で割って単位を消したもの。</strong>
+こうすると必ず <span class="arithmatex">\(-1 \le \rho \le 1\)</span> に収まり、<strong>強さだけを比べられる</strong>。
+（統計学Ⅰ第5回の <span class="arithmatex">\(r\)</span> と同じ量。あちらは標本から計算した値、こちらは母集団の値。）</p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathrm{Cov}[X_i,X_j] \;=\; \rho\,\sigma_{X_i}\sigma_{X_j} \;=\; \rho\,\sigma^2 \qquad (i \ne j) \]</div>
+<p><strong>上の式を共分散について解き、等相関を置いた。</strong>
+<span class="arithmatex">\(X_i\)</span> はどれも同じ母集団から取るので <span class="arithmatex">\(\sigma_{X_i}=\sigma_{X_j}=\sigma\)</span>、したがって <span class="arithmatex">\(\rho\sigma^2\)</span>。
+<strong>どの2人を取っても相関が同じ <span class="arithmatex">\(\rho\)</span></strong> だと仮定している（等相関）。</p>
 </div>
 <div>
 <div class="arithmatex">\[ \#\{(i,j) : i \ne j\} \;=\; n(n-1) \]</div>

@@ -2156,9 +2156,31 @@ t に変えても、独立の崩れはそのまま残る。</p>
 <p><strong><span class="arithmatex">\(n=30,\ \rho=0.3\)</span> を入れた。</strong>的は <strong>3.11倍</strong>に膨らむ。</p>
 </div>
 <div>
-<div class="arithmatex">\[ \mathbb{E}[s^2] \;=\; \sigma^2(1-\rho) \]</div>
-<p><strong>② 区間のほうは逆に縮む（分子）。</strong>半幅は <span class="arithmatex">\(t\,s/\sqrt{n}\)</span> で作るが、
-等相関のもとでは<strong>標本の中のばらつき <span class="arithmatex">\(s\)</span> 自体が小さく出る</strong>。
+<div class="arithmatex">\[ s^2 \;=\; \frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2 \]</div>
+<p><strong>② 区間のほうは逆に縮む（分子）。</strong>半幅は <span class="arithmatex">\(t\,s/\sqrt{n}\)</span> で作るので、
+<strong>区間の広さを決めているのは <span class="arithmatex">\(s\)</span></strong> である。その <span class="arithmatex">\(s\)</span> が相関でどうなるかを、ここから4段で出す。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathbb{E}\!\left[\sum_{i=1}^{n}(X_i-\bar{X})^2\right] \;=\; n\sigma^2 \;-\; n\,\mathbb{E}\!\left[(\bar{X}-\mu)^2\right] \]</div>
+<p><strong>不偏分散のときに出した恒等式を、そのまま持ってくる。</strong>
+（<a href="https://aonoa68.github.io/toukei-1/08_ttest/#1-n-1">統計学Ⅰ 第8回 導出①</a>で、二乗和を展開して出したもの。）
+🔴 <strong>この式の導出には独立を使っていない。</strong>だから、<strong>相関していてもそのまま使える。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ n\,\mathbb{E}\!\left[(\bar{X}-\mu)^2\right] \;=\; n\,\mathrm{Var}[\bar{X}] \;=\; \sigma^2\left[1+(n-1)\rho\right] \]</div>
+<p><strong>第2項を、第6回 導出②の結果で置き換えた。</strong>
+<span class="arithmatex">\(\mathrm{Var}[\bar{X}] = \dfrac{\sigma^2}{n}\left[1+(n-1)\rho\right]\)</span> に <span class="arithmatex">\(n\)</span> を掛けただけ。
+<strong>ここで相関が入ってくる。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathbb{E}\!\left[\sum_{i=1}^{n}(X_i-\bar{X})^2\right] \;=\; n\sigma^2 - \sigma^2\left[1+(n-1)\rho\right] \;=\; \sigma^2(n-1)(1-\rho) \]</div>
+<p><strong>まとめた。</strong><span class="arithmatex">\(n-1-(n-1)\rho = (n-1)(1-\rho)\)</span> とくくれる。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathbb{E}[s^2] \;=\; \frac{\sigma^2(n-1)(1-\rho)}{n-1} \;=\; \sigma^2(1-\rho) \]</div>
+<p><strong><span class="arithmatex">\(n-1\)</span> で割って答え。</strong>
+<span class="arithmatex">\(\rho=0\)</span> なら <span class="arithmatex">\(\sigma^2\)</span> に戻る（不偏）。<span class="arithmatex">\(\rho=0.3\)</span> なら <strong><span class="arithmatex">\(0.7\sigma^2\)</span></strong>。
+つまり<strong>標本の中のばらつきが、本当より小さく見えている</strong>。
 共通の要因で全員が同じ向きに動くので、標本の内部では差が見えにくくなるからである。</p>
 </div>
 <div>
