@@ -522,6 +522,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. 契約書の細かい字 ―― CLTは「独立」を前提にしている">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出②：相関があるとき、標本平均の分散はどうなるか
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -944,6 +961,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. 契約書の細かい字 ―― CLTは「独立」を前提にしている">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出②：相関があるとき、標本平均の分散はどうなるか
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1240,19 +1274,64 @@
 </tbody>
 </table>
 <p><strong>独立なら理論どおり。だが相関すると、本当のばらつきは素朴な <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> の約3倍。</strong> つまり「空気を読んだ」標本では、推定は実際よりずっと不確実なのに、<span class="arithmatex">\(\sigma/\sqrt{n}\)</span> を信じると <strong>過剰に自信を持つ</strong>。検定なら偽の有意差、区間推定なら狭すぎる信頼区間（→第7回）につながる。</p>
-<details class="note" open="open">
-<summary>導出②：相関があるとき、標本平均の分散はどうなるか</summary>
-<p>導出①の「独立」の1行を外してみる。一般に、和の分散は共分散の項を持つ。</p>
-<div class="arithmatex">\[\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \sum_{i=1}^{n}\mathrm{Var}[X_i] \;+\; \sum_{i \ne j}\mathrm{Cov}[X_i,X_j]\]</div>
-<p>どの2つを取っても相関が同じ <span class="arithmatex">\(\rho\)</span> だとすると <span class="arithmatex">\(\mathrm{Cov}[X_i,X_j]=\rho\sigma^2\)</span> で、<span class="arithmatex">\(i \ne j\)</span> となる組 <span class="arithmatex">\((i,j)\)</span> は <span class="arithmatex">\(n(n-1)\)</span> 個ある。したがって</p>
-<div class="arithmatex">\[\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; n\sigma^2 \;+\; n(n-1)\rho\sigma^2 \;=\; n\sigma^2\left[1+(n-1)\rho\right]\]</div>
-<p><span class="arithmatex">\(n^2\)</span> で割って、</p>
-<div class="arithmatex">\[\mathrm{Var}[\bar{X}] \;=\; \frac{\sigma^2}{n}\left[1+(n-1)\rho\right]\]</div>
-<p><span class="arithmatex">\(\rho=0\)</span> を入れると角かっこが 1 になり、導出①の <span class="arithmatex">\(\sigma^2/n\)</span> に戻る。<strong>独立は、この式の特別な場合にすぎない。</strong></p>
-<p>角かっこの中身が、素朴な分散を何倍に膨らませるかを表している。<span class="arithmatex">\(n=30\)</span>、<span class="arithmatex">\(\rho=0.3\)</span> なら <span class="arithmatex">\(1+29\times0.3=9.7\)</span> 倍、標準偏差では <span class="arithmatex">\(\sqrt{9.7}=3.11\)</span> 倍。上の表の「約3倍」は、この式が出した値である。</p>
+<h3 id="2">導出②：相関があるとき、標本平均の分散はどうなるか<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>導出①で使った「<strong>独立</strong>」の1行を外してみる。すると何が起きるか。</p>
+<div class="admonition tip">
+<p class="admonition-title">下のボタンで、1行ずつ送れる</p>
+<p>「次の式へ ▶」を押すと、変形が1段ずつ現れる。<strong>各行には、何をしたのかが付いている。</strong></p>
+</div>
+<div class="deriv">
+<div>
+<div class="arithmatex">\[ \mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \sum_{i=1}^{n}\mathrm{Var}[X_i] \;+\; \sum_{i \ne j}\mathrm{Cov}[X_i,X_j] \]</div>
+<p><strong>出発点。和の分散の、一般の形。</strong>
+導出①では第2項を<strong>ゼロとして捨てていた</strong>。独立なら共分散が0になるからである。
+<strong>いま外すのは、この1行だけ。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathrm{Cov}[X_i,X_j] \;=\; \rho\,\sigma^2 \qquad (i \ne j) \]</div>
+<p><strong>どの2人を取っても相関が同じ <span class="arithmatex">\(\rho\)</span> だと置いた（等相関）。</strong>
+相関係数の定義 <span class="arithmatex">\(\rho = \mathrm{Cov}[X_i,X_j]/(\sigma\cdot\sigma)\)</span> を、共分散について解いただけ。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \#\{(i,j) : i \ne j\} \;=\; n(n-1) \]</div>
+<p><strong>共分散の項が何個あるかを数えた。</strong>
+<span class="arithmatex">\(i\)</span> の選び方が <span class="arithmatex">\(n\)</span> 通り、それぞれに <span class="arithmatex">\(j\)</span> が <span class="arithmatex">\(n-1\)</span> 通り。順序つきで数えるので <span class="arithmatex">\(n(n-1)\)</span> 個。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; n\sigma^2 \;+\; n(n-1)\,\rho\sigma^2 \]</div>
+<p><strong>代入した。</strong>第1項は <span class="arithmatex">\(\sigma^2\)</span> が <span class="arithmatex">\(n\)</span> 個、第2項は <span class="arithmatex">\(\rho\sigma^2\)</span> が <span class="arithmatex">\(n(n-1)\)</span> 個。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; n\sigma^2\left[1+(n-1)\rho\right] \]</div>
+<p><strong><span class="arithmatex">\(n\sigma^2\)</span> でくくった。</strong>
+角かっこの中身が、<strong>素朴な計算を何倍に膨らませるか</strong>を表している。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathrm{Var}[\bar{X}] \;=\; \frac{1}{n^2}\,\mathrm{Var}\!\left[\sum_{i=1}^{n} X_i\right] \;=\; \frac{\sigma^2}{n}\left[1+(n-1)\rho\right] \]</div>
+<p><strong><span class="arithmatex">\(n^2\)</span> で割った。</strong>標本平均は和の <span class="arithmatex">\(1/n\)</span> 倍で、分散では<strong>二乗で効く</strong>（<span class="arithmatex">\(\mathrm{Var}[aX]=a^2\mathrm{Var}[X]\)</span>）。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathrm{SD}[\bar{X}] \;=\; \frac{\sigma}{\sqrt{n}}\sqrt{1+(n-1)\rho} \]</div>
+<p><strong>平方根を取った。</strong>見慣れた <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> に、<strong>膨らみの係数 <span class="arithmatex">\(\sqrt{1+(n-1)\rho}\)</span> が掛かった形</strong>になっている。
+第7回の導出③（被覆率が42%に落ちる計算）が使っているのは、この式である。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \rho=0 \;\Longrightarrow\; \mathrm{Var}[\bar{X}] \;=\; \frac{\sigma^2}{n}\left[1+0\right] \;=\; \frac{\sigma^2}{n} \]</div>
+<p><strong><span class="arithmatex">\(\rho=0\)</span> を入れると、導出①に戻る。</strong>
+角かっこが 1 になるだけである。</p>
+<blockquote>
+<p><strong>独立は、この式の特別な場合にすぎない。</strong></p>
+</blockquote>
+</div>
+<div>
+<div class="arithmatex">\[ n=30,\ \rho=0.3 \;\Longrightarrow\; 1+29\times 0.3 \;=\; 9.7 \qquad \sqrt{9.7}=3.11 \]</div>
+<p><strong>数字を入れてみる。</strong>分散で <strong>9.7倍</strong>、標準偏差では <strong>3.11倍</strong>。
+上の表の「<strong>約3倍</strong>」は、この式が出した値である。
+「空気を読む」程度の <span class="arithmatex">\(\rho=0.3\)</span> で、誤差の見積もりが3倍ずれる。</p>
+</div>
+</div>
 <p><strong>数値で確かめる</strong>：<span class="arithmatex">\(n=30,\ \rho=0.3,\ \sigma=1\)</span> の理論値 <span class="arithmatex">\(\mathrm{SD}[\bar{X}]=0.569\)</span> に対し、2万回のシミュレーションでの実測は 0.573。</p>
 <p><strong>使った数学</strong>：共分散を含む和の分散（微I）。組の数え上げ（<span class="arithmatex">\(n(n-1)\)</span> 通り）。</p>
-</details>
 <hr />
 <h2 id="3-n">3. 最大のワナ ―― 「nを増やせば解決」は通用しない<a class="headerlink" href="#3-n" title="Permanent link">&para;</a></h2>
 <p>「相関が問題なら、サンプルを増やせば？」 独立なら確かに <span class="arithmatex">\(n\)</span> を増やすほど SE は0に近づく。だが <strong>相関した標本では、<span class="arithmatex">\(n\)</span> をいくら増やしても不確実性は0にならない</strong>。</p>
