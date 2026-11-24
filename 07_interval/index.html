@@ -647,6 +647,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#1-mu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出①：信頼区間の式は、不等式を \(\mu\) について解いたもの
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#t-n" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -753,6 +764,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4. 独立が崩れると ―― 「95%」が嘘になる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-95-42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出③：なぜ被覆率が 95% から 42% まで落ちるのか
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1186,6 +1214,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#1-mu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出①：信頼区間の式は、不等式を \(\mu\) について解いたもの
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#t-n" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1292,6 +1331,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4. 独立が崩れると ―― 「95%」が嘘になる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-95-42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出③：なぜ被覆率が 95% から 42% まで落ちるのか
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1707,19 +1763,50 @@
 <li><span class="arithmatex">\(s/\sqrt{n}\)</span> … 第6回の <strong>標準誤差</strong>（標本平均のばらつき）</li>
 <li><span class="arithmatex">\(t_{0.975,\,n-1}\)</span> … 母分散が未知なので、正規分布の代わりに <strong>t分布</strong> を使う（<span class="arithmatex">\(n\)</span> が小さいほど区間が広がる）</li>
 </ul>
-<details class="note" open="open">
-<summary>導出①：信頼区間の式は、不等式を <span class="arithmatex">\(\mu\)</span> について解いたもの</summary>
+<h3 id="1-mu">導出①：信頼区間の式は、不等式を <span class="arithmatex">\(\mu\)</span> について解いたもの<a class="headerlink" href="#1-mu" title="Permanent link">&para;</a></h3>
 <p>統計学Ⅰ第7回では、母分散 <span class="arithmatex">\(\sigma^2\)</span> が既知の場合を導いた。標準化した量が標準正規分布に従うことから出発する。</p>
-<div class="arithmatex">\[\Pr\!\left(-1.96 \le \frac{\bar{X}-\mu}{\sigma/\sqrt{n}} \le 1.96\right) = 0.95\]</div>
-<p>かっこの中を <span class="arithmatex">\(\mu\)</span> について解く。各辺に <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> を掛け、<span class="arithmatex">\(\bar{X}\)</span> を移項して符号を整理すると、</p>
-<div class="arithmatex">\[\Pr\!\left(\bar{X}-1.96\frac{\sigma}{\sqrt{n}} \;\le\; \mu \;\le\; \bar{X}+1.96\frac{\sigma}{\sqrt{n}}\right) = 0.95\]</div>
-<p>これが信頼区間である。<strong>新しい原理は何も使っていない。不等式を変形しただけ</strong>だ。</p>
-<p>現実には <span class="arithmatex">\(\sigma\)</span> は未知なので、標本から <span class="arithmatex">\(s\)</span> を計算して代わりに使う。すると分母までランダムになり、分子と分母の両方が揺れるぶん、分布は正規分布より裾が重くなる。これが自由度 <span class="arithmatex">\(n-1\)</span> の <strong>t分布</strong> で、<span class="arithmatex">\(1.96\)</span> が <span class="arithmatex">\(t_{0.975,\,n-1}\)</span> に置き換わる。</p>
-<div class="arithmatex">\[\bar{x} \;\pm\; t_{0.975,\,n-1}\frac{s}{\sqrt{n}}\]</div>
+<p><strong>新しい原理は何も使わない。不等式を変形するだけ</strong>である。</p>
+<div class="admonition tip">
+<p class="admonition-title">下のボタンで、1行ずつ送れる</p>
+<p>「次の式へ ▶」を押すと、変形が1段ずつ現れる。<strong>各行には、何をしたのかが付いている。</strong></p>
+</div>
+<div class="deriv">
+<div>
+<div class="arithmatex">\[ \Pr\!\left(-1.96 \;\le\; \frac{\bar{X}-\mu}{\sigma/\sqrt{n}} \;\le\; 1.96\right) = 0.95 \]</div>
+<p><strong>出発点。</strong>標準化した量は標準正規分布に従い、その中央95%が <span class="arithmatex">\(\pm 1.96\)</span> に入る。</p>
+</div>
+<div>
+<div class="arithmatex">\[ -1.96\,\frac{\sigma}{\sqrt{n}} \;\le\; \bar{X}-\mu \;\le\; 1.96\,\frac{\sigma}{\sqrt{n}} \]</div>
+<p><strong>各辺に <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> を掛けた。</strong><span class="arithmatex">\(\sigma/\sqrt{n}\)</span> は正の数なので、<strong>不等号の向きは変わらない</strong>。</p>
+</div>
+<div>
+<div class="arithmatex">\[ -\bar{X}-1.96\,\frac{\sigma}{\sqrt{n}} \;\le\; -\mu \;\le\; -\bar{X}+1.96\,\frac{\sigma}{\sqrt{n}} \]</div>
+<p><strong>各辺から <span class="arithmatex">\(\bar{X}\)</span> を引いた。</strong><span class="arithmatex">\(\mu\)</span> だけを残したいので、まず <span class="arithmatex">\(\bar{X}\)</span> を追い出す。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \bar{X}+1.96\,\frac{\sigma}{\sqrt{n}} \;\ge\; \mu \;\ge\; \bar{X}-1.96\,\frac{\sigma}{\sqrt{n}} \]</div>
+<p>🔴 <strong>各辺に <span class="arithmatex">\(-1\)</span> を掛けた。負の数を掛けたので、不等号の向きが逆になる。</strong>
+この導出で注意が要るのは、ここ1か所だけである。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \bar{X}-1.96\,\frac{\sigma}{\sqrt{n}} \;\le\; \mu \;\le\; \bar{X}+1.96\,\frac{\sigma}{\sqrt{n}} \]</div>
+<p><strong>左右を入れ替えて、<span class="arithmatex">\(\le\)</span> の向きにそろえた。</strong>書き方を変えただけで、前の行と同じ式である。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \Pr\!\left(\bar{X}-1.96\frac{\sigma}{\sqrt{n}} \;\le\; \mu \;\le\; \bar{X}+1.96\frac{\sigma}{\sqrt{n}}\right) = 0.95 \]</div>
+<p><strong>確率の中に戻した。</strong>中身を同値変形しただけなので、確率は 0.95 のまま。<strong>これが信頼区間である。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ \bar{x} \;\pm\; t_{0.975,\,n-1}\frac{s}{\sqrt{n}} \]</div>
+<p><strong><span class="arithmatex">\(\sigma\)</span> を <span class="arithmatex">\(s\)</span> に置き換えた、現実の形。</strong>
+<span class="arithmatex">\(\sigma\)</span> は未知なので標本から <span class="arithmatex">\(s\)</span> を計算して代わりに使う。すると<strong>分母までランダム</strong>になり、
+分子と分母の両方が揺れるぶん、分布は正規分布より裾が重い <strong>t分布</strong>（自由度 <span class="arithmatex">\(n-1\)</span>）になる。
+<strong><span class="arithmatex">\(1.96\)</span> が <span class="arithmatex">\(t_{0.975,\,n-1}\)</span> に置き換わるだけで、変形の筋道は上とまったく同じ</strong>である。</p>
+</div>
+</div>
 <p><span class="arithmatex">\(n\)</span> が小さいほど <span class="arithmatex">\(s\)</span> の当てにならなさが効くので、<span class="arithmatex">\(t\)</span> の値は大きくなり区間は広がる。<span class="arithmatex">\(n=30\)</span> なら <span class="arithmatex">\(t_{0.975,29}=2.045\)</span> で、<span class="arithmatex">\(1.96\)</span> よりわずかに大きい。</p>
 <p>t分布の密度関数そのものの導出は、この科目で扱う統計数理の範囲外である。ここでは「なぜ正規分布のままではいけないのか」が分かれば十分。</p>
 <p><strong>使った数学</strong>：不等式の同値変形（数I）。標準化（統計学Ⅰ第6回）。</p>
-</details>
 <h3 id="t-n">どの場合に t を使うのか ―― 分かれ目は <span class="arithmatex">\(n\)</span> ではない<a class="headerlink" href="#t-n" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">先に定義</p>
@@ -2023,25 +2110,61 @@ t に変えても、独立の崩れはそのまま残る。</p>
 </tbody>
 </table>
 <p><strong>独立なら約95%。だが空気を読むと、『95%信頼区間』は4割程度しか真値を含まない。</strong> 名前は「95%」でも中身はまるで違う。狭い区間を見て「精密に推定できた」と喜ぶのは、独立性を確認していなければ早とちりだ。</p>
-<details class="note" open="open">
-<summary>導出③：なぜ被覆率が 95% から 42% まで落ちるのか</summary>
-<p>区間が真値を捕まえる確率は、<strong>区間の半幅が、標本平均の本当のばらつきに対してどれだけ余裕を持っているか</strong> で決まる。相関があると、この比が2か所で同時に悪化する。</p>
-<p><strong>① 捕まえるべき的は広がる。</strong> 第6回の導出②より、標本平均の真の標準偏差は</p>
-<div class="arithmatex">\[\mathrm{SD}[\bar{X}] \;=\; \frac{\sigma}{\sqrt{n}}\sqrt{1+(n-1)\rho}\]</div>
-<p><span class="arithmatex">\(n=30,\ \rho=0.3\)</span> では <span class="arithmatex">\(\sqrt{9.7}=3.11\)</span> 倍に膨らむ。</p>
-<p><strong>② 区間の方は逆に縮む。</strong> 半幅は <span class="arithmatex">\(t\,s/\sqrt{n}\)</span> で作るが、等相関のもとでは標本の中のばらつき <span class="arithmatex">\(s\)</span> 自体が小さく出る。共通の要因で全員が同じ向きに動くぶん、標本の内部では差が見えにくくなるからだ。実際 <span class="arithmatex">\(\mathbb{E}[s^2]=\sigma^2(1-\rho)\)</span> となり、<span class="arithmatex">\(\rho=0.3\)</span> なら <span class="arithmatex">\(s\)</span> は平均して <span class="arithmatex">\(\sqrt{0.7}=0.837\)</span> 倍に縮む。</p>
-<p>両方を合わせると、</p>
-<div class="arithmatex">\[\frac{\text{真のばらつき}}{\text{区間が想定するばらつき}} \;=\; \sqrt{\frac{1+(n-1)\rho}{1-\rho}} \;=\; \sqrt{\frac{9.7}{0.7}} \;=\; 3.72\]</div>
-<p>本来 <span class="arithmatex">\(t=2.045\)</span> 個分の幅が必要なのに、実質 <span class="arithmatex">\(2.045/3.72=0.55\)</span> 個分しか取れていない。標準正規で見積もると被覆率は</p>
-<div class="arithmatex">\[2\Phi(0.55)-1 \;\approx\; 0.42\]</div>
-<p>本文の表の <strong>約42%</strong> は、この計算が出した値である。<strong>区間が狭くなるのと的が広がるのが、同じ1つの原因から同時に起きる。</strong> だから被覆率はこれほど急激に落ちる。</p>
+<h3 id="3-95-42">導出③：なぜ被覆率が 95% から 42% まで落ちるのか<a class="headerlink" href="#3-95-42" title="Permanent link">&para;</a></h3>
+<p>区間が真値を捕まえる確率は、<strong>区間の半幅が、標本平均の本当のばらつきに対してどれだけ余裕を持っているか</strong> で決まる。相関があると、この比が<strong>2か所で同時に</strong>悪化する。</p>
+<div class="admonition tip">
+<p class="admonition-title">下のボタンで、1行ずつ送れる</p>
+<p>42% という数字が、どの計算から出てくるのかを追う。</p>
+</div>
+<div class="deriv">
+<div>
+<div class="arithmatex">\[ \text{被覆率は}\quad \frac{\text{区間の半幅}}{\text{標本平均の本当のばらつき}}\quad\text{で決まる} \]</div>
+<p><strong>考え方。</strong>半幅が本当のばらつきに対して十分に大きければ当たるし、小さければ外す。
+独立なら、この比はちょうど <span class="arithmatex">\(t=2.045\)</span> 個分あって95%になる。相関があると<strong>分子が縮み、分母が膨らむ</strong>。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathrm{SD}[\bar{X}] \;=\; \frac{\sigma}{\sqrt{n}}\sqrt{1+(n-1)\rho} \]</div>
+<p><strong>① 捕まえるべき的が広がる（分母）。</strong>第6回の導出②で出した式。
+相関があると、標本平均の本当のばらつきは <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> より大きい。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \sqrt{1+(n-1)\rho} \;=\; \sqrt{1+29\times 0.3} \;=\; \sqrt{9.7} \;=\; 3.11 \]</div>
+<p><strong><span class="arithmatex">\(n=30,\ \rho=0.3\)</span> を入れた。</strong>的は <strong>3.11倍</strong>に膨らむ。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathbb{E}[s^2] \;=\; \sigma^2(1-\rho) \]</div>
+<p><strong>② 区間のほうは逆に縮む（分子）。</strong>半幅は <span class="arithmatex">\(t\,s/\sqrt{n}\)</span> で作るが、
+等相関のもとでは<strong>標本の中のばらつき <span class="arithmatex">\(s\)</span> 自体が小さく出る</strong>。
+共通の要因で全員が同じ向きに動くので、標本の内部では差が見えにくくなるからである。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \sqrt{1-\rho} \;=\; \sqrt{0.7} \;=\; 0.837 \]</div>
+<p><strong><span class="arithmatex">\(\rho=0.3\)</span> を入れた。</strong><span class="arithmatex">\(s\)</span> は平均して <strong>0.837倍</strong>に縮む。つまり区間はそのぶん狭くなる。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \frac{\text{真のばらつき}}{\text{区間が想定するばらつき}} \;=\; \sqrt{\frac{1+(n-1)\rho}{1-\rho}} \;=\; \sqrt{\frac{9.7}{0.7}} \;=\; 3.72 \]</div>
+<p><strong>①と②を合わせた。</strong>膨らみ 3.11 と縮み 0.837 が掛け合わさって、ずれは <strong>3.72倍</strong>になる。
+<span class="arithmatex">\(3.11/0.837=3.72\)</span>。<strong>同じ1つの原因（相関）から、2つの悪化が同時に起きている。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ \frac{t}{3.72} \;=\; \frac{2.045}{3.72} \;=\; 0.55 \]</div>
+<p><strong>実質の余裕を計算した。</strong>本来 <span class="arithmatex">\(t=2.045\)</span> 個分の幅が必要なのに、
+実質 <strong>0.55 個分</strong>しか取れていない。</p>
+</div>
+<div>
+<div class="arithmatex">\[ 2\Phi(0.55)-1 \;\approx\; 0.42 \]</div>
+<p><strong>その余裕で何%当たるかを、標準正規分布で読んだ。</strong>
+<span class="arithmatex">\(\pm 0.55\)</span> の範囲に入る確率は約42%。
+本文の表の <strong>約42%</strong> は、この計算が出した値である。</p>
+</div>
+</div>
+<p><strong>区間が狭くなるのと的が広がるのが、同じ1つの原因から同時に起きる。</strong> だから被覆率はこれほど急激に落ちる。</p>
 <p><strong>数値で確かめる</strong>：<span class="arithmatex">\(n=30,\ \rho=0.3\)</span> で2万回のシミュレーションを行うと、被覆率は 41.7%、<span class="arithmatex">\(\mathbb{E}[s^2]\)</span> の実測は 0.701（理論値 <span class="arithmatex">\(\sigma^2(1-\rho)=0.70\)</span>）。独立な標本では 95.2% で、名前どおりに機能する。</p>
 <p><strong>使った数学</strong>：第6回の導出②。標準正規分布の分布関数（微I）。</p>
 <div class="admonition warning">
 <p class="admonition-title">同じことが検定にも起きる</p>
 <p>標準誤差が小さく見積もられれば、t 値は大きくなり p値は小さく出る。<strong>狭すぎる信頼区間と、小さすぎる p値は、同じ原因から同時に生まれる。</strong> 第8回以降の検定の話も、この土台の上にある。</p>
 </div>
-</details>
 <div class="admonition quote">
 <p class="admonition-title">今期の背骨</p>
 <p>区間推定も検定も、すべて「標本は独立」という土台の上に建っている。空気を読む集団から取ったデータでは、その土台が抜けている。<strong>狭い区間・小さいp値は、精密さの証ではなく、独立性の崩壊を見落とした結果かもしれない。</strong> これを疑えることが、統計的誤用を見抜く力だ。</p>
