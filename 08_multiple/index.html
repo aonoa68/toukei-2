@@ -626,6 +626,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. 偽陽性が積み上がる ―― ファミリーワイズ・エラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1-1-alpham" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出①：ファミリーワイズ・エラー率 \(1-(1-\alpha)^m\) はどこから来るか
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -636,6 +653,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. 対策 ―― 多重比較補正（ボンフェローニ）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出②：ボンフェローニ補正が効く理由 ―― こちらは独立を仮定しない
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1005,6 +1039,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. 偽陽性が積み上がる ―― ファミリーワイズ・エラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1-1-alpham" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出①：ファミリーワイズ・エラー率 \(1-(1-\alpha)^m\) はどこから来るか
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1015,6 +1066,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. 対策 ―― 多重比較補正（ボンフェローニ）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出②：ボンフェローニ補正が効く理由 ―― こちらは独立を仮定しない
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1282,23 +1350,56 @@
 </tbody>
 </table>
 <p>20回検定すれば、効果ゼロでも6割超で「有意」が出る。<strong>「たくさん調べて、有意だったものだけ報告する」のは発見ではなく、偶然を拾っているだけ</strong>。これを <strong>p-hacking</strong> と呼ぶ。</p>
-<details class="note" open="open">
-<summary>導出①：ファミリーワイズ・エラー率 <span class="arithmatex">\(1-(1-\alpha)^m\)</span> はどこから来るか</summary>
-<p>効果がゼロ（帰無仮説が正しい）のとき、1回の検定で有意になってしまう確率は <span class="arithmatex">\(\alpha\)</span>。裏を返せば、<strong>偽陽性を出さない</strong>確率は <span class="arithmatex">\(1-\alpha\)</span> である。</p>
-<p><span class="arithmatex">\(m\)</span> 回の検定が互いに<strong>独立</strong>なら、<span class="arithmatex">\(m\)</span> 回すべてで偽陽性を出さない確率は掛け算でよい。</p>
-<div class="arithmatex">\[\Pr(\text{1回も偽陽性なし}) = (1-\alpha)^{m}\]</div>
-<p>知りたいのは「少なくとも1回は偽陽性」なので、余事象を取る。</p>
-<div class="arithmatex">\[\mathrm{FWER} = 1-(1-\alpha)^{m}\]</div>
-<p><span class="arithmatex">\(\alpha=0.05\)</span> なら <span class="arithmatex">\(m=5\)</span> で <span class="arithmatex">\(0.226\)</span>、<span class="arithmatex">\(m=10\)</span> で <span class="arithmatex">\(0.401\)</span>、<span class="arithmatex">\(m=20\)</span> で <span class="arithmatex">\(0.642\)</span>。上の表の理論値はこれである。</p>
+<h3 id="1-1-1-alpham">導出①：ファミリーワイズ・エラー率 <span class="arithmatex">\(1-(1-\alpha)^m\)</span> はどこから来るか<a class="headerlink" href="#1-1-1-alpham" title="Permanent link">&para;</a></h3>
+<p>使うのは<strong>高校の確率だけ</strong>である。「少なくとも1回」と来たら余事象、というあれ。</p>
+<div class="admonition tip">
+<p class="admonition-title">下のボタンで、1行ずつ送れる</p>
+<p>「次の式へ ▶」を押すと、1段ずつ現れる。<strong>各行には、何をしたのかが付いている。</strong></p>
+</div>
+<div class="deriv">
+<div>
+<div class="arithmatex">\[ \Pr(\text{1回の検定で偽陽性}) \;=\; \alpha \]</div>
+<p><strong>出発点。</strong><span class="arithmatex">\(\alpha\)</span> とは、<strong>帰無仮説が正しいのに棄却してしまう確率</strong>のことだった（§1の定義）。
+効果がゼロの色を1つ調べたとき、まぐれで有意になる確率が <span class="arithmatex">\(\alpha=0.05\)</span> である。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \Pr(\text{1回の検定で偽陽性を出さない}) \;=\; 1-\alpha \]</div>
+<p><strong>裏を返した。</strong>「出す」か「出さない」かのどちらかなので、足して1になる。
+<span class="arithmatex">\(\alpha=0.05\)</span> なら <strong>0.95</strong>。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \Pr(\text{$m$ 回とも偽陽性なし}) \;=\; (1-\alpha)\times(1-\alpha)\times\cdots\times(1-\alpha) \]</div>
+<p><strong><span class="arithmatex">\(m\)</span> 回ぶん並べた。</strong>1回目も2回目も……<span class="arithmatex">\(m\)</span> 回目も、すべて「出さない」でなければならない。
+🔴 <strong>ここで掛け算にしてよいのは、<span class="arithmatex">\(m\)</span> 回が互いに独立なときだけ</strong>である（下の warning）。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \Pr(\text{$m$ 回とも偽陽性なし}) \;=\; (1-\alpha)^{m} \]</div>
+<p><strong>同じ数の掛け算なので、累乗にまとめた。</strong>
+<span class="arithmatex">\(\alpha=0.05,\ m=20\)</span> なら <span class="arithmatex">\(0.95^{20}=0.358\)</span>。
+<strong>20色すべてで無事に済む確率は、36%しかない。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathrm{FWER} \;=\; 1-(1-\alpha)^{m} \]</div>
+<p><strong>余事象を取った。</strong>知りたいのは「<strong>少なくとも1回</strong>は偽陽性」のほうだからである。
+「1回も起きない」の反対が「少なくとも1回起きる」。</p>
+</div>
+<div>
+<div class="arithmatex">\[ 1-0.95^{20} \;=\; 1-0.358 \;=\; 0.642 \]</div>
+<p><strong>数字を入れた。</strong><span class="arithmatex">\(\alpha=0.05\)</span> なら <span class="arithmatex">\(m=5\)</span> で <span class="arithmatex">\(0.226\)</span>、<span class="arithmatex">\(m=10\)</span> で <span class="arithmatex">\(0.401\)</span>、<span class="arithmatex">\(m=20\)</span> で <strong><span class="arithmatex">\(0.642\)</span></strong>。
+上の表の理論値はこれである。
+<strong>20色を1つずつ調べれば、どれかが「有意」になるほうがふつう</strong>だということ。</p>
+</div>
+</div>
 <p><strong>数値で確かめる</strong>：帰無仮説の下では p 値は 0 から 1 の一様分布に従う。20個の一様乱数を20万組つくり「少なくとも1つが 0.05 未満」の割合を数えると 0.6433（理論値 0.6415）。</p>
 <div class="admonition warning">
 <p class="admonition-title"><span class="arithmatex">\(m\)</span> 乗にできるのは『独立』のときだけ</p>
-<p>掛け算で <span class="arithmatex">\((1-\alpha)^m\)</span> とできるのは、<span class="arithmatex">\(m\)</span> 回の検定が互いに独立なときに限る。実際の多重比較は<strong>同じデータを共有</strong>しているので、ふつう独立ではない。</p>
+<p>掛け算で <span class="arithmatex">\((1-\alpha)^m\)</span> とできるのは、<span class="arithmatex">\(m\)</span> 回の検定が互いに独立なときに限る（上の3段目）。
+実際の多重比較は<strong>同じデータを共有</strong>しているので、ふつう独立ではない。</p>
 <p>極端な例として、20個の検定が完全に連動していれば、どれか1つが有意になる確率は <span class="arithmatex">\(m\)</span> によらず <span class="arithmatex">\(\alpha=0.05\)</span> のままである（実際に試すと 0.0501）。</p>
 <p>つまりこの式は上限に近い<strong>目安</strong>であって、どんな場面でも成り立つ等式ではない。本当の FWER は、相関の強さに応じて <span class="arithmatex">\(\alpha\)</span> と <span class="arithmatex">\(1-(1-\alpha)^m\)</span> の間のどこかに来る。</p>
+<p><strong>第6回・第7回と同じ構図</strong>である。独立を仮定した式はきれいに書けるが、<strong>独立が崩れると値が動く。</strong>どの1行で独立を使ったかを、毎回おさえておくこと。</p>
 </div>
 <p><strong>使った数学</strong>：独立な事象の確率の積、余事象（高校の確率）。</p>
-</details>
 <hr />
 <h2 id="3_2">3. 対策 ―― 多重比較補正（ボンフェローニ）<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h2>
 <p><span class="arithmatex">\(m\)</span> 回検定するなら基準を厳しくする。最も簡単な <strong>ボンフェローニ補正</strong> は有意水準を <span class="arithmatex">\(\alpha/m\)</span> にする（20回なら <span class="arithmatex">\(0.05/20=0.0025\)</span>）。</p>
@@ -1321,15 +1422,37 @@
 </tbody>
 </table>
 <p>補正すれば偽陽性率は5%前後に戻る（より緩やかな FDR 制御などもある）。だがもっと大事なのは、<strong>そもそも有意が出るまで検定を繰り返さないこと</strong>。</p>
-<details class="note" open="open">
-<summary>導出②：ボンフェローニ補正が効く理由 ―― こちらは独立を仮定しない</summary>
-<p><span class="arithmatex">\(A_i\)</span> を「<span class="arithmatex">\(i\)</span> 番目の検定が偽陽性になる」という事象とする。知りたいのは、どれか1つでも起きる確率 <span class="arithmatex">\(\Pr(A_1\cup\cdots\cup A_m)\)</span> である。</p>
-<p>ここで<strong>ブールの不等式</strong>（和事象の確率は、各事象の確率の和を超えない）を使う。</p>
-<div class="arithmatex">\[\Pr\!\left(\bigcup_{i=1}^{m} A_i\right) \;\le\; \sum_{i=1}^{m}\Pr(A_i)\]</div>
-<p>これは「重なっている分だけ、単純な足し算は数えすぎになる」というだけの事実で、<span class="arithmatex">\(A_i\)</span> どうしの関係を<strong>何も仮定していない</strong>。</p>
-<p>各検定の有意水準を <span class="arithmatex">\(\alpha/m\)</span> にすれば <span class="arithmatex">\(\Pr(A_i)=\alpha/m\)</span> なので、</p>
-<div class="arithmatex">\[\mathrm{FWER} \;\le\; m\cdot\frac{\alpha}{m} \;=\; \alpha\]</div>
-<p>20回なら <span class="arithmatex">\(0.05/20=0.0025\)</span>。これで FWER は 5% 以下に抑えられる。</p>
+<h3 id="2_1">導出②：ボンフェローニ補正が効く理由 ―― こちらは独立を仮定しない<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>導出①は独立を仮定して<strong>等式</strong>を出した。こちらは<strong>何も仮定せずに不等式</strong>を出す。
+そこが、この補正の強さの正体である。</p>
+<div class="admonition tip">
+<p class="admonition-title">下のボタンで、1行ずつ送れる</p>
+<p>「次の式へ ▶」を押すと、1段ずつ現れる。<strong>各行には、何をしたのかが付いている。</strong></p>
+</div>
+<div class="deriv">
+<div>
+<div class="arithmatex">\[ A_i \;=\; \text{「$i$ 番目の検定が偽陽性になる」という事象} \]</div>
+<p><strong>言葉を記号に置いた。</strong>知りたいのは「<strong>どれか1つでも</strong>起きる確率」、つまり
+<span class="arithmatex">\(\Pr(A_1 \cup A_2 \cup \cdots \cup A_m)\)</span> である。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \Pr\!\left(\bigcup_{i=1}^{m} A_i\right) \;\le\; \sum_{i=1}^{m}\Pr(A_i) \]</div>
+<p><strong>ブールの不等式。</strong>和事象の確率は、各事象の確率の和を<strong>超えない</strong>。</p>
+<p>理由は簡単で、右辺は<strong>重なっている部分を二重に数えている</strong>からである
+（<span class="arithmatex">\(\Pr(A\cup B)=\Pr(A)+\Pr(B)-\Pr(A\cap B)\)</span> の最後の項を捨てた形）。
+🔴 <strong><span class="arithmatex">\(A_i\)</span> どうしの関係を、何も仮定していない。</strong>独立でも、連動していても成り立つ。</p>
+</div>
+<div>
+<div class="arithmatex">\[ \Pr(A_i) \;=\; \frac{\alpha}{m} \]</div>
+<p><strong>各検定の有意水準を <span class="arithmatex">\(\alpha/m\)</span> に下げる。</strong>これがボンフェローニ補正である。
+20回なら <span class="arithmatex">\(0.05/20 = 0.0025\)</span>。<strong>1つ1つの基準を、回数ぶん厳しくする。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ \mathrm{FWER} \;\le\; \sum_{i=1}^{m}\frac{\alpha}{m} \;=\; m\cdot\frac{\alpha}{m} \;=\; \alpha \]</div>
+<p><strong>代入して足した。</strong>同じ値が <span class="arithmatex">\(m\)</span> 個なので <span class="arithmatex">\(m\)</span> 倍になり、<span class="arithmatex">\(m\)</span> が約分されて <span class="arithmatex">\(\alpha\)</span> が残る。
+<strong>これで FWER は、何回検定しようと <span class="arithmatex">\(\alpha\)</span> 以下に抑えられる。</strong></p>
+</div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">導出①との違いが、ここにある</p>
 <p>導出①は<strong>独立を仮定して等式</strong>を出した。導出②は<strong>何も仮定せずに不等式</strong>を出している。検定どうしがどれだけ絡み合っていても、ボンフェローニは必ず <span class="arithmatex">\(\alpha\)</span> 以下を保証する。簡単な割に強いのはこのためである。</p>
@@ -1364,7 +1487,6 @@
 </table>
 <p>補正なしの列は相関の有無で 0.05 から 0.64 まで大きく動くのに、補正後はどの場合も 0.05 を超えていない。同時に、下の行ほど 0.05 から遠い ―― これが「保守的」ということである。</p>
 <p><strong>使った数学</strong>：ブールの不等式（確率の劣加法性）。集合の和と包含関係（高校の集合）。</p>
-</details>
 <details class="note" open="open">
 <summary>導出③：p-hacking は、式の中の <span class="arithmatex">\(m\)</span> を見えなくする操作である</summary>
 <p>導出①の <span class="arithmatex">\(m\)</span> は「<strong>実際に行った</strong>検定の回数」であって、「報告した回数」ではない。ここがすべての鍵になる。</p>
