@@ -1009,7 +1009,9 @@
 <div class="arithmatex">\[\frac{P(V=1)}{P(V=0)}=\frac{0.5}{0.5}=1\]</div>
 <p>各人が受け取る私的シグナル <span class="arithmatex">\(s\)</span> は、確率 <span class="arithmatex">\(q=0.7\)</span> で正解を指す。つまり</p>
 <div class="arithmatex">\[P(s=1\mid V=1)=q,\qquad P(s=1\mid V=0)=1-q\]</div>
-<p>第3回のオッズ形式のベイズより、事後オッズは事前オッズに<strong>尤度比</strong>を掛けたものになる。</p>
+<p>第3回のオッズ形式のベイズより、事後オッズは事前オッズに<strong>尤度比</strong>を掛けたものになる。
+（この形が<strong>ベイズの定理を2つ並べて割るだけ</strong>で出ることは、<a href="../03_bayes/">第3回</a>で確かめた。
+分母の <span class="arithmatex">\(P(s)\)</span> が両方に共通なので、割り算で消えるのがポイントである。）</p>
 <div class="arithmatex">\[\underbrace{\frac{P(V=1\mid s)}{P(V=0\mid s)}}_{\text{事後オッズ}}=\underbrace{\frac{P(V=1)}{P(V=0)}}_{\text{事前オッズ}}\times\underbrace{\frac{P(s\mid V=1)}{P(s\mid V=0)}}_{\text{尤度比}}\]</div>
 <p><span class="arithmatex">\(s=1\)</span> を受け取ったときの尤度比は <span class="arithmatex">\(q/(1-q)=0.7/0.3=7/3\)</span>。事前オッズが 1 なので事後オッズも <span class="arithmatex">\(7/3&gt;1\)</span> となり、1 を選ぶ。<strong>私的シグナル1つの重みは、尤度比 <span class="arithmatex">\(7/3\)</span> という1つの数に集約される。</strong> この先の議論は、すべてこの数の掛け算で進む。</p>
 <p><strong>使った数学</strong>：条件付き確率とベイズの定理（第3回）。オッズと尤度比の掛け算。</p>
