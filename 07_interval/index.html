@@ -680,6 +680,34 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#t-density" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出②：t分布の密度関数はどこから来るのか
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="導出②：t分布の密度関数はどこから来るのか">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この式が語っている3つのこと
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#t" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -718,7 +746,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_2" class="md-nav__link">
+  <a href="#3_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 比率の区間と、必要な標本の大きさ
@@ -769,10 +797,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#3-95-42" class="md-nav__link">
+  <a href="#4-95-42" class="md-nav__link">
     <span class="md-ellipsis">
       
-        導出③：なぜ被覆率が 95% から 42% まで落ちるのか
+        導出④：なぜ被覆率が 95% から 42% まで落ちるのか
       
     </span>
   </a>
@@ -1247,6 +1275,34 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#t-density" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        導出②：t分布の密度関数はどこから来るのか
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="導出②：t分布の密度関数はどこから来るのか">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        この式が語っている3つのこと
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#t" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1285,7 +1341,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_2" class="md-nav__link">
+  <a href="#3_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 比率の区間と、必要な標本の大きさ
@@ -1336,10 +1392,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#3-95-42" class="md-nav__link">
+  <a href="#4-95-42" class="md-nav__link">
     <span class="md-ellipsis">
       
-        導出③：なぜ被覆率が 95% から 42% まで落ちるのか
+        導出④：なぜ被覆率が 95% から 42% まで落ちるのか
       
     </span>
   </a>
@@ -1829,7 +1885,8 @@
 </div>
 </div>
 <p><span class="arithmatex">\(n\)</span> が小さいほど <span class="arithmatex">\(s\)</span> の当てにならなさが効くので、<span class="arithmatex">\(t\)</span> の値は大きくなり区間は広がる。<span class="arithmatex">\(n=30\)</span> なら <span class="arithmatex">\(t_{0.975,29}=2.045\)</span> で、<span class="arithmatex">\(1.96\)</span> よりわずかに大きい。</p>
-<p>t分布の密度関数そのものの導出は、この科目で扱う統計数理の範囲外である。ここでは「なぜ正規分布のままではいけないのか」が分かれば十分。</p>
+<p>その <span class="arithmatex">\(t_{0.975,\,n-1}\)</span> がどこから来た数なのかは、<strong><a href="#t-density">導出②</a>で実際に導いた。</strong>
+そこまで行かなくても、まず「なぜ正規分布のままではいけないのか」が分かれば十分である。</p>
 <p><strong>使った数学</strong>：不等式の同値変形（数I）。標準化（統計学Ⅰ第6回）。</p>
 <h3 id="t-n">どの場合に t を使うのか ―― 分かれ目は <span class="arithmatex">\(n\)</span> ではない<a class="headerlink" href="#t-n" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
@@ -1934,10 +1991,320 @@
 </table>
 <p><strong><span class="arithmatex">\(n=30\)</span> なら、幅は4%しか変わらない。</strong>つまり <strong>t と z の選択が結果を変えるのは、<span class="arithmatex">\(n\)</span> が小さいときだけ</strong>である。
 逆に言えば、<span class="arithmatex">\(n\)</span> が大きいときに「t を使ったか z を使ったか」を議論しても、ほとんど意味がない。</p>
+<h3 id="t-density">導出②：t分布の密度関数はどこから来るのか<a class="headerlink" href="#t-density" title="Permanent link">&para;</a></h3>
+<p>「<span class="arithmatex">\(t\)</span> 分布を使う」と言ってきたが、その <span class="arithmatex">\(t\)</span> 分布とは<strong>どんな式</strong>なのか。
+数表の数字（<span class="arithmatex">\(2.776\)</span> や <span class="arithmatex">\(2.045\)</span>）は、どこから出てきたのか。</p>
+<p>ここで<strong>実際に導く。</strong>手順は2つに分かれる。</p>
+<ol>
+<li><strong>前半</strong>：<span class="arithmatex">\(\dfrac{\bar{X}-\mu}{s/\sqrt{n}}\)</span> を、<span class="arithmatex">\(\sigma\)</span> がどこにも残らない形に書き換える</li>
+<li><strong>後半</strong>：その形の密度関数を、積分1本で計算する</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">先に定義 ―― ガンマ関数と <span class="arithmatex">\(\chi^2\)</span> 分布</p>
+<ul>
+<li><strong>ガンマ関数</strong> <span class="arithmatex">\(\Gamma(a)=\displaystyle\int_0^\infty u^{a-1}e^{-u}\,du\)</span> … 階乗を小数にまで伸ばしたもの。
+  <span class="arithmatex">\(\Gamma(1)=1\)</span>、<span class="arithmatex">\(\Gamma(a+1)=a\,\Gamma(a)\)</span>、整数なら <span class="arithmatex">\(\Gamma(k)=(k-1)!\)</span>、そして <span class="arithmatex">\(\Gamma\!\left(\tfrac12\right)=\sqrt{\pi}\)</span>。</li>
+<li><strong><span class="arithmatex">\(\chi^2\)</span>（カイ二乗）分布</strong> … 標準正規分布に従う独立な <span class="arithmatex">\(\nu\)</span> 個の値を<strong>二乗して足した</strong>ものが従う分布。
+  密度関数は <span class="arithmatex">\(f_V(v)=\dfrac{1}{2^{\nu/2}\Gamma(\nu/2)}\,v^{\nu/2-1}e^{-v/2}\quad(v&gt;0)\)</span>。</li>
+<li><strong><span class="arithmatex">\(\nu\)</span>（ニュー）</strong> … 自由度。この回では <span class="arithmatex">\(\nu=n-1\)</span> である。</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">下のボタンで、1行ずつ送れる</p>
+<p>12段ある。<strong>前半（1〜4段）が肝で、後半（5〜12段）は計算</strong>である。
+4段目だけが、この授業で証明していない事実に頼っている。そこは段の中で明示した。</p>
+</div>
+<div class="deriv">
+<div>
+<div class="arithmatex">\[ T \;=\; \frac{\bar{X}-\mu}{s/\sqrt{n}} \]</div>
+<p><strong>知りたいのは、この量の分布である。</strong>
+導出①で出てきた、そのものである。
+分子は「ずれ」、分母は「推定した標準誤差」。
+🔴 <span class="arithmatex">\(\sigma\)</span> が未知なので、分母の <span class="arithmatex">\(s\)</span> は<strong>標本ごとに揺れる</strong>。分子も分母も揺れる ―― これが厄介さの正体である。</p>
+</div>
+<div>
+<div class="arithmatex">\[ T \;=\; \frac{\;\dfrac{\bar{X}-\mu}{\sigma/\sqrt{n}}\;}{\;\dfrac{s/\sqrt{n}}{\sigma/\sqrt{n}}\;} \;=\; \frac{Z}{\;s/\sigma\;} \]</div>
+<p><strong>分子と分母を、同じ数 <span class="arithmatex">\(\sigma/\sqrt{n}\)</span> で割った。</strong>同じ数で割っているので <span class="arithmatex">\(T\)</span> の値は変わらない。
+すると分子は、導出①に出てきた <span class="arithmatex">\(Z=\dfrac{\bar{X}-\mu}{\sigma/\sqrt{n}}\)</span> そのものになる。
+分母は <span class="arithmatex">\(\dfrac{s/\sqrt{n}}{\sigma/\sqrt{n}}=\dfrac{s}{\sigma}\)</span> ―― <span class="arithmatex">\(\sqrt{n}\)</span> が約分されて消えた。</p>
+</div>
+<div>
+<div class="arithmatex">\[ V \;\equiv\; \frac{(n-1)s^2}{\sigma^2} \quad\Longrightarrow\quad \frac{s}{\sigma}=\sqrt{\frac{V}{n-1}} \quad\Longrightarrow\quad T=\frac{Z}{\sqrt{V/(n-1)}} \]</div>
+<p><strong>分母に名前を付けただけ</strong>である。<span class="arithmatex">\(V=\dfrac{(n-1)s^2}{\sigma^2}\)</span> と置けば <span class="arithmatex">\(\dfrac{V}{n-1}=\dfrac{s^2}{\sigma^2}\)</span>、その平方根が <span class="arithmatex">\(\dfrac{s}{\sigma}\)</span> である。</p>
+<p>🔴 <strong>ここが決定的なところ。<span class="arithmatex">\(\sigma\)</span> がどこにも残っていない。</strong>
+<span class="arithmatex">\(Z\)</span> の分布にも <span class="arithmatex">\(V\)</span> の分布にも <span class="arithmatex">\(\sigma\)</span> は出てこない（次の段）。
+だから <strong><span class="arithmatex">\(T\)</span> の分布は <span class="arithmatex">\(\sigma\)</span> の値によらない</strong> ―― <span class="arithmatex">\(\sigma\)</span> を知らないのに数表を引けるのは、このおかげである。</p>
+</div>
+<div>
+<div class="arithmatex">\[ Z \sim N(0,1), \qquad V \sim \chi^2_{\nu}\;\;(\nu=n-1), \qquad \text{しかも } Z \text{ と } V \text{ は独立} \]</div>
+<p><strong>材料の分布。ここだけが、この授業で証明していない事実である。</strong>
+母集団が<strong>正規分布</strong>のとき、この3つが成り立つ（証明には直交変換が必要なので、結果だけ借りる）。</p>
+<p>🔴 <strong>母集団の正規性が要るのは、この1段だけである。</strong>他の11段は計算にすぎない。
+だから「t には正規性が必要」という話は、ここ1か所から来ている。</p>
+<p><strong>整合チェック。</strong> <span class="arithmatex">\(\mathbb{E}[V]=\nu\)</span> は、<a href="https://aonoa68.github.io/toukei-1/08_ttest/#1-n-1">統計学Ⅰ 第8回 導出①</a>の
+<span class="arithmatex">\(\mathbb{E}[s^2]=\sigma^2\)</span> と<strong>同じこと</strong>である。両辺を <span class="arithmatex">\(\sigma^2\)</span> で割って <span class="arithmatex">\((n-1)\)</span> 倍すれば <span class="arithmatex">\(\mathbb{E}[V]=n-1=\nu\)</span> で、
+<span class="arithmatex">\(\chi^2_\nu\)</span> の平均は <span class="arithmatex">\(\nu\)</span> なので合っている。<strong>不偏分散の <span class="arithmatex">\(n-1\)</span> と、t分布の自由度 <span class="arithmatex">\(n-1\)</span> は、同じ <span class="arithmatex">\(n-1\)</span> である。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ V=v \text{ と固定すると}\quad T \;=\; Z\cdot\sqrt{\frac{\nu}{v}} \]</div>
+<p><strong>ここから後半。まず、分母を固定して考える。</strong>
+<span class="arithmatex">\(v\)</span> を1つの数に固定すれば、<span class="arithmatex">\(\sqrt{\nu/v}\)</span> はただの定数になり、<span class="arithmatex">\(T\)</span> は<strong>正規分布を定数倍したもの</strong>になる。</p>
+<p>第6回 導出①の<strong>性質A</strong>（<span class="arithmatex">\(\mathrm{Var}[aX]=a^2\mathrm{Var}[X]\)</span>）より、その標準偏差は <span class="arithmatex">\(\sqrt{\nu/v}\)</span> である。
+平均は <span class="arithmatex">\(0\)</span> のままなので、<span class="arithmatex">\(T\)</span> は <span class="arithmatex">\(N\!\left(0,\;\nu/v\right)\)</span> に従う。</p>
+</div>
+<div>
+<div class="arithmatex">\[ f(t \mid v) \;=\; \frac{1}{\sqrt{2\pi}\cdot\sqrt{\nu/v}}\exp\!\left(-\frac{t^2}{2\,(\nu/v)}\right) \;=\; \sqrt{\frac{v}{2\pi\nu}}\;\exp\!\left(-\frac{v\,t^2}{2\nu}\right) \]</div>
+<p><strong>前の段を、正規分布の密度の式に書き下しただけ。</strong>
+標準偏差 <span class="arithmatex">\(\sigma_0\)</span> の正規分布の密度は <span class="arithmatex">\(\dfrac{1}{\sqrt{2\pi}\,\sigma_0}e^{-t^2/(2\sigma_0^2)}\)</span> である。
+<span class="arithmatex">\(\sigma_0=\sqrt{\nu/v}\)</span> を入れ、<span class="arithmatex">\(\dfrac{1}{\sqrt{\nu/v}}=\sqrt{\dfrac{v}{\nu}}\)</span> を使って整えた。</p>
+</div>
+<div>
+<div class="arithmatex">\[ f_T(t) \;=\; \int_0^{\infty} f(t \mid v)\; f_V(v)\; dv \]</div>
+<p><strong><span class="arithmatex">\(v\)</span> は固定された数ではなく、標本ごとに揺れる。</strong>
+だから「<span class="arithmatex">\(v\)</span> がこの値だったとき」の密度を、<strong><span class="arithmatex">\(v\)</span> の出やすさで重みを付けて足す</strong>。
+これは場合分けして確率を足す操作（全確率の公式）の、連続版である。</p>
+<p>🔴 <strong>この1行が、t分布の正体である。</strong></p>
+<blockquote>
+<p><strong>t分布とは、「標準偏差がランダムに揺れる正規分布」を混ぜ合わせたものである。</strong></p>
+</blockquote>
+<p><span class="arithmatex">\(s\)</span> がたまたま小さく出た回は、分母が小さいので <span class="arithmatex">\(T\)</span> が大きく跳ねる。
+その「跳ねた回」も混ぜ込むので、<strong>裾が厚くなる。</strong></p>
+</div>
+<div>
+<div class="arithmatex">\[ f_T(t) \;=\; \int_0^{\infty} \sqrt{\frac{v}{2\pi\nu}}\;e^{-\frac{v t^2}{2\nu}} \cdot \frac{1}{2^{\nu/2}\Gamma(\nu/2)}\,v^{\frac{\nu}{2}-1}e^{-\frac{v}{2}}\; dv \]</div>
+<p><strong>2つの密度を、そのまま入れた。</strong>
+左が6段目（条件付き正規）、右が「先に定義」に書いた <span class="arithmatex">\(\chi^2_\nu\)</span> の密度である。
+ここから先は、<strong>この積分を計算するだけ</strong>である。新しい考え方は出てこない。</p>
+</div>
+<div>
+<div class="arithmatex">\[ f_T(t) \;=\; \frac{1}{\sqrt{2\pi\nu}\;2^{\nu/2}\,\Gamma(\nu/2)} \int_0^{\infty} v^{\frac{\nu+1}{2}-1}\, \exp\!\left[-\frac{v}{2}\left(1+\frac{t^2}{\nu}\right)\right] dv \]</div>
+<p><strong><span class="arithmatex">\(v\)</span> を含まないものを積分の外に出し、<span class="arithmatex">\(v\)</span> の形を整えた。</strong>2か所を直した。</p>
+<ul>
+<li><span class="arithmatex">\(v\)</span> の<strong>べき</strong>：<span class="arithmatex">\(\sqrt{v}\cdot v^{\frac{\nu}{2}-1}=v^{\frac12+\frac{\nu}{2}-1}=v^{\frac{\nu+1}{2}-1}\)</span></li>
+<li><strong>指数</strong>：<span class="arithmatex">\(-\dfrac{vt^2}{2\nu}-\dfrac{v}{2}=-\dfrac{v}{2}\left(\dfrac{t^2}{\nu}+1\right)\)</span> （<span class="arithmatex">\(-\dfrac{v}{2}\)</span> でくくった）</li>
+</ul>
+</div>
+<div>
+<div class="arithmatex">\[ \int_0^{\infty} v^{a-1}e^{-bv}\,dv \;=\; \frac{\Gamma(a)}{b^{a}} \qquad (a&gt;0,\; b&gt;0) \]</div>
+<p><strong>使うのはこの公式だけ。しかも、ガンマ関数の定義そのものである。</strong>
+<span class="arithmatex">\(u=bv\)</span> と置換すると <span class="arithmatex">\(v=u/b\)</span>、<span class="arithmatex">\(dv=du/b\)</span> なので</p>
+<div class="arithmatex">\[ \int_0^{\infty}\left(\frac{u}{b}\right)^{a-1}e^{-u}\frac{du}{b} \;=\; \frac{1}{b^{a}}\int_0^{\infty}u^{a-1}e^{-u}\,du \;=\; \frac{\Gamma(a)}{b^{a}} \]</div>
+<p>いまの積分は <span class="arithmatex">\(a=\dfrac{\nu+1}{2}\)</span>、<span class="arithmatex">\(b=\dfrac12\left(1+\dfrac{t^2}{\nu}\right)\)</span> の場合である。</p>
+</div>
+<div>
+<div class="arithmatex">\[ f_T(t) \;=\; \frac{1}{\sqrt{2\pi\nu}\;2^{\nu/2}\,\Gamma(\nu/2)} \cdot \Gamma\!\left(\frac{\nu+1}{2}\right) \cdot \frac{2^{\frac{\nu+1}{2}}}{\left(1+\dfrac{t^2}{\nu}\right)^{\frac{\nu+1}{2}}} \]</div>
+<p><strong>公式を当てはめただけ。</strong>
+<span class="arithmatex">\(b^{-a}=\left[\dfrac12\left(1+\dfrac{t^2}{\nu}\right)\right]^{-\frac{\nu+1}{2}}\)</span> で、<span class="arithmatex">\(\left(\dfrac12\right)^{-\frac{\nu+1}{2}}=2^{\frac{\nu+1}{2}}\)</span> が分子に出てきた。</p>
+</div>
+<div>
+<div class="arithmatex">\[ f_T(t) \;=\; \frac{\Gamma\!\left(\dfrac{\nu+1}{2}\right)}{\sqrt{\pi\nu}\;\Gamma\!\left(\dfrac{\nu}{2}\right)} \left(1+\frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}} \]</div>
+<p><strong><span class="arithmatex">\(2\)</span> のべきを数えると、ちょうど消える。</strong>
+<span class="arithmatex">\(\sqrt{2\pi\nu}=2^{\frac12}\sqrt{\pi\nu}\)</span> なので、<span class="arithmatex">\(2\)</span> の指数は</p>
+<div class="arithmatex">\[ \frac{\nu+1}{2}\;-\;\frac12\;-\;\frac{\nu}{2} \;=\; 0 \]</div>
+<p><strong>これが t分布の密度関数である。</strong><span class="arithmatex">\(\nu=n-1\)</span> を入れれば、自由度 <span class="arithmatex">\(n-1\)</span> の t 分布になる。
+<span class="arithmatex">\(-\infty&lt;t&lt;\infty\)</span> のすべてで定義され、<span class="arithmatex">\(\nu\)</span> ひとつで形が決まる。<span class="arithmatex">\(\sigma\)</span> も <span class="arithmatex">\(n\)</span> も <span class="arithmatex">\(\mu\)</span> も、式に残っていない。</p>
+</div>
+</div>
+<p><strong>使った数学</strong>：分数の約分（中学）。正規分布の密度と定数倍（第6回 導出①の性質A）。
+置換積分とガンマ関数の定義（微積）。全確率の公式の連続版。
+<strong>借りたのは、4段目の「<span class="arithmatex">\(V\sim\chi^2_\nu\)</span> で <span class="arithmatex">\(Z\)</span> と独立」だけである。</strong></p>
+<h4 id="3_2">この式が語っている3つのこと<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h4>
+<p>出した式を見ると、それまで言葉で説明してきたことが、<strong>全部式の形として読める。</strong></p>
+<p><strong>① 裾が重い理由 ―― 指数ではなく、べき乗だから</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>密度の形</th>
+<th>大きい <span class="arithmatex">\(t\)</span> での減り方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正規分布</td>
+<td><span class="arithmatex">\(e^{-t^2/2}\)</span></td>
+<td><strong>指数で減る</strong>（どんなべき乗より速い）</td>
+</tr>
+<tr>
+<td>t分布</td>
+<td><span class="arithmatex">\(\left(1+t^2/\nu\right)^{-\frac{\nu+1}{2}}\)</span></td>
+<td><strong><span class="arithmatex">\(\;\lvert t\rvert^{-(\nu+1)}\)</span> のべき乗でしか減らない</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="arithmatex">\(\nu=4\)</span> なら <span class="arithmatex">\(\Gamma(2.5)/(\sqrt{4\pi}\,\Gamma(2))=\dfrac38\)</span> なので、式は <span class="arithmatex">\(f(t)=\dfrac38\left(1+\dfrac{t^2}{4}\right)^{-5/2}\)</span> となり、
+<span class="arithmatex">\(t\)</span> が大きいところでは <span class="arithmatex">\(\dfrac38\cdot\dfrac{4^{5/2}}{t^5}=\dfrac{12}{t^5}\)</span> にすぎない。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"><span class="arithmatex">\(t\)</span></th>
+<th style="text-align: right;">t分布（<span class="arithmatex">\(\nu=4\)</span>）</th>
+<th style="text-align: right;">正規分布</th>
+<th style="text-align: right;">比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><span class="arithmatex">\(6.63\times10^{-2}\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(5.40\times10^{-2}\)</span></td>
+<td style="text-align: right;">1.2倍</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;"><span class="arithmatex">\(2.65\times10^{-3}\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(1.49\times10^{-6}\)</span></td>
+<td style="text-align: right;"><strong>1,780倍</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><span class="arithmatex">\(1.09\times10^{-4}\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(7.7\times10^{-23}\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(1.4\times10^{18}\)</span> 倍</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;"><span class="arithmatex">\(3.66\times10^{-6}\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(5.5\times10^{-88}\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(6.6\times10^{81}\)</span> 倍</td>
+</tr>
+</tbody>
+</table>
+<p><strong>「裾が厚い」というのは、この <span class="arithmatex">\(t^{-5}\)</span> と <span class="arithmatex">\(e^{-t^2/2}\)</span> の差である。</strong>
+上の図で t の曲線が地面に貼りついたまま遠くまで伸びていたのは、これが理由である。
+そして、裾にそれだけ確率が残っているから、中央95%を囲むには <span class="arithmatex">\(1.96\)</span> では足りず <span class="arithmatex">\(2.776\)</span> まで行かねばならない。</p>
+<p><strong>② <span class="arithmatex">\(\nu\to\infty\)</span> で正規分布に戻る</strong></p>
+<p><span class="arithmatex">\(\lim_{m\to\infty}\left(1+\dfrac{x}{m}\right)^{m}=e^{x}\)</span>（<span class="arithmatex">\(e\)</span> の定義）を使うと、べき乗の部分は</p>
+<div class="arithmatex">\[ \left(1+\frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}} \;\longrightarrow\; e^{-t^2/2} \]</div>
+<p>になり、前の定数も <span class="arithmatex">\(\dfrac{1}{\sqrt{2\pi}}\)</span> に近づく。<strong>つまり、正規分布の密度そのものになる。</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"><span class="arithmatex">\(\nu\)</span></th>
+<th style="text-align: right;">定数部分</th>
+<th style="text-align: right;"><span class="arithmatex">\(f(2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.31831</td>
+<td style="text-align: right;">0.06366</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.37500</td>
+<td style="text-align: right;">0.06629</td>
+</tr>
+<tr>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0.39563</td>
+<td style="text-align: right;">0.05685</td>
+</tr>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.39795</td>
+<td style="text-align: right;">0.05491</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">0.39884</td>
+<td style="text-align: right;">0.05409</td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="arithmatex">\(\infty\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(1/\sqrt{2\pi}=0.39894\)</span></td>
+<td style="text-align: right;">0.05399</td>
+</tr>
+</tbody>
+</table>
+<p><strong>「<span class="arithmatex">\(n\)</span> が大きければ t と z はほとんど同じ」の中身が、これである。</strong>
+2つ上の表で <span class="arithmatex">\(t_{0.975,499}=1.965\)</span> が <span class="arithmatex">\(1.960\)</span> に迫っていたのは、密度そのものが近づいているからである。</p>
+<p><strong>③ <span class="arithmatex">\(\sigma\)</span> が式に残らない</strong></p>
+<p>3段目で <span class="arithmatex">\(\sigma\)</span> が消えたので、<span class="arithmatex">\(T\)</span> の分布は母集団の <span class="arithmatex">\(\sigma\)</span> がいくつでも同じになる。
+<span class="arithmatex">\(n=5\)</span> の正規母集団から、<span class="arithmatex">\(\sigma\)</span> だけを変えて40万回ずつ試すと：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">母集団の <span class="arithmatex">\(\sigma\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(\lvert T\rvert&gt;2.776\)</span> の割合</th>
+<th style="text-align: right;"><span class="arithmatex">\(T\)</span> の 97.5% 点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0498</td>
+<td style="text-align: right;">2.776</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0502</td>
+<td style="text-align: right;">2.783</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.0499</td>
+<td style="text-align: right;">2.783</td>
+</tr>
+<tr>
+<td style="text-align: right;">理論（<span class="arithmatex">\(t_4\)</span>）</td>
+<td style="text-align: right;">0.0500</td>
+<td style="text-align: right;">2.776</td>
+</tr>
+</tbody>
+</table>
+<p><strong><span class="arithmatex">\(\sigma\)</span> を 1 から 10 まで動かしても、まったく動かない。</strong>
+だからこそ、<span class="arithmatex">\(\sigma\)</span> を知らないまま「<span class="arithmatex">\(t_{0.975,4}=2.776\)</span>」という<strong>1つの数表</strong>が使える。</p>
+<div class="admonition note">
+<p class="admonition-title">7段目の話は、本当か ―― <span class="arithmatex">\(s\)</span> が小さい回が裾を作っている</p>
+<p>「<span class="arithmatex">\(s\)</span> がたまたま小さい回が裾を厚くする」というのが7段目の読みだった。確かめられる。
+<span class="arithmatex">\(n=5\)</span>・標準正規母集団で200万回試し、<span class="arithmatex">\(\lvert T\rvert&gt;2.776\)</span> になった回だけを取り出すと：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">全体</th>
+<th style="text-align: right;"><span class="arithmatex">\(\lvert T\rvert&gt;2.776\)</span> だった回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(s\)</span> の平均</td>
+<td style="text-align: right;">0.940</td>
+<td style="text-align: right;"><strong>0.502</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(s&lt;1\)</span> だった割合</td>
+<td style="text-align: right;">59.3%</td>
+<td style="text-align: right;"><strong>98.9%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong><span class="arithmatex">\(T\)</span> が大きく出た回は、ほぼ必ず <span class="arithmatex">\(s\)</span> が小さい回である。</strong>
+分子（<span class="arithmatex">\(\bar{x}\)</span> のずれ）も大きめにはなるが（0.357 → 0.832）、効きが違う。
+<strong>t の裾は、「平均がたまたまずれた」からではなく「ばらつきをたまたま小さく見積もった」から厚いのである。</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">どこまでが厳密で、どこからが借り物か</p>
+<p>上の12段は、<strong>4段目を認めれば厳密</strong>である。近似はひとつも使っていない。</p>
+<p>4段目（<span class="arithmatex">\(V=(n-1)s^2/\sigma^2\)</span> が <span class="arithmatex">\(\chi^2_{n-1}\)</span> に従い、<span class="arithmatex">\(\bar{X}\)</span> と独立）の証明には、
+<span class="arithmatex">\(n\)</span> 次元の<strong>直交変換</strong>（ヘルマート変換）を使う。
+<span class="arithmatex">\(\bar{X}\)</span> の方向を1本の座標軸に取り直すと、残り <span class="arithmatex">\(n-1\)</span> 本の軸の二乗和が <span class="arithmatex">\((n-1)s^2\)</span> になり、
+正規分布が直交変換で形を変えないことから、独立性と自由度 <span class="arithmatex">\(n-1\)</span> が同時に出る。<strong>行列の計算が必要なので、ここでは結果を借りた。</strong></p>
+<p>なお <span class="arithmatex">\(\chi^2_\nu\)</span> の密度のほうは、<span class="arithmatex">\(\nu=1\)</span> なら自分で出せる。<span class="arithmatex">\(V=Z^2\)</span> の分布関数は
+<span class="arithmatex">\(\Pr(Z^2\le v)=\Pr(-\sqrt{v}\le Z\le\sqrt{v})=2\Phi(\sqrt{v})-1\)</span> なので、<span class="arithmatex">\(v\)</span> で微分して</p>
+<div class="arithmatex">\[ f_V(v)=2\varphi(\sqrt{v})\cdot\frac{1}{2\sqrt{v}}=\frac{1}{\sqrt{2\pi v}}e^{-v/2} \]</div>
+<p>一般式に <span class="arithmatex">\(\nu=1\)</span> を入れると <span class="arithmatex">\(\dfrac{1}{2^{1/2}\Gamma(1/2)}v^{-1/2}e^{-v/2}\)</span> で、<span class="arithmatex">\(\Gamma\!\left(\tfrac12\right)=\sqrt{\pi}\)</span> だから
+<span class="arithmatex">\(\dfrac{1}{\sqrt{2\pi v}}e^{-v/2}\)</span> ―― <strong>一致する。</strong></p>
+</div>
 <h3 id="t">🔴 t を使うには、母集団が正規分布でなければならない<a class="headerlink" href="#t" title="Permanent link">&para;</a></h3>
 <p>ここが、この回でいちばん注意すべきところである。</p>
 <p>統計学Ⅰ第6回で、<strong>中心極限定理は母集団の形を問わない</strong>ことを確かめた（歪度 7.60 という、正規からほど遠い母集団でも、標本平均は正規に近づいた）。
 ところが、<span class="arithmatex">\((\bar{X}-\mu)/(s/\sqrt{n})\)</span> が<strong>厳密に t 分布に従うのは、母集団が正規分布のときだけ</strong>である。</p>
+<p><strong>どこで正規性が効いているかは、<a href="#t-density">導出②</a>で特定できる。</strong>12段のうち、<strong>4段目の1行だけ</strong>である。
+<span class="arithmatex">\(V=(n-1)s^2/\sigma^2\)</span> が <span class="arithmatex">\(\chi^2_{n-1}\)</span> に従い <span class="arithmatex">\(\bar{X}\)</span> と独立であること ―― これは母集団が正規分布のときにしか成り立たない。
+残りの11段は、ただの計算である。だから<strong>正規性が崩れると、t分布という土台そのものが崩れる</strong>のであって、「少しずれる」という話ではない。</p>
 <table>
 <thead>
 <tr>
@@ -1999,7 +2366,7 @@ t に変えても、独立の崩れはそのまま残る。</p>
 <p>これを <strong>カバレッジ（被覆率）</strong> という。Colabで100本の区間を描くと、約95本が真の母平均を含み、約5本が外す。<strong>「95%」は真値についての確率ではなく、手続きの当たり率</strong>だ。</p>
 <p>区間の <strong>幅</strong> を決めるのは3つ：標準誤差 <span class="arithmatex">\(s/\sqrt{n}\)</span>、信頼度（95%か99%か）、標本サイズ <span class="arithmatex">\(n\)</span>。<span class="arithmatex">\(n\)</span> を増やすと幅は狭まる ―― <strong>ただし、標本が独立なら</strong>。</p>
 <details class="note" open="open">
-<summary>導出②：ランダムなのは <span class="arithmatex">\(\mu\)</span> ではなく、区間の側</summary>
+<summary>導出③：ランダムなのは <span class="arithmatex">\(\mu\)</span> ではなく、区間の側</summary>
 <p>被覆率の定義を式で書くと、こうなる。</p>
 <div class="arithmatex">\[\Pr\Big(\mu \in \big[\;\bar{X}-t\tfrac{S}{\sqrt{n}},\;\; \bar{X}+t\tfrac{S}{\sqrt{n}}\;\big]\Big) \;=\; 0.95\]</div>
 <p><strong>この式のどこに確率変数があるか</strong> を確かめてほしい。大文字で書いた <span class="arithmatex">\(\bar{X}\)</span> と <span class="arithmatex">\(S\)</span> は標本から計算される量で、標本を取り直すたびに値が変わる。一方 <span class="arithmatex">\(\mu\)</span> は母集団が持っている定数で、動かない。</p>
@@ -2008,7 +2375,7 @@ t に変えても、独立の崩れはそのまま残る。</p>
 <p><strong>使った数学</strong>：確率変数と定数の区別（統計学Ⅰ第6回）。</p>
 </details>
 <hr />
-<h2 id="3_2">3. 比率の区間と、必要な標本の大きさ<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h2>
+<h2 id="3_3">3. 比率の区間と、必要な標本の大きさ<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">ここから、推定するものが変わる</p>
 <p>§1で作ったのは<strong>母平均</strong>の区間だった（身長、年収、所要時間のような連続量）。
@@ -2134,7 +2501,7 @@ t に変えても、独立の崩れはそのまま残る。</p>
 </tbody>
 </table>
 <p><strong>独立なら約95%。だが空気を読むと、『95%信頼区間』は4割程度しか真値を含まない。</strong> 名前は「95%」でも中身はまるで違う。狭い区間を見て「精密に推定できた」と喜ぶのは、独立性を確認していなければ早とちりだ。</p>
-<h3 id="3-95-42">導出③：なぜ被覆率が 95% から 42% まで落ちるのか<a class="headerlink" href="#3-95-42" title="Permanent link">&para;</a></h3>
+<h3 id="4-95-42">導出④：なぜ被覆率が 95% から 42% まで落ちるのか<a class="headerlink" href="#4-95-42" title="Permanent link">&para;</a></h3>
 <p>区間が真値を捕まえる確率は、<strong>区間の半幅が、標本平均の本当のばらつきに対してどれだけ余裕を持っているか</strong> で決まる。相関があると、この比が<strong>2か所で同時に</strong>悪化する。</p>
 <div class="admonition tip">
 <p class="admonition-title">下のボタンで、1行ずつ送れる</p>
@@ -2357,6 +2724,7 @@ t に変えても、独立の崩れはそのまま残る。</p>
 <div class="admonition abstract">
 <p class="admonition-title">次回予告</p>
 <p>第8回「検定の多重性問題」。「20種類のゼリービーンズとニキビの関係を検定したら、緑だけ有意になった」 ―― たくさん試すと偶然の有意が出る。p-hacking の罠へ。</p>
+</div>
 </div>
 
 
